@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     24166,        548]
-NotebookOptionsPosition[     23806,        534]
-NotebookOutlinePosition[     24206,        550]
-CellTagsIndexPosition[     24163,        547]
+NotebookDataLength[     24193,        549]
+NotebookOptionsPosition[     23833,        535]
+NotebookOutlinePosition[     24233,        551]
+CellTagsIndexPosition[     24190,        548]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -74,25 +74,26 @@ Cell[BoxData[
    "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{"BeginPackage", "[", "\"\<GCDEuclide`\>\"", "]"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\n", 
    RowBox[{"(*", 
     RowBox[{
      RowBox[{
      "Qui", " ", "dichiari", " ", "le", " ", "funzioni", " ", "pubbliche", " ",
        "e"}], ",", 
      RowBox[{"se", " ", "vuoi"}], ",", 
-     RowBox[{"eventuali", " ", "messaggi"}]}], "*)"}], "\n", 
+     RowBox[{"eventuali", " ", "messaggi"}]}], "*)"}], "\[IndentingNewLine]", 
+   
    RowBox[{
     RowBox[{
      RowBox[{"StartGame", "::", "usage"}], 
      "=", "\"\<StartGame[] avvia il Gioco dell'Oca con l'Algoritmo di \
-Euclide.\>\""}], ";"}], "\n", "\[IndentingNewLine]", 
+Euclide.\>\""}], ";"}], "\[IndentingNewLine]", "\n", 
    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
+   "\n", 
    RowBox[{"(*", 
     RowBox[{
     "Definisci", " ", "la", " ", "funzione", " ", "che", " ", "incapsula", " ",
-      "il", " ", "codice", " ", "del", " ", "tuo", " ", "gioco"}], "*)"}], "\n", 
+      "il", " ", "codice", " ", "del", " ", "tuo", " ", "gioco"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"StartGame", "[", "]"}], ":=", 
@@ -514,7 +515,7 @@ Euclide.\>\""}], ";"}], "\n", "\[IndentingNewLine]",
            "Se", " ", "il", " ", "valore", " ", "inserito", " ", "non", " ", 
             "\[EGrave]", " ", "numerico"}], "*)"}], ",", 
           RowBox[{
-          "Print", "[", "\"\<Il valore inserito nonS \[EGrave] valido.\>\"", 
+          "Print", "[", "\"\<Il valore inserito non \[EGrave] valido.\>\"", 
            "]"}]}], "]"}], ";"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", "\n", 
    RowBox[{"End", "[", "]"}], "  ", 
    RowBox[{"(*", 
@@ -528,8 +529,8 @@ Euclide.\>\""}], ";"}], "\n", "\[IndentingNewLine]",
    3.953107595868313*^9}, {3.9531076494440804`*^9, 3.953107650125031*^9}, {
    3.95310771282895*^9, 3.953107713019994*^9}, {3.953279871243966*^9, 
    3.9532799087844667`*^9}, {3.95327994670427*^9, 3.953280115639119*^9}, 
-   3.953281809312385*^9, 3.9532823159419518`*^9, 
-   3.9532839513095016`*^9},ExpressionUUID->"873d27ea-fcfa-4f81-a77b-\
+   3.953281809312385*^9, 3.9532823159419518`*^9, 3.9532839513095016`*^9, 
+   3.9533453473657084`*^9},ExpressionUUID->"873d27ea-fcfa-4f81-a77b-\
 9c999619f67f"]
 },
 WindowSize->{Full, Full},
@@ -549,7 +550,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[554, 20, 23248, 512, 1581, "Input",ExpressionUUID->"873d27ea-fcfa-4f81-a77b-9c999619f67f"]
+Cell[554, 20, 23275, 513, 1581, "Input",ExpressionUUID->"873d27ea-fcfa-4f81-a77b-9c999619f67f"]
 }
 ]
 *)

@@ -10,14 +10,16 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     24193,        549]
-NotebookOptionsPosition[     23833,        535]
-NotebookOutlinePosition[     24233,        551]
-CellTagsIndexPosition[     24190,        548]
+NotebookDataLength[     24625,        566]
+NotebookOptionsPosition[     24138,        549]
+NotebookOutlinePosition[     24538,        565]
+CellTagsIndexPosition[     24495,        562]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
@@ -72,146 +74,148 @@ Cell[BoxData[
   RowBox[{"(*", " ", 
    RowBox[{":", "Warnings", ":", " ", "TODO"}], "*)"}], "\[IndentingNewLine]",
    "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  RowBox[{
-   RowBox[{"BeginPackage", "[", "\"\<GCDEuclide`\>\"", "]"}], 
-   "\[IndentingNewLine]", "\n", 
-   RowBox[{"(*", 
+  RowBox[{"(*", 
+   RowBox[{
     RowBox[{
      RowBox[{
-     "Qui", " ", "dichiari", " ", "le", " ", "funzioni", " ", "pubbliche", " ",
-       "e"}], ",", 
-     RowBox[{"se", " ", "vuoi"}], ",", 
-     RowBox[{"eventuali", " ", "messaggi"}]}], "*)"}], "\[IndentingNewLine]", 
-   
-   RowBox[{
-    RowBox[{
-     RowBox[{"StartGame", "::", "usage"}], 
-     "=", "\"\<StartGame[] avvia il Gioco dell'Oca con l'Algoritmo di \
-Euclide.\>\""}], ";"}], "\[IndentingNewLine]", "\n", 
-   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], "\[IndentingNewLine]", 
-   "\n", 
-   RowBox[{"(*", 
-    RowBox[{
-    "Definisci", " ", "la", " ", "funzione", " ", "che", " ", "incapsula", " ",
-      "il", " ", "codice", " ", "del", " ", "tuo", " ", "gioco"}], "*)"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"StartGame", "[", "]"}], ":=", 
-     RowBox[{"Module", "[", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{
-        "seed", ",", "seedInput", ",", "cols", ",", "rows", ",", "totalCells",
-          ",", "finalPos", ",", "boardColors", ",", "numObstacles", ",", 
-         "obstacles", ",", "isBlocked", ",", "boardPrimitives", ",", 
-         RowBox[{"dice", "=", "0"}], ",", 
-         RowBox[{"position", "=", "1"}], ",", 
-         RowBox[{"gameOver", "=", "False"}]}], "}"}], ",", 
-       RowBox[{"(*", 
-        RowBox[{"1.", " ", "Prompt", " ", "per", " ", "il", " ", "seed"}], 
-        "*)"}], 
+      RowBox[{"BeginPackage", "[", "\"\<GCDEuclide`\>\"", "]"}], 
+      "\[IndentingNewLine]", "\n", 
+      RowBox[{"(*", 
        RowBox[{
-        RowBox[{"seed", "=", 
-         RowBox[{"DialogInput", "[", 
-          RowBox[{
-           RowBox[{"Column", "[", 
-            RowBox[{"{", 
-             RowBox[{"\"\<Inserisci il numero seed per il gioco:\>\"", ",", 
-              RowBox[{"InputField", "[", 
-               RowBox[{
-                RowBox[{"Dynamic", "[", "seedInput", "]"}], ",", "Number"}], 
-               "]"}], ",", 
-              RowBox[{"DefaultButton", "[", 
-               RowBox[{"DialogReturn", "[", "seedInput", "]"}], "]"}]}], 
-             "}"}], "]"}], ",", 
-           RowBox[{"WindowTitle", "->", "\"\<Seed del Gioco\>\""}]}], "]"}]}],
-         ";", "\[IndentingNewLine]", 
-        RowBox[{"If", "[", 
+        RowBox[{
+        "Qui", " ", "dichiari", " ", "le", " ", "funzioni", " ", "pubbliche", 
+         " ", "e"}], ",", 
+        RowBox[{"se", " ", "vuoi"}], ",", 
+        RowBox[{"eventuali", " ", "messaggi"}]}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"StartGame", "::", "usage"}]}], 
+     "=", "\"\<StartGame[] avvia il Gioco dell'Oca con l'Algoritmo di \
+Euclide.\>\""}], ";", "\[IndentingNewLine]", "\n", 
+    RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}]}], "*)"}], 
+  "\[IndentingNewLine]", "\n", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Definisci", " ", "la", " ", "funzione", " ", "che", " ", "incapsula", " ",
+     "il", " ", "codice", " ", "del", " ", "tuo", " ", "gioco"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"StartGame", "[", "]"}], ":="}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "seed", ",", "seedInput", ",", "cols", ",", "rows", ",", "totalCells", 
+        ",", "finalPos", ",", "boardColors", ",", "numObstacles", ",", 
+        "obstacles", ",", "isBlocked", ",", "boardPrimitives", ",", 
+        RowBox[{"dice", "=", "0"}], ",", 
+        RowBox[{"position", "=", "1"}], ",", 
+        RowBox[{"gameOver", "=", "False"}]}], "}"}], ",", 
+      RowBox[{"(*", 
+       RowBox[{"1.", " ", "Prompt", " ", "per", " ", "il", " ", "seed"}], 
+       "*)"}], 
+      RowBox[{
+       RowBox[{"seed", "=", 
+        RowBox[{"DialogInput", "[", 
          RowBox[{
-          RowBox[{"NumericQ", "[", "seed", "]"}], ",", 
+          RowBox[{"Column", "[", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Inserisci il numero seed per il gioco:\>\"", ",", 
+             RowBox[{"InputField", "[", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", "seedInput", "]"}], ",", "Number"}], 
+              "]"}], ",", 
+             RowBox[{"DefaultButton", "[", 
+              RowBox[{"DialogReturn", "[", "seedInput", "]"}], "]"}]}], "}"}],
+            "]"}], ",", 
+          RowBox[{"WindowTitle", "->", "\"\<Seed del Gioco\>\""}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"NumericQ", "[", "seed", "]"}], ",", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{
+           "Se", " ", "il", " ", "seed", " ", "\[EGrave]", " ", "numerico"}], 
+           ",", 
+           RowBox[{
+           "imposta", " ", "il", " ", "seed", " ", "e", " ", "definisci", " ",
+             "il", " ", "tabellone"}]}], "*)"}], 
+         RowBox[{
+          RowBox[{"SeedRandom", "[", "seed", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"cols", "=", "7"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"rows", "=", "9"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"totalCells", "=", 
+           RowBox[{"cols", "*", "rows"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"finalPos", "=", "totalCells"}], ";", "\[IndentingNewLine]", 
           RowBox[{"(*", 
            RowBox[{
+           "Genera", " ", "colori", " ", "casuali", " ", "per", " ", "le", " ",
+             "caselle"}], "*)"}], 
+          RowBox[{"boardColors", "=", 
+           RowBox[{"Table", "[", 
             RowBox[{
-            "Se", " ", "il", " ", "seed", " ", "\[EGrave]", " ", "numerico"}],
-             ",", 
+             RowBox[{"RandomColor", "[", "]"}], ",", 
+             RowBox[{"{", "totalCells", "}"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{"Genera", " ", "ostacoli", " ", "casuali"}], "*)"}], 
+          RowBox[{"numObstacles", "=", 
+           RowBox[{"Round", "[", 
+            RowBox[{"totalCells", "*", "0.15"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"obstacles", "=", 
+           RowBox[{"RandomSample", "[", 
             RowBox[{
-            "imposta", " ", "il", " ", "seed", " ", "e", " ", "definisci", " ",
-              "il", " ", "tabellone"}]}], "*)"}], 
-          RowBox[{
-           RowBox[{"SeedRandom", "[", "seed", "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"cols", "=", "7"}], ";", "\[IndentingNewLine]", 
-           RowBox[{"rows", "=", "9"}], ";", "\[IndentingNewLine]", 
-           RowBox[{"totalCells", "=", 
-            RowBox[{"cols", "*", "rows"}]}], ";", "\[IndentingNewLine]", 
-           RowBox[{"finalPos", "=", "totalCells"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"(*", 
-            RowBox[{
-            "Genera", " ", "colori", " ", "casuali", " ", "per", " ", "le", " ",
-              "caselle"}], "*)"}], 
-           RowBox[{"boardColors", "=", 
-            RowBox[{"Table", "[", 
-             RowBox[{
-              RowBox[{"RandomColor", "[", "]"}], ",", 
-              RowBox[{"{", "totalCells", "}"}]}], "]"}]}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"(*", 
-            RowBox[{"Genera", " ", "ostacoli", " ", "casuali"}], "*)"}], 
-           RowBox[{"numObstacles", "=", 
-            RowBox[{"Round", "[", 
-             RowBox[{"totalCells", "*", "0.15"}], "]"}]}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"obstacles", "=", 
-            RowBox[{"RandomSample", "[", 
-             RowBox[{
-              RowBox[{"Range", "[", 
-               RowBox[{"2", ",", 
-                RowBox[{"totalCells", "-", "1"}]}], "]"}], ",", 
-              "numObstacles"}], "]"}]}], ";", "\[IndentingNewLine]", 
-           RowBox[{"(*", 
-            RowBox[{
-            "Funzione", " ", "per", " ", "controllare", " ", "se", " ", "una",
-              " ", "casella", " ", "\[EGrave]", " ", "bloccata"}], "*)"}], 
+             RowBox[{"Range", "[", 
+              RowBox[{"2", ",", 
+               RowBox[{"totalCells", "-", "1"}]}], "]"}], ",", 
+             "numObstacles"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", 
            RowBox[{
-            RowBox[{"isBlocked", "[", "pos_", "]"}], ":=", 
-            RowBox[{"MemberQ", "[", 
-             RowBox[{"obstacles", ",", "pos"}], "]"}]}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"(*", 
+           "Funzione", " ", "per", " ", "controllare", " ", "se", " ", "una", 
+            " ", "casella", " ", "\[EGrave]", " ", "bloccata"}], "*)"}], 
+          RowBox[{
+           RowBox[{"isBlocked", "[", "pos_", "]"}], ":=", 
+           RowBox[{"MemberQ", "[", 
+            RowBox[{"obstacles", ",", "pos"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+           "Creazione", " ", "della", " ", "griglia", " ", "grafica"}], 
+           "*)"}], 
+          RowBox[{"boardPrimitives", "=", 
+           RowBox[{"Flatten", "[", 
             RowBox[{
-            "Creazione", " ", "della", " ", "griglia", " ", "grafica"}], 
-            "*)"}], 
-           RowBox[{"boardPrimitives", "=", 
-            RowBox[{"Flatten", "[", 
-             RowBox[{
-              RowBox[{"Table", "[", 
-               RowBox[{
-                RowBox[{"Module", "[", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"Module", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"i", ",", "col", ",", "row", ",", "x", ",", "y"}], 
+                  "}"}], ",", 
                  RowBox[{
-                  RowBox[{"{", 
-                   RowBox[{"i", ",", "col", ",", "row", ",", "x", ",", "y"}], 
-                   "}"}], ",", 
-                  RowBox[{
-                   RowBox[{"i", "=", "cell"}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"row", "=", 
-                    RowBox[{
+                  RowBox[{"i", "=", "cell"}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"row", "=", 
+                   RowBox[{
                     RowBox[{"Quotient", "[", 
                     RowBox[{
                     RowBox[{"i", "-", "1"}], ",", "cols"}], "]"}], "+", 
                     "1"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"col", "=", 
-                    RowBox[{
+                  RowBox[{"col", "=", 
+                   RowBox[{
                     RowBox[{"Mod", "[", 
                     RowBox[{
                     RowBox[{"i", "-", "1"}], ",", "cols"}], "]"}], "+", 
                     "1"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"x", "=", 
-                    RowBox[{"col", "-", "1"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"y", "=", 
-                    RowBox[{"row", "-", "1"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"{", 
-                    RowBox[{
+                  RowBox[{"x", "=", 
+                   RowBox[{"col", "-", "1"}]}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"y", "=", 
+                   RowBox[{"row", "-", "1"}]}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"{", 
+                   RowBox[{
                     RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
                     RowBox[{"FaceForm", "[", 
                     RowBox[{"If", "[", 
@@ -248,33 +252,32 @@ Euclide.\>\""}], ";"}], "\[IndentingNewLine]", "\n",
                     RowBox[{
                     RowBox[{"x", "+", "0.5"}], ",", 
                     RowBox[{"y", "+", "0.5"}]}], "}"}]}], "]"}]}], "]"}]}], 
-                    "}"}]}]}], "]"}], ",", 
-                RowBox[{"{", 
-                 RowBox[{"cell", ",", "1", ",", "totalCells"}], "}"}]}], 
-               "]"}], ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
-           RowBox[{"(*", 
-            RowBox[{
-            "2.", " ", "Creazione", " ", "della", " ", "finestra", " ", "del",
-              " ", "gioco"}], "*)"}], 
-           RowBox[{"CreateDocument", "[", 
-            RowBox[{
-             RowBox[{"DynamicModule", "[", 
-              RowBox[{
+                   "}"}]}]}], "]"}], ",", 
                RowBox[{"{", 
-                RowBox[{
-                 RowBox[{"position", "=", "1"}], ",", 
-                 RowBox[{"dice", "=", "0"}], ",", 
-                 RowBox[{"gameOver", "=", "False"}]}], "}"}], ",", 
-               RowBox[{"Column", "[", 
-                RowBox[{
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"Style", "[", 
-                    
-                    RowBox[{"\"\<Gioco dell'Oca\>\"", ",", "Bold", ",", 
-                    "16"}], "]"}], ",", 
-                   RowBox[{"Dynamic", "@", 
-                    RowBox[{"Graphics", "[", 
+                RowBox[{"cell", ",", "1", ",", "totalCells"}], "}"}]}], "]"}],
+              ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+           "2.", " ", "Creazione", " ", "della", " ", "finestra", " ", "del", 
+            " ", "gioco"}], "*)"}], 
+          RowBox[{"CreateDocument", "[", 
+           RowBox[{
+            RowBox[{"DynamicModule", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"position", "=", "1"}], ",", 
+                RowBox[{"dice", "=", "0"}], ",", 
+                RowBox[{"gameOver", "=", "False"}]}], "}"}], ",", 
+              RowBox[{"Column", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"Style", "[", 
+                   RowBox[{"\"\<Gioco dell'Oca\>\"", ",", "Bold", ",", "16"}],
+                    "]"}], ",", 
+                  RowBox[{"Dynamic", "@", 
+                   RowBox[{"Graphics", "[", 
                     RowBox[{
                     RowBox[{"{", 
                     RowBox[{"boardPrimitives", ",", 
@@ -307,8 +310,8 @@ Euclide.\>\""}], ";"}], "\[IndentingNewLine]", "\n",
                     RowBox[{"{", 
                     RowBox[{"0", ",", "rows"}], "}"}]}], "}"}]}], ",", 
                     RowBox[{"ImageSize", "->", "400"}]}], "]"}]}], ",", 
-                   RowBox[{"Button", "[", 
-                    RowBox[{"\"\<Tira il dado\>\"", ",", 
+                  RowBox[{"Button", "[", 
+                   RowBox[{"\"\<Tira il dado\>\"", ",", 
                     RowBox[{
                     RowBox[{"dice", "=", 
                     RowBox[{"RandomInteger", "[", 
@@ -478,15 +481,15 @@ Euclide.\>\""}], ";"}], "\[IndentingNewLine]", "\n",
                     RowBox[{"Enabled", "->", 
                     RowBox[{"Dynamic", "[", 
                     RowBox[{"!", "gameOver"}], "]"}]}]}], "]"}], ",", 
-                   RowBox[{"Dynamic", "[", 
-                    RowBox[{"If", "[", 
+                  RowBox[{"Dynamic", "[", 
+                   RowBox[{"If", "[", 
                     RowBox[{"gameOver", ",", "\"\<Hai vinto!\>\"", ",", 
                     RowBox[{"\"\<Ultimo lancio: \>\"", "<>", 
                     RowBox[{"ToString", "[", "dice", "]"}]}]}], "]"}], "]"}], 
-                   ",", 
-                   RowBox[{"Spacer", "[", "10", "]"}], ",", 
-                   RowBox[{"(*", 
-                    RowBox[{
+                  ",", 
+                  RowBox[{"Spacer", "[", "10", "]"}], ",", 
+                  RowBox[{"(*", 
+                   RowBox[{
                     RowBox[{
                     "Pulsante", " ", "per", " ", "riavviare", " ", "il", " ", 
                     "gioco"}], ",", 
@@ -497,8 +500,8 @@ Euclide.\>\""}], ";"}], "\[IndentingNewLine]", "\n",
                     "si", " ", "pu\[OGrave]", " ", "abilitare", " ", "quando",
                      " ", "il", " ", "gioco", " ", "\[EGrave]", " ", 
                     "terminato"}]}]}], "*)"}], 
-                   RowBox[{"Dynamic", "[", 
-                    RowBox[{"If", "[", 
+                  RowBox[{"Dynamic", "[", 
+                   RowBox[{"If", "[", 
                     RowBox[{"gameOver", ",", 
                     RowBox[{"Button", "[", 
                     RowBox[{"\"\<Nuova Partita\>\"", ",", 
@@ -506,32 +509,43 @@ Euclide.\>\""}], ";"}], "\[IndentingNewLine]", "\n",
                     RowBox[{"position", "=", "1"}], ";", 
                     RowBox[{"gameOver", "=", "False"}], ";"}]}], "]"}], 
                     ",", "\"\<\>\""}], "]"}], "]"}]}], "}"}], ",", 
-                 RowBox[{"Alignment", "->", "Center"}], ",", 
-                 RowBox[{"Spacings", "->", "2"}]}], "]"}]}], "]"}], ",", 
-             RowBox[{"WindowTitle", "->", "\"\<Gioco dell'Oca\>\""}]}], "]"}],
-            ";"}], "\[IndentingNewLine]", 
-          RowBox[{"(*", 
-           RowBox[{
-           "Se", " ", "il", " ", "valore", " ", "inserito", " ", "non", " ", 
-            "\[EGrave]", " ", "numerico"}], "*)"}], ",", 
+                RowBox[{"Alignment", "->", "Center"}], ",", 
+                RowBox[{"Spacings", "->", "2"}]}], "]"}]}], "]"}], ",", 
+            RowBox[{"WindowTitle", "->", "\"\<Gioco dell'Oca\>\""}]}], "]"}], 
+          ";"}], "\[IndentingNewLine]", 
+         RowBox[{"(*", 
           RowBox[{
-          "Print", "[", "\"\<Il valore inserito non \[EGrave] valido.\>\"", 
-           "]"}]}], "]"}], ";"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", "\n", 
-   RowBox[{"End", "[", "]"}], "  ", 
+          "Se", " ", "il", " ", "valore", " ", "inserito", " ", "non", " ", 
+           "\[EGrave]", " ", "numerico"}], "*)"}], ",", 
+         RowBox[{
+         "Print", "[", "\"\<Il valore inserito non \[EGrave] valido.\>\"", 
+          "]"}]}], "]"}], ";"}]}], "]"}], ";"}], "\[IndentingNewLine]", "\n", 
+   
    RowBox[{"(*", 
-    RowBox[{"Fine", " ", "della", " ", "sezione", " ", "privata"}], "*)"}], "\n", 
-   RowBox[{"EndPackage", "[", "]"}], "  ", 
-   RowBox[{"(*", 
-    RowBox[{"Fine", " ", "del", " ", "pacchetto"}], "*)"}], "\n"}]}]], "Input",\
-
+    RowBox[{
+     RowBox[{"End", "[", "]"}], "  ", 
+     RowBox[{"(*", 
+      RowBox[{"Fine", " ", "della", " ", "sezione", " ", "privata"}], "*)"}], 
+     "\n", 
+     RowBox[{"EndPackage", "[", "]"}]}], "  ", 
+    RowBox[{"(*", 
+     RowBox[{"Fine", " ", "del", " ", "pacchetto"}], "*)"}], "*)"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.953107236757402*^9, 3.953107353454084*^9}, {
    3.953107392908574*^9, 3.953107541204576*^9}, {3.953107574395261*^9, 
    3.953107595868313*^9}, {3.9531076494440804`*^9, 3.953107650125031*^9}, {
    3.95310771282895*^9, 3.953107713019994*^9}, {3.953279871243966*^9, 
    3.9532799087844667`*^9}, {3.95327994670427*^9, 3.953280115639119*^9}, 
    3.953281809312385*^9, 3.9532823159419518`*^9, 3.9532839513095016`*^9, 
-   3.9533453473657084`*^9},ExpressionUUID->"873d27ea-fcfa-4f81-a77b-\
-9c999619f67f"]
+   3.9533453473657084`*^9, {3.953346319666031*^9, 3.953346361411837*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"873d27ea-fcfa-4f81-a77b-9c999619f67f"],
+
+Cell[BoxData["\<\"Il valore inserito non \[EGrave] valido.\"\>"], "Print",
+ CellChangeTimes->{3.953346366544191*^9},
+ CellLabel->
+  "During evaluation of \
+In[24]:=",ExpressionUUID->"e7ab8f19-6e8b-4e85-8d3d-b05578539826"]
+}, Open  ]]
 },
 WindowSize->{Full, Full},
 WindowMargins->{{Automatic, 133}, {Automatic, 22}},
@@ -550,7 +564,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[554, 20, 23275, 513, 1581, "Input",ExpressionUUID->"873d27ea-fcfa-4f81-a77b-9c999619f67f"]
+Cell[CellGroupData[{
+Cell[576, 22, 23322, 518, 1602, "Input",ExpressionUUID->"873d27ea-fcfa-4f81-a77b-9c999619f67f"],
+Cell[23901, 542, 221, 4, 23, "Print",ExpressionUUID->"e7ab8f19-6e8b-4e85-8d3d-b05578539826"]
+}, Open  ]]
 }
 ]
 *)

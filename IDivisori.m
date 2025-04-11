@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* :Title: GCD Euclide*)
 (* :Context: TODO*)
 (* :Author: Gruppo 8: Sara Casadio, Enrico Ferraiolo, \
@@ -27,15 +29,14 @@ Begin["`Private`"]
 
 (*Definisci la funzione che incapsula il codice del tuo gioco*)
 StartGame[___] := 
-  Module[{seed, seedInput, cols, rows, totalCells, finalPos, 
-    boardColors, numObstacles, obstacles, isBlocked, boardPrimitives, 
-    dice = 0, position = 1, gameOver = False},(*1. Prompt per il seed*)
+  Module[{seed, finalPos, 
+    boardColors, numObstacles, obstacles, isBlocked},(*1. Prompt per il seed*)
    seed = DialogInput[
      Column[{"Inserisci il numero seed per il gioco:", 
        InputField[Dynamic[seedInput], Number], 
        DefaultButton[DialogReturn[seedInput]]}], 
      WindowTitle -> "Seed del Gioco"];
-   If[NumericQ[seed],(*Se il seed è numerico,
+   If[NumericQ[seed],(*Se il seed \[EGrave] numerico,
     imposta il seed e definisci il tabellone*)SeedRandom[seed];
     cols = 7;
     rows = 9;
@@ -45,7 +46,7 @@ StartGame[___] :=
     boardColors = Table[RandomColor[], {totalCells}];
     (*Genera ostacoli casuali*)numObstacles = Round[totalCells*0.15];
     obstacles = RandomSample[Range[2, totalCells - 1], numObstacles];
-    (*Funzione per controllare se una casella è bloccata*)
+    (*Funzione per controllare se una casella \[EGrave] bloccata*)
     isBlocked[pos_] := MemberQ[obstacles, pos];
     (*Creazione della griglia grafica*)
     boardPrimitives = 
@@ -84,7 +85,7 @@ StartGame[___] :=
                 localA, " e ", localB}], 
               Dynamic[If[localB == 0, 
                 Column[{Style[
-                   "Algoritmo completato! Il MCD è " <> 
+                   "Algoritmo completato! Il MCD \[EGrave] " <> 
                     ToString[localA], Bold, 14], 
                   Button["Avanza di " <> ToString[dice] <> " caselle",
                     DialogReturn[]; position += dice]}], 
@@ -119,13 +120,13 @@ StartGame[___] :=
         Dynamic[If[gameOver, "Hai vinto!", 
           "Ultimo lancio: " <> ToString[dice]]], 
         Spacer[10],(*Pulsante per riavviare il gioco,ad es.:
-        si può abilitare quando il gioco è terminato*)
+        si pu\[OGrave] abilitare quando il gioco \[EGrave] terminato*)
         Dynamic[If[gameOver, 
           Button["Nuova Partita", position = 1; gameOver = False;], ""]]},
         Alignment -> Center, Spacings -> 2]], 
      WindowTitle -> "Gioco dell'Oca"];
-    (*Se il valore inserito non è numerico*), 
-    Print["Il valore inserito non è valido."]];];
+    (*Se il valore inserito non \[EGrave] numerico*), 
+    Print["Il valore inserito non \[EGrave] valido."]];];
 
 End[]  (*Fine della sezione privata*)
 EndPackage[]  (*Fine del pacchetto*)

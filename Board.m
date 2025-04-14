@@ -45,29 +45,39 @@ BoardPrimitives[cols_Integer: 6, rows_Integer: 6, obstaclesPercent_: 0.35] := Mo
   (* Funzione interna per verificare se una casella è bloccata *)
   isBlocked[pos_] := MemberQ[obstacles, pos]; (* Restituisco True se la cella è bloccata *)
   
-  (* Genero le primitive del board *)
+  (* 
+    La funzione snakeCoordinates converte l'indice (1,...,totalCells) 
+    in coordinate {x, y} in modo che:
+      - La prima riga (row 1) viene letta da sinistra a destra
+      - La seconda riga (row 2) da destra a sinistra, ecc.
+    Le coordinate y sono calcolate come (row - 1) e x dipende dal verso della riga.
+  *)
+  snakeCoordinates[i_] := Module[{row, col, x},
+    row = Quotient[i - 1, cols] + 1;
+    (* col iniziale come posizione in senso "naturale" *)
+    col = Mod[i - 1, cols];
+    (* Se la riga è pari, invertiamo l'ordine delle colonne *)
+    If[EvenQ[row], x = cols - 1 - col, x = col];
+    {x, row - 1}
+  ];
   
-  boardPrimitives = Flatten[
-    Table[
-      Module[{i, col, row, x, y},
-        i = cell;
-        row = Quotient[i - 1, cols] + 1;
-        col = Mod[i - 1, cols] + 1;
-        x = col - 1;
-        y = row - 1;
-        {EdgeForm[Black], 
-         FaceForm[If[isBlocked[i], Gray, boardColors[[i]]]], (* Colore cella, grigia se è un ostacolo *)
-         Rectangle[{x, y}, {x + 1, y + 1}], (* Disegno cella *)
-         If[isBlocked[i],
-           Text[Style["X", 14, Bold, Red], {x + 0.5, y + 0.5}], (* Ostacolo *)
-           Text[Style[ToString[i], 8], {x + 0.5, y + 0.5}] (* Cella senza ostacolo *)
-         ]
+    boardPrimitives = Table[
+      Module[{pos, x, y},
+        pos = snakeCoordinates[cell];
+        {x, y} = pos;
+        {EdgeForm[Black],
+        FaceForm[If[isBlocked[cell], Gray, boardColors[[cell]]]],
+        Rectangle[{x, y}, {x + 1, y + 1}],
+        If[isBlocked[cell],
+          Text[Style["X", 14, Bold, Red], {x + 0.5, y + 0.5}],
+          (* Se vuoi evidenziare il percorso garantito puoi inserire una logica condizionale,
+              per esempio colorando in modo particolare le celle appartenenti a guaranteedPath *)
+          Text[Style[ToString[cell], 8], {x + 0.5, y + 0.5}]
+        ]
         }
       ],
       {cell, 1, totalCells}
-    ],
-    1
-  ];
+    ];
   
   (* Restituisco le primitive del board, la lista degli ostacoli e il numero totale di celle *)
   {boardPrimitives, obstacles, totalCells, cols, rows}

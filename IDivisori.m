@@ -31,6 +31,21 @@ Get["Buttons.m"];
 Get["Board.m"];
 Get["Euclide.m"];
 
+ContaOstacoliSuperati[posizioneIniziale_, tiro_, listaOstacoli_] := Module[
+  {count},
+  
+  (* Conta gli ostacoli tra la cella di partenza e la cella ottenuta con il tiro *)
+  count = Count[listaOstacoli, _?(Between[{posizioneIniziale + 1, posizioneIniziale + tiro}])];
+  
+  (* Se sono stati superati ostacoli, aggiungi il loro numero e verifica ricorsivamente 
+     se il nuovo spostamento comporta ulteriori ostacoli *)
+  If[count > 0,
+    count + ContaOstacoliSuperati[posizioneIniziale + tiro, count, listaOstacoli],
+    count
+  ]
+];
+
+
 
 StartGame[___] := Module[
   {seed, finalPos, obstacles},
@@ -49,11 +64,11 @@ StartGame[___] := Module[
     (* Chiamata alla funzione che genera la board *)
     {boardPrimitives, obstacles, totalCells, cols, rows} = Board`BoardPrimitives[];
     finalPos = totalCells;
-    
+
     (* 2. Creazione della finestra del gioco *)
     CreateDocument[
       DynamicModule[
-        {dice = 0, position = 1, gameOver = False},
+        {dice = 0, position = 1, gameOver = False, ostacoli = obstacles},
         Column[{
           Style["Gioco dell'Oca", Bold, 16],
           Dynamic@Graphics[
@@ -73,7 +88,16 @@ StartGame[___] := Module[
               a = RandomInteger[{10, 99}];
               b = RandomInteger[{1, a - 1}];
               
-              Euclide`EuclideDialog[a, b, dice, Function[Null, position += dice]];
+              Euclide`EuclideDialog[a, b, dice,
+                Function[Null,
+                  Module[{ostacoliSuperati},
+                    position += dice;
+                    ostacoliSuperati = ContaOstacoliSuperati[position - dice, dice, ostacoli];
+                    position += ostacoliSuperati;
+                  ]
+                ]
+              ];
+
             ],
             Enabled -> Dynamic[! gameOver]
           ]

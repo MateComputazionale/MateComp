@@ -27,6 +27,9 @@ StartGame::usage =
 
 Begin["`Private`"]
 
+Get["Bottoni.m"]
+
+
 (*Definisci la funzione che incapsula il codice del tuo gioco*)
 StartGame[___] := 
   Module[{seed, finalPos, 
@@ -43,7 +46,7 @@ StartGame[___] :=
     totalCells = cols*rows;
     finalPos = totalCells;
     (*Genera colori casuali per le caselle*)
-    boardColors = Table[RandomColor[], {totalCells}];
+    boardColors = ColorData["Rainbow"] /@ Rescale[Range[totalCells]];
     (*Genera ostacoli casuali*)numObstacles = Round[totalCells*0.15];
     obstacles = RandomSample[Range[2, totalCells - 1], numObstacles];
     (*Funzione per controllare se una casella \[EGrave] bloccata*)
@@ -119,8 +122,7 @@ StartGame[___] :=
          Enabled -> Dynamic[! gameOver]], 
         Dynamic[If[gameOver, "Hai vinto!", 
           "Ultimo lancio: " <> ToString[dice]]], 
-        Spacer[10],(*Pulsante per riavviare il gioco,ad es.:
-        si pu\[OGrave] abilitare quando il gioco \[EGrave] terminato*)
+        Ricomincia[]
         Dynamic[If[gameOver, 
           Button["Nuova Partita", position = 1; gameOver = False;], ""]]},
         Alignment -> Center, Spacings -> 2]], 

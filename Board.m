@@ -69,7 +69,7 @@ BoardPrimitives[cols_Integer: 6, rows_Integer: 6, obstaclesPercent_: 0.35] := Mo
         FaceForm[If[isBlocked[cell], Gray, boardColors[[cell]]]],
         Rectangle[{x, y}, {x + 1, y + 1}],
         If[isBlocked[cell],
-          Text[Style["X", 14, Bold, Red], {x + 0.5, y + 0.5}],
+          Text[Style["", 14, Bold, Red], {x + 0.5, y + 0.5}],
           (* Se vuoi evidenziare il percorso garantito puoi inserire una logica condizionale,
               per esempio colorando in modo particolare le celle appartenenti a guaranteedPath *)
           Text[Style[ToString[cell], 8], {x + 0.5, y + 0.5}]

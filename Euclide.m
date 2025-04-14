@@ -33,7 +33,7 @@ EuclideDialog[a_Integer, b_Integer, stepCount_Integer, onSuccess_Function] :=
               (* Visualizza il passo corrente oppure il messaggio finale se completato *)
               If[completed,
                 {
-                  Style["Algoritmo completato! Il MCD è " <> ToString[currentA], Bold, 14],
+                  Style["Algoritmo completato! Il MCD e' " <> ToString[currentA], Bold, 14],
                   Button["Avanza di " <> ToString[stepCount] <> " caselle",
                     DialogReturn[];
                     onSuccess[]

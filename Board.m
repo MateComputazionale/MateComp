@@ -5,8 +5,40 @@ BeginPackage["Board`"]
 BoardPrimitives::usage = 
   "BoardPrimitives[cols, rows, obstaclesPercent] genera la griglia del board. \
 Restituisce una lista {boardPrimitives, obstacles, totalCells}.";
+GetNextPosition::usage = 
+  "getNextPosition[posizioneIniziale, tiro, listaOstacoli] calcola la nuova posizione \
+  in base alla posizione iniziale, al tiro e alla lista di ostacoli. Restituisce la nuova posizione.";
 
 Begin["`Private`"]
+
+ContaOstacoliSuperati[posizioneIniziale_, tiro_, listaOstacoli_] := Module[
+  {count},
+  
+  (* Conta gli ostacoli tra la cella di partenza e la cella ottenuta con il tiro *)
+  count = Count[listaOstacoli, _?(Between[{posizioneIniziale + 1, posizioneIniziale + tiro}])];
+  
+  (* Se sono stati superati ostacoli, aggiungi il loro numero e verifica ricorsivamente 
+     se il nuovo spostamento comporta ulteriori ostacoli *)
+  If[count > 0,
+    count + ContaOstacoliSuperati[posizioneIniziale + tiro, count, listaOstacoli],
+    count
+  ]
+];
+  
+  
+(* Funzione per calcolare la nuova posizione in base alla posizione iniziale, al tiro e alla lista di ostacoli *)
+getNextPosition[posizioneIniziale_, tiro_, listaOstacoli_] := Module[
+  {ostacoliSuperati, nuovaPosizione},
+  
+  (* Calcola quanti ostacoli vengono superati nell'intervallo tra posizioneIniziale+1 e posizioneIniziale+tiro *)
+  ostacoliSuperati = ContaOstacoliSuperati[posizioneIniziale, tiro, listaOstacoli];
+  
+  (* Nuova posizione = posizione iniziale + tiro + eventuali spostamenti aggiuntivi dovuti agli ostacoli *)
+  nuovaPosizione = posizioneIniziale + tiro + ostacoliSuperati;
+  
+  nuovaPosizione
+];
+
 
 (* Funzione per generare un percorso casuale dalla cella 1 alla cella finale, attraverso mosse U/R *)
 Clear[generatePath];

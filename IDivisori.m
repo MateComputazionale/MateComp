@@ -31,21 +31,6 @@ Get["Buttons.m"];
 Get["Board.m"];
 Get["Euclide.m"];
 
-ContaOstacoliSuperati[posizioneIniziale_, tiro_, listaOstacoli_] := Module[
-  {count},
-  
-  (* Conta gli ostacoli tra la cella di partenza e la cella ottenuta con il tiro *)
-  count = Count[listaOstacoli, _?(Between[{posizioneIniziale + 1, posizioneIniziale + tiro}])];
-  
-  (* Se sono stati superati ostacoli, aggiungi il loro numero e verifica ricorsivamente 
-     se il nuovo spostamento comporta ulteriori ostacoli *)
-  If[count > 0,
-    count + ContaOstacoliSuperati[posizioneIniziale + tiro, count, listaOstacoli],
-    count
-  ]
-];
-
-
 
 StartGame[___] := Module[
   {seed, finalPos, obstacles},
@@ -71,14 +56,23 @@ StartGame[___] := Module[
         {dice = 0, position = 1, gameOver = False, ostacoli = obstacles},
         Column[{
           Style["Gioco dell'Oca", Bold, 16],
-          Dynamic@Graphics[
-            {boardPrimitives,
-             Dynamic[If[position <= totalCells,
-               {Red, Disk[{Mod[position - 1, cols] + 0.5, Quotient[position - 1, cols] + 0.5}, 0.3]},
-               {}
-             ]]},
-            PlotRange -> {{0, cols}, {0, rows}}, ImageSize -> 400
-          ],
+          Dynamic@With[
+            {token = 
+              Join[
+                boardPrimitives,
+                If[position <= totalCells,
+                  {Red, Disk[{Mod[position - 1, cols] + 0.5, Quotient[position - 1, cols] + 0.5}, 0.3]},
+                  {}
+                ]
+              ]
+            },
+            Graphics[
+              token,
+              PlotRange -> {{0, cols}, {0, rows}},
+              ImageSize -> 400
+            ]
+          ]
+,
           Restart[position, dice, gameOver]
 
 
@@ -91,9 +85,7 @@ StartGame[___] := Module[
               Euclide`EuclideDialog[a, b, dice,
                 Function[Null,
                   Module[{ostacoliSuperati},
-                    position += dice;
-                    ostacoliSuperati = ContaOstacoliSuperati[position - dice, dice, ostacoli];
-                    position += ostacoliSuperati;
+                    position = Board`getNextPosition[position, dice, ostacoli];
                   ]
                 ]
               ];

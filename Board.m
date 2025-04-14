@@ -8,7 +8,7 @@ Restituisce una lista {boardPrimitives, obstacles, totalCells}.";
 
 Begin["`Private`"]
 
-BoardPrimitives[cols_Integer: 6, rows_Integer: 6, obstaclesPercent_: 0.15] := Module[
+BoardPrimitives[cols_Integer: 3, rows_Integer: 3, obstaclesPercent_: 0.15] := Module[
   {totalCells, boardColors, numObstacles, obstacles, isBlocked, boardPrimitives},
   
   totalCells = cols * rows;

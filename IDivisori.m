@@ -27,7 +27,7 @@ StartGame::usage =
 Begin["`Private`"]
 
 (* Includo il package dei bottoni e quello del board *)
-Get["Bottoni.m"];
+Get["Buttons.m"];
 Get["Board.m"];
 
 StartGame[___] := Module[
@@ -62,6 +62,9 @@ StartGame[___] := Module[
              ]]},
             PlotRange -> {{0, cols}, {0, rows}}, ImageSize -> 400
           ],
+          Restart[position, dice, gameOver]
+
+
           Button["Tira il dado",
             dice = RandomInteger[{1, 6}];
             (* Algoritmo di Euclide *)
@@ -88,6 +91,7 @@ StartGame[___] := Module[
                           Row[{"Quoziente: ", InputField[Dynamic[locQuotient], String, FieldSize -> 5]}],
                           Row[{"Resto: ", InputField[Dynamic[locRemainder], String, FieldSize -> 5]}],
                           Dynamic[Style[locMessage, Red]],
+                          CleanFields[locQuotient, locRemainder, locMessage],
                           Button["Verifica",
                             Module[{q, r},
                               q = ToExpression[locQuotient];
@@ -124,6 +128,7 @@ StartGame[___] := Module[
           (* Pulsante per ricominciare *)
           Ricomincia[],
           Dynamic[If[gameOver,
+          Restart[position, dice, gameOver]
             Button["Nuova Partita", position = 1; gameOver = False;],
             ""
           ]]

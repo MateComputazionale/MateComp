@@ -91,7 +91,7 @@ StartGame[___] := Module[
                           Row[{"Quoziente: ", InputField[Dynamic[locQuotient], String, FieldSize -> 5]}],
                           Row[{"Resto: ", InputField[Dynamic[locRemainder], String, FieldSize -> 5]}],
                           Dynamic[Style[locMessage, Red]],
-                          CleanFields[locQuotient, locRemainder, locMessage],
+                          ClearFields[locQuotient, locRemainder, locMessage],
                           Button["Verifica",
                             Module[{q, r},
                               q = ToExpression[locQuotient];
@@ -125,8 +125,6 @@ StartGame[___] := Module[
           ],
           Dynamic[If[gameOver, "Hai vinto!",
             "Ultimo lancio: " <> ToString[dice]]],
-          (* Pulsante per ricominciare *)
-          Ricomincia[],
           Dynamic[If[gameOver,
           Restart[position, dice, gameOver]
             Button["Nuova Partita", position = 1; gameOver = False;],

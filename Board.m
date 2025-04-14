@@ -8,10 +8,36 @@ Restituisce una lista {boardPrimitives, obstacles, totalCells}.";
 
 Begin["`Private`"]
 
-BoardPrimitives[cols_Integer: 3, rows_Integer: 3, obstaclesPercent_: 0.15] := Module[
-  {totalCells, boardColors, numObstacles, obstacles, isBlocked, boardPrimitives},
+(* Funzione per generare un percorso casuale dalla cella 1 alla cella finale, attraverso mosse U/R *)
+Clear[generatePath];
+generatePath[cols_Integer, rows_Integer] := Module[
+  {moves, start = {1, 1}, current = {1, 1}, path, newPos},
+  (* In totale sono necessarie (cols-1) mosse a destra e (rows-1) mosse in alto *)
+  moves = Join[Table["R", {cols - 1}], Table["U", {rows - 1}]];
+  moves = RandomSample[moves]; (* mescola le mosse per variare il percorso *)
+  path = {current};
+  Do[
+    newPos = current;
+    Switch[move,
+      "R", newPos = {current[[1]] + 1, current[[2]]},
+      "U", newPos = {current[[1]], current[[2]] + 1}
+    ];
+    AppendTo[path, newPos];
+    current = newPos;
+    ,
+    {move, moves}
+  ];
+  (* Convertiamo le coordinate (col, row) in indice di cella, dove l'indice si calcola come (row-1)*cols + col *)
+  Map[ (#[[2]] - 1)*cols + #[[1]] &, path ]
+];
+
+
+BoardPrimitives[cols_Integer: 6, rows_Integer: 6, obstaclesPercent_: 0.35] := Module[
+  {totalCells, boardColors, numObstacles, obstacles, isBlocked, boardPrimitives, guaranteedPath, availableCells},
   
   totalCells = cols * rows;
+  guaranteedPath = generatePath[cols, rows]; (* Genero il percorso garantito *)
+  availableCells = Complement[Range[2, totalCells - 1], guaranteedPath]; (* Celle disponibili *)
   boardColors = ColorData["Rainbow"] /@ Rescale[Range[totalCells]]; (* Colori celle *)
   numObstacles = Round[totalCells * obstaclesPercent];
   obstacles = RandomSample[Range[2, totalCells - 1], numObstacles]; 

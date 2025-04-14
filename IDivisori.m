@@ -43,8 +43,8 @@ StartGame[___] := Module[
   If[NumericQ[seed],
     (* Se il seed \[EGrave] numerico, impostalo e configura il tabellone *)
     SeedRandom[seed];
-    cols = 7;
-    rows = 9;
+    cols = 6;
+    rows = 6;
     
     (* Chiamata alla funzione che genera il board *)
     {boardPrimitives, obstacles, totalCells} = Board`BoardPrimitives[cols, rows];

@@ -3,7 +3,7 @@
 (* :Title: GCD Euclide*)
 (* :Context: TODO*)
 (* :Author: Gruppo 8: Sara Casadio, Enrico Ferraiolo, \
-Federica Santisi*)
+Federica Santisi, Luca Orlandello*)
 (* :Summary: TODO*)
 (* :Copyright: TODO*)
 (* :Package Version: 1.0*)

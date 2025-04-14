@@ -29,6 +29,8 @@ Begin["`Private`"]
 (* Includo il package dei bottoni e quello del board *)
 Get["Buttons.m"];
 Get["Board.m"];
+Get["Euclide.m"];
+
 
 StartGame[___] := Module[
   {seed, finalPos, obstacles},
@@ -65,64 +67,17 @@ StartGame[___] := Module[
           Restart[position, dice, gameOver]
 
 
-          Button["Tira il dado",
+            Button["Tira il dado",
             dice = RandomInteger[{1, 6}];
-            (* Algoritmo di Euclide *)
             Module[{a, b},
               a = RandomInteger[{10, 99}];
               b = RandomInteger[{1, a - 1}];
               
-              CreateDialog[
-                DynamicModule[
-                  {localA = a, localB = b, steps = {}, stepCount = dice,
-                   currentStep = 1, locQuotient = "", locRemainder = "", locMessage = ""},
-                  Column[{
-                    Row[{"Risolvi l'Algoritmo di Euclide per ", localA, " e ", localB}],
-                    Dynamic[
-                      If[localB == 0,
-                        Column[{
-                          Style["Algoritmo completato! Il MCD \[EGrave] " <> ToString[localA], Bold, 14],
-                          Button["Avanza di " <> ToString[dice] <> " caselle",
-                            DialogReturn[];
-                            position += dice]
-                        }],
-                        Column[{
-                          Row[{"Passo ", currentStep, ": ", localA, " div ", localB}],
-                          Row[{"Quoziente: ", InputField[Dynamic[locQuotient], String, FieldSize -> 5]}],
-                          Row[{"Resto: ", InputField[Dynamic[locRemainder], String, FieldSize -> 5]}],
-                          Dynamic[Style[locMessage, Red]],
-                          ClearFields[locQuotient, locRemainder, locMessage],
-                          Button["Verifica",
-                            Module[{q, r},
-                              q = ToExpression[locQuotient];
-                              r = ToExpression[locRemainder];
-                              If[! NumericQ[q] || ! NumericQ[r],
-                                locMessage = "Inserisci numeri validi.",
-                                If[q == Quotient[localA, localB] && r == Mod[localA, localB],
-                                  AppendTo[steps, {localA, localB, q, r}];
-                                  currentStep++;
-                                  locMessage = "Corretto!";
-                                  {localA, localB} = {localB, r};
-                                  locQuotient = "";
-                                  locRemainder = "";
-                                  If[currentStep > stepCount,
-                                    DialogReturn[];
-                                    position += dice],
-                                  locMessage = "Risposta errata. Riprova."
-                                ]
-                              ]
-                            ]
-                          ]
-                        }]
-                      ]
-                    ]
-                  }]
-                ],
-                WindowTitle -> "Algoritmo di Euclide", Modal -> True
-              ]
+              Euclide`EuclideDialog[a, b, dice, Function[Null, position += dice]];
             ],
             Enabled -> Dynamic[! gameOver]
-          ],
+          ]
+
           Dynamic[If[gameOver, "Hai vinto!",
             "Ultimo lancio: " <> ToString[dice]]],
           Dynamic[If[gameOver,

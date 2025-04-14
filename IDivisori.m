@@ -3,7 +3,7 @@
 (* :Title: GCD Euclide*)
 (* :Context: TODO*)
 (* :Author: Gruppo 8: Sara Casadio, Enrico Ferraiolo, \
-Federica Santisi*)
+Federica Santisi, Luca Orlandello*)
 (* :Summary: TODO*)
 (* :Copyright: TODO*)
 (* :Package Version: 1.0*)
@@ -43,11 +43,9 @@ StartGame[___] := Module[
   If[NumericQ[seed],
     (* Se il seed \[EGrave] numerico, impostalo e configura il tabellone *)
     SeedRandom[seed];
-    cols = 7;
-    rows = 9;
     
-    (* Chiamata alla funzione che genera il board *)
-    {boardPrimitives, obstacles, totalCells} = Board`BoardPrimitives[cols, rows];
+    (* Chiamata alla funzione che genera la board *)
+    {boardPrimitives, obstacles, totalCells, cols, rows} = Board`BoardPrimitives[];
     finalPos = totalCells;
     
     (* 2. Creazione della finestra del gioco *)

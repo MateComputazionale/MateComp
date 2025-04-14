@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[   4792168,      78625]
-NotebookOptionsPosition[   4791230,      78601]
-NotebookOutlinePosition[   4791655,      78618]
-CellTagsIndexPosition[   4791612,      78615]
+NotebookDataLength[   4792934,      78643]
+NotebookOptionsPosition[   4791824,      78616]
+NotebookOutlinePosition[   4792288,      78633]
+CellTagsIndexPosition[   4792245,      78630]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -78568,15 +78568,30 @@ AjOgVFt1RbLqKkuENPg/9+IzFw==
    3.9533495409457893`*^9}},ExpressionUUID->"2063c8fa-2676-4e49-a2c4-\
 afde57dafe91"],
 
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"SetDirectory", "[", 
-   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"<<", "IDivisori.m"}], ";"}]}], "Input",
- CellChangeTimes->{{3.953349549893488*^9, 
-  3.9533495827937317`*^9}},ExpressionUUID->"4af3ea76-ddec-6649-9f47-\
-fbc95994bfc9"],
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Button", "[", 
+  RowBox[{"\"\<Carica Pacchetto IDivisori\>\"", ",", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"<<", "IDivisori.m"}], ";"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.953349549893488*^9, 3.9533495827937317`*^9}, {
+  3.9533596484068413`*^9, 3.953359649794508*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
+
+Cell[BoxData[
+ ButtonBox["\<\"Carica Pacchetto IDivisori\"\>",
+  Appearance->Automatic,
+  ButtonFunction:>(SetDirectory[
+     NotebookDirectory[]]; Get["IDivisori.m"]; Null),
+  Evaluator->Automatic,
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{{3.9533596576516647`*^9, 3.9533596583007927`*^9}},
+ CellLabel->"Out[2]=",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -78586,23 +78601,23 @@ Cell[BoxData[
    RowBox[{"StartGame", "[", "]"}], ",", 
    RowBox[{"Method", "->", "\"\<Queued\>\""}]}], "]"}]], "Input",
  CellFrame->{{0, 0}, {0, 0}},
- CellLabel->"In[30]:=",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
+ CellLabel->"In[3]:=",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
 
 Cell[BoxData[
  ButtonBox["\<\"Inizia il Gioco\"\>",
   Appearance->Automatic,
-  ButtonFunction:>GCDEuclide`StartGame[],
+  ButtonFunction:>IDivisori`StartGame[],
   Evaluator->Automatic,
   Method->"Queued"]], "Output",
- CellChangeTimes->{3.953282904552845*^9},
- CellLabel->"Out[30]=",ExpressionUUID->"88c2aec7-18bc-4bcd-ad35-470a052b5418"]
+ CellChangeTimes->{3.953282904552845*^9, 3.953359665356962*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{808, 747},
-WindowMargins->{{4, Automatic}, {Automatic, 4}},
+WindowSize->{808.1999999999999, 568.8},
+WindowMargins->{{3.5999999999999996`, Automatic}, {Automatic, 0}},
 Magnification:>1.1 Inherited,
-FrontEndVersion->"14.2 for Mac OS X x86 (64-bit) (December 26, 2024)",
+FrontEndVersion->"14.2 for Microsoft Windows (64-bit) (December 26, 2024)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"c9e226cf-0ebd-4c60-a329-d8df1b9a7850"
 ]
@@ -78620,11 +78635,14 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[576, 22, 151, 3, 106, "Title",ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
 Cell[730, 27, 336, 9, 160, "Subtitle",ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
-Cell[1069, 38, 4789182, 78530, 1254, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
-Cell[4790254, 78570, 327, 8, 54, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
+Cell[1069, 38, 4789182, 78530, 1247, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
 Cell[CellGroupData[{
-Cell[4790606, 78582, 298, 6, 32, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
-Cell[4790907, 78590, 295, 7, 45, "Output",ExpressionUUID->"88c2aec7-18bc-4bcd-ad35-470a052b5418"]
+Cell[4790276, 78572, 483, 10, 51, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
+Cell[4790762, 78584, 382, 8, 41, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4791181, 78597, 297, 6, 31, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
+Cell[4791481, 78605, 315, 7, 41, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -44,7 +44,7 @@ BoardPrimitives[cols_Integer: 6, rows_Integer: 6, obstaclesPercent_: 0.15] := Mo
   ];
   
   (* Restituisco le primitive del board, la lista degli ostacoli e il numero totale di celle *)
-  {boardPrimitives, obstacles, totalCells}
+  {boardPrimitives, obstacles, totalCells, cols, rows}
 ]
 
 End[]

@@ -57,12 +57,22 @@ StartGame[___] := Module[
         Column[{
           Style["Gioco dell'Oca", Bold, 16],
           Dynamic@Graphics[
-            {boardPrimitives,
-             Dynamic[If[position <= totalCells,
-               {Red, Disk[{Mod[position - 1, cols] + 0.5, Quotient[position - 1, cols] + 0.5}, 0.3]},
-               {}
-             ] ]},
-            PlotRange -> {{0, cols}, {0, rows}}, ImageSize -> 400
+            Join[
+              boardPrimitives,
+              If[position <= totalCells,
+                { Red,
+                  Disk[
+                    { Mod[position - 1, cols] + 0.5,
+                      Quotient[position - 1, cols] + 0.5
+                    },
+                    0.3
+                  ]
+                },
+                {}
+              ]
+            ],
+            PlotRange -> {{0, cols}, {0, rows}},
+            ImageSize  -> 400
           ],
 
           Restart[position, dice, gameOver]

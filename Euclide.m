@@ -36,7 +36,7 @@ EuclideDialog[a_Integer, b_Integer, stepCount_Integer, onSuccess_Function] :=
                   Style["Algoritmo completato! Il MCD e' " <> ToString[currentA], Bold, 14],
                   Button["Avanza di " <> ToString[stepCount] <> " caselle",
                     DialogReturn[];
-                    onSuccess[]
+                    onSuccess[currentA]; (* Pass the GCD result to the callback function *)
                   ]
                 },
                 {

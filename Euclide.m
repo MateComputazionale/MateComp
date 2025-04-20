@@ -1,73 +1,101 @@
 BeginPackage["Euclide`"]
 
 EuclideDialog::usage = 
-  "EuclideDialog[a_Integer, b_Integer, stepCount_Integer, onSuccess_Function] \
-mostra un dialogo interattivo per calcolare il MCD, visualizzando passo a passo il calcolo.";
+  "EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] \
+displays an interactive dialog for calculating GCD using Euclid's algorithm, showing step-by-step calculation.";
 
 Begin["`Private`"]
 
+(* Dependencies *)
 Get["Buttons.m"]; 
 
-EuclideDialog[a_Integer, b_Integer, stepCount_Integer, onSuccess_Function] := 
+(* Main dialog function *)
+EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
   CreateDialog[
     DynamicModule[
       {
-        currentA = a, currentB = b, steps = {}, currentStep = 1,
-        locQuotient = "", locRemainder = "", locMessage = "", completed = False
+        currentA = a, 
+        currentB = b, 
+        steps = {}, 
+        currentStep = 1,
+        userQuotient = "", 
+        userRemainder = "", 
+        errorMessage = "", 
+        isCompleted = False
       },
+      
       Column[{
+        (* Dialog header *)
         Style["Algoritmo di Euclide", Bold, 14],
+        
         Dynamic[
           Column[
             Join[
-              (* Visualizza i passaggi completati *)
+              (* Display completed steps *)
               Table[
-                With[{s = steps[[i]]},
+                With[{stepData = steps[[i]]},
                   Row[{
                     "Passo ", i, ": ",
-                    s[[1]], " div ", s[[2]], " = ", s[[3]], ", resto ", s[[4]]
+                    stepData[[1]], " div ", stepData[[2]], " = ", 
+                    stepData[[3]], ", resto ", stepData[[4]]
                   }]
                 ],
                 {i, Length[steps]}
               ],
-              (* Visualizza il passo corrente oppure il messaggio finale se completato *)
-              If[completed,
+              
+              (* Display current step or completion message *)
+              If[isCompleted,
                 {
                   Style["Algoritmo completato! Il MCD e' " <> ToString[currentA], Bold, 14],
-                  Button["Avanza di " <> ToString[stepCount] <> " caselle",
+                  Button["Avanza di " <> ToString[stepsToComplete] <> " caselle",
                     DialogReturn[];
-                    onSuccess[currentA]; (* Pass the GCD result to the callback function *)
+                    onSuccessCallback[currentA]; (* Pass the GCD result to the callback *)
                   ]
                 },
                 {
+                  (* Current step input form *)
                   Row[{
                     "Passo ", currentStep, ": ",
                     currentA, " div ", currentB, " = ",
-                    InputField[Dynamic[locQuotient], String, FieldSize -> 5],
+                    InputField[Dynamic[userQuotient], String, FieldSize -> 5],
                     ", resto ",
-                    InputField[Dynamic[locRemainder], String, FieldSize -> 5]
+                    InputField[Dynamic[userRemainder], String, FieldSize -> 5]
                   }],
-                  Dynamic[Style[locMessage, Red]],
-                  ClearFields[locQuotient, locRemainder, locMessage],
+                  
+                  (* Error message display *)
+                  Dynamic[Style[errorMessage, Red]],
+                  
+                  (* Clear fields button *)
+                  ClearFields[userQuotient, userRemainder, errorMessage],
+                  
+                  (* Verification button *)
                   Button["Verifica",
-                    Module[{q, r},
-                      q = ToExpression[locQuotient];
-                      r = ToExpression[locRemainder];
-                      If[! NumericQ[q] || ! NumericQ[r],
-                        locMessage = "Inserisci numeri validi.",
-                        If[q === Quotient[currentA, currentB] && r === Mod[currentA, currentB],
-                          AppendTo[steps, {currentA, currentB, q, r}];
-                          (* Aggiorna i valori per il passo successivo *)
+                    Module[{quotient, remainder},
+                      quotient = ToExpression[userQuotient];
+                      remainder = ToExpression[userRemainder];
+                      
+                      If[! NumericQ[quotient] || ! NumericQ[remainder],
+                        errorMessage = "Inserisci numeri validi.",
+                        If[quotient === Quotient[currentA, currentB] && 
+                           remainder === Mod[currentA, currentB],
+                          (* Correct answer *)
+                          AppendTo[steps, {currentA, currentB, quotient, remainder}];
+                          
+                          (* Update values for next step *)
                           currentA = currentB;
-                          currentB = r;
+                          currentB = remainder;
                           currentStep++;
-                          locQuotient = "";
-                          locRemainder = "";
-                          locMessage = "";
-                          If[currentB === 0 || currentStep > stepCount,
-                            completed = True
+                          userQuotient = "";
+                          userRemainder = "";
+                          errorMessage = "";
+                          
+                          (* Check if algorithm is complete *)
+                          If[currentB === 0 || currentStep > stepsToComplete,
+                            isCompleted = True
                           ],
-                          locMessage = "Risposta errata. Riprova."
+                          
+                          (* Incorrect answer *)
+                          errorMessage = "Risposta errata. Riprova."
                         ]
                       ]
                     ]
@@ -78,7 +106,8 @@ EuclideDialog[a_Integer, b_Integer, stepCount_Integer, onSuccess_Function] :=
           ]
         ]
       }],
-      WindowTitle -> "Algoritmo di Euclide", Modal -> True
+      WindowTitle -> "Algoritmo di Euclide", 
+      Modal -> True
     ]
   ];
 

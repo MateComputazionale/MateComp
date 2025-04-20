@@ -3,80 +3,111 @@
 BeginPackage["Board`"]
 
 BoardPrimitives::usage = 
-  "BoardPrimitives[cols, rows, obstaclesPercent] genera la griglia del board. \
-Restituisce una lista {boardPrimitives, obstacles, totalCells, cols, rows}.";
-getNextPosition::usage = 
-  "getNextPosition[posizioneIniziale, tiro, listaOstacoli, totalCells, cols] calcola la nuova posizione \
-  in base alla posizione iniziale, al tiro e alla lista di ostacoli. Restituisce la nuova posizione.";
+  "BoardPrimitives[cols, rows, obstaclesPercent] generates the game board grid. \
+Returns {boardPrimitives, obstacles, totalCells, cols, rows}.";
 
-Begin["Private`"]
+GetNextPosition::usage = 
+  "GetNextPosition[startPosition, diceRoll, obstaclesList, totalCells, cols] calculates the new position \
+based on initial position, dice roll and list of obstacles. Returns the new position.";
 
-(* Funzione iterativa per contare ostacoli superati *)
-ContaOstacoliSuperati[posizioneIniziale_, tiro_, listaOstacoli_] := Module[
-  {total = 0, currentStart, currentEnd, count},
-  currentStart = posizioneIniziale + 1;
-  currentEnd = posizioneIniziale + tiro;
+SnakeCoordinates::usage =
+  "SnakeCoordinates[position, cols] converts linear position to snake pattern coordinates.";
+
+Begin["`Private`"]
+
+(* Calculate how many obstacles are encountered in a move *)
+CountObstaclesPassed[startPosition_, diceRoll_, obstaclesList_] := Module[
+  {totalObstacles = 0, currentStart, currentEnd, obstaclesInRange},
+  
+  currentStart = startPosition + 1;
+  currentEnd = startPosition + diceRoll;
+  
   While[True,
-    count = Count[listaOstacoli, _?(Between[{currentStart, currentEnd}])];
-    If[count == 0, Break[]];
-    total += count;
+    obstaclesInRange = Count[obstaclesList, _?(Between[{currentStart, currentEnd}])];
+    
+    If[obstaclesInRange == 0, Break[]];
+    
+    totalObstacles += obstaclesInRange;
     currentStart = currentEnd + 1;
-    currentEnd += count;
+    currentEnd += obstaclesInRange;
   ];
-  total
+  
+  totalObstacles
 ];
 
-(* Funzione per calcolare la nuova posizione con controllo dei limiti *)
-getNextPosition[posizioneIniziale_, tiro_, listaOstacoli_, totalCells_, cols_] := Module[
-  {ostacoliSuperati, nuovaPosizione, maxPosition},
-  ostacoliSuperati = ContaOstacoliSuperati[posizioneIniziale, tiro, listaOstacoli];
-  nuovaPosizione = posizioneIniziale + tiro + ostacoliSuperati;
-  maxPosition = Min[nuovaPosizione, totalCells];
-  maxPosition 
+(* Calculate new position with bounds checking *)
+GetNextPosition[startPosition_, diceRoll_, obstaclesList_, totalCells_, cols_] := Module[
+  {obstaclesPassed, newPosition},
+  
+  obstaclesPassed = CountObstaclesPassed[startPosition, diceRoll, obstaclesList];
+  newPosition = startPosition + diceRoll + obstaclesPassed;
+  
+  (* Don't exceed board limits *)
+  Min[newPosition, totalCells]
 ];
 
-(* Funzione per convertire l'indice in coordinate a serpentina *)
-snakeCoordinates[position_, cols_] := Module[
+(* Convert linear position to snake pattern coordinates *)
+SnakeCoordinates[position_, cols_] := Module[
   {row, col},
+  
   row = Quotient[position - 1, cols];
   col = Mod[position - 1, cols];
-  (* If row is odd, we need to reverse the column order for snake pattern *)
+  
+  (* Reverse column order for odd rows (snake pattern) *)
   If[OddQ[row],
     col = cols - 1 - col
   ];
-  (* Return center coordinates of the cell *)
+  
   {col, row}
-]
+];
 
-(* Genera il percorso garantito senza ostacoli *)
-generatePath[cols_, rows_] := Module[
-  {moves, start = {1, 1}, current = {1, 1}, path, newPos},
+(* Generate guaranteed path without obstacles *)
+GenerateGuaranteedPath[cols_, rows_] := Module[
+  {moves, currentPos = {1, 1}, path, newPos},
+  
+  (* Create mix of right and up moves to reach the end *)
   moves = Join[Table["R", {cols - 1}], Table["U", {rows - 1}]];
   moves = RandomSample[moves];
-  path = {current};
+  
+  path = {currentPos};
+  
   Do[
     newPos = Switch[move,
-      "R", {current[[1]] + 1, current[[2]]},
-      "U", {current[[1]], current[[2]] + 1}
+      "R", {currentPos[[1]] + 1, currentPos[[2]]},
+      "U", {currentPos[[1]], currentPos[[2]] + 1}
     ];
+    
     AppendTo[path, newPos];
-    current = newPos,
+    currentPos = newPos,
     {move, moves}
   ];
+  
+  (* Convert coordinates to linear positions *)
   Map[(#[[2]] - 1)*cols + #[[1]] &, path]
 ];
 
-(* Genera la griglia con ostacoli *)
+(* Generate board with obstacles *)
 BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.35] := Module[
-  {totalCells, boardColors, numObstacles, obstacles, boardPrimitives, guaranteedPath, availableCells},
+  {totalCells, boardColors, numObstacles, obstacles, boardPrimitives, 
+   guaranteedPath, availableCells},
+  
   totalCells = cols * rows;
-  guaranteedPath = generatePath[cols, rows];
+  
+  (* Create path from start to finish without obstacles *)
+  guaranteedPath = GenerateGuaranteedPath[cols, rows];
+  
+  (* Find cells that can have obstacles (excluding start, end, and guaranteed path) *)
   availableCells = Complement[Range[2, totalCells - 1], guaranteedPath];
+  
+  (* Determine number of obstacles based on percentage *)
   numObstacles = Round[Length[availableCells] * obstaclesPercent];
+  
+  (* Randomly place obstacles *)
   obstacles = RandomSample[availableCells, numObstacles];
   
+  (* Create visual elements for the board *)
   boardPrimitives = Table[
-    Module[{pos = snakeCoordinates[cell, cols], x, y},
+    Module[{pos = SnakeCoordinates[cell, cols], x, y},
       {x, y} = pos;
       {
         EdgeForm[Black],

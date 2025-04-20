@@ -61,54 +61,23 @@ SnakeCoordinates[position_, cols_] := Module[
   {col, row}
 ];
 
-(* Generate guaranteed path without obstacles *)
-GenerateGuaranteedPath[cols_, rows_] := Module[
-  {moves, currentPos = {1, 1}, path, newPos},
-  
-  (* Create mix of right and up moves to reach the end *)
-  moves = Join[Table["R", {cols - 1}], Table["U", {rows - 1}]];
-  moves = RandomSample[moves];
-  
-  path = {currentPos};
-  
-  Do[
-    newPos = Switch[move,
-      "R", {currentPos[[1]] + 1, currentPos[[2]]},
-      "U", {currentPos[[1]], currentPos[[2]] + 1}
-    ];
-    
-    AppendTo[path, newPos];
-    currentPos = newPos,
-    {move, moves}
-  ];
-  
-  (* Convert coordinates to linear positions *)
-  Map[(#[[2]] - 1)*cols + #[[1]] &, path]
+(* Randomly select obstacle positions based on percentage *)
+PlaceObstacles[cols_Integer, rows_Integer, obstaclesPercent_:0.35] := Module[
+  {totalCells, numObstacles, allCells},
+  totalCells = cols * rows;
+  allCells = Range[2, totalCells];
+  numObstacles = Round[totalCells * obstaclesPercent];
+  RandomSample[allCells, numObstacles]
 ];
 
-(* Generate board with obstacles *)
-BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.35] := Module[
-  {totalCells, boardColors, numObstacles, obstacles, boardPrimitives, 
-   guaranteedPath, availableCells},
-  
+(* Generate board primitives with obstacles marked *)
+BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.15] := Module[
+  {totalCells, obstacles, primitives},
   totalCells = cols * rows;
-  
-  (* Create path from start to finish without obstacles *)
-  guaranteedPath = GenerateGuaranteedPath[cols, rows];
-  
-  (* Find cells that can have obstacles (excluding start, end, and guaranteed path) *)
-  availableCells = Complement[Range[2, totalCells - 1], guaranteedPath];
-  
-  (* Determine number of obstacles based on percentage *)
-  numObstacles = Round[Length[availableCells] * obstaclesPercent];
-  
-  (* Randomly place obstacles *)
-  obstacles = RandomSample[availableCells, numObstacles];
-  
-  (* Create visual elements for the board *)
-  boardPrimitives = Table[
-    Module[{pos = SnakeCoordinates[cell, cols], x, y},
-      {x, y} = pos;
+  obstacles = PlaceObstacles[cols, rows, obstaclesPercent];
+  primitives = Table[
+    Module[{coord = SnakeCoordinates[cell, cols], x, y},
+      {x, y} = coord;
       {
         EdgeForm[Black],
         FaceForm[If[MemberQ[obstacles, cell], Gray, ColorData["Rainbow"][cell/totalCells]]],
@@ -118,8 +87,7 @@ BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.35] := Modul
     ],
     {cell, 1, totalCells}
   ];
-  
-  {boardPrimitives, obstacles, totalCells, cols, rows}
+  {primitives, obstacles, totalCells, cols, rows}
 ];
 
 End[]

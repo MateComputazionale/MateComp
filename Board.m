@@ -13,6 +13,9 @@ based on initial position, dice roll and list of obstacles. Returns the new posi
 SnakeCoordinates::usage =
   "SnakeCoordinates[position, cols] converts linear position to snake pattern coordinates.";
 
+DrawPlayer::usage =
+  "DrawPlayer[position, cols] disegna la pedina del giocatore nella posizione corretta sul tabellone.";
+
 Begin["`Private`"]
 
 (* Calculate how many obstacles are encountered in a move *)
@@ -71,7 +74,7 @@ PlaceObstacles[cols_Integer, rows_Integer, obstaclesPercent_:0.35] := Module[
 ];
 
 (* Generate board primitives with obstacles marked *)
-BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.15] := Module[
+BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.35] := Module[
   {totalCells, obstacles, primitives},
   totalCells = cols * rows;
   obstacles = PlaceObstacles[cols, rows, obstaclesPercent];
@@ -89,6 +92,14 @@ BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.15] := Modul
   ];
   {primitives, obstacles, totalCells, cols, rows}
 ];
+
+(* Disegna la pedina del giocatore *)
+DrawPlayer[position_, cols_] := Module[
+  {coord},
+  coord = SnakeCoordinates[position, cols];
+  {Red, Disk[coord + {0.5, 0.5}, 0.25]}
+];
+
 
 End[]
 EndPackage[]

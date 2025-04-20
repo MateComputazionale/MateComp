@@ -75,12 +75,11 @@ StartGame[___] := Module[
           Dynamic@Graphics[
             Join[
               boardPrimitives,
-              {Red, Disk[Board`SnakeCoordinates[playerPosition, boardColumns] + {0.5, 0.5}, 0.25]}
+              Board`DrawPlayer[playerPosition, boardColumns]
             ],
             PlotRange -> {{0, boardColumns}, {0, boardRows}},
             ImageSize -> 400
           ],
-          
           (* Game controls *)
           Button["Tira il dado", 
             (* Roll dice and trigger Euclid's algorithm dialog *)

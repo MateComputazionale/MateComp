@@ -97,7 +97,21 @@ BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.35] := Modul
 DrawPlayer[position_, cols_] := Module[
   {coord},
   coord = SnakeCoordinates[position, cols];
-  {Red, Disk[coord + {0.5, 0.5}, 0.25]}
+  {
+      (* Evidenziazione della cella con solo bordo verde *)
+    {
+      EdgeForm[{Green, Thick}],
+      FaceForm[None],
+      Rectangle[coord, coord + {1, 1}]
+    },
+    
+    (* Pedina rossa al centro con bordo nero *)
+    {
+      EdgeForm[Black],
+      FaceForm[Red],
+      Disk[coord + {0.5, 0.5}, 0.25]
+    }
+  }
 ];
 
 

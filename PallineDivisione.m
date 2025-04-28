@@ -43,8 +43,9 @@ MostraPalline[a_Integer, b_Integer] := Module[
       ],
       Button["Chiudi", DialogReturn[] ]
     }],
-    WindowTitle -> "Aiuto Visivo - Divisione", Modal -> True
-  ]
+    Scrollbars -> True
+  ],
+  WindowTitle -> "Aiuto Visivo - Divisione"
 ];
 
 End[]

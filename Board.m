@@ -1,119 +1,119 @@
 (* ::Package:: *)
-(* Board.m *)
+
 BeginPackage["Board`"]
 
 BoardPrimitives::usage = 
-  "BoardPrimitives[cols, rows, obstaclesPercent] genera la griglia del board. \
-Restituisce una lista {boardPrimitives, obstacles, totalCells}.";
+  "BoardPrimitives[cols, rows, obstaclesPercent] generates the game board grid. \
+Returns {boardPrimitives, obstacles, totalCells, cols, rows}.";
+
 GetNextPosition::usage = 
-  "getNextPosition[posizioneIniziale, tiro, listaOstacoli] calcola la nuova posizione \
-  in base alla posizione iniziale, al tiro e alla lista di ostacoli. Restituisce la nuova posizione.";
+  "GetNextPosition[startPosition, diceRoll, obstaclesList, totalCells, cols] calculates the new position \
+based on initial position, dice roll and list of obstacles. Returns the new position.";
+
+SnakeCoordinates::usage =
+  "SnakeCoordinates[position, cols] converts linear position to snake pattern coordinates.";
+
+DrawPlayer::usage =
+  "DrawPlayer[position, cols] disegna la pedina del giocatore nella posizione corretta sul tabellone.";
 
 Begin["`Private`"]
 
-ContaOstacoliSuperati[posizioneIniziale_, tiro_, listaOstacoli_] := Module[
-  {count},
+(* Calculate how many obstacles are encountered in a move *)
+CountObstaclesPassed[startPosition_, diceRoll_, obstaclesList_] := Module[
+  {totalObstacles = 0, currentStart, currentEnd, obstaclesInRange},
   
-  (* Conta gli ostacoli tra la cella di partenza e la cella ottenuta con il tiro *)
-  count = Count[listaOstacoli, _?(Between[{posizioneIniziale + 1, posizioneIniziale + tiro}])];
+  currentStart = startPosition + 1;
+  currentEnd = startPosition + diceRoll;
   
-  (* Se sono stati superati ostacoli, aggiungi il loro numero e verifica ricorsivamente 
-     se il nuovo spostamento comporta ulteriori ostacoli *)
-  If[count > 0,
-    count + ContaOstacoliSuperati[posizioneIniziale + tiro, count, listaOstacoli],
-    count
-  ]
-];
-  
-  
-(* Funzione per calcolare la nuova posizione in base alla posizione iniziale, al tiro e alla lista di ostacoli *)
-getNextPosition[posizioneIniziale_, tiro_, listaOstacoli_] := Module[
-  {ostacoliSuperati, nuovaPosizione},
-  
-  (* Calcola quanti ostacoli vengono superati nell'intervallo tra posizioneIniziale+1 e posizioneIniziale+tiro *)
-  ostacoliSuperati = ContaOstacoliSuperati[posizioneIniziale, tiro, listaOstacoli];
-  
-  (* Nuova posizione = posizione iniziale + tiro + eventuali spostamenti aggiuntivi dovuti agli ostacoli *)
-  nuovaPosizione = posizioneIniziale + tiro + ostacoliSuperati;
-  
-  nuovaPosizione
-];
-
-
-(* Funzione per generare un percorso casuale dalla cella 1 alla cella finale, attraverso mosse U/R *)
-Clear[generatePath];
-generatePath[cols_Integer, rows_Integer] := Module[
-  {moves, start = {1, 1}, current = {1, 1}, path, newPos},
-  (* In totale sono necessarie (cols-1) mosse a destra e (rows-1) mosse in alto *)
-  moves = Join[Table["R", {cols - 1}], Table["U", {rows - 1}]];
-  moves = RandomSample[moves]; (* mescola le mosse per variare il percorso *)
-  path = {current};
-  Do[
-    newPos = current;
-    Switch[move,
-      "R", newPos = {current[[1]] + 1, current[[2]]},
-      "U", newPos = {current[[1]], current[[2]] + 1}
-    ];
-    AppendTo[path, newPos];
-    current = newPos;
-    ,
-    {move, moves}
+  While[True,
+    obstaclesInRange = Count[obstaclesList, _?(Between[{currentStart, currentEnd}])];
+    
+    If[obstaclesInRange == 0, Break[]];
+    
+    totalObstacles += obstaclesInRange;
+    currentStart = currentEnd + 1;
+    currentEnd += obstaclesInRange;
   ];
-  (* Convertiamo le coordinate (col, row) in indice di cella, dove l'indice si calcola come (row-1)*cols + col *)
-  Map[ (#[[2]] - 1)*cols + #[[1]] &, path ]
+  
+  totalObstacles
 ];
 
-
-BoardPrimitives[cols_Integer: 6, rows_Integer: 6, obstaclesPercent_: 0.35] := Module[
-  {totalCells, boardColors, numObstacles, obstacles, isBlocked, boardPrimitives, guaranteedPath, availableCells},
+(* Calculate new position with bounds checking *)
+GetNextPosition[startPosition_, diceRoll_, obstaclesList_, totalCells_, cols_] := Module[
+  {obstaclesPassed, newPosition},
   
+  obstaclesPassed = CountObstaclesPassed[startPosition, diceRoll, obstaclesList];
+  newPosition = startPosition + diceRoll + obstaclesPassed;
+  
+  (* Don't exceed board limits *)
+  Min[newPosition, totalCells]
+];
+
+(* Convert linear position to snake pattern coordinates *)
+SnakeCoordinates[position_, cols_] := Module[
+  {row, col},
+  
+  row = Quotient[position - 1, cols];
+  col = Mod[position - 1, cols];
+  
+  (* Reverse column order for odd rows (snake pattern) *)
+  If[OddQ[row],
+    col = cols - 1 - col
+  ];
+  
+  {col, row}
+];
+
+(* Randomly select obstacle positions based on percentage *)
+PlaceObstacles[cols_Integer, rows_Integer, obstaclesPercent_:0.35] := Module[
+  {totalCells, numObstacles, allCells},
   totalCells = cols * rows;
-  guaranteedPath = generatePath[cols, rows]; (* Genero il percorso garantito *)
-  availableCells = Complement[Range[2, totalCells - 1], guaranteedPath]; (* Celle disponibili *)
-  boardColors = ColorData["Rainbow"] /@ Rescale[Range[totalCells]]; (* Colori celle *)
+  allCells = Range[2, totalCells];
   numObstacles = Round[totalCells * obstaclesPercent];
-  obstacles = RandomSample[Range[2, totalCells - 1], numObstacles]; 
-  
-  (* Funzione interna per verificare se una casella è bloccata *)
-  isBlocked[pos_] := MemberQ[obstacles, pos]; (* Restituisco True se la cella è bloccata *)
-  
-  (* 
-    La funzione snakeCoordinates converte l'indice (1,...,totalCells) 
-    in coordinate {x, y} in modo che:
-      - La prima riga (row 1) viene letta da sinistra a destra
-      - La seconda riga (row 2) da destra a sinistra, ecc.
-    Le coordinate y sono calcolate come (row - 1) e x dipende dal verso della riga.
-  *)
-  snakeCoordinates[i_] := Module[{row, col, x},
-    row = Quotient[i - 1, cols] + 1;
-    (* col iniziale come posizione in senso "naturale" *)
-    col = Mod[i - 1, cols];
-    (* Se la riga è pari, invertiamo l'ordine delle colonne *)
-    If[EvenQ[row], x = cols - 1 - col, x = col];
-    {x, row - 1}
-  ];
-  
-    boardPrimitives = Table[
-      Module[{pos, x, y},
-        pos = snakeCoordinates[cell];
-        {x, y} = pos;
-        {EdgeForm[Black],
-        FaceForm[If[isBlocked[cell], Gray, boardColors[[cell]]]],
+  RandomSample[allCells, numObstacles]
+];
+
+(* Generate board primitives with obstacles marked *)
+BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.35] := Module[
+  {totalCells, obstacles, primitives},
+  totalCells = cols * rows;
+  obstacles = PlaceObstacles[cols, rows, obstaclesPercent];
+  primitives = Table[
+    Module[{coord = SnakeCoordinates[cell, cols], x, y},
+      {x, y} = coord;
+      {
+        EdgeForm[Black],
+        FaceForm[If[MemberQ[obstacles, cell], Gray, ColorData["Rainbow"][cell/totalCells]]],
         Rectangle[{x, y}, {x + 1, y + 1}],
-        If[isBlocked[cell],
-          Text[Style["", 14, Bold, Red], {x + 0.5, y + 0.5}],
-          (* Se vuoi evidenziare il percorso garantito puoi inserire una logica condizionale,
-              per esempio colorando in modo particolare le celle appartenenti a guaranteedPath *)
-          Text[Style[ToString[cell], 8], {x + 0.5, y + 0.5}]
-        ]
-        }
-      ],
-      {cell, 1, totalCells}
-    ];
-  
-  (* Restituisco le primitive del board, la lista degli ostacoli e il numero totale di celle *)
-  {boardPrimitives, obstacles, totalCells, cols, rows}
-]
+        Text[Style[If[MemberQ[obstacles, cell], "", ToString[cell]], 8], {x + 0.5, y + 0.5}]
+      }
+    ],
+    {cell, 1, totalCells}
+  ];
+  {primitives, obstacles, totalCells, cols, rows}
+];
+
+(* Disegna la pedina del giocatore *)
+DrawPlayer[position_, cols_] := Module[
+  {coord},
+  coord = SnakeCoordinates[position, cols];
+  {
+      (* Evidenziazione della cella con solo bordo verde *)
+    {
+      EdgeForm[{Green, Thick}],
+      FaceForm[None],
+      Rectangle[coord, coord + {1, 1}]
+    },
+    
+    (* Pedina rossa al centro con bordo nero *)
+    {
+      EdgeForm[Black],
+      FaceForm[Red],
+      Disk[coord + {0.5, 0.5}, 0.25]
+    }
+  }
+];
+
 
 End[]
 EndPackage[]

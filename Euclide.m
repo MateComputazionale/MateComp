@@ -6,7 +6,8 @@ mostra un dialogo interattivo per calcolare il MCD, visualizzando passo a passo 
 
 Begin["`Private`"]
 
-Get["Buttons.m"]; 
+Get["Buttons.m"];
+Get["PallineDivisione.m"];
 
 EuclideDialog[a_Integer, b_Integer, stepCount_Integer, onSuccess_Function] := 
   CreateDialog[
@@ -47,8 +48,13 @@ EuclideDialog[a_Integer, b_Integer, stepCount_Integer, onSuccess_Function] :=
                     ", resto ",
                     InputField[Dynamic[locRemainder], String, FieldSize -> 5]
                   }],
-                  Dynamic[Style[locMessage, Red]],
+                  Dynamic[Style[locMessage, Red] ],
                   ClearFields[locQuotient, locRemainder, locMessage],
+
+                  Button[ "Mostra Palline",
+                    PallineDivisione`MostraPalline[currentA, currentB]
+                  ],
+
                   Button["Verifica",
                     Module[{q, r},
                       q = ToExpression[locQuotient];

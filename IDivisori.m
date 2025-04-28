@@ -39,7 +39,7 @@ StartGame[___] := Module[
   seed = DialogInput[
     Column[{"Inserisci il numero seed per il gioco:", 
       InputField[Dynamic[seedInput], Number], 
-      DefaultButton[DialogReturn[seedInput]]}],
+      DefaultButton[DialogReturn[seedInput] ]}],
     WindowTitle -> "Seed del Gioco"];
   
   If[NumericQ[seed],
@@ -71,8 +71,7 @@ StartGame[___] := Module[
               PlotRange -> {{0, cols}, {0, rows}},
               ImageSize -> 400
             ]
-          ]
-,
+          ],
           Restart[position, dice, gameOver]
 
 
@@ -95,12 +94,12 @@ StartGame[___] := Module[
           ]
 
           Dynamic[If[gameOver, "Hai vinto!",
-            "Ultimo lancio: " <> ToString[dice]]],
+            "Ultimo lancio: " <> ToString[dice] ] ],
           Dynamic[If[gameOver,
           Restart[position, dice, gameOver]
             Button["Nuova Partita", position = 1; gameOver = False;],
             ""
-          ]]
+          ] ]
         },
         Alignment -> Center,
         Spacings -> 2
@@ -108,7 +107,7 @@ StartGame[___] := Module[
       ],
       WindowTitle -> "Gioco dell'Oca"
     ],
-    (* Se il valore inserito non \[EGrave] numerico *)
+
     Print["Il valore inserito non \[EGrave] valido."]
   ];
 ];

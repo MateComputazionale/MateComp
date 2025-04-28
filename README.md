@@ -10,3 +10,5 @@ Componenti: Dado, scacchiera, pedina
 - Pulsante aiuto/suggerimento (LUCA)
 - Pulsante pulisci campi.(S)
 - fare in modo di chiedere quoziente e resto (non li deve dire il gioco) (FEDE)
+
+da errori se inserisco ,

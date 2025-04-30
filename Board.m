@@ -3,109 +3,100 @@
 BeginPackage["Board`"]
 
 BoardPrimitives::usage = 
-  "BoardPrimitives[cols, rows, obstaclesPercent] generates the game board grid. \
-Returns {boardPrimitives, obstacles, totalCells, cols, rows}.";
+  "BoardPrimitives[cols, rows] genera il tabellone e restituisce \
+{primitives, obstacles, totalCells, cols, rows}.";
 
 GetNextPosition::usage = 
-  "GetNextPosition[startPosition, diceRoll, obstaclesList, totalCells, cols] calculates the new position \
-based on initial position, dice roll and list of obstacles. Returns the new position.";
-
-SnakeCoordinates::usage =
-  "SnakeCoordinates[position, cols] converts linear position to snake pattern coordinates.";
+  "GetNextPosition[startPosition, diceRoll, obstaclesList, totalCells] \
+calcola la nuova posizione tenendo conto degli ostacoli.";
 
 DrawPlayer::usage =
-  "DrawPlayer[position, cols] disegna la pedina del giocatore nella posizione corretta sul tabellone.";
+  "DrawPlayer[position, cols] disegna la pedina del giocatore.";
 
 Begin["`Private`"]
 
-(* Calculate how many obstacles are encountered in a move *)
-CountObstaclesPassed[startPosition_, diceRoll_, obstaclesList_] := Module[
-  {totalObstacles = 0, currentStart, currentEnd, obstaclesInRange},
-  
-  currentStart = startPosition + 1;
-  currentEnd = startPosition + diceRoll;
-  
+(* Conta quanti ostacoli si incontrano in un movimento *)
+CountObstaclesPassed[start_, roll_, obs_List] := Module[
+  {passed = 0, a = start + 1, b = start + roll, inRange},
   While[True,
-    obstaclesInRange = Count[obstaclesList, _?(Between[{currentStart, currentEnd}])];
-    
-    If[obstaclesInRange == 0, Break[]];
-    
-    totalObstacles += obstaclesInRange;
-    currentStart = currentEnd + 1;
-    currentEnd += obstaclesInRange;
+    inRange = Count[obs, _?(Between[{a, b}])];
+    If[inRange == 0, Break[]];
+    passed += inRange;
+    a = b + 1;
+    b += inRange;
   ];
-  
-  totalObstacles
+  passed
 ];
 
-(* Calculate new position with bounds checking *)
-GetNextPosition[startPosition_, diceRoll_, obstaclesList_, totalCells_, cols_] := Module[
-  {obstaclesPassed, newPosition},
-  
-  obstaclesPassed = CountObstaclesPassed[startPosition, diceRoll, obstaclesList];
-  newPosition = startPosition + diceRoll + obstaclesPassed;
-  
-  (* Don't exceed board limits *)
-  Min[newPosition, totalCells]
+(* Calcola la nuova posizione e non supera totalCells *)
+GetNextPosition[start_, roll_, obs_List, totalCells_] := Module[
+  {extra, newPos},
+  extra = CountObstaclesPassed[start, roll, obs];
+  newPos = start + roll + extra;
+  Min[newPos, totalCells]
 ];
 
-(* Convert linear position to snake pattern coordinates *)
-SnakeCoordinates[position_, cols_] := Module[
-  {row, col},
-  
-  row = Quotient[position - 1, cols];
-  col = Mod[position - 1, cols];
-  
-  (* Reverse column order for odd rows (snake pattern) *)
-  If[OddQ[row],
-    col = cols - 1 - col
+(* Costruisce un percorso pseudocasuale dalla 1 a cols*rows *)
+GeneratePath[cols_, rows_] := Module[
+  {total = cols*rows, cur = 1, path = {1}, moves, nxt},
+  While[cur < total,
+    moves = Select[{cur + 1, cur + cols}, # <= total &];
+    nxt = RandomChoice[moves];
+    AppendTo[path, nxt];
+    cur = nxt;
   ];
-  
-  {col, row}
+  DeleteDuplicates[path]
 ];
 
-(* Randomly select obstacle positions based on percentage *)
-PlaceObstacles[cols_Integer, rows_Integer, obstaclesPercent_:0.35] := Module[
-  {totalCells, numObstacles, allCells},
-  totalCells = cols * rows;
-  allCells = Range[2, totalCells];
-  numObstacles = Round[totalCells * obstaclesPercent];
-  RandomSample[allCells, numObstacles]
-];
+(* Mapping semplice linea -> coordinate (x,y) su griglia *)
+LinearCoordinates[pos_, cols_] := {
+  Mod[pos - 1, cols],         (* x = colonna da 0 *)
+  Quotient[pos - 1, cols]     (* y = riga da 0 *)
+};
 
-(* Generate board primitives with obstacles marked *)
-BoardPrimitives[cols_Integer:6, rows_Integer:6, obstaclesPercent_:0.35] := Module[
-  {totalCells, obstacles, primitives},
-  totalCells = cols * rows;
-  obstacles = PlaceObstacles[cols, rows, obstaclesPercent];
-  primitives = Table[
-    Module[{coord = SnakeCoordinates[cell, cols], x, y},
+(* Genera i primitivi grafici del tabellone *)
+BoardPrimitives[cols_Integer:6, rows_Integer:6] := Module[
+  {total, path, obstacles, prims},
+  total     = cols*rows;
+  path      = GeneratePath[cols, rows];
+  obstacles = Complement[Range[1, total], path];
+
+  prims = Table[
+    Module[{coord = LinearCoordinates[cell, cols], x, y},
       {x, y} = coord;
       {
         EdgeForm[Black],
-        FaceForm[If[MemberQ[obstacles, cell], Gray, ColorData["Rainbow"][cell/totalCells]]],
+        FaceForm[
+          If[MemberQ[obstacles, cell],
+            Gray,                        (* ostacolo *)
+            ColorData["Rainbow"][cell/total]  (* percorso *)
+          ]
+        ],
         Rectangle[{x, y}, {x + 1, y + 1}],
-        Text[Style[If[MemberQ[obstacles, cell], "", ToString[cell]], 8], {x + 0.5, y + 0.5}]
+        (* Numero solo sulle celle del percorso *)
+        If[MemberQ[path, cell],
+          Text[Style[ToString[cell], 8], {x + 0.5, y + 0.5}],
+          {}
+        ]
       }
     ],
-    {cell, 1, totalCells}
+    {cell, 1, total}
   ];
-  {primitives, obstacles, totalCells, cols, rows}
+
+  {prims, obstacles, total, cols, rows}
 ];
 
-(* Disegna la pedina del giocatore *)
+(* Disegna la pedina rossa con bordo nero e cella evidenziata *)
 DrawPlayer[position_, cols_] := Module[
-  {coord},
-  coord = SnakeCoordinates[position, cols];
+  {coord = LinearCoordinates[position, cols]},
   {
-      (* Evidenziazione della cella con solo bordo verde *)
+    (* bordo verde intorno alla casella *)
     {
       EdgeForm[{Green, Thick}],
       FaceForm[None],
       Rectangle[coord, coord + {1, 1}]
     },
-    
-    (* Pedina rossa al centro con bordo nero *)
+    (* pedina rossa *)
     {
       EdgeForm[Black],
       FaceForm[Red],
@@ -114,6 +105,5 @@ DrawPlayer[position_, cols_] := Module[
   }
 ];
 
-
-End[]
+End[] 
 EndPackage[]

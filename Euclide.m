@@ -75,9 +75,12 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                   (* Verification button *)
                   Button["Verifica",
                     Module[{quotient, remainder},
-                      quotient = ToExpression[userQuotient];
-                      remainder = ToExpression[userRemainder];
-                      
+
+                      If[IntegerQ[userQuotient] && IntegerQ[userRemainder],
+                        quotient = ToExpression[userQuotient];
+                        remainder = ToExpression[userRemainder];
+                      ]
+                                            
                       If[! NumericQ[quotient] || ! NumericQ[remainder],
                         errorMessage = "Inserisci numeri validi.",
                         If[quotient === Quotient[currentA, currentB] && 

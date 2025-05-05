@@ -12,3 +12,4 @@ Componenti: Dado, scacchiera, pedina
 - fare in modo di chiedere quoziente e resto (non li deve dire il gioco) (FEDE)
 
 da errori se inserisco ,
+fare scorrere le palline in giu

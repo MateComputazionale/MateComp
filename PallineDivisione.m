@@ -32,20 +32,21 @@ MostraPalline[a_Integer, b_Integer] := Module[
   ];
 
   CreateDialog[
-    Column[{
-      Style["Divisione con le Palline", Bold, 14],
-      "Dividi " <> ToString[a] <> " palline in gruppi da " <> ToString[b] <> ".",
-      Style["Risultato: " <> ToString[q] <> " gruppi, " <> ToString[r] <> " palline restanti", Italic],
-      Column[gruppi],
-      If[r > 0, 
-        Row[{"Resto: ", Row[resto]}], 
-        Nothing
-      ],
-      Button["Chiudi", DialogReturn[] ]
-    }],
-    Scrollbars -> True
-  ],
+  Column[{
+    Style["Divisione con le Palline", Bold, 14],
+    "Dividi " <> ToString[a] <> " palline in gruppi da " <> ToString[b] <> ".",
+    Style["Risultato: " <> ToString[q] <> " gruppi, " <> ToString[r] <> " palline restanti", Italic],
+    Column[gruppi],
+    If[r > 0,
+      Row[{"Resto: ", Row[resto]}],
+      Nothing
+    ],
+    Button["Chiudi", DialogReturn[] ]
+  }],
+  Scrollbars -> True,
   WindowTitle -> "Aiuto Visivo - Divisione"
+]
+
 ];
 
 End[]

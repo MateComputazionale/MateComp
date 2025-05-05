@@ -63,7 +63,7 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                   }],
                   
                   (* Error message display *)
-                  Dynamic[Style[errorMessage, Red]],
+                  Dynamic[Style[errorMessage, Red] ],
                   
                   (* Clear fields button *)
                   ClearFields[userQuotient, userRemainder, errorMessage],

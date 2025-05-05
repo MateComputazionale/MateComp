@@ -37,83 +37,93 @@ StartGame[___] := Module[
     Column[{
       "Inserisci il numero seed per il gioco:",
       InputField[Dynamic[seedInput], Number],
-      DefaultButton[DialogReturn[seedInput] ]
+      Row[{
+        DefaultButton["OK", DialogReturn[seedInput]]
+      }]
     }],
     WindowTitle -> "Seed del Gioco"
   ];
   
-  If[NumericQ[seed],
-    (* Configure game with valid seed *)
-    SeedRandom[seed];
-    {boardElements, obstacles, totalCells, columns, rows} = Board`BoardPrimitives[];
+  (* Handle dialog result *)
+  If[seed === "cancel" || seed === $Canceled,
+    (* User cancelled - do nothing *)
+    Return[],
     
-    CreateDocument[
-      DynamicModule[
-        {
-          boardPrimitives = boardElements, 
-          boardColumns = columns, 
-          boardRows = rows, 
-          diceValue = 0, 
-          playerPosition = 1, 
-          isGameOver = False, 
-          obstaclesList = obstacles, 
-          totalBoardCells = totalCells
-        },
-        
-        Column[{
-          Style["Gioco dell'Oca con Algoritmo di Euclide", Bold, 16],
+    (* Check if seed is a valid number *)
+    If[NumericQ[seed],
+      (* Configure game with valid seed *)
+      SeedRandom[seed];
+      {boardElements, obstacles, totalCells, columns, rows} = Board`BoardPrimitives[];
+      
+      CreateDocument[
+        DynamicModule[
+          {
+            boardPrimitives = boardElements, 
+            boardColumns = columns, 
+            boardRows = rows, 
+            diceValue = 0, 
+            playerPosition = 1, 
+            isGameOver = False, 
+            obstaclesList = obstacles, 
+            totalBoardCells = totalCells
+          },
           
-          Dynamic@Graphics[
-            Join[
-              boardPrimitives,
-              Board`DrawPlayer[playerPosition, boardColumns]
-            ],
-            PlotRange -> {{0, boardColumns}, {0, boardRows}},
-            ImageSize -> 400
-          ],
-          
-          Button["Tira il dado", 
-            diceValue = RandomInteger[{1, 6}];
+          Column[{
+            Style["Gioco dell'Oca con Algoritmo di Euclide", Bold, 16],
             
-            Module[{num1, num2},
-              num1 = RandomInteger[{10, 99}];
-              num2 = RandomInteger[{1, num1 - 1}];
-              
-              Euclide`EuclideDialog[num1, num2, diceValue, 
-                Function[gcdResult, 
-                  Module[{newPosition},
-                    newPosition = Board`GetNextPosition[
-                      playerPosition, diceValue, obstaclesList, totalBoardCells];
-                    playerPosition = newPosition;
-                    If[playerPosition >= totalBoardCells, isGameOver = True];
-                  ]
-                ]
-              ];
+            Dynamic@Graphics[
+              Join[
+                boardPrimitives,
+                Board`DrawPlayer[playerPosition, boardColumns]
+              ],
+              PlotRange -> {{0, boardColumns}, {0, boardRows}},
+              ImageSize -> 400
             ],
-            Enabled -> Dynamic[!isGameOver]
-          ],
-          
-          Dynamic[
-            If[isGameOver,
-              Column[{
-                "Hai vinto!",
-                Button["Nuova Partita", 
-                  {playerPosition, diceValue, isGameOver} = ResetGame[]
-                ]
-              }],
-              "Ultimo lancio: " <> ToString[diceValue]
+            
+            Button["Tira il dado", 
+              diceValue = RandomInteger[{1, 6}];
+              
+              Module[{num1, num2},
+                num1 = RandomInteger[{10, 99}];
+                num2 = RandomInteger[{1, num1 - 1}];
+                
+                Euclide`EuclideDialog[num1, num2, diceValue, 
+                  Function[gcdResult, 
+                    Module[{newPosition},
+                      newPosition = Board`GetNextPosition[
+                        playerPosition, diceValue, obstaclesList, totalBoardCells
+                      ];
+                      playerPosition = newPosition;
+                      If[playerPosition >= totalBoardCells, isGameOver = True];
+                    ]
+                  ]
+                ];
+              ],
+              Enabled -> Dynamic[!isGameOver]
+            ],
+            
+            Dynamic[
+              If[isGameOver,
+                Column[{
+                  "Hai vinto!",
+                  Button["Nuova Partita", 
+                    {playerPosition, diceValue, isGameOver} = ResetGame[]
+                  ]
+                }],
+                "Ultimo lancio: " <> ToString[diceValue]
+              ]
             ]
+          },
+          Alignment -> Center,
+          Spacings -> 2
           ]
-        },
-        Alignment -> Center,
-        Spacings -> 2
-        ]
+        ],
+        WindowTitle -> "Gioco dell'Oca con Algoritmo di Euclide"
       ],
-      WindowTitle -> "Gioco dell'Oca con Algoritmo di Euclide"
-    ],
-    
-    (* Handle invalid input *)
-    MessageDialog["Il valore inserito non è valido. Inserire un numero."]
+      
+      (* Handle invalid input *)
+      MessageDialog["Il valore inserito non è valido. Inserire un numero."]
+    ]
   ];
 ];
 

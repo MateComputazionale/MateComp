@@ -79,7 +79,7 @@ GetNextPosition[start_, roll_, obs_List, totalCells_] := Module[
    - lista delle celle che formano il percorso valido
    
    La funzione genera un percorso valido che parte dalla cella 1 e arriva
-   alla cella finale (cols*rows), muovendosi solo a destra o in basso.
+   alla cella finale (cols*rows), muovendosi solo a destra o in alto.
 *)
 GeneratePath[cols_, rows_] := Module[
   {total = cols*rows,       (* numero totale di celle *)
@@ -88,7 +88,7 @@ GeneratePath[cols_, rows_] := Module[
    moves,                   (* mosse possibili *)
    nxt},                    (* prossima mossa scelta *)
   While[cur < total,
-    (* Le mosse possibili sono: cella a destra o cella sotto *)
+    (* Le mosse possibili sono: cella a destra o cella sopra *)
     moves = Select[{cur + 1, cur + cols}, # <= total &];
     (* Scegli casualmente una delle mosse possibili *)
     nxt = RandomChoice[moves];

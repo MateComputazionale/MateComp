@@ -83,8 +83,7 @@ StartGame[___] := Module[
                 Function[gcdResult, 
                   Module[{newPosition},
                     newPosition = Board`GetNextPosition[
-                      playerPosition, diceValue, obstaclesList, totalBoardCells, boardColumns
-                    ];
+                      playerPosition, diceValue, obstaclesList, totalBoardCells];
                     playerPosition = newPosition;
                     If[playerPosition >= totalBoardCells, isGameOver = True];
                   ]

@@ -78,7 +78,7 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
 
                     (* DigitCharacter is a built-in symbol that represents a pattern that matches any single digit character (0 through 9). 
                        The notation .. (double dot) is used to indicate that the preceding pattern can repeat zero or more times. *)
-                    If[StringMatchQ[userQuotient, DigitCharacter ..] || 
+                    If[StringMatchQ[userQuotient, DigitCharacter ..] &&
                         StringMatchQ[userRemainder, DigitCharacter ..],
                         quotient = ToExpression[userQuotient];
                         remainder = ToExpression[userRemainder];

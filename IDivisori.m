@@ -30,7 +30,7 @@ ResetGame[] := {1, 0, False};
 
 (* Main game function *)
 StartGame[___] := Module[
-  {seed, boardElements, obstacles, totalCells, columns, rows},
+  {seed, boardElements, obstacles, totalCells, columns, rows, gameNotebook},
   
   (* Get seed from user *)
   seed = DialogInput[
@@ -55,7 +55,7 @@ StartGame[___] := Module[
       SeedRandom[seed];
       {boardElements, obstacles, totalCells, columns, rows} = Board`BoardPrimitives[];
       
-      CreateDocument[
+      gameNotebook = CreateDocument[
         DynamicModule[
           {
             boardPrimitives = boardElements, 
@@ -65,7 +65,8 @@ StartGame[___] := Module[
             playerPosition = 1, 
             isGameOver = False, 
             obstaclesList = obstacles, 
-            totalBoardCells = totalCells
+            totalBoardCells = totalCells,
+            originalSeed = seed
           },
           
           Column[{
@@ -112,7 +113,20 @@ StartGame[___] := Module[
                 }],
                 "Ultimo lancio: " <> ToString[diceValue]
               ]
-            ]
+            ],
+            
+            (* Add game control buttons *)
+            Row[{
+              Button["Ricomincia da capo", 
+                (* Reset game state but keep the same seed *)
+                SeedRandom[originalSeed];
+                {playerPosition, diceValue, isGameOver} = ResetGame[]
+              ],
+              Spacer[20],
+              Button["Chiudi schermata", 
+                NotebookClose[EvaluationNotebook[]]
+              ]
+            }]
           },
           Alignment -> Center,
           Spacings -> 2

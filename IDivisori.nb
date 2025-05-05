@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[   4792934,      78643]
-NotebookOptionsPosition[   4791824,      78616]
-NotebookOutlinePosition[   4792288,      78633]
-CellTagsIndexPosition[   4792245,      78630]
+NotebookDataLength[   4795549,      78715]
+NotebookOptionsPosition[   4793787,      78676]
+NotebookOutlinePosition[   4794212,      78693]
+CellTagsIndexPosition[   4794169,      78690]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -78611,13 +78611,73 @@ Cell[BoxData[
   Method->"Queued"]], "Output",
  CellChangeTimes->{3.953282904552845*^9, 3.953359665356962*^9},
  CellLabel->"Out[3]=",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Il Massimo Comun Divisore", "Section",
+ CellChangeTimes->{{3.9554228132890053`*^9, 
+  3.9554228176171923`*^9}},ExpressionUUID->"7d5a9716-7c7e-4345-82cf-\
+1e76bdd780af"],
+
+Cell["\<\
+l massimo comun divisore (o massimo comune divisore) di due numeri interi a e \
+b, che non siano entrambi uguali a zero, indicato con MCD(a , b), \[EGrave] \
+il numero naturale pi\[UGrave] grande per il quale entrambi possono essere \
+divisi esattamente. Se i numeri a e b sono entrambi uguali a 0, allora si \
+pone per definizione MCD(a , b) = 0.
+
+Esempi:
+MCD(12, 18) = 6
+MCD(4, 14) = 4
+MCD(5, 0) = 5\
+\>", "Text",
+ CellChangeTimes->{{3.9554228840432673`*^9, 
+  3.95542302869846*^9}},ExpressionUUID->"e7b3011d-dba8-4041-9d15-\
+03768f8a07c7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A cosa serve il massimo comune divisore?", "Section",
+ CellChangeTimes->{{3.955423085171443*^9, 
+  3.955423106478513*^9}},ExpressionUUID->"8472b0fd-571c-4d3f-9213-\
+012491981ce5"],
+
+Cell["\<\
+Il massimo comun divisore \[EGrave] utile per ridurre una frazione ai minimi \
+termini. Per esempio nella seguente frazione \[EGrave] stato semplificato il \
+fattore 14, il massimo comun divisore tra 42 e 56. 
+42/56 = (3 * 14)/(4 * 14) = 3/4\
+\>", "Text",
+ CellChangeTimes->{{3.955423167973701*^9, 
+  3.955423237453393*^9}},ExpressionUUID->"85bdcf57-5f15-48d6-88a3-\
+d9b07959d1ce"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["L\[CloseCurlyQuote]algoritmo di Euclide", "Section",
+ CellChangeTimes->{{3.955423548293227*^9, 
+  3.955423552950346*^9}},ExpressionUUID->"477b2aa8-b8e7-4c17-8903-\
+f31ffc3a634f"],
+
+Cell["\<\
+L\[CloseCurlyQuote]algoritmo di Euclide (o metodo delle divisioni \
+successive), che consente di calcolare il massimo comun divisore tra due \
+qualsiasi numeri, si basa su una serie di divisioni successive.
+\
+\>", "Text",
+ CellChangeTimes->{{3.955423583603159*^9, 
+  3.955423624141577*^9}},ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-\
+63b4111e944a"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{808.1999999999999, 568.8},
-WindowMargins->{{3.5999999999999996`, Automatic}, {Automatic, 0}},
+WindowSize->{1437, 769.5},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 Magnification:>1.1 Inherited,
-FrontEndVersion->"14.2 for Microsoft Windows (64-bit) (December 26, 2024)",
+FrontEndVersion->"14.0 for Linux x86 (64-bit) (December 12, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"c9e226cf-0ebd-4c60-a329-d8df1b9a7850"
 ]
@@ -78633,16 +78693,28 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 151, 3, 106, "Title",ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
-Cell[730, 27, 336, 9, 160, "Subtitle",ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
-Cell[1069, 38, 4789182, 78530, 1247, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
+Cell[576, 22, 151, 3, 107, "Title",ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
+Cell[730, 27, 336, 9, 163, "Subtitle",ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
+Cell[1069, 38, 4789182, 78530, 431, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
 Cell[CellGroupData[{
-Cell[4790276, 78572, 483, 10, 51, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
-Cell[4790762, 78584, 382, 8, 41, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
+Cell[4790276, 78572, 483, 10, 60, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
+Cell[4790762, 78584, 382, 8, 45, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4791181, 78597, 297, 6, 31, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
-Cell[4791481, 78605, 315, 7, 41, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
+Cell[4791181, 78597, 297, 6, 35, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
+Cell[4791481, 78605, 315, 7, 45, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4791833, 78617, 174, 3, 74, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
+Cell[4792010, 78622, 552, 14, 190, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4792599, 78641, 185, 3, 74, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
+Cell[4792787, 78646, 391, 8, 63, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4793215, 78659, 184, 3, 74, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
+Cell[4793402, 78664, 357, 8, 63, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"]
 }, Open  ]]
 }, Open  ]]
 }

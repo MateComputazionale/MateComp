@@ -41,13 +41,19 @@ ResetGame[] := {1, 0, False};
 
 (* StartGame: Funzione principale che avvia il gioco
    Input:
-   - ___ (corrisponde a qualsiasi parametro opzionale che viene ignorato)
+   - ___ i tree trattini bassi rappresentano un pattern che fa match con zero, uno o più argomenti.
+    (corrisponde a qualsiasi parametro opzionale che viene ignorato)
    Output:
    - Crea e visualizza l'interfaccia grafica del gioco
    
    La funzione gestisce l'intera logica del gioco, dalla richiesta del
    seed iniziale alla creazione dell'interfaccia interattiva.
 *)
+
+
+(* Module è un costrutto usato per creare variabili locali e incapsulare il codice. Permette di definire variabili con una visibilità locale
+    al corpo del costrutto Module, cioè variabili che non interferisco con altre variabili dichiarate fuori dal modulo con lo stesso nome
+    o con gli argomenti della funzione con lo stesso nome. *)
 StartGame[___] := Module[
   {seed,                  (* Valore seed fornito dall'utente per la generazione pseudocasuale *)
    boardElements,         (* Elementi grafici del tabellone *)
@@ -58,130 +64,141 @@ StartGame[___] := Module[
    gameNotebook},         (* Notebook contenente l'interfaccia di gioco *)
   
   (* Richiedi all'utente di inserire un seed attraverso una finestra di dialogo *)
-  seed = DialogInput[
+  seed = Module[{seedInput}, DialogInput[
+    (* This function arranges its arguments in a vertical column layout *)
     Column[{
       "Inserisci il numero seed per il gioco:",
+      (* Dynamic[seedInput] serve per fare in modo che il valore inserito nel campo di input sarà collegato dinamicamente 
+         alla variabile seedInput. Ciò significa che qualsiasi modifica apportata nel campo di input aggiornerà seedInput in tempo reale. *)
       InputField[Dynamic[seedInput], Number],  (* Campo di input per il seed *)
-      Row[{
-        DefaultButton["OK", DialogReturn[seedInput]]  (* Pulsante OK che conferma il valore inserito *)
-      }]
+      DefaultButton["OK", DialogReturn[seedInput]]  (* Pulsante OK che conferma il valore inserito *)
     }],
     WindowTitle -> "Seed del Gioco"  (* Titolo della finestra di dialogo *)
-  ];
+  ]];
   
   (* Gestione del risultato della finestra di dialogo *)
   If[seed === "cancel" || seed === $Canceled,
     (* L'utente ha annullato l'operazione - non fare nulla *)
-    Return[],
-    
-    (* Controlla se il seed è un numero valido *)
-    If[NumericQ[seed],
-      (* Configura il gioco con il seed valido *)
-      SeedRandom[seed];  (* Imposta il generatore di numeri casuali con il seed fornito *)
-      (* Genera il tabellone e ottieni gli elementi necessari *)
-      {boardElements, obstacles, totalCells, columns, rows} = Board`BoardPrimitives[];
+    Return[]
+  ];
+
+  (* Controlla se il seed è un numero valido *)
+  If[! NumericQ[seed],
+    (* Gestione dell'input non valido *)
+      MessageDialog["Il valore inserito non è valido. Inserire un numero."];
+      Return[]
+  ];
+  (* Imposta il generatore di numeri casuali con il seed fornito *)
+  SeedRandom[seed];
+
+  (* Board`BoardPrimitives[]; chiama la funzione BoardPrimitives dal pacchetto Board. L'uso del backtick indica che BoardPrimitives 
+    è una funzione definita nel pacchetto Board`. Questa riga utilizza un destructuring assignment per estrarre i valori restituiti 
+    dalla funzione BoardPrimitives in più variabili. La funzione restituisce una struttura contenente cinque elementi che vengono assegnati 
+    rispettivamente boardElements, obstacles, totalCells, columns, rows *)
+  {boardElements, obstacles, totalCells, columns, rows} = Board`BoardPrimitives[];
       
-      (* Crea il notebook contenente l'interfaccia di gioco *)
-      gameNotebook = CreateDocument[
-        DynamicModule[
-          {
-            boardPrimitives = boardElements,   (* Elementi grafici del tabellone *)
-            boardColumns = columns,            (* Numero di colonne *)
-            boardRows = rows,                  (* Numero di righe *)
-            diceValue = 0,                     (* Valore del dado, inizialmente 0 *)
-            playerPosition = 1,                (* Posizione iniziale del giocatore *)
-            isGameOver = False,                (* Indica se il gioco è finito *)
-            obstaclesList = obstacles,         (* Lista degli ostacoli *)
-            totalBoardCells = totalCells,      (* Numero totale di celle *)
-            originalSeed = seed                (* Salva il seed originale per poter ricominciare *)
-          },
+  (* Crea il notebook contenente l'interfaccia di gioco *)
+  gameNotebook = CreateDocument[
+    (* DynamicModule consente di definire variabili locali che mantengono il loro stato,
+    abilitando aggiornamenti dinamici e interazioni senza influenzare l'ambiente globale. *)
+    DynamicModule[
+      {
+        boardPrimitives = boardElements,   (* Elementi grafici del tabellone *)
+        boardColumns = columns,            (* Numero di colonne *)
+        boardRows = rows,                  (* Numero di righe *)
+        diceValue = 0,                     (* Valore del dado, inizialmente 0 *)
+        playerPosition = 1,                (* Posizione iniziale del giocatore *)
+        isGameOver = False,                (* Indica se il gioco è finito *)
+        obstaclesList = obstacles,         (* Lista degli ostacoli *)
+        totalBoardCells = totalCells,      (* Numero totale di celle *)
+        originalSeed = seed                (* Salva il seed originale per poter ricominciare *)
+      },
+      
+      (* Crea l'interfaccia utente *)
+      Column[{
+        (* Titolo del gioco *)
+        Style["Gioco dell'Oca con Algoritmo di Euclide", Bold, 16],
+        
+        (* Visualizzazione dinamica del tabellone di gioco *)
+        (* Crea la grafica del tabellone e aggiorna automaticamente la grafica quando le sue variabili cambiano. *)
+        Dynamic@Graphics[
+          Join[
+            boardPrimitives,                              (* Disegna il tabellone *)
+            Board`DrawPlayer[playerPosition, boardColumns] (* Disegna il giocatore nella posizione corrente *)
+          ],
+          PlotRange -> {{0, boardColumns}, {0, boardRows}}, (* Imposta l'area di visualizzazione *)
+          ImageSize -> 400                                  (* Dimensione dell'immagine *)
+        ],
+        
+        (* Pulsante per tirare il dado *)
+        Button["Tira il dado", 
+          (* Genera un numero casuale da 1 a 6 *)
+          diceValue = RandomInteger[{1, 6}];
           
-          (* Crea l'interfaccia utente *)
-          Column[{
-            (* Titolo del gioco *)
-            Style["Gioco dell'Oca con Algoritmo di Euclide", Bold, 16],
+          (* Genera due numeri casuali per il calcolo del MCD *)
+          Module[{num1, num2},
+            num1 = RandomInteger[{10, 99}];          (* Genera un numero tra 10 e 99 *)
+            num2 = RandomInteger[{1, num1 - 1}];     (* Genera un numero minore di num1 *)
             
-            (* Visualizzazione dinamica del tabellone di gioco *)
-            Dynamic@Graphics[
-              Join[
-                boardPrimitives,                              (* Disegna il tabellone *)
-                Board`DrawPlayer[playerPosition, boardColumns] (* Disegna il giocatore nella posizione corrente *)
-              ],
-              PlotRange -> {{0, boardColumns}, {0, boardRows}}, (* Imposta l'area di visualizzazione *)
-              ImageSize -> 400                                  (* Dimensione dell'immagine *)
-            ],
-            
-            (* Pulsante per tirare il dado *)
-            Button["Tira il dado", 
-              (* Genera un numero casuale da 1 a 6 *)
-              diceValue = RandomInteger[{1, 6}];
-              
-              (* Genera due numeri casuali per il calcolo del MCD *)
-              Module[{num1, num2},
-                num1 = RandomInteger[{10, 99}];          (* Genera un numero tra 10 e 99 *)
-                num2 = RandomInteger[{1, num1 - 1}];     (* Genera un numero minore di num1 *)
-                
-                (* Apre la finestra di dialogo per l'algoritmo di Euclide *)
-                Euclide`EuclideDialog[num1, num2, diceValue, 
-                  (* Callback che viene chiamata quando l'utente completa l'algoritmo *)
-                  Function[gcdResult, 
-                    Module[{newPosition},
-                      (* Calcola la nuova posizione considerando gli ostacoli *)
-                      newPosition = Board`GetNextPosition[
-                        playerPosition, diceValue, obstaclesList, totalBoardCells
-                      ];
-                      (* Aggiorna la posizione del giocatore *)
-                      playerPosition = newPosition;
-                      (* Controlla se il giocatore ha raggiunto o superato l'ultima cella *)
-                      If[playerPosition >= totalBoardCells, isGameOver = True];
-                    ]
-                  ]
-                ];
-              ],
-              (* Disabilita il pulsante se il gioco è finito *)
-              Enabled -> Dynamic[!isGameOver]
-            ],
-            
-            (* Visualizzazione dinamica dello stato del gioco *)
-            Dynamic[
-              If[isGameOver,
-                (* Se il gioco è finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
-                Column[{
-                  "Hai vinto!",
-                  Button["Nuova Partita", 
-                    (* Reset dello stato del gioco *)
-                    {playerPosition, diceValue, isGameOver} = ResetGame[]
-                  ]
-                }],
-                (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
-                "Ultimo lancio: " <> ToString[diceValue]
+            (* Apre la finestra di dialogo per l'algoritmo di Euclide *)
+            Euclide`EuclideDialog[num1, num2, diceValue, 
+              (* Callback che viene chiamata quando l'utente completa l'algoritmo *)
+              Function[gcdResult, 
+                Module[{newPosition},
+                  (* Calcola la nuova posizione considerando gli ostacoli *)
+                  newPosition = Board`GetNextPosition[
+                    playerPosition, diceValue, obstaclesList, totalBoardCells
+                  ];
+                  (* Aggiorna la posizione del giocatore *)
+                  playerPosition = newPosition;
+                  (* Controlla se il giocatore ha raggiunto o superato l'ultima cella *)
+                  If[playerPosition >= totalBoardCells, isGameOver = True];
+                ]
               ]
-            ],
-            
-            (* Pulsanti di controllo del gioco *)
-            Row[{
-              Button["Ricomincia da capo", 
-                (* Reset del gioco mantenendo lo stesso seed *)
-                SeedRandom[originalSeed];
+            ];
+          ],
+          (* Disabilita il pulsante se il gioco è finito *)
+          Enabled -> Dynamic[!isGameOver]
+        ],
+        
+        (* Visualizzazione dinamica dello stato del gioco *)
+        (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che le variabili 
+           da cui dipende l'espressione vengono modificate e ritorna il valore dell'espressione, 
+          in questo il valore di ritorno viene ingnorato *)
+        Dynamic[
+          If[isGameOver,
+            (* Se il gioco è finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
+            Column[{
+              "Hai vinto!",
+              Button["Nuova Partita", 
+                (* Reset dello stato del gioco *)
                 {playerPosition, diceValue, isGameOver} = ResetGame[]
-              ],
-              Spacer[20],  (* Spaziatore tra i pulsanti *)
-              Button["Chiudi schermata", 
-                (* Chiudi il notebook corrente *)
-                NotebookClose[EvaluationNotebook[]]
               ]
-            }]
-          },
-          Alignment -> Center,  (* Allineamento al centro degli elementi *)
-          Spacings -> 2         (* Spaziatura tra gli elementi *)
+            }],
+            (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
+            "Ultimo lancio: " <> ToString[diceValue]
           ]
         ],
-        WindowTitle -> "Gioco dell'Oca con Algoritmo di Euclide"  (* Titolo della finestra del gioco *)
-      ],
-      
-      (* Gestione dell'input non valido *)
-      MessageDialog["Il valore inserito non è valido. Inserire un numero."]
-    ]
+        
+        (* Pulsanti di controllo del gioco *)
+        Row[{
+          Button["Ricomincia da capo", 
+            (* Reset del gioco mantenendo lo stesso seed *)
+            SeedRandom[originalSeed];
+            {playerPosition, diceValue, isGameOver} = ResetGame[]
+          ],
+          Spacer[20],  (* Spaziatore tra i pulsanti *)
+          Button["Chiudi schermata", 
+            (* Chiudi il notebook corrente *)
+            NotebookClose[EvaluationNotebook[]]
+          ]
+        }]
+      },
+      Alignment -> Center,  (* Allineamento al centro degli elementi *)
+      Spacings -> 2         (* Spaziatura tra gli elementi *)
+      ]
+    ],
+    WindowTitle -> "Gioco dell'Oca con Algoritmo di Euclide"  (* Titolo della finestra del gioco *)
   ];
 ];
 

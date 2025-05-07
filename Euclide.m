@@ -13,28 +13,40 @@ Get["PallineDivisione.m"];
 
 EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
   CreateDialog[
+(* DynamicModule consente di definire variabili locali che mantengono il loro stato,
+    abilitando aggiornamenti dinamici e interazioni senza influenzare l'ambiente globale. *)
     DynamicModule[
       {
         currentA = a, 
         currentB = b, 
-        steps = {}, 
-        currentStep = 1,
+        steps = {},  (* steps è una lista di liste di questa forma {currentA, currentB, quotient, remainder} *)
+        currentStep = 1, (* il passo corrente dell'algoritmo di Euclide *)
         userQuotient = "", 
         userRemainder = "", 
         errorMessage = "", 
-        isCompleted = False,
+     (* True  se l'utente ha inserito il quoziente e il resto corretti del corrente 
+        passo dell'algoritmo e ha cliccato su Verifica, False altrimenti *)
+        isCompleted = False, 
         nextA = "", 
         nextB = ""
       },
       
       Column[{
         Style["Algoritmo di Euclide", Bold, 14],
-        
+     (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che 
+        le variabili da cui dipende l'espressione vengono modificate e ritorna il valore 
+        dell'espressione, in questo il valore di ritorno viene ingnorato *)
         Dynamic[
+         (* La funzione Column posiziona i suoi argomenti in un layout verticale *)
           Column[
             Join[
+            (* Visualizzazione dei passi dell'algoritmo di Euclide già completati *)
+            (* La funzione Table genera una lista di espressioni iterando su un intervallo. 
+               In questo caso, crea una espressione Row per ogni i da 1 a Length[steps]. *)
               Table[
+              (* La funzione With crea una variabile locale stepData che contiene il valore di steps[[i]]. *)
                 With[{stepData = steps[[i]]},
+                (* La funzione Row posiziona i suoi argomenti in un layout orizontale *)
                   Row[{
                     "Passo ", i, ": ",
                     stepData[[1]], " div ", stepData[[2]], " = ", 
@@ -45,6 +57,7 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
               ],
               
               If[isCompleted,
+                  (* isCompleted is True *)
                 If[currentB === 0 || currentStep > stepsToComplete,
                   {
                     Style["Algoritmo completato! Il MCD \[EGrave] " <> ToString[currentA], Bold, 14],
@@ -56,40 +69,35 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                   {
                     Style["Inserisci i nuovi valori per a e b per continuare:", Bold],
                     Row[{
-                      "a = ", InputField[Dynamic[nextA], String, FieldSize -> 5],
-                      "   b = ", InputField[Dynamic[nextB], String, FieldSize -> 5]
+                      "a = ", InputField[Dynamic[nextA], Number, FieldSize -> 5], "   ",
+                      "b = ", InputField[Dynamic[nextB], Number, FieldSize -> 5]
                     }],
                     Dynamic[Style[errorMessage, Red]],
                     Button["Prosegui",
-                      Module[{newA, newB},
-                        If[StringMatchQ[nextA, DigitCharacter ..] && StringMatchQ[nextB, DigitCharacter ..],
-                          newA = ToExpression[nextA];
-                          newB = ToExpression[nextB];
-                          If[NumericQ[newA] && NumericQ[newB] && newB =!= 0,
-                            currentA = newA;
-                            currentB = newB;
-                            userQuotient = "";
-                            userRemainder = "";
-                            nextA = "";
-                            nextB = "";
-                            errorMessage = "";
-                            isCompleted = False;
-                          ,
-                            errorMessage = "I valori devono essere numeri validi. b deve essere diverso da zero."
-                          ],
-                          errorMessage = "Inserisci numeri validi per a e b."
-                        ]
+                      If[nextA === currentB && nextB === Mod[currentA, currentB],
+                        currentA = nextA;
+                        currentB = nextB;
+                        userQuotient = "";
+                        userRemainder = "";
+                        nextA = "";
+                        nextB = "";
+                        errorMessage = "";
+                        isCompleted = False;
+                      ,
+                        errorMessage = "Risposta errata! Riprova."
                       ]
-                    ]
+                   ]
                   }
                 ],
+                (* isCompleted is False *)
                 {
+                (* Visualizzazione del attuale passo dell'algoritmo di Euclide *)
                   Row[{
                     "Passo ", currentStep, ": ",
                     currentA, " div ", currentB, " = ",
-                    InputField[Dynamic[userQuotient], String, FieldSize -> 5],
+                    InputField[Dynamic[userQuotient], Number, FieldSize -> 5],
                     ", resto ",
-                    InputField[Dynamic[userRemainder], String, FieldSize -> 5]
+                    InputField[Dynamic[userRemainder], Number, FieldSize -> 5]
                   }],
                   
                   Dynamic[Style[errorMessage, Red]],
@@ -101,27 +109,16 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                   ],
                   
                   Button["Verifica",
-                    Module[{quotient, remainder},
-                      If[StringMatchQ[userQuotient, DigitCharacter ..] &&
-                         StringMatchQ[userRemainder, DigitCharacter ..],
-                        quotient = ToExpression[userQuotient];
-                        remainder = ToExpression[userRemainder];
-                      ];
-                      
-                      If[! NumericQ[quotient] || ! NumericQ[remainder],
-                        errorMessage = "Inserisci numeri validi.",
-                        If[quotient === Quotient[currentA, currentB] && 
-                           remainder === Mod[currentA, currentB],
-                          AppendTo[steps, {currentA, currentB, quotient, remainder}];
-                          currentStep++;
-                          userQuotient = "";
-                          userRemainder = "";
-                          errorMessage = "";
-                          isCompleted = True;
-                        ,
-                          errorMessage = "Risposta errata. Riprova."
-                        ]
-                      ]
+                    If[userQuotient === Quotient[currentA, currentB] && 
+                       userRemainder === Mod[currentA, currentB],
+                      AppendTo[steps, {currentA, currentB, userQuotient, userRemainder}];
+                      currentStep++;
+                      userQuotient = "";
+                      userRemainder = "";
+                      errorMessage = "";
+                      isCompleted = True;
+                    ,
+                      errorMessage = "Risposta errata! Riprova."
                     ]
                   ]
                 }

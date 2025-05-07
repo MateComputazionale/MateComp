@@ -65,7 +65,7 @@ StartGame[___] := Module[
   
   (* Richiedi all'utente di inserire un seed attraverso una finestra di dialogo *)
   seed = Module[{seedInput}, DialogInput[
-    (* This function arranges its arguments in a vertical column layout *)
+    (* Questa funzione posiziona i suoi argomenti in un layout verticale *)
     Column[{
       "Inserisci il numero seed per il gioco:",
       (* Dynamic[seedInput] serve per fare in modo che il valore inserito nel campo di input sarà collegato dinamicamente 

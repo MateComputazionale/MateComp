@@ -122,7 +122,7 @@ StartGame[___] := Module[
       (* Crea l'interfaccia utente *)
       Column[{
         (* Titolo del gioco *)
-        Style["Gioco dell'Anatra con calcolo del MCD", Bold, 20],
+        Text[Style["Gioco dell'Anatra con calcolo del MCD", 20, Bold, Black] ],
         
         (* Layout orizzontale con tabellone a sinistra e componente di Euclide a destra *)
         Row[{

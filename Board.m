@@ -167,9 +167,9 @@ BoardPrimitives[cols_Integer:6, rows_Integer:6] := Module[
           {}
         ] *)
         (* Se la cella è la prima, scrivi START in bianco e in grassetto *)
-        If[cell == 1, Text[Style["START", 8, Bold, White], {x + 0.5, y + 0.5}]],
+        If[cell == 1, Text[Style["START", 8, Bold, White], {x + 0.5, y + 0.5}] ],
         (* Se la cella è l'ultima, scrivi FINE in bianco e in grassetto *)
-        If[cell == total, Text[Style["FINE", 8, Bold, White], {x + 0.5, y + 0.5}]] 
+        If[cell == total, Text[Style["FINE", 8, Bold, White], {x + 0.5, y + 0.5}] ] 
       }
     ],
     {cell, 1, total}  (* Per ogni cella da 1 a total *)

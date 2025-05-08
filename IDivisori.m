@@ -144,7 +144,7 @@ StartGame[___] := Module[
               ImageSize -> 400                                  (* Dimensione dell'immagine *)
             ],
             
-            (* Pulsante per tirare il dado *)
+            (* Pulsante per tirare il dado*)
             Button["Tira il dado",
             (
               diceButtonEnabled = False;
@@ -167,6 +167,7 @@ StartGame[___] := Module[
               ];
               showEuclide = True;
             ),
+            ImageSize -> {100, Automatic},  (* Dimensione dell'immagine del pulsante *)
             Enabled -> Dynamic[diceButtonEnabled && !isGameOver]
           ],
             
@@ -191,20 +192,53 @@ StartGame[___] := Module[
             ],
             
             (* Pulsanti di controllo del gioco *)
+            (* Pulsanti di controllo del gioco migliorati con sfondi colorati *)
             Row[{
-              Button["Ricomincia", 
-                (* Reset del gioco mantenendo lo stesso seed *)
+            Button[
+              "Ricomincia",
+              (
                 SeedRandom[originalSeed];
                 {playerPosition, diceValue, isGameOver} = ResetGame[];
                 showEuclide = False;
-                diceButtonEnabled = True;  (* Riabilita il pulsante *)
-              ],
-              Spacer[20],  (* Spaziatore tra i pulsanti *)
-              Button["Chiudi il gioco", 
-                (* Chiudi il notebook corrente *)
-                NotebookClose[EvaluationNotebook[] ]
-              ]
-            }]
+                diceButtonEnabled = True;
+              ),
+              Background -> RGBColor[0.2, 0.6, 0.8],
+              FrameMargins -> 10,
+              Appearance -> None,
+              BaseStyle -> {
+                FontSize -> 14,
+                FontColor -> White,
+                FontWeight -> "Bold",
+                FontFamily -> "Arial"
+              },
+              ImageSize -> {120, Automatic},
+              Method -> "Queued",
+              ContentPadding -> 10,
+              RoundingRadius -> 8,
+              BoxShadow -> {0, 2, 4, GrayLevel[0.5]}
+            ],
+            
+            Spacer[20],
+            
+            Button[
+              "Chiudi il gioco",
+              NotebookClose[EvaluationNotebook[]],
+              Background -> RGBColor[0.8, 0.2, 0.2],
+              FrameMargins -> 10,
+              Appearance -> None,
+              BaseStyle -> {
+                FontSize -> 14,
+                FontColor -> White,
+                FontWeight -> "Bold",
+                FontFamily -> "Arial"
+              },
+              ImageSize -> {120, Automatic},
+              Method -> "Queued",
+              ContentPadding -> 10,
+              RoundingRadius -> 8,
+              BoxShadow -> {0, 2, 4, GrayLevel[0.5]}
+            ]
+          }]
           }],
           
           Spacer[20], (* Aggiunta di spazio tra il tabellone e il componente di Euclide *)

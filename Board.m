@@ -38,7 +38,7 @@ CountObstaclesPassed[start_, roll_, obs_List] := Module[
     (* Conta quanti ostacoli sono nell'intervallo [a,b] *)
     inRange = Count[obs, _?(Between[{a, b}])];
     (* Se non ci sono ostacoli nell'intervallo, esci dal ciclo *)
-    If[inRange == 0, Break[]];
+    If[inRange == 0, Break[] ];
     (* Aggiorna il contatore degli ostacoli *)
     passed += inRange;
     (* Sposta l'intervallo oltre gli ostacoli trovati *)
@@ -145,10 +145,10 @@ BoardPrimitives[cols_Integer:6, rows_Integer:6] := Module[
     Module[{coord = LinearCoordinates[cell, cols], x, y},
       {x, y} = coord;  (* Estrai le coordinate x,y *)
       {
-        EdgeForm[Black],  (* Bordo nero per tutte le celle *)
+        EdgeForm[White],  (* Bordo nero per tutte le celle *)
         FaceForm[
           If[MemberQ[obstacles, cell],
-            Gray,                           (* Colore grigio per gli ostacoli *)
+            White,                           (* Colore grigio per gli ostacoli *)
             ColorData["Rainbow"][cell/total] (* Colore arcobaleno per il percorso *)
           ]
         ],

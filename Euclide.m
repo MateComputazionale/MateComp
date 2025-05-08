@@ -1,52 +1,49 @@
-(* ::Package:: *)
-
 BeginPackage["Euclide`"]
 
-EuclideDialog::usage = 
-  "EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] \
-displays an interactive dialog for calculating GCD using Euclid's algorithm, showing step-by-step calculation.";
+EuclideComponent::usage = 
+  "EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] \
+crea un componente per calcolare il GCD usando l'algoritmo di Euclide, mostrando il calcolo passo per passo.";
 
 Begin["`Private`"]
 
 Get["Buttons.m"];
 Get["Aiuto.m"];
 
-EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
-  CreateDialog[
-(* DynamicModule consente di definire variabili locali che mantengono il loro stato,
-    abilitando aggiornamenti dinamici e interazioni senza influenzare l'ambiente globale. *)
-    DynamicModule[
-      {
-        currentA = a, 
-        currentB = b, 
-        steps = {},  (* steps è una lista di liste di questa forma {currentA, currentB, quotient, remainder} *)
-        currentStep = 1, (* il passo corrente dell'algoritmo di Euclide *)
-        userQuotient = "", 
-        userRemainder = "", 
-        errorMessage = "", 
-     (* True  se l'utente ha inserito il quoziente e il resto corretti del corrente 
-        passo dell'algoritmo e ha cliccato su Verifica, False altrimenti *)
-        isCompleted = False, 
-        nextA = "", 
-        nextB = ""
-      },
-      
+(* Versione modificata che ritorna un componente invece di creare una finestra di dialogo *)
+EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
+  DynamicModule[
+    {
+      currentA = a, 
+      currentB = b, 
+      steps = {},  (* steps è una lista di liste di questa forma {currentA, currentB, quotient, remainder} *)
+      currentStep = 1, (* il passo corrente dell'algoritmo di Euclide *)
+      userQuotient = "", 
+      userRemainder = "", 
+      errorMessage = "", 
+      (* True se l'utente ha inserito il quoziente e il resto corretti del corrente 
+         passo dell'algoritmo e ha cliccato su Verifica, False altrimenti *)
+      isCompleted = False, 
+      nextA = "", 
+      nextB = ""
+    },
+    
+    Panel[
       Column[{
         Style["Algoritmo di Euclide", Bold, 14],
-     (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che 
-        le variabili da cui dipende l'espressione vengono modificate e ritorna il valore 
-        dell'espressione, in questo il valore di ritorno viene ingnorato *)
+        (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che 
+           le variabili da cui dipende l'espressione vengono modificate e ritorna il valore 
+           dell'espressione, in questo il valore di ritorno viene ingnorato *)
         Dynamic[
-         (* La funzione Column posiziona i suoi argomenti in un layout verticale *)
+          (* La funzione Column posiziona i suoi argomenti in un layout verticale *)
           Column[
             Join[
-            (* Visualizzazione dei passi dell'algoritmo di Euclide già completati *)
-            (* La funzione Table genera una lista di espressioni iterando su un intervallo. 
-               In questo caso, crea una espressione Row per ogni i da 1 a Length[steps]. *)
+              (* Visualizzazione dei passi dell'algoritmo di Euclide già completati *)
+              (* La funzione Table genera una lista di espressioni iterando su un intervallo. 
+                 In questo caso, crea una espressione Row per ogni i da 1 a Length[steps]. *)
               Table[
-              (* La funzione With crea una variabile locale stepData che contiene il valore di steps[[i]]. *)
+                (* La funzione With crea una variabile locale stepData che contiene il valore di steps[[i]]. *)
                 With[{stepData = steps[[i]]},
-                (* La funzione Row posiziona i suoi argomenti in un layout orizontale *)
+                  (* La funzione Row posiziona i suoi argomenti in un layout orizontale *)
                   Row[{
                     Style[Row[{"Passo ", i}], Bold],
                     "     a = ", stepData[[1]], 
@@ -55,18 +52,16 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                     " = ", stepData[[3]], 
                     ", resto ", stepData[[4]]
                   }]
-
                 ],
                 {i, Length[steps]}
               ],
               
               If[isCompleted,
-                  (* isCompleted is True *)
+                (* isCompleted is True *)
                 If[currentB === 0 || currentStep > stepsToComplete,
                   {
                     Style["Algoritmo completato! Il MCD \[EGrave] " <> ToString[currentA], Bold, 14],
                     Button["Avanza di " <> ToString[stepsToComplete] <> " caselle",
-                      DialogReturn[];
                       onSuccessCallback[currentA];
                     ]
                   },
@@ -90,22 +85,21 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                       ,
                         errorMessage = "Risposta errata! Riprova."
                       ]
-                   ]
+                    ]
                   }
                 ],
                 (* isCompleted is False *)
                 {
-                (* Visualizzazione del attuale passo dell'algoritmo di Euclide *)
-                    Row[{
-                      Style[Row[{"Passo ", currentStep}], Bold],
-                      "    a = ", currentA,
-                      ", b = ", currentB,
-                      "     ", currentA, " div ", currentB,
-                      " = ", InputField[Dynamic[userQuotient], Number, FieldSize -> 5],
-                      ", resto ",
-                      InputField[Dynamic[userRemainder], Number, FieldSize -> 5]
-                    }]
-
+                  (* Visualizzazione del attuale passo dell'algoritmo di Euclide *)
+                  Row[{
+                    Style[Row[{"Passo ", currentStep}], Bold],
+                    "    a = ", currentA,
+                    ", b = ", currentB,
+                    "     ", currentA, " div ", currentB,
+                    " = ", InputField[Dynamic[userQuotient], Number, FieldSize -> 5],
+                    ", resto ",
+                    InputField[Dynamic[userRemainder], Number, FieldSize -> 5]
+                  }],
                   
                   Dynamic[Style[errorMessage, Red] ],
                   
@@ -133,14 +127,18 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
             ]
           ]
         ]
-      }],
-      WindowTitle -> "Algoritmo di Euclide", 
-      Modal -> True
+      }, Spacings -> 1], 
+      ImageMargins -> 10
     ]
+  ];
+
+(* Manteniamo la funzione di dialog originale per compatibilità *)
+EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
+  CreateDialog[
+    EuclideComponent[a, b, stepsToComplete, onSuccessCallback],
+    WindowTitle -> "Algoritmo di Euclide", 
+    Modal -> True
   ];
 
 End[]
 EndPackage[]
-
-
-

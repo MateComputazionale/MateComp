@@ -71,10 +71,10 @@ StartGame[___] := Module[
       (* Dynamic[seedInput] serve per fare in modo che il valore inserito nel campo di input sarà collegato dinamicamente 
          alla variabile seedInput. Ciò significa che qualsiasi modifica apportata nel campo di input aggiornerà seedInput in tempo reale. *)
       InputField[Dynamic[seedInput], Number],  (* Campo di input per il seed *)
-      DefaultButton["OK", DialogReturn[seedInput]]  (* Pulsante OK che conferma il valore inserito *)
+      DefaultButton["OK", DialogReturn[seedInput] ]  (* Pulsante OK che conferma il valore inserito *)
     }],
     WindowTitle -> "Seed del Gioco"  (* Titolo della finestra di dialogo *)
-  ]];
+  ] ];
   
   (* Gestione del risultato della finestra di dialogo *)
   If[seed === "cancel" || seed === $Canceled,
@@ -111,86 +111,116 @@ StartGame[___] := Module[
         isGameOver = False,                (* Indica se il gioco è finito *)
         obstaclesList = obstacles,         (* Lista degli ostacoli *)
         totalBoardCells = totalCells,      (* Numero totale di celle *)
-        originalSeed = seed                (* Salva il seed originale per poter ricominciare *)
+        originalSeed = seed,               (* Salva il seed originale per poter ricominciare *)
+        num1 = 0,                          (* Primo numero per l'algoritmo di Euclide *)
+        num2 = 0,                          (* Secondo numero per l'algoritmo di Euclide *)
+        showEuclide = False,               (* Indica se mostrare il componente di Euclide *)
+        euclideComponent = Null            (* Componente per l'algoritmo di Euclide *)
       },
       
       (* Crea l'interfaccia utente *)
       Column[{
         (* Titolo del gioco *)
-        Style["Gioco dell'Oca con Algoritmo di Euclide", Bold, 16],
+        Style["Gioco dell'Anatra con calcolo del MCD", Bold, 20],
         
-        (* Visualizzazione dinamica del tabellone di gioco *)
-        (* Crea la grafica del tabellone e aggiorna automaticamente la grafica quando le sue variabili cambiano. *)
-        Dynamic@Graphics[
-          Join[
-            boardPrimitives,                              (* Disegna il tabellone *)
-            Board`DrawPlayer[playerPosition, boardColumns] (* Disegna il giocatore nella posizione corrente *)
-          ],
-          PlotRange -> {{0, boardColumns}, {0, boardRows}}, (* Imposta l'area di visualizzazione *)
-          ImageSize -> 400                                  (* Dimensione dell'immagine *)
-        ],
-        
-        (* Pulsante per tirare il dado *)
-        Button["Tira il dado", 
-          (* Genera un numero casuale da 1 a 6 *)
-          diceValue = RandomInteger[{1, 6}];
-          
-          (* Genera due numeri casuali per il calcolo del MCD *)
-          Module[{num1, num2},
-            num1 = RandomInteger[{10, 99}];          (* Genera un numero tra 10 e 99 *)
-            num2 = RandomInteger[{1, num1 - 1}];     (* Genera un numero minore di num1 *)
-            
-            (* Apre la finestra di dialogo per l'algoritmo di Euclide *)
-            Euclide`EuclideDialog[num1, num2, diceValue, 
-              (* Callback che viene chiamata quando l'utente completa l'algoritmo *)
-              Function[gcdResult, 
-                Module[{newPosition},
-                  (* Calcola la nuova posizione considerando gli ostacoli *)
-                  newPosition = Board`GetNextPosition[
-                    playerPosition, diceValue, obstaclesList, totalBoardCells
-                  ];
-                  (* Aggiorna la posizione del giocatore *)
-                  playerPosition = newPosition;
-                  (* Controlla se il giocatore ha raggiunto o superato l'ultima cella *)
-                  If[playerPosition >= totalBoardCells, isGameOver = True];
-                ]
-              ]
-            ];
-          ],
-          (* Disabilita il pulsante se il gioco è finito *)
-          Enabled -> Dynamic[!isGameOver]
-        ],
-        
-        (* Visualizzazione dinamica dello stato del gioco *)
-        (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che le variabili 
-           da cui dipende l'espressione vengono modificate e ritorna il valore dell'espressione, 
-          in questo il valore di ritorno viene ingnorato *)
-        Dynamic[
-          If[isGameOver,
-            (* Se il gioco è finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
-            Column[{
-              "Hai vinto!",
-              Button["Nuova Partita", 
-                (* Reset dello stato del gioco *)
-                {playerPosition, diceValue, isGameOver} = ResetGame[]
-              ]
-            }],
-            (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
-            "Ultimo lancio: " <> ToString[diceValue]
-          ]
-        ],
-        
-        (* Pulsanti di controllo del gioco *)
+        (* Layout orizzontale con tabellone a sinistra e componente di Euclide a destra *)
         Row[{
-          Button["Ricomincia da capo", 
-            (* Reset del gioco mantenendo lo stesso seed *)
-            SeedRandom[originalSeed];
-            {playerPosition, diceValue, isGameOver} = ResetGame[]
-          ],
-          Spacer[20],  (* Spaziatore tra i pulsanti *)
-          Button["Chiudi schermata", 
-            (* Chiudi il notebook corrente *)
-            NotebookClose[EvaluationNotebook[]]
+          (* Colonna sinistra con tabellone e pulsanti di gioco *)
+          Column[{
+            (* Visualizzazione dinamica del tabellone di gioco *)
+            (* Crea la grafica del tabellone e aggiorna automaticamente la grafica quando le sue variabili cambiano. *)
+            Dynamic@Graphics[
+              Join[
+                boardPrimitives,                              (* Disegna il tabellone *)
+                Board`DrawPlayer[playerPosition, boardColumns] (* Disegna il giocatore nella posizione corrente *)
+              ],
+              PlotRange -> {{0, boardColumns}, {0, boardRows}}, (* Imposta l'area di visualizzazione *)
+              ImageSize -> 400                                  (* Dimensione dell'immagine *)
+            ],
+            
+            (* Pulsante per tirare il dado *)
+            Button["Tira il dado", 
+              (* Genera un numero casuale da 1 a 6 *)
+              diceValue = RandomInteger[{1, 6}];
+              
+              (* Genera due numeri casuali per il calcolo del MCD *)
+              num1 = RandomInteger[{10, 99}];          (* Genera un numero tra 10 e 99 *)
+              num2 = RandomInteger[{1, num1 - 1}];     (* Genera un numero minore di num1 *)
+              
+              (* Aggiorna il componente di Euclide *)
+              euclideComponent = Euclide`EuclideComponent[num1, num2, diceValue, 
+                (* Callback che viene chiamata quando l'utente completa l'algoritmo *)
+                Function[gcdResult, 
+                  Module[{newPosition},
+                    (* Calcola la nuova posizione considerando gli ostacoli *)
+                    newPosition = Board`GetNextPosition[
+                      playerPosition, diceValue, obstaclesList, totalBoardCells
+                    ];
+                    (* Aggiorna la posizione del giocatore *)
+                    playerPosition = newPosition;
+                    (* Controlla se il giocatore ha raggiunto o superato l'ultima cella *)
+                    If[playerPosition >= totalBoardCells, isGameOver = True];
+                    (* Nascondi il componente di Euclide una volta completato *)
+                    showEuclide = False;
+                  ]
+                ]
+              ];
+              
+              (* Mostra il componente di Euclide *)
+              showEuclide = True;
+            , Enabled -> Dynamic[!isGameOver] ],
+            
+            (* Visualizzazione dinamica dello stato del gioco *)
+            (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che le variabili 
+              da cui dipende l'espressione vengono modificate e ritorna il valore dell'espressione, 
+              in questo il valore di ritorno viene ingnorato *)
+            Dynamic[
+              If[isGameOver,
+                (* Se il gioco è finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
+                Column[{
+                  "Hai vinto!",
+                  Button["Nuova Partita", 
+                    (* Reset dello stato del gioco *)
+                    {playerPosition, diceValue, isGameOver} = ResetGame[];
+                    showEuclide = False;
+                  ]
+                }],
+                (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
+                "Ultimo lancio: " <> ToString[diceValue]
+              ]
+            ],
+            
+            (* Pulsanti di controllo del gioco *)
+            Row[{
+              Button["Ricomincia", 
+                (* Reset del gioco mantenendo lo stesso seed *)
+                SeedRandom[originalSeed];
+                {playerPosition, diceValue, isGameOver} = ResetGame[];
+                showEuclide = False;
+              ],
+              Spacer[20],  (* Spaziatore tra i pulsanti *)
+              Button["Chiudi il gioco", 
+                (* Chiudi il notebook corrente *)
+                NotebookClose[EvaluationNotebook[] ]
+              ]
+            }]
+          }],
+          
+          Spacer[20], (* Aggiunta di spazio tra il tabellone e il componente di Euclide *)
+          
+          (* Colonna destra con il componente di Euclide *)
+          Dynamic[
+            If[showEuclide, 
+              euclideComponent,
+              (* Mostra un messaggio quando il componente di Euclide non è visibile *)
+              Panel[
+                Column[{
+                  Style["Tira il dado per cominciare a giocare!", Bold, 14]
+                }],
+                ImageMargins -> 10,
+                ImageSize -> {400, 300}
+              ]
+            ]
           ]
         }]
       },
@@ -198,7 +228,7 @@ StartGame[___] := Module[
       Spacings -> 2         (* Spaziatura tra gli elementi *)
       ]
     ],
-    WindowTitle -> "Gioco dell'Oca con Algoritmo di Euclide"  (* Titolo della finestra del gioco *)
+    WindowTitle -> Gioco dell'Anatra con calcolo del MCD  (* Titolo della finestra del gioco *)
   ];
 ];
 

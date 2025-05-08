@@ -11,5 +11,10 @@ Componenti: Dado, scacchiera, pedina
 - Pulsante pulisci campi.(S)
 - fare in modo di chiedere quoziente e resto (non li deve dire il gioco) (FEDE)
 
-da errori se inserisco ,
-fare scorrere le palline in giu
+il nome è $Failed
+sarebbe bello mettere un dado
+mettere l'aiuto nella stessa schermata
+centrare tutto rispetto alla finestra
+fare il dado visivamente
+mettere i bottoni coerenti
+togliere i numeri nella griglia -> potremmo tiogliere le caselle grige e farle direttamente bianche

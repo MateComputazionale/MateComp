@@ -4,7 +4,7 @@ EuclideComponent::usage =
   "EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] \
 crea un componente per calcolare il GCD usando l'algoritmo di Euclide, mostrando il calcolo passo per passo.";
 
-Begin["Private"]
+Begin["`Private`"]
 
 Get["Buttons.m"];
 Get["Aiuto.m"];

@@ -3,7 +3,7 @@ BeginPackage["Aiuto`"]
 MostraAiuto::usage = 
   "MostraAiuto[a_Integer, b_Integer] mostra la divisione a = q*b + r come gruppi di aiuto colorate in base al valore (blu=10, arancione=1).";
 
-Begin["Private"]
+Begin["`Private`"]
 
 (* Funzione per creare aiuto che rappresentano un numero n *)
 CreaAiutoValore[n_Integer, radius_: 0.2] := Module[

@@ -115,7 +115,8 @@ StartGame[___] := Module[
         num1 = 0,                          (* Primo numero per l'algoritmo di Euclide *)
         num2 = 0,                          (* Secondo numero per l'algoritmo di Euclide *)
         showEuclide = False,               (* Indica se mostrare il componente di Euclide *)
-        euclideComponent = Null            (* Componente per l'algoritmo di Euclide *)
+        euclideComponent = Null,            (* Componente per l'algoritmo di Euclide *)
+        diceButtonEnabled = True  (* Controlla se il pulsante è abilitato *)
       },
       
       (* Crea l'interfaccia utente *)
@@ -139,36 +140,30 @@ StartGame[___] := Module[
             ],
             
             (* Pulsante per tirare il dado *)
-            Button["Tira il dado", 
-              (* Genera un numero casuale da 1 a 6 *)
+            Button["Tira il dado",
+            (
+              diceButtonEnabled = False;
               diceValue = RandomInteger[{1, 6}];
-              
-              (* Genera due numeri casuali per il calcolo del MCD *)
-              num1 = RandomInteger[{10, 99}];          (* Genera un numero tra 10 e 99 *)
-              num2 = RandomInteger[{1, num1 - 1}];     (* Genera un numero minore di num1 *)
-              
-              (* Aggiorna il componente di Euclide *)
-              euclideComponent = Euclide`EuclideComponent[num1, num2, diceValue, 
-                (* Callback che viene chiamata quando l'utente completa l'algoritmo *)
-                Function[gcdResult, 
+              num1 = RandomInteger[{10, 99}];
+              num2 = RandomInteger[{1, num1 - 1}];
+
+              euclideComponent = Euclide`EuclideComponent[num1, num2, diceValue,
+                Function[gcdResult,
                   Module[{newPosition},
-                    (* Calcola la nuova posizione considerando gli ostacoli *)
                     newPosition = Board`GetNextPosition[
                       playerPosition, diceValue, obstaclesList, totalBoardCells
                     ];
-                    (* Aggiorna la posizione del giocatore *)
                     playerPosition = newPosition;
-                    (* Controlla se il giocatore ha raggiunto o superato l'ultima cella *)
                     If[playerPosition >= totalBoardCells, isGameOver = True];
-                    (* Nascondi il componente di Euclide una volta completato *)
                     showEuclide = False;
+                    diceButtonEnabled = True;  (* Riabilita il pulsante solo dopo il movimento *)
                   ]
                 ]
               ];
-              
-              (* Mostra il componente di Euclide *)
               showEuclide = True;
-            , Enabled -> Dynamic[!isGameOver] ],
+            ),
+            Enabled -> Dynamic[diceButtonEnabled && !isGameOver]
+          ],
             
             (* Visualizzazione dinamica dello stato del gioco *)
             (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che le variabili 

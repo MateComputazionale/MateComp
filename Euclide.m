@@ -9,7 +9,7 @@ displays an interactive dialog for calculating GCD using Euclid's algorithm, sho
 Begin["`Private`"]
 
 Get["Buttons.m"];
-Get["PallineDivisione.m"];
+Get["Aiuto.m"];
 
 EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
   CreateDialog[
@@ -48,10 +48,14 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                 With[{stepData = steps[[i]]},
                 (* La funzione Row posiziona i suoi argomenti in un layout orizontale *)
                   Row[{
-                    "Passo ", i, ": ",
-                    stepData[[1]], " div ", stepData[[2]], " = ", 
-                    stepData[[3]], ", resto ", stepData[[4]]
+                    Style[Row[{"Passo ", i}], Bold],
+                    "     a = ", stepData[[1]], 
+                    " b = ", stepData[[2]], 
+                    "     ", stepData[[1]], " div ", stepData[[2]],
+                    " = ", stepData[[3]], 
+                    ", resto ", stepData[[4]]
                   }]
+
                 ],
                 {i, Length[steps]}
               ],
@@ -72,7 +76,7 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                       "a = ", InputField[Dynamic[nextA], Number, FieldSize -> 5], "   ",
                       "b = ", InputField[Dynamic[nextB], Number, FieldSize -> 5]
                     }],
-                    Dynamic[Style[errorMessage, Red]],
+                    Dynamic[Style[errorMessage, Red] ],
                     Button["Prosegui",
                       If[nextA === currentB && nextB === Mod[currentA, currentB],
                         currentA = nextA;
@@ -92,20 +96,23 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
                 (* isCompleted is False *)
                 {
                 (* Visualizzazione del attuale passo dell'algoritmo di Euclide *)
-                  Row[{
-                    "Passo ", currentStep, ": ",
-                    currentA, " div ", currentB, " = ",
-                    InputField[Dynamic[userQuotient], Number, FieldSize -> 5],
-                    ", resto ",
-                    InputField[Dynamic[userRemainder], Number, FieldSize -> 5]
-                  }],
+                    Row[{
+                      Style[Row[{"Passo ", currentStep}], Bold],
+                      "    a = ", currentA,
+                      ", b = ", currentB,
+                      "     ", currentA, " div ", currentB,
+                      " = ", InputField[Dynamic[userQuotient], Number, FieldSize -> 5],
+                      ", resto ",
+                      InputField[Dynamic[userRemainder], Number, FieldSize -> 5]
+                    }]
+
                   
-                  Dynamic[Style[errorMessage, Red]],
+                  Dynamic[Style[errorMessage, Red] ],
                   
                   ClearFields[userQuotient, userRemainder, errorMessage],
                   
-                  Button["Mostra Palline",
-                    PallineDivisione`MostraPalline[currentA, currentB]
+                  Button["Aiuto",
+                    Aiuto`MostraAiuto[currentA, currentB]
                   ],
                   
                   Button["Verifica",

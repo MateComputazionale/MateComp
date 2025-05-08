@@ -224,7 +224,7 @@ StartGame[___] := Module[
       Spacings -> 2         (* Spaziatura tra gli elementi *)
       ]
     ],
-    WindowTitle -> Gioco dell'Anatra con calcolo del MCD  (* Titolo della finestra del gioco *)
+    WindowTitle -> "Gioco dell'Anatra con calcolo del MCD"  (* Titolo della finestra del gioco *)
   ];
 ];
 

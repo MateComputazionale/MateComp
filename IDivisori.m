@@ -192,6 +192,7 @@ StartGame[___] := Module[
                 SeedRandom[originalSeed];
                 {playerPosition, diceValue, isGameOver} = ResetGame[];
                 showEuclide = False;
+                diceButtonEnabled = True;  (* Riabilita il pulsante *)
               ],
               Spacer[20],  (* Spaziatore tra i pulsanti *)
               Button["Chiudi il gioco", 

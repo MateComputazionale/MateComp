@@ -13,7 +13,7 @@ Begin["`Private`"]
 
 (* Caricamento di file esterni che contengono funzionalit\[AGrave] ausiliarie *)
 Get["Buttons.m"];
-Get["PallineDivisione.m"];
+Get["Aiuto.m"];
 
 (* Definizione della funzione principale EuclideDialog *)
 EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
@@ -171,6 +171,3 @@ End[]
 
 (* Fine del pacchetto *)
 EndPackage[]
-
-
-

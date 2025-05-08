@@ -13,8 +13,10 @@ Componenti: Dado, scacchiera, pedina
 
 il nome è $Failed
 sarebbe bello mettere un dado
-mettere l'aiuto nella stessa schermata
+mettere l'aiuto nella stessa schermata (non popup a parte)
 centrare tutto rispetto alla finestra
 fare il dado visivamente
 mettere i bottoni coerenti
 togliere i numeri nella griglia -> potremmo tiogliere le caselle grige e farle direttamente bianche
+disabilitare pulsante tira dado
+disabilitare pulsante seed

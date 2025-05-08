@@ -82,22 +82,29 @@ GetNextPosition[start_, roll_, obs_List, totalCells_] := Module[
    alla cella finale (cols*rows), muovendosi solo a destra o in alto.
 *)
 GeneratePath[cols_, rows_] := Module[
-  {total = cols*rows,       (* numero totale di celle *)
-   cur = 1,                 (* posizione corrente *)
-   path = {1},              (* percorso, inizia dalla cella 1 *)
-   moves,                   (* mosse possibili *)
-   nxt},                    (* prossima mossa scelta *)
+  {total = cols*rows, cur = 1, path = {1}, moves, nxt, x, y},
+  
   While[cur < total,
-    (* Le mosse possibili sono: cella a destra o cella sopra *)
-    moves = Select[{cur + 1, cur + cols}, # <= total &];
-    (* Scegli casualmente una delle mosse possibili *)
+    {x, y} = LinearCoordinates[cur, cols];
+    
+    (* Se siamo sull'ultima riga, possiamo solo andare a destra (se possibile) *)
+    If[y == rows - 1,
+      moves = Select[{cur + 1}, # <= total && Mod[#, cols] != 1 &],
+      
+      (* Se siamo sull'ultima colonna, possiamo solo salire (in alto) *)
+      If[x == cols - 1,
+        moves = Select[{cur + cols}, # <= total &],
+        
+        (* Altrimenti, possiamo andare a destra o in alto *)
+        moves = Select[{cur + 1, cur + cols}, # <= total &]
+      ]
+    ];
+    
     nxt = RandomChoice[moves];
-    (* Aggiungi la nuova cella al percorso *)
     AppendTo[path, nxt];
-    (* Aggiorna la posizione corrente *)
     cur = nxt;
   ];
-  (* Rimuovi eventuali duplicati dal percorso *)
+  
   DeleteDuplicates[path]
 ];
 

@@ -211,28 +211,10 @@ StartGame[___] := Module[
             (* Pulsanti di controllo del gioco *)
             (* Pulsanti di controllo del gioco migliorati con sfondi colorati *)
             Row[{
-            Button[
-              TextCell["Ricomincia", "Text", FontColor -> White],
-              (
-                SeedRandom[originalSeed];
-                {playerPosition, diceValue, isGameOver} = ResetGame[];
-                showEuclide = False;
-                diceButtonEnabled = True;
-              ),
-              Background -> RGBColor[0.2, 0.6, 0.8],
-              FrameMargins -> 10,
-              Appearance -> None,
-              BaseStyle -> {
-                FontSize -> 14,
-                FontColor -> White,
-                FontWeight -> "Bold",
-                FontFamily -> "Arial"
-              },
-              ImageSize -> {120, Automatic},
-              Method -> "Queued",
-              ContentPadding -> 10,
-              RoundingRadius -> 8,
-              BoxShadow -> {0, 2, 4, GrayLevel[0.5]}
+            (* Utilizzo della funzione Restart dal pacchetto Buttons *)
+            Buttons`Restart[
+              playerPosition, diceValue, isGameOver, 
+              originalSeed, showEuclide, diceButtonEnabled
             ],
             
             Spacer[20],

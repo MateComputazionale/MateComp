@@ -30,6 +30,42 @@ Get["Buttons.m"];    (* Pacchetto per la gestione dei pulsanti nell'interfaccia 
 Get["Board.m"];      (* Pacchetto per la gestione del tabellone di gioco *)
 Get["Euclide.m"];    (* Pacchetto per l'implementazione dell'algoritmo di Euclide *)
 
+(* Funzione per disegnare un dado con un valore specifico *)
+DrawDice[value_Integer] := Module[
+  {diceSize = 100, dotSize = 16, dotPositions},
+  
+  (* Definizione delle posizioni dei punti per ogni valore del dado *)
+  dotPositions = Switch[value,
+    1, {{0, 0}},  (* Centro *)
+    
+    2, {{-0.3, 0.3}, {0.3, -0.3}},  (* In diagonale *)
+    
+    3, {{-0.3, 0.3}, {0, 0}, {0.3, -0.3}},  (* Diagonale + centro *)
+    
+    4, {{-0.3, 0.3}, {0.3, 0.3}, {-0.3, -0.3}, {0.3, -0.3}},  (* Ai quattro angoli *)
+    
+    5, {{-0.3, 0.3}, {0.3, 0.3}, {0, 0}, {-0.3, -0.3}, {0.3, -0.3}},  (* Quattro angoli + centro *)
+    
+    6, {{-0.3, 0.3}, {0.3, 0.3}, {-0.3, 0}, {0.3, 0}, {-0.3, -0.3}, {0.3, -0.3}},  (* Due colonne da tre *)
+    
+    _, {}  (* Per valori non validi, nessun punto *)
+  ];
+  
+  (* Creazione del grafico del dado *)
+  Graphics[{
+    (* Sfondo bianco del dado con bordo nero *)
+    {EdgeForm[{Thick, Black}], White, 
+     Rectangle[{-0.5, -0.5}, {0.5, 0.5}, RoundingRadius -> 0.1]},
+    
+    (* Disegna i punti neri sul dado *)
+    {Black, 
+     Map[Disk[#, 0.08] &, dotPositions]}
+  },
+  ImageSize -> diceSize,  (* Dimensione dell'immagine aumentata a 100 (era 50) *)
+  PlotRange -> {{-0.6, 0.6}, {-0.6, 0.6}}  (* Range di visualizzazione *)
+  ]
+];
+
 (* ResetGame: Resetta lo stato del gioco ai valori iniziali
    Output:
    - Una lista con i valori iniziali: {posizione=1, valore_dado=0, partita_finita=False}
@@ -187,8 +223,11 @@ StartGame[___] := Module[
                   ]
                 }],
                 (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
-                TextCell[Row[{"Ultimo lancio: ", diceValue}], "Text"]
-
+                Column[{
+                  If[diceValue > 0, 
+                    DrawDice[diceValue]
+                  ]
+                }]
               ]
             ],
             

@@ -11,9 +11,7 @@ Componenti: Dado, scacchiera, pedina
 - Pulsante pulisci campi.(S)
 - fare in modo di chiedere quoziente e resto (non li deve dire il gioco) (FEDE)
 
-mettere l'aiuto nella stessa schermata (non popup a parte)
 centrare tutto rispetto alla finestra
-mettere i bottoni coerenti
 disabilitare pulsante seed
 togliere i "path" dalle chiamate di funzione dei file
 GUARDARE CHE NON CI SIANO ERRORI SU WOLFRAM (CODICE IN ROSSO)

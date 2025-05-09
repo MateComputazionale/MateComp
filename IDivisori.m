@@ -116,8 +116,8 @@ StartGame[___] := Module[
         num1 = 0,                          (* Primo numero per l'algoritmo di Euclide *)
         num2 = 0,                          (* Secondo numero per l'algoritmo di Euclide *)
         showEuclide = False,               (* Indica se mostrare il componente di Euclide *)
-        euclideComponent = Null,            (* Componente per l'algoritmo di Euclide *)
-        diceButtonEnabled = True  (* Controlla se il pulsante è abilitato *)
+        euclideComponent = Null,           (* Componente per l'algoritmo di Euclide *)
+        diceButtonEnabled = True           (* Controlla se il pulsante è abilitato *)
       },
       
       (* Crea l'interfaccia utente *)
@@ -148,39 +148,12 @@ StartGame[___] := Module[
             (* Pulsante per tirare il dado - CENTRATO *)
             (* Utilizzo di un contenitore Row per centrare il pulsante *)
             Row[{
-              Spacer[125],  (* Aggiunge spazio a sinistra per centrare il pulsante (metà della differenza tra larghezza del contenitore e larghezza del pulsante) *)
-              Button[TextCell["Tira il dado", "Text", FontColor -> White],
-              (
-                diceButtonEnabled = False;
-                diceValue = RandomInteger[{1, 6}];
-                num1 = RandomInteger[{10, 99}];
-                num2 = RandomInteger[{1, num1 - 1}];
-
-                euclideComponent = Euclide`EuclideComponent[num1, num2, diceValue,
-                  Function[gcdResult,
-                    Module[{newPosition},
-                      newPosition = Board`GetNextPosition[
-                        playerPosition, diceValue, obstaclesList, totalBoardCells
-                      ];
-                      playerPosition = newPosition;
-                      If[playerPosition >= totalBoardCells, isGameOver = True];
-                      showEuclide = False;
-                      diceButtonEnabled = True;  (* Riabilita il pulsante solo dopo il movimento *)
-                    ]
-                  ]
-                ];
-                showEuclide = True;
-              ),
-              ImageSize -> {150, Automatic},  (* Dimensione dell'immagine del pulsante *)
-              Enabled -> Dynamic[diceButtonEnabled && !isGameOver],
-              Appearance -> "Frameless",
-              Background -> RGBColor[0.3, 0.6, 0.3],
-              BaseStyle ->{
-                FontSize -> 14,
-                FontColor -> White,
-                FontWeight -> "Bold"
-              }
-            ],
+              Spacer[125],  (* Aggiunge spazio a sinistra per centrare il pulsante *)
+              (* Utilizzo della funzione RollDice dal pacchetto Buttons *)
+              Buttons`RollDice[
+                diceButtonEnabled, diceValue, num1, num2, euclideComponent, 
+                playerPosition, obstaclesList, totalBoardCells, isGameOver, showEuclide
+              ],
               Spacer[125]  (* Aggiunge spazio a destra per mantenere simmetria *)
             }, Alignment -> Center],  (* Imposta l'allineamento centrale per la riga *)
             

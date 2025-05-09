@@ -187,7 +187,8 @@ StartGame[___] := Module[
                   ]
                 }],
                 (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
-                "Ultimo lancio: " <> ToString[diceValue]
+                TextCell[Row[{"Ultimo lancio: ", diceValue}], "Text"]
+
               ]
             ],
             
@@ -195,7 +196,7 @@ StartGame[___] := Module[
             (* Pulsanti di controllo del gioco migliorati con sfondi colorati *)
             Row[{
             Button[
-              "Ricomincia",
+              TextCell["Ricomincia", "Text", FontColor -> White],
               (
                 SeedRandom[originalSeed];
                 {playerPosition, diceValue, isGameOver} = ResetGame[];
@@ -221,7 +222,7 @@ StartGame[___] := Module[
             Spacer[20],
             
             Button[
-              "Chiudi il gioco",
+              TextCell["Chiudi il gioco", "Text", FontColor -> White],
               NotebookClose[EvaluationNotebook[]],
               Background -> RGBColor[0.8, 0.2, 0.2],
               FrameMargins -> 10,

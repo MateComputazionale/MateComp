@@ -15,7 +15,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
  DynamicModule[{
    currentA = a, currentB = b, steps = {}, currentStep = 1,
    userQuotient = "", userRemainder = "", errorMessage = "", 
-   isCompleted = False, nextA = "", nextB = "", userMCD = "", mcdMessage = ""
+   isCompleted = False, nextA = "", nextB = "", userMCD = "", mcdMessage = "",
+   showHelp = False, helpContent = Null
  },
   
   Panel[
@@ -65,6 +66,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                nextB = "";
                errorMessage = "";
                isCompleted = False;
+               showHelp = False;
                ,
                errorMessage = "Risposta errata! Riprova."
               ]
@@ -91,8 +93,9 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            
            ClearFields[userQuotient, userRemainder, errorMessage],
            
-           Button["Aiuto",
-            Aiuto`MostraAiuto[currentA, currentB]
+           Button[Dynamic[If[showHelp, "Nascondi aiuto", "Aiuto"]],
+            showHelp = !showHelp;
+            If[showHelp, helpContent = Aiuto`MostraAiuto[currentA, currentB]];
            ],
            
            Button["Verifica",
@@ -109,6 +112,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
              userQuotient = "";
              userRemainder = "";
              errorMessage = "";
+             showHelp = False;
              ,
              errorMessage = "Risposta errata! Riprova.";
              userQuotient = ""; userRemainder = "";
@@ -116,6 +120,15 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            ]
           }
          ]
+        ],
+        
+        (* Mostra l'aiuto se richiesto *)
+        If[showHelp && helpContent =!= Null,
+          {
+           Spacer[5],
+           helpContent
+          },
+          {}
         ]
        ]
       ]
@@ -134,7 +147,3 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
 
 End[]
 EndPackage[]
-
-
-
-

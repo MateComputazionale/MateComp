@@ -23,22 +23,21 @@ CreaAiutoValore[n_Integer, radius_: 0.2] := Module[
   ]
 ];
 
+(* Versione modificata che restituisce il contenuto invece di creare un dialogo *)
 MostraAiuto[a_Integer, b_Integer] := Module[
   {
     q = Quotient[a, b], r = Mod[a, b],
     gruppi, resto, radius = 0.2
   },
   
-gruppi = {
-  Row[CreaAiutoValore[b, radius], Spacer[5] ],
-  Style["× " <> ToString[q] <> " gruppi", Italic, Gray]
-};
-
-
+  gruppi = {
+    Row[CreaAiutoValore[b, radius], Spacer[5]],
+    Style["x " <> ToString[q] <> " gruppi", Italic, Gray]
+  };
 
   resto = CreaAiutoValore[r, radius];
 
-  CreateDialog[
+  Panel[
     Column[{
       Style["MCD visivamente:", Bold, 14],
       "Dividi a = " <> ToString[a] <> " palline in gruppi da b = " <> ToString[b] <> ".",
@@ -47,11 +46,9 @@ gruppi = {
       If[r > 0,
         Row[{"Resto: ", Row[resto]}],
         Nothing
-      ],
-      Button["Chiudi", DialogReturn[] ]
+      ]
     }],
-    Scrollbars -> True,
-    WindowTitle -> "Aiuto Visivo - Divisione"
+    ImageMargins -> 10
   ]
 ];
 

@@ -181,7 +181,7 @@ StartGame[___] := Module[
             ],
             
             (* Pulsante per tirare il dado*)
-            Button["Tira il dado",
+            Button[TextCell["Tira il dado", "Text", FontColor -> White],
             (
               diceButtonEnabled = False;
               diceValue = RandomInteger[{1, 6}];
@@ -203,8 +203,15 @@ StartGame[___] := Module[
               ];
               showEuclide = True;
             ),
-            ImageSize -> {100, Automatic},  (* Dimensione dell'immagine del pulsante *)
-            Enabled -> Dynamic[diceButtonEnabled && !isGameOver]
+            ImageSize -> {150, Automatic},  (* Dimensione dell'immagine del pulsante *)
+            Enabled -> Dynamic[diceButtonEnabled && !isGameOver],
+            Appearance -> "Frameless",
+            Background -> RGBColor[0.3, 0.6, 0.3],
+            BaseStyle ->{
+              FontSize -> 14,
+              FontColor -> White,
+              FontWeight -> "Bold"
+            }
           ],
             
             (* Visualizzazione dinamica dello stato del gioco *)

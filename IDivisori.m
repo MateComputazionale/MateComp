@@ -13,7 +13,7 @@
 (* :Sources: TODO*)
 (* :Limitations: this is a preliminary version, for educational purposes only.*)
 (* :Discussion: TODO*)
-(* :Requirements: Richiede i pacchetti Buttons.m, Board.m e Euclide.m *)
+(* :Requirements: Richiede i pacchetti Buttons.m, Board.m, Euclide.m e Dice.m *)
 (* :Warnings: TODO*)
 
 (* Definizione del pacchetto "IDivisori" *)
@@ -29,42 +29,7 @@ Begin["`Private`"]
 Get["Buttons.m"];    (* Pacchetto per la gestione dei pulsanti nell'interfaccia *)
 Get["Board.m"];      (* Pacchetto per la gestione del tabellone di gioco *)
 Get["Euclide.m"];    (* Pacchetto per l'implementazione dell'algoritmo di Euclide *)
-
-(* Funzione per disegnare un dado con un valore specifico *)
-DrawDice[value_Integer] := Module[
-  {diceSize = 100, dotSize = 16, dotPositions},
-  
-  (* Definizione delle posizioni dei punti per ogni valore del dado *)
-  dotPositions = Switch[value,
-    1, {{0, 0}},  (* Centro *)
-    
-    2, {{-0.3, 0.3}, {0.3, -0.3}},  (* In diagonale *)
-    
-    3, {{-0.3, 0.3}, {0, 0}, {0.3, -0.3}},  (* Diagonale + centro *)
-    
-    4, {{-0.3, 0.3}, {0.3, 0.3}, {-0.3, -0.3}, {0.3, -0.3}},  (* Ai quattro angoli *)
-    
-    5, {{-0.3, 0.3}, {0.3, 0.3}, {0, 0}, {-0.3, -0.3}, {0.3, -0.3}},  (* Quattro angoli + centro *)
-    
-    6, {{-0.3, 0.3}, {0.3, 0.3}, {-0.3, 0}, {0.3, 0}, {-0.3, -0.3}, {0.3, -0.3}},  (* Due colonne da tre *)
-    
-    _, {}  (* Per valori non validi, nessun punto *)
-  ];
-  
-  (* Creazione del grafico del dado *)
-  Graphics[{
-    (* Sfondo bianco del dado con bordo nero *)
-    {EdgeForm[{Thick, Black}], White, 
-     Rectangle[{-0.5, -0.5}, {0.5, 0.5}, RoundingRadius -> 0.1]},
-    
-    (* Disegna i punti neri sul dado *)
-    {Black, 
-     Map[Disk[#, 0.08] &, dotPositions]}
-  },
-  ImageSize -> diceSize,  (* Dimensione dell'immagine aumentata a 100 (era 50) *)
-  PlotRange -> {{-0.6, 0.6}, {-0.6, 0.6}}  (* Range di visualizzazione *)
-  ]
-];
+Get["Dice.m"];       (* Pacchetto per la gestione del dado *)
 
 (* ResetGame: Resetta lo stato del gioco ai valori iniziali
    Output:
@@ -77,7 +42,7 @@ ResetGame[] := {1, 0, False};
 
 (* StartGame: Funzione principale che avvia il gioco
    Input:
-   - ___ i tree trattini bassi rappresentano un pattern che fa match con zero, uno o più argomenti.
+   - ___ i tre trattini bassi rappresentano un pattern che fa match con zero, uno o più argomenti.
     (corrisponde a qualsiasi parametro opzionale che viene ignorato)
    Output:
    - Crea e visualizza l'interfaccia grafica del gioco
@@ -104,7 +69,7 @@ StartGame[___] := Module[
     (* Questa funzione posiziona i suoi argomenti in un layout verticale *)
     Column[{
       "Inserisci il numero seed per il gioco:",
-      (* Dynamic[seedInput] serve per fare in modo che il valore inserito nel campo di input sarà collegato dinamicamente 
+      (* Dynamic[seedInput] serve per fare in modo che il valore inserito nel campo di input sia collegato dinamicamente 
          alla variabile seedInput. Ciò significa che qualsiasi modifica apportata nel campo di input aggiornerà seedInput in tempo reale. *)
       InputField[Dynamic[seedInput], Number],  (* Campo di input per il seed *)
       DefaultButton["OK", DialogReturn[seedInput] ]  (* Pulsante OK che conferma il valore inserito *)
@@ -211,7 +176,7 @@ StartGame[___] := Module[
               FontSize -> 14,
               FontColor -> White,
               FontWeight -> "Bold"
-            }
+            } 
           ],
             
             (* Visualizzazione dinamica dello stato del gioco *)
@@ -269,7 +234,7 @@ StartGame[___] := Module[
             
             Button[
               TextCell["Chiudi il gioco", "Text", FontColor -> White],
-              NotebookClose[EvaluationNotebook[]],
+              NotebookClose[EvaluationNotebook[] ],
               Background -> RGBColor[0.8, 0.2, 0.2],
               FrameMargins -> 10,
               Appearance -> None,

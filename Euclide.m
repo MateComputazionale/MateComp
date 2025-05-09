@@ -56,15 +56,14 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                 {i, Length[steps]}
               ],
               
-              If[isCompleted,
-                (* isCompleted is True *)
-                If[currentB === 0 || currentStep > stepsToComplete,
+              If[currentB === 0,
                   {
                     Style["Algoritmo completato! Il MCD \[EGrave] " <> ToString[currentA], Bold, 14],
                     Button["Avanza di " <> ToString[stepsToComplete] <> " caselle",
                       onSuccessCallback[currentA];
                     ]
                   },
+                  If[isCompleted,
                   {
                     Style["Inserisci i nuovi valori per a e b per continuare:", Bold],
                     Row[{
@@ -86,8 +85,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                         errorMessage = "Risposta errata! Riprova."
                       ]
                     ]
-                  }
-                ],
+                  },
                 (* isCompleted is False *)
                 {
                   (* Visualizzazione del attuale passo dell'algoritmo di Euclide *)
@@ -126,6 +124,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
               ]
             ]
           ]
+        ]
         ]
       }, Spacings -> 1], 
       ImageMargins -> 10

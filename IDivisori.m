@@ -116,8 +116,8 @@ StartGame[___] := Module[
         num1 = 0,                          (* Primo numero per l'algoritmo di Euclide *)
         num2 = 0,                          (* Secondo numero per l'algoritmo di Euclide *)
         showEuclide = False,               (* Indica se mostrare il componente di Euclide *)
-        euclideComponent = Null,            (* Componente per l'algoritmo di Euclide *)
-        diceButtonEnabled = True  (* Controlla se il pulsante è abilitato *)
+        euclideComponent = Null,           (* Componente per l'algoritmo di Euclide *)
+        diceButtonEnabled = True           (* Controlla se il pulsante è abilitato *)
       },
       
       (* Crea l'interfaccia utente *)
@@ -145,39 +145,17 @@ StartGame[___] := Module[
               ImageSize -> 400                                  (* Dimensione dell'immagine *)
             ],
             
-            (* Pulsante per tirare il dado*)
-            Button[TextCell["Tira il dado", "Text", FontColor -> White],
-            (
-              diceButtonEnabled = False;
-              diceValue = RandomInteger[{1, 6}];
-              num1 = RandomInteger[{10, 99}];
-              num2 = RandomInteger[{1, num1 - 1}];
-
-              euclideComponent = Euclide`EuclideComponent[num1, num2, diceValue,
-                Function[gcdResult,
-                  Module[{newPosition},
-                    newPosition = Board`GetNextPosition[
-                      playerPosition, diceValue, obstaclesList, totalBoardCells
-                    ];
-                    playerPosition = newPosition;
-                    If[playerPosition >= totalBoardCells, isGameOver = True];
-                    showEuclide = False;
-                    diceButtonEnabled = True;  (* Riabilita il pulsante solo dopo il movimento *)
-                  ]
-                ]
-              ];
-              showEuclide = True;
-            ),
-            ImageSize -> {150, Automatic},  (* Dimensione dell'immagine del pulsante *)
-            Enabled -> Dynamic[diceButtonEnabled && !isGameOver],
-            Appearance -> "Frameless",
-            Background -> RGBColor[0.3, 0.6, 0.3],
-            BaseStyle ->{
-              FontSize -> 14,
-              FontColor -> White,
-              FontWeight -> "Bold"
-            } 
-          ],
+            (* Pulsante per tirare il dado - CENTRATO *)
+            (* Utilizzo di un contenitore Row per centrare il pulsante *)
+            Row[{
+              Spacer[125],  (* Aggiunge spazio a sinistra per centrare il pulsante *)
+              (* Utilizzo della funzione RollDice dal pacchetto Buttons *)
+              Buttons`RollDice[
+                diceButtonEnabled, diceValue, num1, num2, euclideComponent, 
+                playerPosition, obstaclesList, totalBoardCells, isGameOver, showEuclide
+              ],
+              Spacer[125]  (* Aggiunge spazio a destra per mantenere simmetria *)
+            }, Alignment -> Center],  (* Imposta l'allineamento centrale per la riga *)
             
             (* Visualizzazione dinamica dello stato del gioco *)
             (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che le variabili 
@@ -206,28 +184,10 @@ StartGame[___] := Module[
             (* Pulsanti di controllo del gioco *)
             (* Pulsanti di controllo del gioco migliorati con sfondi colorati *)
             Row[{
-            Button[
-              TextCell["Ricomincia", "Text", FontColor -> White],
-              (
-                SeedRandom[originalSeed];
-                {playerPosition, diceValue, isGameOver} = ResetGame[];
-                showEuclide = False;
-                diceButtonEnabled = True;
-              ),
-              Background -> RGBColor[0.2, 0.6, 0.8],
-              FrameMargins -> 10,
-              Appearance -> None,
-              BaseStyle -> {
-                FontSize -> 14,
-                FontColor -> White,
-                FontWeight -> "Bold",
-                FontFamily -> "Arial"
-              },
-              ImageSize -> {120, Automatic},
-              Method -> "Queued",
-              ContentPadding -> 10,
-              RoundingRadius -> 8,
-              BoxShadow -> {0, 2, 4, GrayLevel[0.5]}
+            (* Utilizzo della funzione Restart dal pacchetto Buttons *)
+            Buttons`Restart[
+              playerPosition, diceValue, isGameOver, 
+              originalSeed, showEuclide, diceButtonEnabled
             ],
             
             Spacer[20],

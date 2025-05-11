@@ -10,6 +10,7 @@ Begin["`Private`"]
 
 Get["Buttons.m"];
 Get["Aiuto.m"];
+Get["Suggerimento.m"];
 
 EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
  DynamicModule[{
@@ -73,6 +74,9 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
               (nextA = ""; nextB = ""; errorMessage = ""),
               ImageMargins -> 5
              ]
+             Button["Aiuto",
+            Suggerimento`MostraSuggerimento[currentA, currentB]
+           ]
            }]
           },
           
@@ -134,7 +138,6 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
 
 End[]
 EndPackage[]
-
 
 
 

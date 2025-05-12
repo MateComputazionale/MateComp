@@ -27,7 +27,26 @@ Begin["`Private`"]
 
 (* Importazione dei pacchetti necessari per il funzionamento del gioco *)
 Get["Buttons.m"];    (* Pacchetto per la gestione dei pulsanti nell'interfaccia *)
+(* Dichiarazione dei simboli esportati dal pacchetto Buttons.m *)
+(*
+Restart::usage = "Restart[position_, dice_, gameOver_, seed_, showEuclide_, diceButtonEnabled_] crea il bottone per ricominciare il gioco.";
+RollDice::usage = "RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, playerPosition_, obstaclesList_, totalBoardCells_, isGameOver_, showEuclide_] crea il bottone per tirare il dado.";
+ClearFields::usage = "ClearFields[quotient_, remainder_, message_] restituisce un bottone che ripulisce i campi.";
+*)
 Get["Board.m"];      (* Pacchetto per la gestione del tabellone di gioco *)
+(* Dichiarazione dei simboli esportati dal pacchetto Board.m *)
+(*
+BoardPrimitives::usage = 
+  "BoardPrimitives[cols, rows] genera il tabellone e restituisce \
+{primitives, obstacles, totalCells, cols, rows}.";
+
+GetNextPosition::usage = 
+  "GetNextPosition[startPosition, diceRoll, obstaclesList, totalCells] \
+calcola la nuova posizione tenendo conto degli ostacoli.";
+
+DrawPlayer::usage =
+  "DrawPlayer[position, cols] disegna la pedina del giocatore.";
+*)
 Get["Euclide.m"];    (* Pacchetto per l'implementazione dell'algoritmo di Euclide *)
 Get["Dice.m"];       (* Pacchetto per la gestione del dado *)
 

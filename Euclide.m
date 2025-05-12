@@ -9,8 +9,25 @@ crea un componente per calcolare il GCD usando l'algoritmo di Euclide, mostrando
 Begin["`Private`"]
 
 Get["Buttons.m"];
+(* Dichiarazione dei simboli esportati dal pacchetto Buttons.m *)
+(*
+Restart::usage = "Restart[position_, dice_, gameOver_, seed_, showEuclide_, diceButtonEnabled_] crea il bottone per ricominciare il gioco.";
+RollDice::usage = "RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, playerPosition_, obstaclesList_, totalBoardCells_, isGameOver_, showEuclide_] crea il bottone per tirare il dado.";
+ClearFields::usage = "ClearFields[quotient_, remainder_, message_] restituisce un bottone che ripulisce i campi.";
+*)
+
 Get["Aiuto.m"];
+(* Dichiarazione dei simboli esportati dal pacchetto Aiuto.m *)
+(*
+MostraAiuto::usage = 
+  "MostraAiuto[a_Integer, b_Integer] mostra la divisione a = q*b + r come gruppi di aiuto colorate in base al valore (blu=10, arancione=1).";
+*)
 Get["Suggerimento.m"];
+(* Dichiarazione dei simboli esportati dal pacchetto Suggerimento.m *)
+(*
+MostraSuggerimento::usage =
+  "MostraSuggerimento[a_Integer, b_Integer] mostra un passo dell'algoritmo di Euclide con cerchi colorati, etichette e passaggi successivi."
+*)
 
 EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] := 
  DynamicModule[{

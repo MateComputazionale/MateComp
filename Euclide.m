@@ -77,7 +77,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
               ImageMargins -> 5
              ]
              Button["Aiuto",
-            Suggerimento`MostraSuggerimento[currentA, currentB]
+            MostraSuggerimento[currentA, currentB]
            ]
            }]
           },
@@ -99,7 +99,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            
            Button[Dynamic[If[showHelp, "Nascondi aiuto", "Aiuto"]],
             showHelp = !showHelp;
-            If[showHelp, helpContent = Aiuto`MostraAiuto[currentA, currentB]];
+            If[showHelp, helpContent = MostraAiuto[currentA, currentB]];
            ],
            
            Button["Verifica",

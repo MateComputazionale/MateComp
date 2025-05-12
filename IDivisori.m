@@ -106,11 +106,7 @@ StartGame[___] := Module[
   (* Imposta il generatore di numeri casuali con il seed fornito *)
   SeedRandom[seed];
 
-  (* Board`BoardPrimitives[]; chiama la funzione BoardPrimitives dal pacchetto Board. L'uso del backtick indica che BoardPrimitives 
-    è una funzione definita nel pacchetto Board`. Questa riga utilizza un destructuring assignment per estrarre i valori restituiti 
-    dalla funzione BoardPrimitives in più variabili. La funzione restituisce una struttura contenente cinque elementi che vengono assegnati 
-    rispettivamente boardElements, obstacles, totalCells, columns, rows *)
-  {boardElements, obstacles, totalCells, columns, rows} = Board`BoardPrimitives[];
+  {boardElements, obstacles, totalCells, columns, rows} = BoardPrimitives[];
       
   (* Crea il notebook contenente l'interfaccia di gioco *)
   gameNotebook = CreateDocument[
@@ -155,7 +151,7 @@ StartGame[___] := Module[
               Dynamic@Graphics[
                 Join[
                   boardPrimitives,                              (* Disegna il tabellone *)
-                  Board`DrawPlayer[playerPosition, boardColumns] (* Disegna il giocatore nella posizione corrente *)
+                  DrawPlayer[playerPosition, boardColumns] (* Disegna il giocatore nella posizione corrente *)
                 ],
                 PlotRange -> {{0, boardColumns}, {0, boardRows}}, (* Imposta l'area di visualizzazione *)
                 ImageSize -> 400                                  (* Dimensione dell'immagine *)
@@ -165,7 +161,7 @@ StartGame[___] := Module[
               (* Utilizzo di un contenitore Row per centrare il pulsante *)
               Row[{
                 (* Utilizzo della funzione RollDice dal pacchetto Buttons *)
-                Buttons`RollDice[
+                RollDice[
                   diceButtonEnabled, diceValue, num1, num2, euclideComponent, 
                   playerPosition, obstaclesList, totalBoardCells, isGameOver, showEuclide
                 ]
@@ -199,7 +195,7 @@ StartGame[___] := Module[
               (* Pulsanti di controllo del gioco migliorati con sfondi colorati *)
               Row[{
                 (* Utilizzo della funzione Restart dal pacchetto Buttons *)
-                Buttons`Restart[
+                Restart[
                   playerPosition, diceValue, isGameOver, 
                   originalSeed, showEuclide, diceButtonEnabled
                 ],

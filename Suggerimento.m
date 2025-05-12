@@ -34,7 +34,7 @@ MostraSuggerimento[a_Integer, b_Integer] := Module[
   CreateDialog[
     Column[{
       Style["Suggerimento", Bold, 14],
-      Row[{"Il prossimo A \[EGrave] ", Style[b, Bold], , " e il prossimo B \[EGrave] ", Style[r, Bold]}],
+      Row[{"Il prossimo A \[EGrave] ", Style[b, Bold], " e il prossimo B \[EGrave] ", Style[r, Bold]}],
       
       Style["Passo Corrente:", Bold, 12],
         Row[{nodoA, Spacer[10], nodoB, Spacer[10], nodoR}],

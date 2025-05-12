@@ -201,9 +201,7 @@ StartGame[___] := Module[
                   },
                   ImageSize -> {120, Automatic},
                   Method -> "Queued",
-                  ContentPadding -> 10,
-                  RoundingRadius -> 8,
-                  BoxShadow -> {0, 2, 4, GrayLevel[0.5]}
+                  ContentPadding -> 10
                 ]
               }, Alignment -> Center]  (* Centramento della riga dei pulsanti *)
             }, Alignment -> Center],  (* Centramento della colonna sinistra *)

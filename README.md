@@ -26,7 +26,7 @@ Paragrafi da scrivere:
 - introduzione (E)
 - tutorial su come si usa il notebook e come si gioca (S)
   - spiegazione di tutte le cose che può fare l'utente in ogni momento
-- spiegazione mcd
-- spiegazione euclide
-- diagramma dipendenze dei pacchetti
-- commenti e lavoro futuro
+- spiegazione mcd (L)
+- spiegazione euclide (L)
+- diagramma dipendenze dei pacchetti (E)
+- commenti e lavoro futuro (F)

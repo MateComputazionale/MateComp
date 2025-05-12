@@ -23,8 +23,8 @@ DAFARE:
   
 Paragrafi da scrivere:
 - indice
-- introduzione
-- tutorial su come si usa il notebook e come si gioca
+- introduzione (E)
+- tutorial su come si usa il notebook e come si gioca (S)
   - spiegazione di tutte le cose che può fare l'utente in ogni momento
 - spiegazione mcd
 - spiegazione euclide

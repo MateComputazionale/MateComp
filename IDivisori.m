@@ -82,13 +82,8 @@ StartGame[___] := Module[
     (* L'utente ha annullato l'operazione - non fare nulla *)
     Return[]
   ];
-
-  (* Controlla se il seed è un numero valido *)
-  If[! NumericQ[seed],
-    (* Gestione dell'input non valido *)
-      MessageDialog["Il valore inserito non è valido. Inserire un numero."];
-      Return[]
-  ];
+  (* IntegerPart prendi la parte intera se il seed è un numero reale *)
+  seed = IntegerPart[seed];
   (* Imposta il generatore di numeri casuali con il seed fornito *)
   SeedRandom[seed];
 

@@ -73,7 +73,7 @@ StartGame[___] := Module[
          alla variabile seedInput. Ciò significa che qualsiasi modifica apportata nel campo di input aggiornerà seedInput in tempo reale. *)
       InputField[Dynamic[seedInput], Number],  (* Campo di input per il seed *)
       DefaultButton["OK", DialogReturn[seedInput] ]  (* Pulsante OK che conferma il valore inserito *)
-    }],
+    }, Alignment -> Center],  (* Aggiungo centramento della colonna della finestra di dialogo *)
     WindowTitle -> "Seed del Gioco"  (* Titolo della finestra di dialogo *)
   ] ];
   
@@ -121,121 +121,126 @@ StartGame[___] := Module[
       },
       
       (* Crea l'interfaccia utente *)
-      Column[{
-        (* Titolo del gioco *)
-        TextCell[
-          "Gioco dell'Anatra con calcolo del MCD",
-          "Text",
-          FontSize -> 20,
-          FontWeight -> "Bold",
-          FontColor -> Black
-        ],
-        (* Layout orizzontale con tabellone a sinistra e componente di Euclide a destra *)
-        Row[{
-          (* Colonna sinistra con tabellone e pulsanti di gioco *)
-          Column[{
-            (* Visualizzazione dinamica del tabellone di gioco *)
-            (* Crea la grafica del tabellone e aggiorna automaticamente la grafica quando le sue variabili cambiano. *)
-            Dynamic@Graphics[
-              Join[
-                boardPrimitives,                              (* Disegna il tabellone *)
-                Board`DrawPlayer[playerPosition, boardColumns] (* Disegna il giocatore nella posizione corrente *)
+      Pane[  (* Aggiungo un Pane per garantire il centramento corretto *)
+        Column[{
+          (* Titolo del gioco *)
+          TextCell[
+            "Gioco dell'Anatra con calcolo del MCD",
+            "Text",
+            FontSize -> 20,
+            FontWeight -> "Bold",
+            FontColor -> Black,
+            TextAlignment -> Center  (* Centra il testo del titolo *)
+          ],
+          (* Layout orizzontale con tabellone a sinistra e componente di Euclide a destra *)
+          Row[{
+            (* Colonna sinistra con tabellone e pulsanti di gioco *)
+            Column[{
+              (* Visualizzazione dinamica del tabellone di gioco *)
+              (* Crea la grafica del tabellone e aggiorna automaticamente la grafica quando le sue variabili cambiano. *)
+              Dynamic@Graphics[
+                Join[
+                  boardPrimitives,                              (* Disegna il tabellone *)
+                  Board`DrawPlayer[playerPosition, boardColumns] (* Disegna il giocatore nella posizione corrente *)
+                ],
+                PlotRange -> {{0, boardColumns}, {0, boardRows}}, (* Imposta l'area di visualizzazione *)
+                ImageSize -> 400                                  (* Dimensione dell'immagine *)
               ],
-              PlotRange -> {{0, boardColumns}, {0, boardRows}}, (* Imposta l'area di visualizzazione *)
-              ImageSize -> 400                                  (* Dimensione dell'immagine *)
-            ],
-            
-            (* Pulsante per tirare il dado - CENTRATO *)
-            (* Utilizzo di un contenitore Row per centrare il pulsante *)
-            Row[{
-              Spacer[125],  (* Aggiunge spazio a sinistra per centrare il pulsante *)
-              (* Utilizzo della funzione RollDice dal pacchetto Buttons *)
-              Buttons`RollDice[
-                diceButtonEnabled, diceValue, num1, num2, euclideComponent, 
-                playerPosition, obstaclesList, totalBoardCells, isGameOver, showEuclide
+              
+              (* Pulsante per tirare il dado - CENTRATO *)
+              (* Utilizzo di un contenitore Row per centrare il pulsante *)
+              Row[{
+                (* Utilizzo della funzione RollDice dal pacchetto Buttons *)
+                Buttons`RollDice[
+                  diceButtonEnabled, diceValue, num1, num2, euclideComponent, 
+                  playerPosition, obstaclesList, totalBoardCells, isGameOver, showEuclide
+                ]
+              }, Alignment -> Center],  (* Imposta l'allineamento centrale per la riga *)
+              
+              (* Visualizzazione dinamica dello stato del gioco *)
+              (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che le variabili 
+                da cui dipende l'espressione vengono modificate e ritorna il valore dell'espressione, 
+                in questo il valore di ritorno viene ingnorato *)
+              Dynamic[
+                If[isGameOver,
+                  (* Se il gioco è finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
+                  Column[{
+                    Style["Hai vinto!", Bold, 16, TextAlignment -> Center],  (* Stilizzazione del messaggio di vittoria *)
+                    Button["Nuova Partita", 
+                      (* Reset dello stato del gioco *)
+                      {playerPosition, diceValue, isGameOver} = ResetGame[];
+                      showEuclide = False;
+                    ]
+                  }, Alignment -> Center],  (* Centramento della colonna *)
+                  (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
+                  Column[{
+                    If[diceValue > 0, 
+                      DrawDice[diceValue]
+                    ]
+                  }, Alignment -> Center]  (* Centramento della colonna *)
+                ]
               ],
-              Spacer[125]  (* Aggiunge spazio a destra per mantenere simmetria *)
-            }, Alignment -> Center],  (* Imposta l'allineamento centrale per la riga *)
+              
+              (* Pulsanti di controllo del gioco *)
+              (* Pulsanti di controllo del gioco migliorati con sfondi colorati *)
+              Row[{
+                (* Utilizzo della funzione Restart dal pacchetto Buttons *)
+                Buttons`Restart[
+                  playerPosition, diceValue, isGameOver, 
+                  originalSeed, showEuclide, diceButtonEnabled
+                ],
+                
+                Spacer[20],
+                
+                Button[
+                  TextCell["Chiudi il gioco", "Text", FontColor -> White],
+                  NotebookClose[EvaluationNotebook[] ],
+                  Background -> RGBColor[0.8, 0.2, 0.2],
+                  FrameMargins -> 10,
+                  Appearance -> None,
+                  BaseStyle -> {
+                    FontSize -> 14,
+                    FontColor -> White,
+                    FontWeight -> "Bold",
+                    FontFamily -> "Arial"
+                  },
+                  ImageSize -> {120, Automatic},
+                  Method -> "Queued",
+                  ContentPadding -> 10,
+                  RoundingRadius -> 8,
+                  BoxShadow -> {0, 2, 4, GrayLevel[0.5]}
+                ]
+              }, Alignment -> Center]  (* Centramento della riga dei pulsanti *)
+            }, Alignment -> Center],  (* Centramento della colonna sinistra *)
             
-            (* Visualizzazione dinamica dello stato del gioco *)
-            (* La funzione Dynamic valuta l'espressione passata come argomento ogni volta che le variabili 
-              da cui dipende l'espressione vengono modificate e ritorna il valore dell'espressione, 
-              in questo il valore di ritorno viene ingnorato *)
+            Spacer[20], (* Aggiunta di spazio tra il tabellone e il componente di Euclide *)
+            
+            (* Colonna destra con il componente di Euclide *)
             Dynamic[
-              If[isGameOver,
-                (* Se il gioco è finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
-                Column[{
-                  "Hai vinto!",
-                  Button["Nuova Partita", 
-                    (* Reset dello stato del gioco *)
-                    {playerPosition, diceValue, isGameOver} = ResetGame[];
-                    showEuclide = False;
-                  ]
-                }],
-                (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
-                Column[{
-                  If[diceValue > 0, 
-                    DrawDice[diceValue]
-                  ]
-                }]
-              ]
-            ],
-            
-            (* Pulsanti di controllo del gioco *)
-            (* Pulsanti di controllo del gioco migliorati con sfondi colorati *)
-            Row[{
-            (* Utilizzo della funzione Restart dal pacchetto Buttons *)
-            Buttons`Restart[
-              playerPosition, diceValue, isGameOver, 
-              originalSeed, showEuclide, diceButtonEnabled
-            ],
-            
-            Spacer[20],
-            
-            Button[
-              TextCell["Chiudi il gioco", "Text", FontColor -> White],
-              NotebookClose[EvaluationNotebook[] ],
-              Background -> RGBColor[0.8, 0.2, 0.2],
-              FrameMargins -> 10,
-              Appearance -> None,
-              BaseStyle -> {
-                FontSize -> 14,
-                FontColor -> White,
-                FontWeight -> "Bold",
-                FontFamily -> "Arial"
-              },
-              ImageSize -> {120, Automatic},
-              Method -> "Queued",
-              ContentPadding -> 10,
-              RoundingRadius -> 8,
-              BoxShadow -> {0, 2, 4, GrayLevel[0.5]}
-            ]
-          }]
-          }],
-          
-          Spacer[20], (* Aggiunta di spazio tra il tabellone e il componente di Euclide *)
-          
-          (* Colonna destra con il componente di Euclide *)
-          Dynamic[
-            If[showEuclide, 
-              euclideComponent,
-              (* Mostra un messaggio quando il componente di Euclide non è visibile *)
-              Panel[
-                Column[{
-                  Style["Tira il dado per cominciare a giocare!", Bold, 14]
-                }],
-                ImageMargins -> 10,
-                ImageSize -> {400, 300}
+              If[showEuclide, 
+                euclideComponent,
+                (* Mostra un messaggio quando il componente di Euclide non è visibile *)
+                Panel[
+                  Column[{
+                    Style["Tira il dado per cominciare a giocare!", Bold, 14, TextAlignment -> Center]
+                  }, Alignment -> Center],  (* Centramento del contenuto del pannello *)
+                  ImageMargins -> 10,
+                  ImageSize -> {400, 300}
+                ]
               ]
             ]
-          ]
-        }]
-      },
-      Alignment -> Center,  (* Allineamento al centro degli elementi *)
-      Spacings -> 2         (* Spaziatura tra gli elementi *)
+          }, Alignment -> Center]  (* Centramento della riga principale *)
+        },
+        Alignment -> Center,  (* Allineamento al centro degli elementi nella colonna principale *)
+        Spacings -> 10        (* Aumentato lo spazio tra gli elementi per una migliore leggibilità *)
+        ],
+        ImageSize -> Full,    (* Imposta il Pane per occupare tutta la larghezza disponibile *)
+        Alignment -> Center   (* Centra il contenuto del Pane *)
       ]
     ],
-    WindowTitle -> "Gioco dell'Anatra con calcolo del MCD"  (* Titolo della finestra del gioco *)
+    WindowTitle -> "Gioco dell'Anatra con calcolo del MCD",  (* Titolo della finestra del gioco *)
+    WindowMargins -> {{Automatic, Automatic}, {Automatic, Automatic}},  (* Centratura automatica della finestra *)
+    WindowElements -> {"VerticalScrollBar"}  (* Aggiunge barra di scorrimento verticale se necessario *)
   ];
 ];
 

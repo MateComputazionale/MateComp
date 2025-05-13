@@ -79,6 +79,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            }],
            Dynamic[Style[errorMessage, Red]],
            
+           Dynamic[Style[errorMessage, Red]],
+           
            Button["Pulisci campi", 
              nextA = ""; nextB = ""; errorMessage = "",
              ImageSize -> {Scaled[1], Automatic}
@@ -94,6 +96,26 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            ],
            
            Button["Verifica",
+             If[nextA === currentB && nextB === Mod[currentA, currentB],
+              currentA = nextA;
+              currentB = nextB;
+              userQuotient = "";
+              userRemainder = "";
+              nextA = "";
+              nextB = "";
+              errorMessage = "";
+              isCompleted = False;
+              showHelpSuggerimento = False;
+              ,
+              errorMessage = "I valori inseriti per a e b non sono corretti! Riprova."
+             ],
+             ImageSize -> {Scaled[1], Automatic}
+           ],
+           
+           If[showHelpSuggerimento && helpSuggerimentoContent =!= Null,
+            helpSuggerimentoContent,
+            Nothing
+           ]
              If[nextA === currentB && nextB === Mod[currentA, currentB],
               currentA = nextA;
               currentB = nextB;

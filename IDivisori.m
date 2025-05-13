@@ -34,6 +34,10 @@ SOFTWARE.
 (* :Keywords: Gioco dell'Anatra, Euclide, MCD, GCD, didattica, matematica *)
 (* :Limitations: For educational purposes only.*)
 (* :Target: Ragazzi delle medie *)
+(* :Informazioni aggiuntive: questi metadati sono utilizzati e intesi per la documentazione del pacchetto nella sua interezza, compresi i package ausiliari.
+  
+*)
+
 (* Definizione del pacchetto "IDivisori" *)
 BeginPackage["IDivisori`"]
 

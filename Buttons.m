@@ -1,4 +1,4 @@
-BeginPackage["Buttons`"]
+BeginPackage["Buttons`", {"Board`", "Euclide`", "Dice`"}]
 (* Dichiarazione dei simboli esportati dal pacchetto *)
 Restart::usage = "Restart[position_, dice_, gameOver_, seed_, showEuclide_, diceButtonEnabled_] crea il bottone per ricominciare il gioco.";
 RollDice::usage = "RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, playerPosition_, obstaclesList_, totalBoardCells_, isGameOver_, showEuclide_] crea il bottone per tirare il dado.";

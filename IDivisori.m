@@ -48,7 +48,18 @@ DrawPlayer::usage =
   "DrawPlayer[position, cols] disegna la pedina del giocatore.";
 *)
 Get["Euclide.m"];    (* Pacchetto per l'implementazione dell'algoritmo di Euclide *)
+(* Dichiarazione dei simboli esportati dal pacchetto Euclide.m *)
+(*
+EuclideComponent::usage = 
+  "EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] \
+crea un componente per calcolare il GCD usando l'algoritmo di Euclide, mostrando il calcolo passo per passo.";
+*)
+
 Get["Dice.m"];       (* Pacchetto per la gestione del dado *)
+(* Dichiarazione dei simboli esportati dal pacchetto  Dice.m*)
+(*
+DrawDice::usage = "DrawDice[value] disegna un dado con il valore specificato.";
+*)
 
 (* ResetGame: Resetta lo stato del gioco ai valori iniziali
    Output:

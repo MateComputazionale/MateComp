@@ -118,17 +118,16 @@ StartGame[___] := Module[
    gameNotebook},         (* Notebook contenente l'interfaccia di gioco *)
   
   (* Richiedi all'utente di inserire un seed attraverso una finestra di dialogo *)
-  seed = Module[{seedInput}, DialogInput[
-    (* Questa funzione posiziona i suoi argomenti in un layout verticale *)
-    Column[{
-      "Inserisci il numero seed per il gioco:",
-      (* Dynamic[seedInput] serve per fare in modo che il valore inserito nel campo di input sia collegato dinamicamente 
-         alla variabile seedInput. Ci\[OGrave] significa che qualsiasi modifica apportata nel campo di input aggiorner\[AGrave] seedInput in tempo reale. *)
-      InputField[Dynamic[seedInput], Number],  (* Campo di input per il seed *)
-      DefaultButton["OK", DialogReturn[seedInput] ]  (* Pulsante OK che conferma il valore inserito *)
-    }, Alignment -> Center],  (* Aggiungo centramento della colonna della finestra di dialogo *)
-    WindowTitle -> "Seed del Gioco"  (* Titolo della finestra di dialogo *)
-  ] ];
+	seed = DialogInput[
+	   {seedInput = Null},    (* <-- here you declare seedInput as the dynamic variable *)
+	   Column[{
+	     "Inserisci il numero seed per il gioco:",
+	     InputField[Dynamic[seedInput], Number],
+	     DefaultButton["OK", DialogReturn[seedInput]]
+	   }, Alignment -> Center],
+	   WindowTitle -> "Seed del Gioco"
+	];
+
   
   (* Gestione del risultato della finestra di dialogo *)
   If[seed === "cancel" || seed === $Canceled,

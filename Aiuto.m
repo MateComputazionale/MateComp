@@ -31,7 +31,7 @@ MostraAiuto[a_Integer, b_Integer] := Module[
   },
   
   gruppi = {
-    Row[CreaAiutoValore[b, radius], Spacer[5]],
+    Row[CreaAiutoValore[b, radius], Spacer[5] ],
     Style["x " <> ToString[q] <> " gruppi", Italic, Gray]
   };
 
@@ -39,9 +39,16 @@ MostraAiuto[a_Integer, b_Integer] := Module[
 
   Panel[
     Column[{
-      Style["MCD visivamente:", Bold, 14],
-      "Dividi a = " <> ToString[a] <> " palline in gruppi da b = " <> ToString[b] <> ".",
-      Style["Quoziente: " <> ToString[q] <> " gruppi, resto " <> ToString[r], Italic],
+      Style["Suggerimento", Bold, 14],
+        Row[{
+        "Il risultato è ", 
+        Style[ToString[a], Bold], 
+        " con resto ", 
+        Style[ToString[r], Bold], 
+        "."
+      }],
+
+      "Si può rappresentare il risultato in modo più chiaro con " <> ToString[a]<> " palline suddivise in " <> ToString[q] <> " gruppi di " <> ToString[b] <> " palline e un resto di " <> ToString[r] <> ".",
       Column[gruppi],
       If[r > 0,
         Row[{"Resto: ", Row[resto]}],

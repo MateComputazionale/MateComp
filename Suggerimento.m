@@ -25,16 +25,16 @@ MostraSuggerimento[a_Integer, b_Integer] := Module[
     nodoA, nodoB, nodoR, nodoNextA, nodoNextB
   },
   
-  nodoA = CreaNodoGrafico[a, LightGray, "A"];
+  nodoA = CreaNodoGrafico[a, LightPurple, "A"];
   nodoB = CreaNodoGrafico[b, Yellow, "B"];
   nodoR = CreaNodoGrafico[r, LightBlue, "A mod B"];
   nodoNextA = CreaNodoGrafico[b, Yellow, "Prossimo A"];
   nodoNextB = CreaNodoGrafico[r, LightBlue, "Prossimo B"];
   
-  CreateDialog[
+  Panel[
     Column[{
       Style["Suggerimento", Bold, 14],
-      Row[{"Il prossimo A \[EGrave] ", Style[b, Bold], , " e il prossimo B \[EGrave] ", Style[r, Bold]}],
+      Row[{"Il prossimo A \[EGrave] ", Style[b, Bold], " e il prossimo B \[EGrave] ", Style[r, Bold]}],
       
       Style["Passo Corrente:", Bold, 12],
         Row[{nodoA, Spacer[10], nodoB, Spacer[10], nodoR}],
@@ -43,16 +43,21 @@ MostraSuggerimento[a_Integer, b_Integer] := Module[
       Row[{"Il prossimo A \[EGrave] il vecchio B", Spacer[10], nodoNextA}],
       Row[{"Il prossimo B \[EGrave] A mod B", Spacer[10], nodoNextB}],
       
-      Spacer[10],
-      Button["Chiudi", DialogReturn[]]
+      Spacer[10]
     }],
-    WindowTitle -> "Suggerimento Visivo - Euclide",
-    Scrollbars -> True
+    ImageMargins -> 10
   ]
 ];
 
 End[]
 EndPackage[]
+
+
+
+
+
+
+
 
 
 

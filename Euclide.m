@@ -17,7 +17,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
    currentA = a, currentB = b, steps = {}, currentStep = 1,
    userQuotient = "", userRemainder = "", errorMessage = "", 
    isCompleted = False, nextA = "", nextB = "", userMCD = "", mcdMessage = "",
-   showHelp = False, helpContent = Null
+   showHelpAiuto = False, helpAiutoContent = Null, 
+   showHelpSuggerimento = False, helpSuggerimentoContent = Null
  },
   
   Panel[
@@ -26,6 +27,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
      Dynamic[
       Column[
        Join[
+
+        (* Passi gi\[AGrave] completati *)
         Table[
          With[{stepData = steps[[i]]},
           Row[{
@@ -39,6 +42,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
          {i, Length[steps]}
         ],
         
+        (* Fase: completato *)
         If[currentB === 0,
          {
           Style["Algoritmo completato! Il MCD \[EGrave] " <> ToString[currentA], Bold, 14],
@@ -47,6 +51,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
           ]
          },
          
+         (* Fase: inserimento nuovi a e b *)
          If[isCompleted,
           {
            Style["Inserisci i nuovi valori per a e b per continuare:", Bold],
@@ -56,32 +61,45 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
              "b = ", InputField[Dynamic[nextB], Number, FieldSize -> 5]
            }],
            Dynamic[Style[errorMessage, Red]],
-           Row[{
-             Button["Prosegui",
-              If[nextA === currentB && nextB === Mod[currentA, currentB],
-               currentA = nextA;
-               currentB = nextB;
-               userQuotient = "";
-               userRemainder = "";
-               nextA = "";
-               nextB = "";
-               errorMessage = "";
-               isCompleted = False;
-               showHelp = False;
-               ,
-               errorMessage = "Risposta errata! Riprova."
-              ]
+           
+           Button["Pulisci campi", 
+             nextA = ""; nextB = ""; errorMessage = "",
+             ImageSize -> {Scaled[1], Automatic}
+           ],
+           
+           Button[
+             Dynamic[If[showHelpSuggerimento, "Nascondi suggerimento", "Suggerimento"]],
+             showHelpSuggerimento = !showHelpSuggerimento;
+             If[showHelpSuggerimento,
+              helpSuggerimentoContent = Suggerimento`MostraSuggerimento[currentA, currentB]
              ],
-             Button["Pulisci campi",
-              (nextA = ""; nextB = ""; errorMessage = ""),
-              ImageMargins -> 5
-             ]
-             Button["Aiuto",
-            Suggerimento`MostraSuggerimento[currentA, currentB]
+             ImageSize -> {Scaled[1], Automatic}
+           ],
+           
+           Button["Verifica",
+             If[nextA === currentB && nextB === Mod[currentA, currentB],
+              currentA = nextA;
+              currentB = nextB;
+              userQuotient = "";
+              userRemainder = "";
+              nextA = "";
+              nextB = "";
+              errorMessage = "";
+              isCompleted = False;
+              showHelpSuggerimento = False;
+              ,
+              errorMessage = "I valori inseriti per a e b non sono corretti! Riprova."
+             ],
+             ImageSize -> {Scaled[1], Automatic}
+           ],
+           
+           If[showHelpSuggerimento && helpSuggerimentoContent =!= Null,
+            helpSuggerimentoContent,
+            Nothing
            ]
-           }]
           },
           
+          (* Fase: input quoziente e resto *)
           {
            Row[{
              Style[Row[{"Passo ", currentStep}], Bold],
@@ -95,50 +113,55 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            
            Dynamic[Style[errorMessage, Red]],
            
-           ClearFields[userQuotient, userRemainder, errorMessage],
+           Button["Pulisci campi", 
+             userQuotient = ""; userRemainder = ""; errorMessage = "",
+             ImageSize -> {Scaled[1], Automatic}
+           ],
            
-           Button[Dynamic[If[showHelp, "Nascondi aiuto", "Aiuto"]],
-            showHelp = !showHelp;
-            If[showHelp, helpContent = Aiuto`MostraAiuto[currentA, currentB]];
+           Button[
+             Dynamic[If[showHelpAiuto, "Nascondi aiuto", "Aiuto"]],
+             showHelpAiuto = !showHelpAiuto;
+             If[showHelpAiuto,
+              helpAiutoContent = Aiuto`MostraAiuto[currentA, currentB]
+             ],
+             ImageSize -> {Scaled[1], Automatic}
            ],
            
            Button["Verifica",
-            If[userQuotient === Quotient[currentA, currentB] && 
-               userRemainder === Mod[currentA, currentB],
-             AppendTo[steps, {currentA, currentB, userQuotient, userRemainder}];
-             currentStep++;
-             If[Mod[currentA, currentB] === 0,
-              (* Algoritmo completato *)
-              currentB = 0; (* Forza il completamento *)
-             ,
-              isCompleted = True;
-             ];
-             userQuotient = "";
-             userRemainder = "";
-             errorMessage = "";
-             showHelp = False;
-             ,
-             errorMessage = "Risposta errata! Riprova.";
-             userQuotient = ""; userRemainder = "";
-            ]
+             If[userQuotient === Quotient[currentA, currentB] && 
+                userRemainder === Mod[currentA, currentB],
+              AppendTo[steps, {currentA, currentB, userQuotient, userRemainder}];
+              currentStep++;
+              If[Mod[currentA, currentB] === 0,
+               currentB = 0; (* Algoritmo completato *)
+              ,
+               isCompleted = True;
+              ];
+              userQuotient = "";
+              userRemainder = "";
+              errorMessage = "";
+              showHelpAiuto = False;
+              ,
+              errorMessage = "Risposta errata! Riprova.";
+              userQuotient = ""; userRemainder = "";
+             ],
+             ImageSize -> {Scaled[1], Automatic}
+           ],
+           
+           If[showHelpAiuto && helpAiutoContent =!= Null,
+            helpAiutoContent,
+            Nothing
            ]
           }
          ]
-        ],
-        
-        (* Mostra l'aiuto se richiesto *)
-        If[showHelp && helpContent =!= Null,
-          {
-           Spacer[5],
-           helpContent
-          },
-          {}
         ]
-       ]
+       ], Spacings -> 1
       ]
      ]
     }, Spacings -> 1],
-   ImageMargins -> 10
+   ImageMargins -> 10,
+   ImageSize -> {400, Automatic},
+   Alignment -> Left
   ]
  ]
 
@@ -146,6 +169,7 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
  CreateDialog[
   EuclideComponent[a, b, stepsToComplete, onSuccessCallback],
   WindowTitle -> "Algoritmo di Euclide",
+  WindowSize -> {500, Automatic},
   Modal -> True
  ]
 

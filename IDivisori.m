@@ -38,7 +38,7 @@ SOFTWARE.
 BeginPackage["IDivisori`"]
 
 (* Dichiarazione dei simboli esportati dal pacchetto *)
-StartGame::usage = "StartGame[] starts the Game of the Goose with Euclid's Algorithm.";
+StartGame::usage = "StartGame[] inizia il Gioco dell'Anatra con l'algoritmo di Euclide.";
 
 (* Inizio della sezione privata del pacchetto *)
 Begin["`Private`"]

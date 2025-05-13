@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 BeginPackage["Buttons`", {"Board`", "Euclide`", "Dice`"}]
 (* Dichiarazione dei simboli esportati dal pacchetto *)
 Restart::usage = "Restart[position_, dice_, gameOver_, seed_, showEuclide_, diceButtonEnabled_] crea il bottone per ricominciare il gioco.";
@@ -41,9 +43,7 @@ Restart[position_, dice_, gameOver_, seed_, showEuclide_, diceButtonEnabled_] :=
   },
   ImageSize -> {120, Automatic},
   Method -> "Queued",
-  ContentPadding -> 10,
-  RoundingRadius -> 8,
-  BoxShadow -> {0, 2, 4, GrayLevel[0.5]}
+  ContentPadding -> 10
 ]
 
 (* Nuovo bottone per tirare il dado *)

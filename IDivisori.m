@@ -1,21 +1,39 @@
 (* ::Package:: *)
-(* :Title: GCD Euclide - Gioco dell'Oca con Algoritmo di Euclide *)
-(* :Context: TODO*)
-(* :Author: Gruppo 8: Sara Casadio, Enrico Ferraiolo, Federica Santisi, Luca Orlandello*)
-(* :Summary: Questo pacchetto implementa il Gioco dell'Oca con l'Algoritmo di Euclide.
+(* :Title: Gioco dell'Anatra con Algoritmo di Euclide *)
+(* :Context: IDivisoriPackage*)
+(* :Author: Gruppo 8: Sara Casadio, Enrico Ferraiolo, Luca Orlandello, Federica Santisi *)
+(* :Summary: Questo pacchetto implementa il Gioco dell'Anatra con l'Algoritmo di Euclide.
    Il giocatore tira un dado e avanza sul tabellone. In ogni turno dovrà risolvere
    un problema di calcolo del MCD (Massimo Comun Divisore) usando l'algoritmo di Euclide.*)
-(* :Copyright: TODO*)
-(* :Package Version: 1.0*)
-(* :Mathematica Version: TODO*)
-(* :History: last modified TODO*)
-(* :Keywords: Gioco dell'Oca, Euclide, MCD, GCD, didattica, matematica *)
-(* :Sources: TODO*)
-(* :Limitations: this is a preliminary version, for educational purposes only.*)
-(* :Discussion: TODO*)
-(* :Requirements: Richiede i pacchetti Buttons.m, Board.m, Euclide.m e Dice.m *)
-(* :Warnings: TODO*)
+(* :Copyright: 
+   MIT License
 
+Copyright (c) 2025 Sara Casadio, Enrico Ferraiolo, Luca Orlandello, Federica Santisi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*)
+(* :Package Version: 1.0*)
+(* :Mathematica Version: 14.2*)
+(* :History: 16/05/2025*)
+(* :Keywords: Gioco dell'Anatra, Euclide, MCD, GCD, didattica, matematica *)
+(* :Limitations: For educational purposes only.*)
+(* :Target: Ragazzi delle medie *)
 (* Definizione del pacchetto "IDivisori" *)
 BeginPackage["IDivisori`"]
 

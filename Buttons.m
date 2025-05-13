@@ -57,10 +57,10 @@ RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, player
       num1 = RandomInteger[{10, 99}];
       num2 = RandomInteger[{1, num1 - 1}];
 
-      euclideComponent = EuclideComponent[num1, num2, diceValue,
+      euclideComponent = Euclide`EuclideComponent[num1, num2, diceValue,
         Function[gcdResult,
           Module[{newPosition},
-            newPosition = GetNextPosition[
+            newPosition = Board`GetNextPosition[
               playerPosition, diceValue, obstaclesList, totalBoardCells
             ];
             playerPosition = newPosition;

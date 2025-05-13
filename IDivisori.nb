@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[   6313482,     103676]
-NotebookOptionsPosition[   6309685,     103600]
-NotebookOutlinePosition[   6310117,     103617]
-CellTagsIndexPosition[   6310074,     103614]
+NotebookDataLength[   6315737,     103733]
+NotebookOptionsPosition[   6311693,     103653]
+NotebookOutlinePosition[   6312136,     103670]
+CellTagsIndexPosition[   6312093,     103667]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -101547,11 +101547,11 @@ Cell["Il Massimo Comun Divisore", "Section",
 1e76bdd780af"],
 
 Cell["\<\
-Il massimo comun divisore (o massimo comune divisore) di due numeri interi a \
-e b, che non siano entrambi uguali a zero, indicato con MCD(a , b), \[EGrave] \
-il numero naturale pi\[UGrave] grande per il quale entrambi possono essere \
-divisi esattamente. Se i numeri a e b sono entrambi uguali a 0, allora si \
-pone per definizione MCD(a , b) = 0.
+Il massimo comun divisore [1][2] (o massimo comune divisore) di due numeri \
+interi a e b, che non siano entrambi uguali a zero, indicato con MCD(a , b), \
+\[EGrave] il numero naturale pi\[UGrave] grande per il quale entrambi possono \
+essere divisi esattamente. Se i numeri a e b sono entrambi uguali a 0, allora \
+si pone per definizione MCD(a , b) = 0.
 
 Esempi:
 MCD(12, 18) = 6
@@ -101559,7 +101559,9 @@ MCD(4, 14) = 4
 MCD(5, 0) = 5\
 \>", "Text",
  CellChangeTimes->{{3.9554228840432673`*^9, 3.95542302869846*^9}, 
-   3.9554404817816334`*^9},ExpressionUUID->"e7b3011d-dba8-4041-9d15-\
+   3.9554404817816334`*^9, {3.956139449330063*^9, 3.9561394503491173`*^9}, {
+   3.956139662321457*^9, 
+   3.956139662812565*^9}},ExpressionUUID->"e7b3011d-dba8-4041-9d15-\
 03768f8a07c7"]
 }, Open  ]],
 
@@ -101571,8 +101573,8 @@ Cell["A cosa serve il massimo comune divisore?", "Section",
 012491981ce5"],
 
 Cell[TextData[{
- "Il massimo comun divisore \[EGrave] utile per ridurre una frazione ai \
-minimi termini. Per esempio nella seguente frazione \[EGrave] stato \
+ "Il massimo comun divisore [1][2] \[EGrave] utile per ridurre una frazione \
+ai minimi termini. Per esempio nella seguente frazione \[EGrave] stato \
 semplificato il fattore 14, il massimo comun divisore tra 42 e 56. \n",
  Cell[BoxData[
   FormBox[
@@ -101589,8 +101591,9 @@ semplificato il fattore 14, il massimo comun divisore tra 42 e 56. \n",
   "0fe2805c-240f-4611-b4a6-b4f5024b39f4"]
 }], "Text",
  CellChangeTimes->{{3.955423167973701*^9, 3.955423237453393*^9}, 
-   3.955426711606308*^9, {3.9554267612830353`*^9, 
-   3.955426761881191*^9}},ExpressionUUID->"85bdcf57-5f15-48d6-88a3-\
+   3.955426711606308*^9, {3.9554267612830353`*^9, 3.955426761881191*^9}, {
+   3.9561394826531124`*^9, 3.9561394833708057`*^9}, {3.9561396658840694`*^9, 
+   3.9561396665238514`*^9}},ExpressionUUID->"85bdcf57-5f15-48d6-88a3-\
 d9b07959d1ce"]
 }, Open  ]],
 
@@ -101602,7 +101605,7 @@ Cell["L\[CloseCurlyQuote]algoritmo di Euclide", "Section",
 f31ffc3a634f"],
 
 Cell["\<\
-L\[CloseCurlyQuote]algoritmo di Euclide (o metodo delle divisioni \
+L\[CloseCurlyQuote]algoritmo di Euclide [3][4] (o metodo delle divisioni \
 successive),  consente di calcolare il massimo comun divisore tra due numeri, \
 si basa su una serie di divisioni successive. Questo \[EGrave] il diagramma a \
 blocchi del funzionamento dell\[CloseCurlyQuote]algoritmo di Euclide.
@@ -101610,7 +101613,8 @@ blocchi del funzionamento dell\[CloseCurlyQuote]algoritmo di Euclide.
 \>", "Text",
  CellChangeTimes->{{3.955423583603159*^9, 3.955423624141577*^9}, {
   3.955426786681447*^9, 3.9554268311093893`*^9}, {3.955440550541685*^9, 
-  3.955440560257021*^9}},ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-\
+  3.955440560257021*^9}, {3.956139878069933*^9, 
+  3.9561398849072857`*^9}},ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-\
 63b4111e944a"],
 
 Cell[BoxData[
@@ -102804,9 +102808,10 @@ necessariamente tutto il percorso.\
 
 Cell[CellGroupData[{
 
-Cell["Diagramma pacchetti", "Section",
- CellChangeTimes->{{3.956130419749023*^9, 
-  3.9561304489650087`*^9}},ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-\
+Cell["Approfondimento - Diagramma pacchetti", "Section",
+ CellChangeTimes->{{3.956130419749023*^9, 3.9561304489650087`*^9}, {
+  3.9561393047468147`*^9, 
+  3.9561393071283245`*^9}},ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-\
 ef36a7431f1e"],
 
 Cell["\<\
@@ -103576,6 +103581,54 @@ D7dtQAU=
 
 Cell[CellGroupData[{
 
+Cell["Bibiliografia", "Section",
+ CellChangeTimes->{{3.9561393216908855`*^9, 
+  3.956139333492153*^9}},ExpressionUUID->"54b829ef-7699-8544-98c8-\
+6fafba278328"],
+
+Cell[TextData[{
+ "[1] ",
+ ButtonBox["MCD YouMath",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://www.youmath.it/lezioni/algebra-elementare/lezioni-di-algebra-\
+e-aritmetica-per-scuole-medie/512-massimo-comune-divisore-mcd.html"], None},
+  ButtonNote->
+   "https://www.youmath.it/lezioni/algebra-elementare/lezioni-di-algebra-e-\
+aritmetica-per-scuole-medie/512-massimo-comune-divisore-mcd.html"],
+ "\n[2] ",
+ ButtonBox["MCD Wikipedia",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://it.wikipedia.org/wiki/Massimo_comun_divisore"], None},
+  ButtonNote->"https://it.wikipedia.org/wiki/Massimo_comun_divisore"],
+ "\n[3] ",
+ ButtonBox["Algoritmo di Euclide YouMath",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://www.youmath.it/domande-a-risposte/view/6654-algoritmo-\
+euclide.html"], None},
+  ButtonNote->
+   "https://www.youmath.it/domande-a-risposte/view/6654-algoritmo-euclide.\
+html"],
+ "\n[4] ",
+ ButtonBox["Algoritmo di Euclide Wikipedia",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://it.wikipedia.org/wiki/Algoritmo_di_Euclide"], None},
+  ButtonNote->"https://it.wikipedia.org/wiki/Algoritmo_di_Euclide"],
+ "\n"
+}], "Text",
+ CellChangeTimes->{
+  3.956139337684408*^9, 3.956139378229706*^9, {3.9561394165698586`*^9, 
+   3.9561394319380474`*^9}, {3.956139639102194*^9, 3.956139655389471*^9}, {
+   3.956139825807066*^9, 
+   3.9561398671130657`*^9}},ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-\
+d9a887d0b0a5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Commenti e scelte implementative", "Section",
  CellChangeTimes->{{3.956133880446581*^9, 3.956133890362846*^9}, {
   3.956134346453334*^9, 
@@ -103598,8 +103651,8 @@ rendere eccessivamente lunga l\[CloseCurlyQuote]esecuzione dell\
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{Full, Full},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
 Magnification:>1.1 Inherited,
 FrontEndVersion->"14.2 for Microsoft Windows (64-bit) (December 26, 2024)",
 StyleDefinitions->"Default.nb",
@@ -103630,45 +103683,49 @@ Cell[6189991, 101531, 315, 7, 41, "Output",ExpressionUUID->"310f729b-4b1f-0e40-b
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[6190343, 101543, 174, 3, 72, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
-Cell[6190520, 101548, 578, 14, 205, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
+Cell[6190520, 101548, 687, 16, 205, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6191135, 101567, 185, 3, 72, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
-Cell[6191323, 101572, 991, 21, 97, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
+Cell[6191244, 101569, 185, 3, 72, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
+Cell[6191432, 101574, 1102, 22, 97, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6192351, 101598, 184, 3, 72, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
-Cell[6192538, 101603, 545, 10, 85, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
-Cell[6193086, 101615, 57704, 950, 396, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
+Cell[6192571, 101601, 184, 3, 72, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
+Cell[6192758, 101606, 603, 11, 85, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
+Cell[6193364, 101619, 57704, 950, 396, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6250827, 102570, 213, 4, 72, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
-Cell[6251043, 102576, 2224, 39, 277, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
+Cell[6251105, 102574, 213, 4, 72, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
+Cell[6251321, 102580, 2224, 39, 397, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
 Cell[CellGroupData[{
-Cell[6253292, 102619, 235, 4, 58, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
-Cell[6253530, 102625, 3135, 50, 349, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
+Cell[6253570, 102623, 235, 4, 58, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
+Cell[6253808, 102629, 3135, 50, 421, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6256702, 102680, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
-Cell[6256921, 102686, 2791, 50, 494, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
+Cell[6256980, 102684, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
+Cell[6257199, 102690, 2791, 50, 590, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6259749, 102741, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
-Cell[6259966, 102747, 1284, 23, 181, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
+Cell[6260027, 102745, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
+Cell[6260244, 102751, 1284, 23, 205, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6261287, 102775, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
-Cell[6261488, 102780, 1063, 20, 181, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
+Cell[6261565, 102779, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
+Cell[6261766, 102784, 1063, 20, 205, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6262600, 102806, 166, 3, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
-Cell[6262769, 102811, 234, 6, 37, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
-Cell[6263006, 102819, 45696, 754, 332, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
+Cell[6262878, 102810, 237, 4, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
+Cell[6263118, 102816, 234, 6, 37, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
+Cell[6263355, 102824, 45696, 754, 332, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6308739, 103578, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
-Cell[6308968, 103584, 689, 12, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
+Cell[6309088, 103583, 160, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
+Cell[6309251, 103588, 1459, 38, 133, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6310747, 103631, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
+Cell[6310976, 103637, 689, 12, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
 }, Open  ]]
 }, Open  ]]
 }

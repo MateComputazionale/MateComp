@@ -1,9 +1,10 @@
 (* ::Package:: *)
+
 (* :Title: Gioco dell'Anatra con Algoritmo di Euclide *)
 (* :Context: IDivisoriPackage*)
 (* :Author: Gruppo 8: Sara Casadio, Enrico Ferraiolo, Luca Orlandello, Federica Santisi *)
 (* :Summary: Questo pacchetto implementa il Gioco dell'Anatra con l'Algoritmo di Euclide.
-   Il giocatore tira un dado e avanza sul tabellone. In ogni turno dovrà risolvere
+   Il giocatore tira un dado e avanza sul tabellone. In ogni turno dovr\[AGrave] risolvere
    un problema di calcolo del MCD (Massimo Comun Divisore) usando l'algoritmo di Euclide.*)
 (* :Copyright: 
    MIT License
@@ -94,7 +95,7 @@ ResetGame[] := {1, 0, False};
 
 (* StartGame: Funzione principale che avvia il gioco
    Input:
-   - ___ i tre trattini bassi rappresentano un pattern che fa match con zero, uno o più argomenti.
+   - ___ i tre trattini bassi rappresentano un pattern che fa match con zero, uno o pi\[UGrave] argomenti.
     (corrisponde a qualsiasi parametro opzionale che viene ignorato)
    Output:
    - Crea e visualizza l'interfaccia grafica del gioco
@@ -104,8 +105,8 @@ ResetGame[] := {1, 0, False};
 *)
 
 
-(* Module è un costrutto usato per creare variabili locali e incapsulare il codice. Permette di definire variabili con una visibilità locale
-    al corpo del costrutto Module, cioè variabili che non interferisco con altre variabili dichiarate fuori dal modulo con lo stesso nome
+(* Module \[EGrave] un costrutto usato per creare variabili locali e incapsulare il codice. Permette di definire variabili con una visibilit\[AGrave] locale
+    al corpo del costrutto Module, cio\[EGrave] variabili che non interferisco con altre variabili dichiarate fuori dal modulo con lo stesso nome
     o con gli argomenti della funzione con lo stesso nome. *)
 StartGame[___] := Module[
   {seed,                  (* Valore seed fornito dall'utente per la generazione pseudocasuale *)
@@ -122,7 +123,7 @@ StartGame[___] := Module[
     Column[{
       "Inserisci il numero seed per il gioco:",
       (* Dynamic[seedInput] serve per fare in modo che il valore inserito nel campo di input sia collegato dinamicamente 
-         alla variabile seedInput. Ciò significa che qualsiasi modifica apportata nel campo di input aggiornerà seedInput in tempo reale. *)
+         alla variabile seedInput. Ci\[OGrave] significa che qualsiasi modifica apportata nel campo di input aggiorner\[AGrave] seedInput in tempo reale. *)
       InputField[Dynamic[seedInput], Number],  (* Campo di input per il seed *)
       DefaultButton["OK", DialogReturn[seedInput] ]  (* Pulsante OK che conferma il valore inserito *)
     }, Alignment -> Center],  (* Aggiungo centramento della colonna della finestra di dialogo *)
@@ -134,7 +135,7 @@ StartGame[___] := Module[
     (* L'utente ha annullato l'operazione - non fare nulla *)
     Return[]
   ];
-  (* IntegerPart prendi la parte intera se il seed è un numero reale *)
+  (* IntegerPart prendi la parte intera se il seed \[EGrave] un numero reale *)
   seed = IntegerPart[seed];
   (* Imposta il generatore di numeri casuali con il seed fornito *)
   SeedRandom[seed];
@@ -152,7 +153,7 @@ StartGame[___] := Module[
         boardRows = rows,                  (* Numero di righe *)
         diceValue = 0,                     (* Valore del dado, inizialmente 0 *)
         playerPosition = 1,                (* Posizione iniziale del giocatore *)
-        isGameOver = False,                (* Indica se il gioco è finito *)
+        isGameOver = False,                (* Indica se il gioco \[EGrave] finito *)
         obstaclesList = obstacles,         (* Lista degli ostacoli *)
         totalBoardCells = totalCells,      (* Numero totale di celle *)
         originalSeed = seed,               (* Salva il seed originale per poter ricominciare *)
@@ -160,7 +161,7 @@ StartGame[___] := Module[
         num2 = 0,                          (* Secondo numero per l'algoritmo di Euclide *)
         showEuclide = False,               (* Indica se mostrare il componente di Euclide *)
         euclideComponent = Null,           (* Componente per l'algoritmo di Euclide *)
-        diceButtonEnabled = True           (* Controlla se il pulsante è abilitato *)
+        diceButtonEnabled = True           (* Controlla se il pulsante \[EGrave] abilitato *)
       },
       
       (* Crea l'interfaccia utente *)
@@ -206,7 +207,7 @@ StartGame[___] := Module[
                 in questo il valore di ritorno viene ingnorato *)
               Dynamic[
                 If[isGameOver,
-                  (* Se il gioco è finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
+                  (* Se il gioco \[EGrave] finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
                   Column[{
                     Style["Hai vinto!", Bold, 16, TextAlignment -> Center],  (* Stilizzazione del messaggio di vittoria *)
                     Button["Nuova Partita", 
@@ -260,7 +261,7 @@ StartGame[___] := Module[
             Dynamic[
               If[showEuclide, 
                 euclideComponent,
-                (* Mostra un messaggio quando il componente di Euclide non è visibile *)
+                (* Mostra un messaggio quando il componente di Euclide non \[EGrave] visibile *)
                 Panel[
                   Column[{
                     Style["Tira il dado per cominciare a giocare!", Bold, 14, TextAlignment -> Center]
@@ -273,7 +274,7 @@ StartGame[___] := Module[
           }, Alignment -> Center]  (* Centramento della riga principale *)
         },
         Alignment -> Center,  (* Allineamento al centro degli elementi nella colonna principale *)
-        Spacings -> 10        (* Aumentato lo spazio tra gli elementi per una migliore leggibilità *)
+        Spacings -> 10        (* Aumentato lo spazio tra gli elementi per una migliore leggibilit\[AGrave] *)
         ],
         ImageSize -> Full,    (* Imposta il Pane per occupare tutta la larghezza disponibile *)
         Alignment -> Center   (* Centra il contenuto del Pane *)

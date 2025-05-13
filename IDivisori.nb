@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[   6315737,     103733]
-NotebookOptionsPosition[   6311693,     103653]
-NotebookOutlinePosition[   6312136,     103670]
-CellTagsIndexPosition[   6312093,     103667]
+NotebookDataLength[   6318253,     103780]
+NotebookOptionsPosition[   6313974,     103696]
+NotebookOutlinePosition[   6314417,     103713]
+CellTagsIndexPosition[   6314374,     103710]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -101541,6 +101541,49 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
+Cell["Introduzione", "Section",
+ CellChangeTimes->{{3.9561399872409077`*^9, 
+  3.9561399890874977`*^9}},ExpressionUUID->"3b996e5d-8186-264c-a595-\
+fb41f0f8bf1b"],
+
+Cell["\<\
+L\[CloseCurlyQuote]idea alla base del nostro progetto nasce dal desiderio di \
+rendere l\[CloseCurlyQuote]algoritmo di Euclide, spesso percepito come un \
+concetto troppo astratto, un\[CloseCurlyQuote]esperienza concreta, \
+interattiva e divertente. Trasformando il calcolo del massimo comune divisore \
+in una piccola \[OpenCurlyDoubleQuote]avventura\[CloseCurlyDoubleQuote] su \
+scacchiera, il giocatore pu\[OGrave] esplorare passo dopo passo nell\
+\[CloseCurlyQuote]algoritmo come i numeri si riducano alla soluzione cercata, \
+consolidando al tempo stesso le basi della teoria dei numeri.
+
+Per raggiungere questo scopo, il gioco integra dinamiche classiche - come il \
+lancio del dado e il movimento su caselle - con elementi di problem solving \
+matematico. A ogni tappa sulla griglia, infatti, si presenta una coppia di \
+numeri da \[OpenCurlyDoubleQuote]semplificare\[CloseCurlyDoubleQuote] tramite \
+ripetute sottrazioni o divisioni successive, guidando \
+l\[CloseCurlyQuote]utente attraverso un processo logico e intuitivo - \
+eseguendo l\[CloseCurlyQuote]algoritmo di Euclide. La casualit\[AGrave] nella \
+creazione dei problemi stimola la ripetizione e mantiene alta la curiosit\
+\[AGrave], mentre suggerimenti contestuali e un\[CloseCurlyQuote]interfaccia \
+semplice permettono tanto ai neofiti quanto ai pi\[UGrave] esperti di seguire \
+con facilit\[AGrave] ogni passaggio.
+
+Grazie a un design modulare e parametrico, ogni partita offre nuovi percorsi \
+e sfide: l\[CloseCurlyQuote]utente potr\[AGrave] cimentarsi in pi\[UGrave] \
+sessioni diverse e osservare come variazioni minime nei numeri in gioco \
+portino a sequenze di calcolo differenti. In questo modo, il progetto non \
+\[EGrave] solo un gioco, ma un vero e proprio ambiente di apprendimento, \
+capace di unire rigore matematico e divertimento in \
+un\[CloseCurlyQuote]esperienza immediata e stimolante.\
+\>", "Text",
+ CellChangeTimes->{{3.9561399934428673`*^9, 3.956139995161869*^9}, {
+  3.956140083615999*^9, 
+  3.9561402482287006`*^9}},ExpressionUUID->"c2530380-c609-f84e-b419-\
+b4530182415f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["Il Massimo Comun Divisore", "Section",
  CellChangeTimes->{{3.9554228132890053`*^9, 
   3.9554228176171923`*^9}},ExpressionUUID->"7d5a9716-7c7e-4345-82cf-\
@@ -103682,50 +103725,54 @@ Cell[6189691, 101523, 297, 6, 31, "Input",ExpressionUUID->"3834e668-3ace-46a2-87
 Cell[6189991, 101531, 315, 7, 41, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6190343, 101543, 174, 3, 72, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
-Cell[6190520, 101548, 687, 16, 205, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
+Cell[6190343, 101543, 161, 3, 72, "Section",ExpressionUUID->"3b996e5d-8186-264c-a595-fb41f0f8bf1b"],
+Cell[6190507, 101548, 2080, 33, 349, "Text",ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6191244, 101569, 185, 3, 72, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
-Cell[6191432, 101574, 1102, 22, 97, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
+Cell[6192624, 101586, 174, 3, 72, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
+Cell[6192801, 101591, 687, 16, 205, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6192571, 101601, 184, 3, 72, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
-Cell[6192758, 101606, 603, 11, 85, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
-Cell[6193364, 101619, 57704, 950, 396, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
+Cell[6193525, 101612, 185, 3, 72, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
+Cell[6193713, 101617, 1102, 22, 97, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6251105, 102574, 213, 4, 72, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
-Cell[6251321, 102580, 2224, 39, 397, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
-Cell[CellGroupData[{
-Cell[6253570, 102623, 235, 4, 58, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
-Cell[6253808, 102629, 3135, 50, 421, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
+Cell[6194852, 101644, 184, 3, 72, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
+Cell[6195039, 101649, 603, 11, 85, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
+Cell[6195645, 101662, 57704, 950, 396, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6256980, 102684, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
-Cell[6257199, 102690, 2791, 50, 590, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
+Cell[6253386, 102617, 213, 4, 72, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
+Cell[6253602, 102623, 2224, 39, 397, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
+Cell[CellGroupData[{
+Cell[6255851, 102666, 235, 4, 58, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
+Cell[6256089, 102672, 3135, 50, 421, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6260027, 102745, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
-Cell[6260244, 102751, 1284, 23, 205, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
+Cell[6259261, 102727, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
+Cell[6259480, 102733, 2791, 50, 590, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6261565, 102779, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
-Cell[6261766, 102784, 1063, 20, 205, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
+Cell[6262308, 102788, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
+Cell[6262525, 102794, 1284, 23, 205, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6263846, 102822, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
+Cell[6264047, 102827, 1063, 20, 205, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6262878, 102810, 237, 4, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
-Cell[6263118, 102816, 234, 6, 37, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
-Cell[6263355, 102824, 45696, 754, 332, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
+Cell[6265159, 102853, 237, 4, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
+Cell[6265399, 102859, 234, 6, 37, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
+Cell[6265636, 102867, 45696, 754, 332, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6309088, 103583, 160, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
-Cell[6309251, 103588, 1459, 38, 133, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
+Cell[6311369, 103626, 160, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
+Cell[6311532, 103631, 1459, 38, 133, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6310747, 103631, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
-Cell[6310976, 103637, 689, 12, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
+Cell[6313028, 103674, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
+Cell[6313257, 103680, 689, 12, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -77,7 +77,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
              "   ",
              "b = ", InputField[Dynamic[nextB], Number, FieldSize -> 5]
            }],
-           Dynamic[Style[errorMessage, Red]],           
+           Dynamic[Style[errorMessage, Red]],
+           
            Button["Pulisci campi", 
              nextA = ""; nextB = ""; errorMessage = "",
              ImageSize -> {Scaled[1], Automatic}
@@ -93,28 +94,26 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            ],
            
            Button["Verifica",
-              If[nextA === currentB && nextB === Mod[currentA, currentB],
-               currentA = nextA;
-               currentB = nextB;
-               userQuotient = "";
-               userRemainder = "";
-               nextA = "";
-               nextB = "";
-               errorMessage = "";
-               isCompleted = False;
-               showHelp = False;
-               ,
-               errorMessage = "Risposta errata! Riprova."
-              ]
+             If[nextA === currentB && nextB === Mod[currentA, currentB],
+              currentA = nextA;
+              currentB = nextB;
+              userQuotient = "";
+              userRemainder = "";
+              nextA = "";
+              nextB = "";
+              errorMessage = "";
+              isCompleted = False;
+              showHelpSuggerimento = False;
+              ,
+              errorMessage = "I valori inseriti per a e b non sono corretti! Riprova."
              ],
-             Button["Pulisci campi",
-              (nextA = ""; nextB = ""; errorMessage = ""),
-              ImageMargins -> 5
-             ]
-             Button["Aiuto",
-            Suggerimento`MostraSuggerimento[currentA, currentB]
+             ImageSize -> {Scaled[1], Automatic}
+           ],
+           
+           If[showHelpSuggerimento && helpSuggerimentoContent =!= Null,
+            helpSuggerimentoContent,
+            Nothing
            ]
-           }]
           },
           
           (* Fase: input quoziente e resto *)
@@ -193,6 +192,3 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
 
 End[]
 EndPackage[]
-
-
-

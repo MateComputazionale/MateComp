@@ -15,3 +15,18 @@ centrare tutto rispetto alla finestra
 disabilitare pulsante seed
 togliere i "path" dalle chiamate di funzione dei file
 GUARDARE CHE NON CI SIANO ERRORI SU WOLFRAM (CODICE IN ROSSO)
+
+
+DAFARE:
+- togliere cose in rosso
+- rimuovere path da funzioni
+  
+Paragrafi da scrivere:
+- indice
+- introduzione (E)
+- tutorial su come si usa il notebook e come si gioca (S)
+  - spiegazione di tutte le cose che può fare l'utente in ogni momento
+- spiegazione mcd (L)
+- spiegazione euclide (L)
+- diagramma dipendenze dei pacchetti (E)
+- commenti e lavoro futuro (F)

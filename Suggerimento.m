@@ -3,7 +3,7 @@
 BeginPackage["Suggerimento`"]
 
 MostraSuggerimento::usage =
-  "MostraSuggerimento[a_Integer, b_Integer] mostra un passo dell'algoritmo di Euclide con cerchi colorati, etichette e passaggi successivi."
+  "MostraSuggerimento[a_Integer, b_Integer] mostra un passo dell'algoritmo di Euclide con cerchi colorati, etichette e passaggi successivi.";
 
 Begin["`Private`"]
 
@@ -31,31 +31,22 @@ MostraSuggerimento[a_Integer, b_Integer] := Module[
   nodoNextA = CreaNodoGrafico[b, Yellow, "Prossimo A"];
   nodoNextB = CreaNodoGrafico[r, LightBlue, "Prossimo B"];
   
-  CreateDialog[
+  (* Invece di CreateDialog, restituiamo un Panel come fa MostraAiuto *)
+  Panel[
     Column[{
       Style["Suggerimento", Bold, 14],
       Row[{"Il prossimo A \[EGrave] ", Style[b, Bold], " e il prossimo B \[EGrave] ", Style[r, Bold]}],
       
       Style["Passo Corrente:", Bold, 12],
-        Row[{nodoA, Spacer[10], nodoB, Spacer[10], nodoR}],
+      Row[{nodoA, Spacer[10], nodoB, Spacer[10], nodoR}],
       
       Style["Prossimo passo:", Bold, 12],
       Row[{"Il prossimo A \[EGrave] il vecchio B", Spacer[10], nodoNextA}],
-      Row[{"Il prossimo B \[EGrave] A mod B", Spacer[10], nodoNextB}],
-      
-      Spacer[10],
-      Button["Chiudi", DialogReturn[]]
-    }],
-    WindowTitle -> "Suggerimento Visivo - Euclide",
-    Scrollbars -> True
+      Row[{"Il prossimo B \[EGrave] A mod B", Spacer[10], nodoNextB}]
+    }, Spacings -> 1],
+    ImageMargins -> 10
   ]
 ];
 
 End[]
 EndPackage[]
-
-
-
-
-
-

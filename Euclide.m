@@ -74,7 +74,18 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            }],
            Dynamic[Style[errorMessage, Red] ],
            Row[{
-             Button["Prosegui",
+             Button["Pulisci campi",
+              (nextA = ""; nextB = ""; errorMessage = "")
+             ],
+             Dynamic[If[!showHelp,
+               Button[Dynamic[If[showSuggestion, "Nascondi aiuto", "Aiuto"] ],
+                showSuggestion = !showSuggestion;
+                If[showSuggestion, suggestionContent = MostraSuggerimento[currentA, currentB] ];
+               ],
+               ""
+             ]
+             ],
+             Button["Verifica",
               If[nextA === currentB && nextB === Mod[currentA, currentB],
                currentA = nextA;
                currentB = nextB;
@@ -89,18 +100,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                ,
                errorMessage = "Risposta errata! Riprova."
               ]
-             ],
-             Button["Pulisci campi",
-              (nextA = ""; nextB = ""; errorMessage = ""),
-              ImageMargins -> 5
-             ],
-             Dynamic[If[!showHelp,
-               Button[Dynamic[If[showSuggestion, "Nascondi suggerimento", "Suggerimento"] ],
-                showSuggestion = !showSuggestion;
-                If[showSuggestion, suggestionContent = MostraSuggerimento[currentA, currentB] ];
-               ],
-               ""
-             ] ]
+             ]
            }]
           },
 

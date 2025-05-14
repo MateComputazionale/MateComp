@@ -34,12 +34,15 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
    userQuotient = "", userRemainder = "", errorMessage = "",
    isCompleted = False, nextA = "", nextB = "", userMCD = "", mcdMessage = "",
    showHelp = False, helpContent = Null,
-   showSuggestion = False, suggestionContent = Null
+   showSuggestion = False, suggestionContent = Null,
+   panelWidth = 400, buttonWidth = 370  (* Definisci le dimensioni qui *)
  },
 
   Panel[
    Column[{
      Style["Algoritmo di Euclide", Bold, 14, TextAlignment -> Center],
+     (* Impostiamo una larghezza fissa per l'intero componente *)
+     Delimiter,
      Dynamic[
       Column[
        Join[
@@ -61,8 +64,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
           Style["Algoritmo completato! Il MCD \[EGrave] " <> ToString[currentA], Bold, 14, TextAlignment -> Center],
           Button["Avanza di " <> ToString[stepsToComplete] <> " caselle",
            onSuccessCallback[currentA],
-           ImageSize -> Full,
-           Alignment -> Center
+           ImageSize -> {370, 30},
+           BaseStyle -> {FontWeight -> Bold}
           ]
          },
 
@@ -78,15 +81,15 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            Column[{
              Button["Pulisci campi",
               (nextA = ""; nextB = ""; errorMessage = ""),
-              ImageSize -> Full,
-              Alignment -> Center
+              ImageSize -> {370, 30},
+              BaseStyle -> {FontWeight -> Bold}
              ],
              Dynamic[If[!showHelp,
                Button[Dynamic[If[showSuggestion, "Nascondi aiuto", "Aiuto"] ],
                 showSuggestion = !showSuggestion;
                 If[showSuggestion, suggestionContent = MostraSuggerimento[currentA, currentB] ];,
-                ImageSize -> Full,
-                Alignment -> Center
+                ImageSize -> {370, 30},
+                BaseStyle -> {FontWeight -> Bold}
                ],
                ""
              ]
@@ -106,8 +109,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                ,
                errorMessage = "Risposta errata! Riprova."
               ],
-              ImageSize -> Full,
-              Alignment -> Center
+              ImageSize -> {370, 30},
+              BaseStyle -> {FontWeight -> Bold}
              ]
            }, Spacings -> 1, Alignment -> Center]
           },
@@ -134,15 +137,15 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                 Button["Nascondi aiuto",
                  showHelp = False;
                  helpContent = Null;,
-                 ImageSize -> Full,
-                 Alignment -> Center
+                 ImageSize -> {370, 30},
+                 BaseStyle -> {FontWeight -> Bold}
                 ],
                showSuggestion,
                 Button["Nascondi suggerimento",
                  showSuggestion = False;
                  suggestionContent = Null;,
-                 ImageSize -> Full,
-                 Alignment -> Center
+                 ImageSize -> {370, 30},
+                 BaseStyle -> {FontWeight -> Bold}
                 ],
                True,
                 Column[{
@@ -150,8 +153,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                   showHelp = True;
                   helpContent = MostraAiuto[currentA, currentB];
                   showSuggestion = False; (* Resetta anche il suggerimento *),
-                  ImageSize -> Full,
-                  Alignment -> Center
+                  ImageSize -> {370, 30},
+                  BaseStyle -> {FontWeight -> Bold}
                  ]
                 }, Alignment -> Center]
               ]
@@ -177,8 +180,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                errorMessage = "Risposta errata! Riprova.";
                userQuotient = ""; userRemainder = "";
               ],
-              ImageSize -> Full,
-              Alignment -> Center
+              ImageSize -> {370, 30},
+              BaseStyle -> {FontWeight -> Bold}
              ]
            }, Spacings -> 1, Alignment -> Center]
           }
@@ -203,13 +206,22 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
           {}
         ]
        ],
-       Alignment -> Center
-      ]
+       ImageSize -> Full,
+      Alignment -> Center
      ]
-    }, Spacings -> 1, Alignment -> Center],
-   ImageMargins -> 10
+    }, 
+    Alignment -> Center],
+   ImageMargins -> 10,
+   ImageSize -> 400 (* Larghezza fissa del panel *)
   ]
  ]
+
+ClearFields[quotient_, remainder_, message_] :=
+Button["Pulisci campi",
+  (quotient = ""; remainder = ""; message = ""),
+  ImageSize -> {370, 30},
+  BaseStyle -> {FontWeight -> Bold}
+]
 
 EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] :=
  CreateDialog[
@@ -217,6 +229,3 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
   WindowTitle -> "Algoritmo di Euclide",
   Modal -> True
  ]
-
-End[]
-EndPackage[]

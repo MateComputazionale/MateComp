@@ -118,15 +118,24 @@ StartGame[___] := Module[
    gameNotebook},         (* Notebook contenente l'interfaccia di gioco *)
   
   (* Richiedi all'utente di inserire un seed attraverso una finestra di dialogo *)
-	seed = DialogInput[
-	   {seedInput = Null},    (* <-- here you declare seedInput as the dynamic variable *)
-	   Column[{
-	     "Inserisci il numero seed per il gioco:",
-	     InputField[Dynamic[seedInput], Number],
-	     DefaultButton["OK", DialogReturn[seedInput]]
-	   }, Alignment -> Center],
-	   WindowTitle -> "Seed del Gioco"
-	];
+    seed = DialogInput[
+    {seedInput = Null, errorMessage = ""},    (* seedInput, errorMessage *)
+    Column[{
+      "Inserisci il numero seed per il gioco:",
+      InputField[Dynamic[seedInput], Number],
+      Dynamic[Style[errorMessage, Red, Bold] ], (* Visualizza messaggi di errore in rosso *)
+      Button["OK", 
+        (* Validazione: controlla se l'input è nullo o non numerico *)
+        If[seedInput === Null || seedInput === "" || Not[NumericQ[seedInput] ],
+          errorMessage = "Inserisci un numero intero per partire!";
+          Null, (* Ritorna Null per NON chiudere la finestra di dialogo *)
+          DialogReturn[seedInput] (* Se valido, ritorna il valore *)
+        ]
+      ],
+      Spacer[10] (* Spazio tra gli elementi *)
+    }, Alignment -> Center],
+    WindowTitle -> "Seed del Gioco"
+  ];
 
   
   (* Gestione del risultato della finestra di dialogo *)

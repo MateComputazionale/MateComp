@@ -28,6 +28,14 @@ MostraSuggerimento::usage =
   "MostraSuggerimento[a_Integer, b_Integer] mostra un passo dell'algoritmo di Euclide con cerchi colorati, etichette e passaggi successivi."
 *)
 
+(* Ridefinisco ClearFields qui per mantenere la coerenza dello stile *)
+ClearFields[quotient_, remainder_, message_] :=
+  Button["Pulisci campi",
+    (quotient = ""; remainder = ""; message = ""),
+    ImageSize -> {370, 30},
+    BaseStyle -> {FontWeight -> Bold}
+  ]
+
 EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] :=
  DynamicModule[{
    currentA = a, currentB = b, steps = {}, currentStep = 1,
@@ -41,8 +49,6 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
   Panel[
    Column[{
      Style["Algoritmo di Euclide", Bold, 14, TextAlignment -> Center],
-     (* Impostiamo una larghezza fissa per l'intero componente *)
-     Delimiter,
      Dynamic[
       Column[
        Join[
@@ -77,7 +83,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
              "   ",
              "b = ", InputField[Dynamic[nextB], Number, FieldSize -> 5]
            }, Alignment -> Center],
-           Dynamic[Style[errorMessage, Red, TextAlignment -> Center] ],
+           Dynamic[Style[errorMessage, Red, TextAlignment -> Center]],
            Column[{
              Button["Pulisci campi",
               (nextA = ""; nextB = ""; errorMessage = ""),
@@ -85,15 +91,14 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
               BaseStyle -> {FontWeight -> Bold}
              ],
              Dynamic[If[!showHelp,
-               Button[Dynamic[If[showSuggestion, "Nascondi aiuto", "Aiuto"] ],
+               Button[Dynamic[If[showSuggestion, "Nascondi aiuto", "Aiuto"]],
                 showSuggestion = !showSuggestion;
-                If[showSuggestion, suggestionContent = MostraSuggerimento[currentA, currentB] ];,
+                If[showSuggestion, suggestionContent = MostraSuggerimento[currentA, currentB]],
                 ImageSize -> {370, 30},
                 BaseStyle -> {FontWeight -> Bold}
                ],
                ""
-             ]
-             ],
+             ]],
              Button["Verifica",
               If[nextA === currentB && nextB === Mod[currentA, currentB],
                currentA = nextA;
@@ -126,7 +131,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
              InputField[Dynamic[userRemainder], Number, FieldSize -> 5]
            }, Alignment -> Center],
 
-           Dynamic[Style[errorMessage, Red, TextAlignment -> Center] ],
+           Dynamic[Style[errorMessage, Red, TextAlignment -> Center]],
 
            Column[{
              ClearFields[userQuotient, userRemainder, errorMessage],
@@ -136,14 +141,14 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                showHelp,
                 Button["Nascondi aiuto",
                  showHelp = False;
-                 helpContent = Null;,
+                 helpContent = Null,
                  ImageSize -> {370, 30},
                  BaseStyle -> {FontWeight -> Bold}
                 ],
                showSuggestion,
                 Button["Nascondi suggerimento",
                  showSuggestion = False;
-                 suggestionContent = Null;,
+                 suggestionContent = Null,
                  ImageSize -> {370, 30},
                  BaseStyle -> {FontWeight -> Bold}
                 ],
@@ -152,7 +157,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                  Button["Aiuto",
                   showHelp = True;
                   helpContent = MostraAiuto[currentA, currentB];
-                  showSuggestion = False; (* Resetta anche il suggerimento *),
+                  showSuggestion = False, (* Resetta anche il suggerimento *)
                   ImageSize -> {370, 30},
                   BaseStyle -> {FontWeight -> Bold}
                  ]
@@ -206,22 +211,14 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
           {}
         ]
        ],
-       ImageSize -> Full,
-      Alignment -> Center
+       Alignment -> Center
+      ]
      ]
-    }, 
-    Alignment -> Center],
+    }, Spacings -> 1, Alignment -> Center],
    ImageMargins -> 10,
    ImageSize -> 400 (* Larghezza fissa del panel *)
   ]
  ]
-
-ClearFields[quotient_, remainder_, message_] :=
-Button["Pulisci campi",
-  (quotient = ""; remainder = ""; message = ""),
-  ImageSize -> {370, 30},
-  BaseStyle -> {FontWeight -> Bold}
-]
 
 EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] :=
  CreateDialog[
@@ -229,3 +226,6 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
   WindowTitle -> "Algoritmo di Euclide",
   Modal -> True
  ]
+
+End[]
+EndPackage[]

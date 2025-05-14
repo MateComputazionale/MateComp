@@ -218,10 +218,23 @@ StartGame[___] := Module[
                   (* Se il gioco \[EGrave] finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
                   Column[{
                     Style["Hai vinto!", Bold, 16, TextAlignment -> Center],  (* Stilizzazione del messaggio di vittoria *)
-                    Button["Nuova Partita", 
+                    Button[
+                      TextCell["Nuova Partita", "Text", FontColor -> White],
                       (* Reset dello stato del gioco *)
                       {playerPosition, diceValue, isGameOver} = ResetGame[];
-                      showEuclide = False;
+                      showEuclide = False;,
+                      Background -> RGBColor[0.1, 0.5, 0.1],  (* Colore verde per indicare un'azione positiva *)
+                      FrameMargins -> 10,
+                      Appearance -> None,
+                      BaseStyle -> {
+                        FontSize -> 14,
+                        FontColor -> White,
+                        FontWeight -> "Bold",
+                        FontFamily -> "Arial"
+                      },
+                      ImageSize -> {120, Automatic},
+                      Method -> "Queued",
+                      ContentPadding -> 10
                     ]
                   }, Alignment -> Center],  (* Centramento della colonna *)
                   (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)

@@ -135,7 +135,7 @@ StartGame[___] := Module[
       ],
       Spacer[10] (* Spazio tra gli elementi *)
     }, Alignment -> Center], (* Allineamento centrale *)
-    WindowTitle -> "Seed del Gioco" (* Titolo della finestra di dialogo *),
+    WindowTitle -> "Seed del Gioco" (* Titolo della finestra di dialogo *)
   ];
 
   

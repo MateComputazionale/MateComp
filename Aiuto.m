@@ -56,7 +56,7 @@ MostraAiuto[a_Integer, b_Integer] := Module[
  {
    q = Quotient[a, b], (* Calcola il quoziente *)
    r = Mod[a, b],      (* Calcola il resto *)
-   gruppi, resto, radius = 0.2
+   gruppi, resto, radius = 0.2 (* Raggio dei dischi per la visualizzazione *)
  },
  
  (* Prepara la visualizzazione del divisore ripetuto q volte *)

@@ -1,4 +1,7 @@
+(* ::Package:: *)
+
 (* Pacchetto Euclide per calcolare il MCD tramite l'algoritmo di Euclide con interfaccia utente *)
+
 
 BeginPackage["Euclide`"]
 
@@ -30,8 +33,8 @@ MostraSuggerimento::usage =
   "MostraSuggerimento[a_Integer, b_Integer] mostra un passo dell'algoritmo di Euclide con cerchi colorati, etichette e passaggi successivi."
 *)
 
-(* Ridefinizione di ClearFields per uniformità di stile del pacchetto *)
-ClearFields[quotient_, remainder_, message_] :=
+(* Ridefinizione di ClearFields per uniformit\[AGrave] di stile del pacchetto *)
+ClearFields[numero1, numero2, message_] :=
   Button["Pulisci campi",
     (quotient = ""; remainder = ""; message = ""),
     ImageSize -> {370, 30},         (* Dimensioni del bottone *)
@@ -64,55 +67,66 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
    buttonWidth = 370            (* Larghezza dei bottoni *)
  },
 
-  (* Struttura del pannello principale *)
+  (* Struttura principale *)
   Panel[
    Column[{  (* Disposizione verticale dei contenuti *)
-     Style["Algoritmo di Euclide", Bold, 14, TextAlignment -> Center],
-     Dynamic[ (* Rende reattivo il contenuto interno *)
+     Style["Algoritmo di Euclide", Bold, 14, TextAlignment -> Center], (* Titolo del Panel principale*)
+     Dynamic[ (*Permette dinamicit\[AGrave] nel contenuto del Panel pricipale*)
       Column[
-       Join[
-        (* Mostra tutti i passi già effettuati *)
+       Join[ 
+        (* Mostra tutti i passi gi\[AGrave] effettuati *)
         Table[
          With[{stepData = steps[[i]]},
           Row[{(* Rappresentazione testuale del passo i *)
             Style[Row[{"Passo ", i}], Bold],
-            "     a = ", stepData[[1]],
-            " b = ", stepData[[2]],
-            "     ", stepData[[1]], " div ", stepData[[2]],
-            " = ", stepData[[3]], ", resto ", stepData[[4]]
+            "     a = ", stepData[[1]], (* Valore corrente di a *)
+            " b = ", stepData[[2]], (* Valore corrente di b *)
+            "     ", stepData[[1]], " div ", stepData[[2]], (* Divisione *)
+            " = ", stepData[[3]], ", resto ", stepData[[4]] (* Resto *)
           }]
          ],
-         {i, Length[steps]}
+         {i, Length[steps]} (* Itera su tutti i passi *)
         ],
 
-        (* Verifica se l'algoritmo è completato *)
+        (* Verifica se l'algoritmo \[EGrave] completato controllando che il resto della divisione sia 0*)
         If[currentB === 0,
-         { (* Caso completato: mostra il MCD e il bottone di avanzamento *)
+         { (* Caso completato: mostra MCD e il bottone di avanzamento *)
           Style["Algoritmo completato! Il MCD \[EGrave] " <> ToString[currentA], Bold, 14, TextAlignment -> Center],
           Button["Avanza di " <> ToString[stepsToComplete] <> " caselle",
-           onSuccessCallback[currentA],  (* Chiamata al callback *)
-           ImageSize -> {buttonWidth, 30},
-           BaseStyle -> {FontWeight -> Bold}
+          (* Quando premi il bottone viene chiamata la callback che notifica al file i Divisori di dover avanzare nella board *)
+           onSuccessCallback[currentA],
+           ImageSize -> {buttonWidth, 30}, (* Dimensioni del bottone *)
+           BaseStyle -> {FontWeight -> Bold} (* Stile di base: grassetto *)
           ]
          },
 
-         (* Altrimenti, gestisce sia il passo corrente sia la fase di inserimento dei nuovi valori *)
+         (* Altrimenti, gestisce sia il passo corrente sia la fase di inserimento dei nuovi valori che la fase di inserimento del risultato della 
+         divisione e del resto della divisone *)
+         
+         (*Controllo che il passo precedente sia stato completato correttamente, se \[EGrave] stato completamento correttamente allora posso procedere;
+         richiedendo in input i valori necessari per completare il prossimo passo dell'algoritmo*)
          If[isCompleted,
-          { (* Dopo un passo valido, richiede i nuovi a e b *)
-           Style["Inserisci i nuovi valori per a e b per continuare:", Bold, TextAlignment -> Center],
-           Row[{(* Campi di Input per nextA e nextB *)
-             "a = ", InputField[Dynamic[nextA], Number, FieldSize -> 5],
+         
+          { (* Viene richiesto all'utente di inserire in input il nuovo dividendo e il nuovo divisore per il successivo passo dell'algoritmo*)
+           Style["Inserisci i nuovi valori a e b per continuare nella ricerca dell'MCD:", Bold, TextAlignment -> Center],
+           Row[{
+          (* Campi di input per inserire i prossimi valori di a e b ovvero il prossimo dividendo e il prossimo divisore divisore *)
+             "a = ", InputField[Dynamic[nextA], Number, FieldSize -> 5], (* Campo di input per a *)
              "   ",
-             "b = ", InputField[Dynamic[nextB], Number, FieldSize -> 5]
+             "b = ", InputField[Dynamic[nextB], Number, FieldSize -> 5] (* Campo di input per b *)
            }, Alignment -> Center],
+           
            Dynamic[Style[errorMessage, Red, TextAlignment -> Center]],
-           Column[{(* Bottoni per pulire, aiuto e verifica nuova coppia *)
-             Button["Pulisci campi",
-              (nextA = ""; nextB = ""; errorMessage = ""),
-              ImageSize -> {buttonWidth, 30},
-              BaseStyle -> {FontWeight -> Bold}
-             ],
-             Dynamic[If[!showHelp,
+           
+           Column[{
+          
+          (* Lista dei bottoni per pulire i campi, l'aiuto visivo e la verifica dei nuovi valori inseriti*)
+             
+             (*Bottoni per ripulire i campi in input*)
+             ClearFields[nextA, nextB, errorMessage],
+
+            (* Bottone per mostrare l'aiuto visivo nel caso in cui l'utente non sappia quali sono i nuovi valori per a e b da inserire*)
+             Dynamic[If[!showHelp, 
                Button[Dynamic[If[showSuggestion, "Nascondi aiuto", "Aiuto"]],
                 showSuggestion = !showSuggestion;
                 If[showSuggestion, suggestionContent = MostraSuggerimento[currentA, currentB]],
@@ -121,9 +135,12 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                ],
                ""
              ]],
+
+			(*Bottone per verificare che i valori inseriti dall'utente siano corretti*)
              Button["Verifica",
               If[nextA === currentB && nextB === Mod[currentA, currentB],
-               (* Se corretto, aggiorna currentA e currentB, resetta variabili *)
+               (* Se corretto, aggiorna currentA e currentB con i nuovi valori di a e b per il prossimo passo dell'algoritmo;
+               Oltre ai nuovi valori di a e b resetto tutti i valori precedenti *)
                currentA = nextA;
                currentB = nextB;
                userQuotient = "";
@@ -135,8 +152,9 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                showHelp = False;
                showSuggestion = False;
                ,
-               (* Altrimenti mostra errore *)
-               errorMessage = "Risposta errata! Riprova."
+               
+               (* Se i valori inseriti dall'utente non sono corretti viene mostrato il messaggio di errore*)
+               errorMessage = "I numeri inseriti non sono corretti! Prova a reinserire il prossimo a e il prossimo b per completare l''algoritmo"
               ],
               ImageSize -> {buttonWidth, 30},
               BaseStyle -> {FontWeight -> Bold}
@@ -144,22 +162,29 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
            }, Spacings -> 1, Alignment -> Center]
           },
 
+
           { (* Fase di inserimento di quoziente e resto per il passo corrente *)
-           Row[{(* Mostra dati passo corrente e campi di input *)
+           Row[{(* Mostra il divisore e il dividendo del passo corrente e i campi di input dove inserire il risultato e il resto della divisione *)
              Style[Row[{"Passo ", currentStep}], Bold],
-             "    a = ", currentA,
-             ", b = ", currentB,
+             "    a = ", currentA, (* Valore corrente di a *)
+             ", b = ", currentB,  (* Valore corrente di b *)
              "     ", currentA, " div ", currentB,
-             " = ", InputField[Dynamic[userQuotient], Number, FieldSize -> 5],
+             " = ", InputField[Dynamic[userQuotient], Number, FieldSize -> 5], 
              ", resto ",
              InputField[Dynamic[userRemainder], Number, FieldSize -> 5]
            }, Alignment -> Center],
 
+          (* Mostra errore se presente *)
            Dynamic[Style[errorMessage, Red, TextAlignment -> Center]],
 
-           Column[{(* Bottoni di pulizia, aiuto/suggerimento e verifica *)
+           Column[{
+            (* Lista dei bottoni per pulire i campi, l'aiuto visivo e la verifica dei nuovi valori inseriti*)
+            
+            (*Bottoni per ripulire i campi in input*)
              ClearFields[userQuotient, userRemainder, errorMessage],
 
+			
+			(* Bottone per mostrare l'aiuto visivo nel caso in cui l'utente non sappia quali sono il risultato e il resto della divisione*)
              Dynamic[
               Which[
                showHelp,
@@ -177,7 +202,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                  BaseStyle -> {FontWeight -> Bold}
                 ],
                True,
-                Column[{(* Bottone per richiedere aiuto *)
+                Column[{
                  Button["Aiuto",
                   showHelp = True;
                   helpContent = MostraAiuto[currentA, currentB];
@@ -188,16 +213,18 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                 }, Alignment -> Center]
               ]
              ],
-
+			
+			(*Bottone per verificare che i valori inseriti dall'utente siano corretti*)
              Button["Verifica",
               If[userQuotient === Quotient[currentA, currentB] &&
                  userRemainder === Mod[currentA, currentB],
-               (* Se corretto, memorizza il passo *)
+               (* Se corretto, memorizza il passo in modo da poterlo mostrare successivamente nella Table *)
                AppendTo[steps, {currentA, currentB, userQuotient, userRemainder}];
                currentStep++;
                If[Mod[currentA, currentB] === 0,
-                (* Se il resto è zero, termina algoritmo *)
-                currentB = 0; (* Forza completamento *)
+                (*Controllo che il resto della divisione sia 0; 
+                Se \[EGrave] 0 allora l'algoritmo \[EGrave] terminato*)
+                currentB = 0;
                ,
                 isCompleted = True;
                ];
@@ -207,8 +234,8 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
                showHelp = False;
                showSuggestion = False;
                ,
-               (* Altrimenti reset input e mostra errore *)
-               errorMessage = "Risposta errata! Riprova.";
+               (* Se il risultato e il resto della divisione inseriti dall'utente non sono corretti, mostra il messaggio d'errore*)
+               errorMessage = "I numeri inseriti non sono corretti! Prova a reinserire il quoziente e il resto della divisione corretti per poter completare l'algoritmo!";
                userQuotient = ""; userRemainder = "";
               ],
               ImageSize -> {buttonWidth, 30},
@@ -219,13 +246,13 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
          ]
         ],
 
-        (* Se richiesto, visualizza il contenuto di aiuto sotto i bottoni *)
+        (* Se l'utente richiede l'aiuto per trovare il quoziente e il resto della divisione, l'aiuto viene mostrato sotto il Panel con i passi dell'algoritmo *)
         If[showHelp && helpContent =!= Null,
           {Spacer[5], helpContent},
           {}
         ],
 
-        (* Se richiesto, visualizza il suggerimento nato da Suggerimento.m *)
+        (* Se l'utente richiede l'aiuto per trovare i prossimi a e il prossimo b, l'aiuto viene mostrato sotto il Panel con i passi dell'algoritmo*)
         If[showSuggestion && suggestionContent =!= Null && !showHelp,
           {Spacer[5], suggestionContent},
           {}
@@ -240,7 +267,7 @@ EuclideComponent[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallbac
   ]
  ]
 
-(* Creazione di un Dialog con componente EuclideComponent *)
+(* Creazione del Dialog principale contenente la risoluzione dell'algoritmo di euclide*)
 EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_Function] :=
  CreateDialog[
   EuclideComponent[a, b, stepsToComplete, onSuccessCallback],
@@ -250,3 +277,6 @@ EuclideDialog[a_Integer, b_Integer, stepsToComplete_Integer, onSuccessCallback_F
 
 End[]
 EndPackage[]
+
+
+

@@ -21,7 +21,8 @@ ClearFields[quotient_, remainder_, message_] := Button[
     quotient = "";    (* Pulisce il quoziente *)
     remainder = "";   (* Pulisce il resto *)
     message = "";     (* Pulisce il messaggio *)
-  )
+  ),
+  BaseStyle -> {FontWeight -> Bold}
 ]
 
 (* Imposta HoldAll per impedire la valutazione prematura degli argomenti *)

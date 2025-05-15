@@ -33,14 +33,6 @@ MostraSuggerimento::usage =
   "MostraSuggerimento[a_Integer, b_Integer] mostra un passo dell'algoritmo di Euclide con cerchi colorati, etichette e passaggi successivi."
 *)
 
-(* Ridefinizione di ClearFields per uniformit\[AGrave] di stile del pacchetto *)
-ClearFields[numero1, numero2, message_] :=
-  Button["Pulisci campi",
-    (quotient = ""; remainder = ""; message = ""),
-    ImageSize -> {370, 30},         (* Dimensioni del bottone *)
-    BaseStyle -> {FontWeight -> Bold} (* Stile di base: grassetto *)
-  ]
-
 (* Definizione principale di EuclideComponent, con argomenti:
    a, b: numeri interi iniziali
    stepsToComplete: numero di caselle da avanzare al termine

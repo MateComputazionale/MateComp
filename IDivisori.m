@@ -249,7 +249,7 @@ StartGame[___] := Module[
                   (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
                   Column[{
                     If[diceValue > 0, 
-                      DrawDice[diceValue] (* Disegna il dado con il valore lanciato *),
+                      DrawDice[diceValue] (* Disegna il dado con il valore lanciato *)
                     ]
                   }, Alignment -> Center]  (* Centramento della colonna *)
                 ]

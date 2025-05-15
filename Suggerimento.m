@@ -1,4 +1,4 @@
-(* Pacchetto Suggerimento per visualizzare un passo dell'algoritmo di Euclide con nodi grafici colorati *)
+(* Pacchetto Suggerimento per visualizzare un passo dell'algoritmo di Euclide *)
 
 BeginPackage["Suggerimento`"]
 
@@ -11,17 +11,17 @@ Begin["`Private`"]
 (*
   CreaNodoGrafico:
   - val: valore numerico da mostrare nel cerchio
-  - colore: colore di riempimento del cerchio
-  - label: etichetta opzionale da posizionare sotto il cerchio
+  - colore: colore del cerchio
+  - label: etichetta da posizionare sotto il cerchio
   Restituisce un oggetto Graphics con:
     - un Disk (cerchio) con bordo nero e riempimento del colore specificato
     - il valore val al centro del cerchio
-    - un testo secondario opzionale sotto il cerchio
+    - un testo secondario sotto il cerchio
 *)
 CreaNodoGrafico[val_, colore_, label_: ""] := 
   Graphics[{  
     EdgeForm[Black],         (* Bordo nero *)
-    FaceForm[colore],        (* Riempimento colorato *)
+    FaceForm[colore],        (* Colore del cerchio *)
     Disk[{0, 0}, 0.1],       (* Cerchio di raggio 0.1 centrato in {0,0} *)
     Text[Style[ToString[val], 10, Black], {0, 0}],  (* Valore al centro *)
     If[label =!= "",     (* Se è specificata un'etichetta *)
@@ -39,7 +39,7 @@ CreaNodoGrafico[val_, colore_, label_: ""] :=
   Crea nodi grafici per A, B, r e per i valori del passo successivo.
   Restituisce un Panel con:
     - Titolo "Suggerimento"
-    - Informazioni testuali sul prossimo A e prossimo B
+    - Informazioni testuali sul prossimo A e il prossimo B
     - Visualizzazione dei nodi A, B e resto attuale
     - Visualizzazione dei nodi per i valori successivi
 *)

@@ -87,7 +87,7 @@ MostraAiuto[a_Integer, b_Integer] := Module[
      (* Spiegazione testuale della divisione *)
 	Row[{
     "Immagina di divere il numero totale di palline ", Style[a, Bold],
-    "(pari al dividendo) nel maggiore numero di gruppo possibili di ", Style[b, Bold],
+    " (pari al dividendo) nel maggiore numero di gruppo possibili di ", Style[b, Bold],
     " palline (divisore). Il numero di gruppi formatosi di ", Style[b, Bold],
     " palline \[EGrave] il risultato della divisione. Le palline rimanenti dalla divisione in gruppi uguali \[EGrave] il resto"
     }]

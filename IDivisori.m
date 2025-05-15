@@ -139,7 +139,7 @@ StartGame[___] := Module[
 
   
   (* Gestione del risultato della finestra di dialogo *)
-  If[seed === "cancel" || seed === $Canceled,
+  If[seed === "cancel" || seed === $Canceled, (* In questo caso  è stata utilizzata una variabile di sistema che controlla se la finestra di dialogo è stata chiusa *)
     (* L'utente ha annullato l'operazione - non fare nulla *)
     Return[]
   ];
@@ -199,7 +199,7 @@ StartGame[___] := Module[
                 ImageSize -> 400                                  (* Dimensione dell'immagine *)
               ],
               
-              (* Pulsante per tirare il dado - CENTRATO *)
+              (* Pulsante per tirare il dado *)
               (* Utilizzo di un contenitore Row per centrare il pulsante *)
               Row[{
                 (* Utilizzo della funzione RollDice dal pacchetto Buttons *)
@@ -217,13 +217,13 @@ StartGame[___] := Module[
                 If[isGameOver,
                   (* Se il gioco \[EGrave] finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
                   Column[{
-                    Style["Hai vinto!", Bold, 16, TextAlignment -> Center],  (* Stilizzazione del messaggio di vittoria *)
+                    Style["Hai vinto!", Bold, 16, TextAlignment -> Center], 
                     Button[
                       TextCell["Nuova Partita", "Text", FontColor -> White],
                       (* Reset dello stato del gioco *)
                       {playerPosition, diceValue, isGameOver} = ResetGame[];
                       showEuclide = False;,
-                      Background -> RGBColor[0.1, 0.5, 0.1],  (* Colore verde per indicare un'azione positiva *)
+                      Background -> RGBColor[0.1, 0.5, 0.1],  (* Colore verde *)
                       FrameMargins -> 10,
                       Appearance -> None,
                       BaseStyle -> {

@@ -51,12 +51,12 @@ MostraSuggerimento[a_Integer, b_Integer] := Module[
   },
   
   (* Crea i tre nodi correnti con etichette *)
-  nodoA = CreaNodoGrafico[a, LightGray, "A"];      (* Nodo per A *)
-  nodoB = CreaNodoGrafico[b, Yellow, "B"];         (* Nodo per B *)
+  nodoA = CreaNodoGrafico[a, LightPurple, "A"];      (* Nodo per A *)
+  nodoB = CreaNodoGrafico[b, LightYellow, "B"];         (* Nodo per B *)
   nodoR = CreaNodoGrafico[r, LightBlue, "A mod B"];(* Nodo per resto *)
   
   (* Crea i nodi per i valori del prossimo passo *)
-  nodoNextA = CreaNodoGrafico[b, Yellow, "Prossimo A"];    (* Il vecchio B diventa nuovo A *)
+  nodoNextA = CreaNodoGrafico[b, LightYellow, "Prossimo A"];    (* Il vecchio B diventa nuovo A *)
   nodoNextB = CreaNodoGrafico[r, LightBlue, "Prossimo B"]; (* Il resto diventa nuovo B *)
   
   (* Costruisce un Panel di presentazione *)

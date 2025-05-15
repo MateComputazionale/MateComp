@@ -109,3 +109,6 @@ End[]
 
 (* Fine della definizione del pacchetto *)
 EndPackage[]
+
+
+

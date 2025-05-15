@@ -33,13 +33,13 @@ CreaAiutoValore[n_Integer, radius_: 0.2] := Module[
  Join[
    (* Crea 'blu' dischi di colore blu per rappresentare le decine *)
    Table[
-     Graphics[{EdgeForm[Black], FaceForm[Blue], Disk[{0, 0}, radius]}, ImageSize -> 30],
+     Graphics[{EdgeForm[Black], FaceForm[LightBlue], Disk[{0, 0}, radius], Text[Style["10", 10, Black], {0, 0}]}, ImageSize -> 30],
      {blu}
    ],
    
    (* Crea 'arancioni' dischi di colore arancione per rappresentare le unit\[AGrave] *)
    Table[
-     Graphics[{EdgeForm[Black], FaceForm[Orange], Disk[{0, 0}, radius]}, ImageSize -> 30],
+     Graphics[{EdgeForm[Black], FaceForm[LightOrange], Disk[{0, 0}, radius], Text[Style["1", 10, Black], {0, 0}]}, ImageSize -> 30],
      {arancioni}
    ]
  ]
@@ -109,12 +109,3 @@ End[]
 
 (* Fine della definizione del pacchetto *)
 EndPackage[]
-
-
-
-
-
-
-
-
-

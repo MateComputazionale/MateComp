@@ -22,6 +22,7 @@ ClearFields[quotient_, remainder_, message_] := Button[
     remainder = "";   (* Pulisce il resto *)
     message = "";     (* Pulisce il messaggio *)
   ),
+  ImageSize -> {370, 30}, 
   BaseStyle -> {FontWeight -> Bold}
 ]
 
@@ -82,7 +83,7 @@ RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, player
       ];
       showEuclide = True;  (* Mostra il componente Euclide *)
     ),
-    ImageSize -> {150, Automatic},              (* Dimensione del bottone *)
+    ImageSize -> {150, 35},              (* Dimensione del bottone *)
     Enabled -> Dynamic[diceButtonEnabled && !isGameOver],  (* Abilitazione condizionale *)
     Appearance -> "Frameless",                  (* Aspetto senza cornice *)
     Background -> RGBColor[0.3, 0.6, 0.3],      (* Colore di sfondo verde *)

@@ -299,7 +299,8 @@ StartGame[___] := Module[
                     Style["Tira il dado per cominciare a giocare!", Bold, 14, TextAlignment -> Center] (* Messaggio *)
                   }, Alignment -> Center],  (* Centramento del contenuto del pannello *)
                   ImageMargins -> 10, (* Margini dell'immagine *)
-                  ImageSize -> {400, 300} (* Dimensione dell'immagine *)
+                  ImageSize -> {400, 300}, (* Dimensione dell'immagine *)
+                  Alignment -> Center (* Centramento del pannello *)
                 ]
               ]
             ]

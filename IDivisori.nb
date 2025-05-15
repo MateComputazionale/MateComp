@@ -3,33 +3,38 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[   6703617,     110104]
-NotebookOptionsPosition[   6699110,     110016]
-NotebookOutlinePosition[   6699537,     110033]
-CellTagsIndexPosition[   6699494,     110030]
+NotebookDataLength[   6708637,     110279]
+NotebookOptionsPosition[   6704112,     110191]
+NotebookOutlinePosition[   6704555,     110208]
+CellTagsIndexPosition[   6704512,     110205]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["GCD Euclide", "Title",
- CellChangeTimes->{3.95300453531448*^9, 
-  3.953105112409004*^9},ExpressionUUID->"80a98bc3-27af-4cf5-9f33-\
-94631d44e715"],
+Cell[TextData[StyleBox["Gioco dell\[CloseCurlyQuote]Anatra - Algoritmo di \
+Euclide",
+ FontWeight->"Bold"]], "Title",
+ CellChangeTimes->{
+  3.95300453531448*^9, 3.953105112409004*^9, {3.9563109446825047`*^9, 
+   3.956310969876362*^9}},
+ TextAlignment->Center,ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
 
-Cell["\<\
-Gruppo 8: I Divisori
-MC 2024/2025
-Sara Casadio, Enrico Ferraiolo, Luca Orlandello, Federica Santisi
+Cell[TextData[{
+ StyleBox["Gruppo 8: I Divisori",
+  FontWeight->"Bold"],
+ "\nMC 2024/2025\n",
+ StyleBox["Sara Casadio, Enrico Ferraiolo, Luca Orlandello, Federica Santisi\n\
 (Anno 1 curriculum A), (Anno 1 curriculum C), (Anno 2 curriculum A), (Anno 1 \
-curriculum A)\
-\>", "Subtitle",
+curriculum A)",
+  FontSlant->"Italic"]
+}], "Subtitle",
  CellFrame->{{0, 0}, {0, 0}},
  CellChangeTimes->{{3.953004547332446*^9, 3.9530045557732487`*^9}, {
   3.9560252805674677`*^9, 3.9560252926957483`*^9}, {3.956038215644532*^9, 
-  3.956038235098078*^9}},ExpressionUUID->"5914094f-65a1-4c1e-adc4-\
-902749fb0d1d"],
+  3.956038235098078*^9}},
+ TextAlignment->Center,ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
 
 Cell[BoxData[
  RowBox[{
@@ -101490,9 +101495,9 @@ AjOgVFt1RbLqKkuENPg/9+IzFw==
   3.953260847330242*^9, 3.953260884277006*^9, 3.953277640417893*^9, {
    3.953277842768019*^9, 3.953277851875173*^9}, {3.9533494834610977`*^9, 
    3.9533495409457893`*^9}, {3.956025201930098*^9, 3.956025253623096*^9}, {
-   3.956130601530267*^9, 
-   3.95613062036674*^9}},ExpressionUUID->"2063c8fa-2676-4e49-a2c4-\
-afde57dafe91"],
+   3.956130601530267*^9, 3.95613062036674*^9}},
+ TextAlignment->Center,
+ TextJustification->1.,ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
 
 Cell[CellGroupData[{
 
@@ -101501,91 +101506,145 @@ Cell["Introduzione", "Section",
   3.9561399890874977`*^9}},ExpressionUUID->"3b996e5d-8186-264c-a595-\
 fb41f0f8bf1b"],
 
-Cell["\<\
-L\[CloseCurlyQuote]idea alla base del nostro progetto nasce dal desiderio di \
-rendere l\[CloseCurlyQuote]algoritmo di Euclide, spesso percepito come un \
-concetto troppo astratto, un\[CloseCurlyQuote]esperienza concreta, \
-interattiva e divertente. Trasformando il calcolo del massimo comune divisore \
-in una piccola \[OpenCurlyDoubleQuote]avventura\[CloseCurlyDoubleQuote] su \
-scacchiera, il giocatore pu\[OGrave] esplorare passo dopo passo nell\
-\[CloseCurlyQuote]algoritmo come i numeri si riducano alla soluzione cercata, \
-consolidando al tempo stesso le basi della teoria dei numeri.
-
-Per raggiungere questo scopo, il gioco integra dinamiche classiche - come il \
-lancio del dado e il movimento su caselle - con elementi di problem solving \
-matematico. A ogni tappa sulla griglia, infatti, si presenta una coppia di \
-numeri da \[OpenCurlyDoubleQuote]semplificare\[CloseCurlyDoubleQuote] tramite \
-ripetute sottrazioni o divisioni successive, guidando \
-l\[CloseCurlyQuote]utente attraverso un processo logico e intuitivo - \
-eseguendo l\[CloseCurlyQuote]algoritmo di Euclide. La casualit\[AGrave] nella \
-creazione dei problemi stimola la ripetizione e mantiene alta la curiosit\
-\[AGrave], mentre suggerimenti contestuali e un\[CloseCurlyQuote]interfaccia \
-semplice permettono di seguire con facilit\[AGrave] ogni passaggio.
-
-Grazie a un design modulare e parametrico, ogni partita offre nuovi percorsi \
-e sfide: l\[CloseCurlyQuote]utente potr\[AGrave] cimentarsi in pi\[UGrave] \
-sessioni diverse e osservare come variazioni minime nei numeri in gioco \
-portino a sequenze di calcolo differenti. In questo modo, il progetto non \
-\[EGrave] solo un gioco, ma un vero e proprio ambiente di apprendimento, \
-capace di unire rigore matematico e divertimento in \
-un\[CloseCurlyQuote]esperienza immediata e stimolante.
-
-Il notebook \[EGrave] rivolto agli studenti delle scuole medie che vogliono \
-consolidare l\[CloseCurlyQuote]apprendimento dell\[CloseCurlyQuote]algoritmo \
-di Euclide.\
-\>", "Text",
+Cell[TextData[{
+ "L\[CloseCurlyQuote]idea alla base del nostro progetto nasce dal desiderio \
+di rendere ",
+ StyleBox["l\[CloseCurlyQuote]algoritmo di Euclide",
+  FontWeight->"Bold"],
+ ", spesso percepito come un concetto ",
+ StyleBox["troppo astratto",
+  FontSlant->"Italic"],
+ ", un\[CloseCurlyQuote]esperienza ",
+ StyleBox["concreta, interattiva e divertente",
+  FontWeight->"Bold"],
+ ". Trasformando il calcolo del ",
+ StyleBox["massimo comune divisore",
+  FontWeight->"Bold"],
+ " in una piccola ",
+ StyleBox["\[OpenCurlyDoubleQuote]avventura su scacchiera\
+\[CloseCurlyDoubleQuote]",
+  FontSlant->"Italic"],
+ ", il giocatore pu\[OGrave] esplorare passo dopo passo \
+nell\[CloseCurlyQuote]algoritmo come i numeri si riducano alla soluzione \
+cercata, consolidando al tempo stesso le basi della ",
+ "teoria dei numeri",
+ ".\n\nPer raggiungere questo scopo, il gioco integra dinamiche classiche - \
+come il lancio del dado e il movimento su caselle - con elementi di ",
+ StyleBox["problem solving",
+  FontSlant->"Italic"],
+ " matematico. A ogni tappa sulla griglia, infatti, si presenta una ",
+ StyleBox["coppia di numeri",
+  FontWeight->"Bold"],
+ " da \[OpenCurlyDoubleQuote]semplificare\[CloseCurlyDoubleQuote] tramite ",
+ StyleBox["ripetute sottrazioni o divisioni successive",
+  FontVariations->{"Underline"->True}],
+ ", guidando l\[CloseCurlyQuote]utente attraverso un ",
+ StyleBox["processo logico e intuitivo",
+  FontSlant->"Italic"],
+ " - eseguendo l\[CloseCurlyQuote]algoritmo di Euclide. La casualit\[AGrave] \
+nella creazione dei problemi stimola la ripetizione e mantiene alta la \
+curiosit\[AGrave], mentre suggerimenti contestuali e \
+un\[CloseCurlyQuote]interfaccia semplice permettono di seguire con facilit\
+\[AGrave] ogni passaggio.\n\nGrazie a un design modulare e parametrico, ogni \
+partita offre nuovi percorsi e sfide: l\[CloseCurlyQuote]utente potr\[AGrave] \
+cimentarsi in pi\[UGrave] sessioni diverse e osservare come variazioni minime \
+nei numeri in gioco portino a sequenze di calcolo differenti. In questo modo, \
+il progetto non \[EGrave] solo un gioco, ma un vero e proprio ambiente di \
+apprendimento, capace di unire rigore matematico e divertimento in un\
+\[CloseCurlyQuote]esperienza immediata e stimolante.\n\nIl notebook \[EGrave] \
+rivolto agli ",
+ StyleBox["studenti delle scuole medie",
+  FontWeight->"Bold"],
+ " che vogliono consolidare l\[CloseCurlyQuote]apprendimento dell\
+\[CloseCurlyQuote]algoritmo di Euclide."
+}], "Text",
  CellChangeTimes->{{3.9561399934428673`*^9, 3.956139995161869*^9}, {
    3.956140083615999*^9, 3.9561402482287006`*^9}, {3.956141193625265*^9, 
-   3.9561412245722504`*^9}, 
-   3.9563087174455423`*^9},ExpressionUUID->"c2530380-c609-f84e-b419-\
-b4530182415f"]
+   3.9561412245722504`*^9}, 3.9563087174455423`*^9, {3.9563108690207863`*^9, 
+   3.9563108943371086`*^9}},
+ TextJustification->1.,ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Il Massimo Comun Divisore", "Section",
- CellChangeTimes->{{3.9554228132890053`*^9, 
-  3.9554228176171923`*^9}},ExpressionUUID->"7d5a9716-7c7e-4345-82cf-\
+Cell[TextData[{
+ "Il Massimo Comun Divisore (",
+ StyleBox["MCD",
+  FontWeight->"Bold"],
+ ")"
+}], "Section",
+ CellChangeTimes->{{3.9554228132890053`*^9, 3.9554228176171923`*^9}, {
+  3.9563109306949825`*^9, 
+  3.9563109360948696`*^9}},ExpressionUUID->"7d5a9716-7c7e-4345-82cf-\
 1e76bdd780af"],
 
-Cell["\<\
-Il massimo comun divisore [1][2] di due numeri interi a e b, diversi a zero, \
-\[EGrave] il pi\[UGrave] grande numero naturale  che divide esattamente sia a \
-che b e si indica con MCD(a,b).
- Per convenzione, se entrambi i numeri sono uguali a zero, si definisce: \
-MCD(0 , 0) = 0.
-
-Esempi:
-MCD(12, 18) = 6
-MCD(4, 14) = 4
-MCD(5, 0) = 5\
-\>", "Text",
+Cell[TextData[{
+ StyleBox["Il massimo comun divisore ",
+  FontWeight->"Bold"],
+ "[1][2] di due numeri interi ",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " e ",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ", diversi da zero, \[EGrave] il pi\[UGrave] grande numero naturale  che \
+divide esattamente sia ",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " che ",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " e si indica con ",
+ StyleBox["MCD(a,b)",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ".\n Per convenzione, se entrambi i numeri sono uguali a zero, si definisce: \
+",
+ StyleBox["MCD(0 , 0) = 0",
+  FontSlant->"Italic"],
+ ".\n\nEsempi:\n",
+ StyleBox["MCD(12, 18) = 6\nMCD(4, 14) = 4\nMCD(5, 0) = 5",
+  FontSlant->"Italic"]
+}], "Text",
  CellChangeTimes->{{3.9554228840432673`*^9, 3.95542302869846*^9}, 
    3.9554404817816334`*^9, {3.956139449330063*^9, 3.9561394503491173`*^9}, {
    3.956139662321457*^9, 3.956139662812565*^9}, {3.956290187610052*^9, 
    3.956290311327128*^9}, 3.9562910307917852`*^9, {3.9562913890662613`*^9, 
-   3.956291392009099*^9}, {3.956291441318722*^9, 
-   3.9562914715923653`*^9}},ExpressionUUID->"e7b3011d-dba8-4041-9d15-\
-03768f8a07c7"]
+   3.956291392009099*^9}, {3.956291441318722*^9, 3.9562914715923653`*^9}, 
+   3.956311965603092*^9},
+ TextJustification->1.,ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["A cosa serve il massimo comune divisore?", "Section",
- CellChangeTimes->{{3.955423085171443*^9, 
-  3.955423106478513*^9}},ExpressionUUID->"8472b0fd-571c-4d3f-9213-\
+Cell["A cosa serve il Massimo Comune Divisore?", "Section",
+ CellChangeTimes->{{3.955423085171443*^9, 3.955423106478513*^9}, {
+  3.956311114443342*^9, 
+  3.956311118518717*^9}},ExpressionUUID->"8472b0fd-571c-4d3f-9213-\
 012491981ce5"],
 
 Cell[TextData[{
- "Il massimo comun divisore [1][2] \[EGrave] uno strumento fondamentale in \
-matematica. \nServe, ad esempio, per semplificare una frazione, cio\[EGrave] \
-per ridurla ai minimi termini. Ma non solo: \[EGrave] fondamentale anche \
-quando si lavora con i polinomi, perch\[EAcute] permette di raccogliere \
-fattori comuni nelle somme e nelle sottrazioni. Inoltre, entra in gioco ogni \
-volta che bisogna dividere due o pi\[UGrave] quantit\[AGrave] per lo stesso \
-numero intero, ottenendo un risultato senza resto.\n\nNel seguente esempio, \
-MCD(42,56) = 14. Dividendo il numeratore e il denominatore per 14 ottenimo la \
-frazione semplificata ai minimi termini.\n\n",
+ "Il massimo comun divisore",
+ " [1][2] \[EGrave] uno strumento ",
+ StyleBox["fondamentale",
+  FontWeight->"Bold"],
+ " in matematica. \nServe, ad esempio, per semplificare una frazione, cio\
+\[EGrave] per ridurla ai ",
+ StyleBox["minimi termini",
+  FontWeight->"Bold"],
+ ". Ma non solo: \[EGrave] fondamentale anche quando si lavora con i \
+polinomi, perch\[EAcute] permette di raccogliere fattori comuni nelle somme e \
+nelle sottrazioni. Inoltre, entra in gioco ogni volta che bisogna dividere \
+due o pi\[UGrave] quantit\[AGrave] per lo stesso numero intero, ottenendo un \
+risultato senza resto.\n\nNel seguente esempio,",
+ StyleBox[" MCD(42,56) = 14",
+  FontSlant->"Italic"],
+ ". Dividendo il numeratore e il denominatore per 14 otteniamo la frazione \
+semplificata ai minimi termini.\n\n",
  Cell[BoxData[
   FormBox[
    TemplateBox[<|"boxes" -> FormBox[
@@ -101597,8 +101656,8 @@ frazione semplificata ai minimi termini.\n\n",
          FractionBox["3", "4"]}], TraditionalForm], "errors" -> {}, "input" -> 
      "\\frac{42}{56} = \\frac{3 \\times 14}{ 4 \\times 14} = \\frac{3}{4}", 
      "state" -> "Boxes"|>,
-    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
-  "0fe2805c-240f-4611-b4a6-b4f5024b39f4"]
+    "TeXAssistantTemplate"], TraditionalForm]],
+  FontSlant->"Italic",ExpressionUUID->"0fe2805c-240f-4611-b4a6-b4f5024b39f4"]
 }], "Text",
  CellChangeTimes->{{3.955423167973701*^9, 3.955423237453393*^9}, 
    3.955426711606308*^9, {3.9554267612830353`*^9, 3.955426761881191*^9}, {
@@ -101607,9 +101666,8 @@ frazione semplificata ai minimi termini.\n\n",
    3.9562903775000362`*^9}, {3.956290427946949*^9, 3.956290492212428*^9}, {
    3.956290523533161*^9, 3.95629064706538*^9}, {3.956290888085991*^9, 
    3.956290919781836*^9}, {3.956291505504218*^9, 3.95629160371512*^9}, {
-   3.9562916376376967`*^9, 
-   3.9562916404494*^9}},ExpressionUUID->"85bdcf57-5f15-48d6-88a3-\
-d9b07959d1ce"]
+   3.9562916376376967`*^9, 3.9562916404494*^9}, 3.9563111503809395`*^9},
+ TextJustification->1.,ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -101619,23 +101677,23 @@ Cell["L\[CloseCurlyQuote]algoritmo di Euclide", "Section",
   3.955423552950346*^9}},ExpressionUUID->"477b2aa8-b8e7-4c17-8903-\
 f31ffc3a634f"],
 
-Cell["\<\
-L\[CloseCurlyQuote]algoritmo di Euclide [3][4] (o metodo delle divisioni \
-successive),  consente di calcolare il massimo comun divisore tra due numeri.
-Il suo funzionamento si basa su una serie di divisioni successive, in cui \
-ogni passo riduce il problema fino a trovare la soluzione.
-
- In questo diagramma a blocchi \[EGrave] mostrato passo dopo passo come \
-funziona l\[CloseCurlyQuote]algoritmo di Euclide:
-\
-\>", "Text",
+Cell[TextData[{
+ StyleBox["L\[CloseCurlyQuote]algoritmo di Euclide",
+  FontWeight->"Bold"],
+ " [3][4] (o metodo delle divisioni successive),  consente di calcolare il ",
+ StyleBox["massimo comun divisore tra due numeri",
+  FontSlant->"Italic"],
+ ".\nIl suo funzionamento si basa su una serie di divisioni successive, in \
+cui ogni passo riduce il problema fino a trovare la soluzione.\n\n In questo \
+diagramma a blocchi \[EGrave] mostrato passo dopo passo come funziona l\
+\[CloseCurlyQuote]algoritmo di Euclide:\n"
+}], "Text",
  CellChangeTimes->{{3.955423583603159*^9, 3.955423624141577*^9}, {
    3.955426786681447*^9, 3.9554268311093893`*^9}, {3.955440550541685*^9, 
    3.955440560257021*^9}, {3.956139878069933*^9, 3.9561398849072857`*^9}, {
    3.956290982239808*^9, 3.956291019637385*^9}, 3.956291188763793*^9, {
-   3.956291221330566*^9, 
-   3.956291310566992*^9}},ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-\
-63b4111e944a"],
+   3.956291221330566*^9, 3.956291310566992*^9}},
+ TextJustification->1.,ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -102586,38 +102644,53 @@ QKpoZgDaFzIDACQfmQHtEZkBQKD8//cyA6g=
   DefaultBaseStyle->"ImageGraphics",
   ImageSize->{309.3181818181821, Automatic},
   ImageSizeRaw->{700., 787.},
-  PlotRange->{{0, 700.}, {0, 787.}}]], "Input",ExpressionUUID->"9dde94a3-75f4-\
-4ac1-85b7-57adece4f246"]
+  PlotRange->{{0, 700.}, {0, 787.}}]], "Input",
+ TextAlignment->Center,ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Regole del gioco ", "Section",
+Cell["Regole del gioco", "Section",
  CellChangeTimes->{{3.956030156582364*^9, 3.9560301785254707`*^9}, {
-  3.956030217795978*^9, 
-  3.956030244104207*^9}},ExpressionUUID->"459f61c3-4c41-46b6-b29d-\
+  3.956030217795978*^9, 3.956030244104207*^9}, {3.956311197054737*^9, 
+  3.956311207599016*^9}},ExpressionUUID->"459f61c3-4c41-46b6-b29d-\
 4dd4fef40c9b"],
 
 Cell[TextData[{
  "Il gioco ha inizio quando l\[CloseCurlyQuote]utente clicca sul pulsante \
-\[OpenCurlyDoubleQuote]Inizia gioco\[CloseCurlyDoubleQuote]. A questo punto \
-compare un pop-up che chiede di inserire un numero seed, necessario per \
-inizializzare la partita. Il seed consente di riprodurre la stessa partita pi\
-\[UGrave] volte: inserendo lo stesso seed, si otterr\[AGrave] sempre lo \
-stesso scenario di gioco.\nIl seed deve essere un numero intero: se viene \
-inserito un numero decimale, il gioco considerer\[AGrave] automaticamente \
-solo la parte intera, ignorando i decimali.\nDopo aver confermato il seed, si \
-apre la schermata principale del gioco, pronta per iniziare la partita.\n\n\
-Per procedere, l\[CloseCurlyQuote]utente deve cliccare sul pulsante \
-\[OpenCurlyDoubleQuote]Tira il dado\[CloseCurlyDoubleQuote]. Questo genera un \
-dado in 2D che mostra un numero, il quale indica di quante caselle potr\
-\[AGrave] avanzare il giocatore. \nTuttavia, per poter effettivamente \
-muoversi, \[EGrave] necessario prima risolvere un esercizio basato sull\
-\[CloseCurlyQuote]algoritmo di Euclide.\nInsieme al dado, infatti, compare \
-una schermata che guida passo dopo passo nella risoluzione del calcolo del \
-Massimo Comune Divisore (MCD) tra due numeri. \nIl giocatore dovr\[AGrave] \
-seguire le istruzioni per completare correttamente \
-l\[CloseCurlyQuote]algoritmo.\n\n",
+\[OpenCurlyDoubleQuote]",
+ StyleBox["Inizia gioco",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote]. A questo punto compare un pop-up che chiede di \
+inserire un numero seed, necessario per inizializzare la partita. Il seed \
+consente di riprodurre la stessa partita pi\[UGrave] volte: inserendo lo \
+stesso seed, si otterr\[AGrave] sempre lo stesso scenario di gioco, o meglio \
+- la stessa ",
+ StyleBox["sequenza",
+  FontSlant->"Italic"],
+ " di scenari",
+ ". Infatti dopo aver vinto una partita l\[CloseCurlyQuote]utente potr\
+\[AGrave] continuare a giocare comandanto sempre dallo stesso seed ma nella \
+sequenza dopo, quindi casualmente.\nIl seed deve essere un numero intero: se \
+viene inserito un numero decimale, il gioco considerer\[AGrave] \
+automaticamente solo la parte intera, ignorando i decimali.\nDopo aver \
+confermato il seed, si apre la schermata principale del gioco, pronta per \
+iniziare la partita.\n\nPer procedere, l\[CloseCurlyQuote]utente deve \
+cliccare sul pulsante \[OpenCurlyDoubleQuote]",
+ StyleBox["Tira il dado",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote]. Questo genera un dado in 2D che mostra un numero, \
+il quale indica di quante caselle potr\[AGrave] avanzare il giocatore. \n\
+Tuttavia, per poter effettivamente muoversi, \[EGrave] necessario prima ",
+ StyleBox["risolvere",
+  FontWeight->"Bold"],
+ " un esercizio basato sull\[CloseCurlyQuote]algoritmo di Euclide.\nInsieme \
+al dado, infatti, compare una schermata che guida passo dopo passo nella \
+risoluzione del calcolo del ",
+ StyleBox["Massimo Comune Divisore",
+  FontWeight->"Bold"],
+ " (MCD) tra due numeri. \nIl giocatore dovr\[AGrave] seguire le istruzioni \
+per completare correttamente l\[CloseCurlyQuote]algoritmo.\n\n",
  Cell[BoxData[
   GraphicsBox[
    TagBox[RasterBox[CompressedData["
@@ -104123,7 +104196,8 @@ IeP1/F/y/mcPlFFdwT/7fwHK5BOc
    DefaultBaseStyle->"ImageGraphics",
    ImageSize->{395.4199773615062, Automatic},
    ImageSizeRaw->{1015., 791.},
-   PlotRange->{{0, 1015.}, {0, 791.}}]], "Input",ExpressionUUID->
+   PlotRange->{{0, 1015.}, {0, 791.}}]], "Input",
+  TextAlignment->Center,ExpressionUUID->
   "87ce3ded-3c4d-4183-9fc2-d7f92ea84e3b"],
  "\n\nUna volta risolto correttamente l\[CloseCurlyQuote]esercizio, il \
 giocatore potr\[AGrave] avanzare sul tabellone di tante caselle quanto \
@@ -104145,9 +104219,9 @@ a raggiungere la fine del percorso."
    3.9562926381651287`*^9, 3.9562926394921103`*^9}, {3.9562928436307583`*^9, 
    3.9562928537025843`*^9}, {3.956293008600792*^9, 3.956293009602751*^9}, {
    3.956293233444326*^9, 3.9562932341551523`*^9}, 3.956308550570229*^9, {
-   3.956308668736274*^9, 
-   3.956308670534375*^9}},ExpressionUUID->"2f14924e-d300-42cb-adce-\
-0873f76899f1"],
+   3.956308668736274*^9, 3.956308670534375*^9}, {3.9563114710602207`*^9, 
+   3.9563115180673656`*^9}},
+ TextJustification->1.,ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
 
 Cell[CellGroupData[{
 
@@ -104157,57 +104231,72 @@ Cell["L\[CloseCurlyQuote]algoritmo nel gioco", "Subsection",
    3.956133861540127*^9},ExpressionUUID->"2e440582-918f-477b-b42c-\
 94a0e2f16cfe"],
 
-Cell["\<\
-Il nostro gioco si sviluppa attraverso una sequenza di passaggi che guidano \
+Cell[TextData[{
+ "Il nostro gioco si sviluppa attraverso una sequenza di passaggi che guidano \
 il giocatore nella risoluzione dell\[CloseCurlyQuote]algoritmo di Euclide per \
 calcolare il Massimo Comune Divisore (MCD) tra due numeri. Il procedimento \
 \[EGrave] strutturato in due fasi che si ripetono fino alla conclusione del \
-gioco.
-
-La prima fase consiste nel calcolare il quoziente e il resto della divisione \
-tra due numeri \[OpenCurlyQuote]a\[CloseCurlyQuote] e \[OpenCurlyQuote]b\
-\[CloseCurlyQuote] scelti casualmente dall\[CloseCurlyQuote]algoritmo. 
-Il giocatore deve inserire questi due valori (numeri interi positivi) nei \
-campi previsti e, una volta fatto, pu\[OGrave] cliccare sul pulsante \
-\[OpenCurlyDoubleQuote]Verifica\[CloseCurlyDoubleQuote] per controllare se i \
-risultati sono corretti. Se i valori inseriti sono giusti, il gioco procede \
-automaticamente alla fase successiva. In caso contrario, viene mostrato un \
-messaggio di errore, cos\[IGrave] da permettere al giocatore di correggersi. 
-Per comodit\[AGrave], \[EGrave] disponibile anche un pulsante \
-\[OpenCurlyDoubleQuote]Pulisci campi\[CloseCurlyDoubleQuote], che consente di \
-svuotare rapidamente i due campi.
+gioco.\n\nLa ",
+ "prima fase",
+ " consiste nel calcolare il quoziente e il resto della divisione tra due \
+numeri \[OpenCurlyQuote]",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote] e \[OpenCurlyQuote]",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote] scelti casualmente dall\[CloseCurlyQuote]algoritmo. \nIl \
+giocatore deve inserire questi due valori (numeri interi positivi) nei campi \
+previsti e, una volta fatto, pu\[OGrave] cliccare sul pulsante \
+\[OpenCurlyDoubleQuote]",
+ StyleBox["Verifica",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote] per controllare se i risultati sono corretti. Se i \
+valori inseriti sono giusti, il gioco procede automaticamente alla fase \
+successiva. In caso contrario, viene mostrato un messaggio di errore, cos\
+\[IGrave] da permettere al giocatore di correggersi. \nPer comodit\[AGrave], \
+\[EGrave] disponibile anche un pulsante \[OpenCurlyDoubleQuote]Pulisci campi\
+\[CloseCurlyDoubleQuote], che consente di svuotare rapidamente i due campi.\n\
 Se il giocatore si trova in difficolt\[AGrave] e non sa come procedere, pu\
 \[OGrave] cliccare su \[OpenCurlyDoubleQuote]Aiuto\[CloseCurlyDoubleQuote]: \
 questo fornir\[AGrave] suggerimenti utili, spiegati pi\[UGrave] nel dettaglio \
-in una sezione apposita.
-
-Una volta superato correttamente il primo passaggio, si passa alla seconda \
-fase. Qui, il giocatore dovr\[AGrave] indicare i nuovi valori di \
-\[OpenCurlyQuote]a\[CloseCurlyQuote] e \[OpenCurlyQuote]b\[CloseCurlyQuote]: \
-il nuovo \[OpenCurlyQuote]a\[CloseCurlyQuote] sar\[AGrave] semplicemente il \
-vecchio \[OpenCurlyQuote]b\[CloseCurlyQuote], mentre il nuovo \
-\[OpenCurlyQuote]b\[CloseCurlyQuote] sar\[AGrave] il resto appena calcolato. \
-Anche in questa fase si utilizzano gli stessi strumenti: i pulsanti \
-\[OpenCurlyDoubleQuote]Verifica\[CloseCurlyDoubleQuote], \
-\[OpenCurlyDoubleQuote]Pulisci campi\[CloseCurlyDoubleQuote] e \
-\[OpenCurlyDoubleQuote]Aiuto\[CloseCurlyDoubleQuote], che funzionano allo \
-stesso modo della fase precedente.
-
-Questo ciclo si ripete finch\[EAcute] non si arriva a un resto uguale a zero. \
-In quel momento, il numero corrente di \[OpenCurlyQuote]b\[CloseCurlyQuote] \
-rappresenta l\[CloseCurlyQuote]MCD dei due numeri iniziali e il gioco si \
-conclude con successo.\
-\>", "Text",
+in una sezione apposita.\n\nUna volta superato correttamente il primo \
+passaggio, si passa alla seconda fase. Qui, il giocatore dovr\[AGrave] \
+indicare i nuovi valori di \[OpenCurlyQuote]a\[CloseCurlyQuote] e \
+\[OpenCurlyQuote]b\[CloseCurlyQuote]: il nuovo \[OpenCurlyQuote]a\
+\[CloseCurlyQuote] sar\[AGrave] semplicemente il vecchio \[OpenCurlyQuote]b\
+\[CloseCurlyQuote], mentre il nuovo \[OpenCurlyQuote]b\[CloseCurlyQuote] sar\
+\[AGrave] il resto appena calcolato. Anche in questa fase si utilizzano gli \
+stessi strumenti: i pulsanti \[OpenCurlyDoubleQuote]",
+ StyleBox["Verifica",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]",
+ StyleBox["Pulisci campi",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote] e \[OpenCurlyDoubleQuote]",
+ StyleBox["Aiuto",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote], che funzionano allo stesso modo della fase \
+precedente.\n\nQuesto ciclo si ripete finch\[EAcute] non si arriva a un resto \
+uguale a zero. In quel momento, il numero corrente di \[OpenCurlyQuote]",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote] rappresenta l\[CloseCurlyQuote]MCD dei due numeri \
+iniziali e il gioco si conclude con successo."
+}], "Text",
  CellChangeTimes->{{3.956039286795068*^9, 3.956039291817075*^9}, {
-  3.9560394380537357`*^9, 3.9560394716628933`*^9}, {3.956039576082582*^9, 
-  3.956039612228953*^9}, {3.956039694241431*^9, 3.956039880659511*^9}, {
-  3.95603994039603*^9, 3.956040038897635*^9}, {3.956040200498323*^9, 
-  3.9560403263075237`*^9}, {3.956040410397232*^9, 3.956040447545435*^9}, {
-  3.956040624137806*^9, 3.9560406336522284`*^9}, {3.956043381532102*^9, 
-  3.956043383758155*^9}, {3.9561336913282633`*^9, 3.9561337869104853`*^9}, {
-  3.956134441593601*^9, 3.95613445449868*^9}, {3.956135201122335*^9, 
-  3.956135252493614*^9}},ExpressionUUID->"b1171b59-a414-45d1-be23-\
-d39bdf599fb1"]
+   3.9560394380537357`*^9, 3.9560394716628933`*^9}, {3.956039576082582*^9, 
+   3.956039612228953*^9}, {3.956039694241431*^9, 3.956039880659511*^9}, {
+   3.95603994039603*^9, 3.956040038897635*^9}, {3.956040200498323*^9, 
+   3.9560403263075237`*^9}, {3.956040410397232*^9, 3.956040447545435*^9}, {
+   3.956040624137806*^9, 3.9560406336522284`*^9}, {3.956043381532102*^9, 
+   3.956043383758155*^9}, {3.9561336913282633`*^9, 3.9561337869104853`*^9}, {
+   3.956134441593601*^9, 3.95613445449868*^9}, {3.956135201122335*^9, 
+   3.956135252493614*^9}, 3.9563116090041084`*^9},
+ TextJustification->1.,ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -104219,21 +104308,38 @@ Cell["Il pulsante Aiuto", "Subsection",
 dd4d541b6337"],
 
 Cell[TextData[{
- "La funzione \[OpenCurlyDoubleQuote]Aiuto\[CloseCurlyDoubleQuote] \[EGrave] \
-stata progettata per rendere pi\[UGrave] comprensibile \
-l\[CloseCurlyQuote]algoritmo di Euclide, fornendo un supporto visivo chiaro e \
-intuitivo. Sono presenti due tipi di aiuto, uno per ciascuna delle due fasi \
-del gioco.\n\nNel primo passaggio, in cui bisogna calcolare il quoziente e il \
-resto della divisione tra i numeri \[OpenCurlyQuote]a\[CloseCurlyQuote] e \
-\[OpenCurlyQuote]b\[CloseCurlyQuote], l\[CloseCurlyQuote]aiuto propone una \
-visualizzazione semplificata di come calcolare la divisione e il resto dei \
-numeri del passo corrente dell\[CloseCurlyQuote]algoritmo.\nViene mostrato un \
-singolo gruppo composto da b unit\[AGrave], che rappresenta in che modo si pu\
-\[OGrave] dividere a. Sotto al gruppo viene indicato quante volte esso si pu\
-\[OGrave] ripetere all\[CloseCurlyQuote]interno di a \[LongDash] ad esempio \
-con una scritta come \[OpenCurlyDoubleQuote]\[Times] \
-4\[CloseCurlyDoubleQuote] \[LongDash] segnalando cos\[IGrave] che si possono \
-formare 4 gruppi completi: questo numero rappresenta il quoziente.\nEventuali \
+ "La funzione \[OpenCurlyDoubleQuote]",
+ StyleBox["Aiuto",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote] \[EGrave] stata progettata per rendere pi\[UGrave] \
+comprensibile l\[CloseCurlyQuote]algoritmo di Euclide, fornendo un supporto \
+visivo chiaro e intuitivo. Sono presenti due tipi di aiuto, uno per ciascuna \
+delle due fasi del gioco.\n\nNel primo passaggio, in cui bisogna calcolare il \
+quoziente e il resto della divisione tra i numeri ",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " e ",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ", l\[CloseCurlyQuote]aiuto propone una visualizzazione semplificata di come \
+calcolarli.\nViene mostrato un singolo gruppo composto da ",
+ StyleBox["b",
+  FontSlant->"Italic"],
+ " unit\[AGrave], che rappresenta in che modo si pu\[OGrave] dividere ",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ". Sotto al gruppo viene indicato quante volte esso si pu\[OGrave] ripetere \
+all\[CloseCurlyQuote]interno di ",
+ StyleBox["a",
+  FontSlant->"Italic"],
+ " \[LongDash] ad esempio con una scritta come \[OpenCurlyDoubleQuote]",
+ StyleBox["\[Times] 2 gruppi",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote] \[LongDash] segnalando cos\[IGrave] che si possono \
+formare 2 gruppi completi: questo numero rappresenta il quoziente.\nEventuali \
 unit\[AGrave] rimanenti che non possono essere raggruppate vengono mostrate \
 separatamente come il resto, aiutando cos\[IGrave] il giocatore a \
 identificare chiaramente i due valori richiesti.\n\nPer rendere l\
@@ -106534,13 +106640,33 @@ IeP1/F/y/mcPlFFdwT/7fwHK5BOc
    DefaultBaseStyle->"ImageGraphics",
    ImageSize->{473.44774280894956`, Automatic},
    ImageSizeRaw->{1019., 771.},
-   PlotRange->{{0, 1019.}, {0, 771.}}]], "Input",ExpressionUUID->
+   PlotRange->{{0, 1019.}, {0, 771.}}]], "Input",
+  TextAlignment->Center,ExpressionUUID->
   "c018fca5-a1ea-4040-8b79-489f935c8edd"],
  "\n\nNel secondo passaggio, l\[CloseCurlyQuote]aiuto mostra visivamente \
-quali saranno i nuovi valori di a e b per il successivo ciclo dell\
-\[CloseCurlyQuote]algoritmo.\nQuesti valori vengono evidenziati attraverso \
-cerchi colorati che chiariscono visivamente che:\n- il nuovo a corrisponde al \
-vecchio b;\n- il nuovo b corrisponde al resto appena calcolato.\n\n",
+quali saranno i nuovi valori di ",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " e ",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " per il successivo ciclo dell\[CloseCurlyQuote]algoritmo.\nQuesti valori \
+vengono evidenziati attraverso cerchi colorati che chiariscono visivamente \
+che:\n- il nuovo ",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " corrisponde al vecchio ",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ ";\n- il nuovo ",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " corrisponde al resto appena calcolato.\n\n",
  Cell[BoxData[
   GraphicsBox[
    TagBox[RasterBox[CompressedData["
@@ -109234,8 +109360,9 @@ IeP1/F/y/mcPlFFdwT/7fwHK5BOc
    DefaultBaseStyle->"ImageGraphics",
    ImageSize->{474.579234730114, Automatic},
    ImageSizeRaw->{1022., 796.},
-   PlotRange->{{0, 1022.}, {0, 796.}}]], "Input",ExpressionUUID->
-  "4e1973f4-6405-4e78-8796-61e6bd039d12"],
+   PlotRange->{{0, 1022.}, {0, 796.}}]], "Input",
+  TextAlignment->Center,ExpressionUUID->
+  "bd870958-1ac8-134f-aefb-81e7dee5699c"],
  "\n\nIn questo modo, il giocatore pu\[OGrave] seguire in modo naturale e \
 guidato l\[CloseCurlyQuote]evoluzione dell\[CloseCurlyQuote]algoritmo, \
 consolidando la comprensione del meccanismo di calcolo del MCD."
@@ -109248,9 +109375,10 @@ consolidando la comprensione del meccanismo di calcolo del MCD."
    3.956043358877637*^9, 3.956043360027061*^9}, {3.9560434511717443`*^9, 
    3.956043551354129*^9}, 3.9561361645448093`*^9, {3.956136326431054*^9, 
    3.956136365954276*^9}, 3.956308510228003*^9, 3.9563085736107283`*^9, {
-   3.956308605788348*^9, 
-   3.9563086656302233`*^9}},ExpressionUUID->"ca70b283-ae96-499d-90af-\
-7712a5e300fb"]
+   3.956308605788348*^9, 3.9563086656302233`*^9}, {3.956310328266667*^9, 
+   3.956310364836483*^9}, {3.956310398679532*^9, 3.9563104124579353`*^9}, {
+   3.9563112784890385`*^9, 3.956311282729353*^9}},
+ TextJustification->1.,ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -109261,30 +109389,32 @@ Cell["La fine del gioco", "Subsection",
    3.956043567124699*^9},ExpressionUUID->"a0986eae-dd66-4f36-958b-\
 0089b3c9ebd0"],
 
-Cell["\<\
-Il gioco termina quando il numero uscito dal dado \[EGrave] maggiore o uguale \
-al numero di caselle che mancano per raggiungere la fine del tabellone. In \
-questo modo, il giocatore completa il percorso e conclude la partita con \
-successo.
-
-A differenza di giochi come il Gioco dell\[CloseCurlyQuote]Oca, \[EGrave] \
-stato scelto di non tornare mai indietro sulle caselle. Questa decisione \
-\[EGrave] stata presa per evitare che la partita si prolungasse \
-eccessivamente o, nel peggiore dei casi, che diventasse potenzialmente \
-infinita, impedendo al giocatore di raggiungere la fine e mantenendo centrale \
-l\[CloseCurlyQuote]apprendimento dell\[CloseCurlyQuote]algoritmo.
-
-Una volta concluso il gioco, \[EGrave] possibile iniziare una nuova partita \
-semplicemente cliccando sul pulsante \[OpenCurlyDoubleQuote]Nuova partita\
-\[CloseCurlyDoubleQuote]. In questo caso, non verr\[AGrave] richiesto di \
+Cell[TextData[{
+ "Il gioco termina quando il numero uscito dal dado \[EGrave] maggiore o \
+uguale al numero di caselle che mancano per raggiungere la fine del \
+tabellone. In questo modo, il giocatore completa il percorso e conclude la \
+partita con successo.\n\nA differenza di giochi come il Gioco dell\
+\[CloseCurlyQuote]Oca, \[EGrave] stato scelto di non tornare mai indietro \
+sulle caselle. Questa decisione \[EGrave] stata presa per evitare che la \
+partita si prolungasse eccessivamente o, nel peggiore dei casi, che \
+diventasse potenzialmente infinita, impedendo al giocatore di raggiungere la \
+fine e mantenendo centrale l\[CloseCurlyQuote]apprendimento dell\
+\[CloseCurlyQuote]algoritmo.\n\nUna volta concluso il gioco, \[EGrave] \
+possibile iniziare una nuova partita semplicemente cliccando sul pulsante \
+\[OpenCurlyDoubleQuote]",
+ StyleBox["Nuova partita",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote]. In questo caso, non verr\[AGrave] richiesto di \
 inserire nuovamente il seed: si continuer\[AGrave] a utilizzare quello \
 impostato all\[CloseCurlyQuote]inizio, ma i numeri verranno cambiati e la \
-pedina ripartir\[AGrave] dall\[CloseCurlyQuote]inizio.
-
-In alternativa, \[EGrave] possibile ricominciare la stessa partita (con gli \
-stessi numeri e lo stesso percorso) cliccando sull\[CloseCurlyQuote]apposito \
-pulsante \[OpenCurlyDoubleQuote]Ricomincia\[CloseCurlyDoubleQuote].\
-\>", "Text",
+pedina ripartir\[AGrave] dall\[CloseCurlyQuote]inizio.\n\nIn alternativa, \
+\[EGrave] possibile ricominciare la stessa partita (con gli stessi numeri e \
+lo stesso percorso) cliccando sull\[CloseCurlyQuote]apposito pulsante \
+\[OpenCurlyDoubleQuote]",
+ StyleBox["Ricomincia",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote]."
+}], "Text",
  CellChangeTimes->{{3.9560411310631733`*^9, 3.9560412346435547`*^9}, {
    3.956041273731476*^9, 3.9560412819822474`*^9}, {3.9560413690275297`*^9, 
    3.9560414084712763`*^9}, {3.9560414442173862`*^9, 
@@ -109292,9 +109422,9 @@ pulsante \[OpenCurlyDoubleQuote]Ricomincia\[CloseCurlyDoubleQuote].\
    3.95604379529478*^9, 3.956043837101014*^9}, 3.956136267123394*^9, {
    3.9562918392033367`*^9, 3.956291940036048*^9}, {3.956291978477359*^9, 
    3.9562919867225103`*^9}, 3.956292018411632*^9, {3.956292049123732*^9, 
-   3.956292049436921*^9}, {3.95629315242715*^9, 
-   3.956293159598877*^9}},ExpressionUUID->"8abd0508-3f1e-40db-a321-\
-8eb0676c058a"]
+   3.956292049436921*^9}, {3.95629315242715*^9, 3.956293159598877*^9}, {
+   3.9563117455332184`*^9, 3.9563117543825264`*^9}},
+ TextJustification->1.,ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -109304,31 +109434,31 @@ Cell["Gli altri bottoni del gioco", "Subsection",
    3.956136279794011*^9},ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-\
 78fc4bc957f1"],
 
-Cell["\<\
-All\[CloseCurlyQuote]interno del gioco sono sempre presenti anche due \
-pulsanti di controllo utili per la gestione della partita:
-
-Il pulsante \[OpenCurlyDoubleQuote]Ricomincia\[CloseCurlyDoubleQuote] \
-permette di riavviare la partita corrente utilizzando lo stesso numero seed \
-inserito all\[CloseCurlyQuote]inizio. In questo modo, i numeri generati e il \
-percorso rimangono identici, consentendo al giocatore di riprovare la stessa \
-sfida, utile ad esempio per esercitarsi nuovamente sugli stessi passaggi dell\
-\[CloseCurlyQuote]algoritmo.
-
-Il pulsante \[OpenCurlyDoubleQuote]Chiudi il gioco\[CloseCurlyDoubleQuote], \
-invece, consente di uscire dalla partita in corso, chiudendo la finestra di \
-gioco. Questa opzione \[EGrave] utile per terminare \
-l\[CloseCurlyQuote]esperienza in qualsiasi momento, senza dover completare \
-necessariamente tutto il percorso.
-
-Nel caso si voglia inserire un nuovo seed \[EGrave] necessario chiudere il \
-gioco e cominciare una nuova partita.\
-\>", "Text",
+Cell[TextData[{
+ "All\[CloseCurlyQuote]interno del gioco sono sempre presenti anche due \
+pulsanti di controllo utili per la gestione della partita:\n\nIl pulsante \
+\[OpenCurlyDoubleQuote]",
+ StyleBox["Ricomincia",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote] permette di riavviare la partita corrente \
+utilizzando lo stesso numero seed inserito all\[CloseCurlyQuote]inizio. In \
+questo modo, i numeri generati e il percorso rimangono identici, consentendo \
+al giocatore di riprovare la stessa sfida, utile ad esempio per esercitarsi \
+nuovamente sugli stessi passaggi dell\[CloseCurlyQuote]algoritmo.\n\nIl \
+pulsante \[OpenCurlyDoubleQuote]",
+ StyleBox["Chiudi il gioco",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote], invece, consente di uscire dalla partita in \
+corso, chiudendo la finestra di gioco. Questa opzione \[EGrave] utile per \
+terminare l\[CloseCurlyQuote]esperienza in qualsiasi momento, senza dover \
+completare necessariamente tutto il percorso.\n\nNel caso si voglia inserire \
+un nuovo seed \[EGrave] necessario chiudere il gioco e cominciare una nuova \
+partita."
+}], "Text",
  CellChangeTimes->{{3.95604387068575*^9, 3.956043937582787*^9}, {
   3.956044001772378*^9, 3.9560440148496647`*^9}, {3.956293199522719*^9, 
-  3.956293200671237*^9}, {3.956293240012602*^9, 
-  3.956293241157055*^9}},ExpressionUUID->"86a4be24-0176-4f39-b14d-\
-9f1f89c018e5"]
+  3.956293200671237*^9}, {3.956293240012602*^9, 3.956293241157055*^9}},
+ TextJustification->1.,ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
 }, Open  ]]
 }, Open  ]],
 
@@ -109339,26 +109469,34 @@ Cell["Giocare", "Section",
   3.9561405833073387`*^9}},ExpressionUUID->"f9afc229-16d6-5e48-9d9c-\
 56a5cd6d2f8a"],
 
-Cell["\<\
-Per giocare premere, in sequenza, i bottoni sottostanti.
-Il bottone \[OpenCurlyDoubleQuote]Carica Pacchetto\[CloseCurlyDoubleQuote] \
-caricher\[AGrave] il package.
-Il bottone \[OpenCurlyDoubleQuote]Inizia il Gioco\[CloseCurlyDoubleQuote] far\
-\[AGrave] partire il gioco, chiedendo all\[CloseCurlyQuote]utente di inserire \
-il seed (un numero intero) che comander\[AGrave] la \
-\[OpenCurlyDoubleQuote]casualit\[AGrave]\[CloseCurlyDoubleQuote] del percorso \
-del tabellone e delle coppie di numeri ottenute.\
-\>", "Text",
+Cell[TextData[{
+ "Per giocare premere, in sequenza, i bottoni sottostanti.\nIl bottone \
+\[OpenCurlyDoubleQuote]",
+ StyleBox["Carica Pacchetto",
+  FontWeight->"Bold"],
+ "\[CloseCurlyDoubleQuote] caricher\[AGrave] il package.\nIl bottone \
+\[OpenCurlyDoubleQuote]",
+ StyleBox["Inizia il Gioco",
+  FontWeight->"Bold"],
+ "\[CloseCurlyDoubleQuote] far\[AGrave] partire il gioco, chiedendo all\
+\[CloseCurlyQuote]utente di inserire il seed (un numero intero) che comander\
+\[AGrave] la \[OpenCurlyDoubleQuote]",
+ StyleBox["casualit\[AGrave]",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote] del percorso del tabellone e delle coppie di \
+numeri ottenute."
+}], "Text",
  CellChangeTimes->{{3.956140588887892*^9, 3.9561407150902023`*^9}, {
   3.956152041710952*^9, 3.95615204307647*^9}, {3.956217030257406*^9, 
-  3.956217032929611*^9}},ExpressionUUID->"718ae25c-5fef-c245-b460-\
-0ba4561403fe"],
+  3.956217032929611*^9}},
+ TextJustification->1.,ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Button", "[", 
-  RowBox[{"\"\<Carica Pacchetto\>\"", ",", 
+  RowBox[{"\"\<\!\(\*StyleBox[\"Carica\",FontWeight->\"Bold\"]\) \
+\!\(\*StyleBox[\"Pacchetto\",FontWeight->\"Bold\"]\)\>\"", ",", 
    RowBox[{
     RowBox[{"SetDirectory", "[", 
      RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
@@ -109409,15 +109547,29 @@ Cell["Approfondimento - Diagramma pacchetti", "Section",
   3.9561393071283245`*^9}},ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-\
 ef36a7431f1e"],
 
-Cell["\<\
-Di seguito viene riportato il diagramma delle dipendenze dei pacchetti \
-utilizzati. Ad esempio l\[CloseCurlyQuote]arco che parte dal pacchetto \
-IDivisori.m e termina in Board.m significha che nel pacchetto IDivisori.m \
-viene importato il pacchetto Board.m.\
-\>", "Text",
+Cell[TextData[{
+ "Di seguito viene riportato il ",
+ StyleBox["diagramma delle dipendenze",
+  FontWeight->"Bold"],
+ " dei pacchetti utilizzati. Ad esempio l\[CloseCurlyQuote]arco che parte dal \
+pacchetto",
+ StyleBox[" IDivisori.m",
+  FontSlant->"Italic"],
+ " e termina in ",
+ StyleBox["Board.m",
+  FontSlant->"Italic"],
+ " significa che nel pacchetto ",
+ StyleBox["IDivisori.m",
+  FontSlant->"Italic"],
+ " viene importato il pacchetto ",
+ StyleBox["Board.m",
+  FontSlant->"Italic"],
+ "."
+}], "Text",
  CellChangeTimes->{{3.956130450088971*^9, 3.956130465322124*^9}, {
-  3.9563031573570957`*^9, 3.956303185673553*^9}, {3.9563032256101103`*^9, 
-  3.956303293850689*^9}},ExpressionUUID->"e2420d07-88f8-49fc-b368-\
+   3.9563031573570957`*^9, 3.956303185673553*^9}, {3.9563032256101103`*^9, 
+   3.956303293850689*^9}, 
+   3.9563113294223385`*^9},ExpressionUUID->"e2420d07-88f8-49fc-b368-\
 1407876e846f"],
 
 Cell[BoxData[
@@ -109950,8 +110102,9 @@ Cell["Bibiliografia", "Section",
 6fafba278328"],
 
 Cell[TextData[{
- "[1] ",
- ButtonBox["MCD YouMath",
+ StyleBox["[1] ",
+  FontSlant->"Italic"],
+ StyleBox[ButtonBox["MCD YouMath",
   BaseStyle->"Hyperlink",
   ButtonData->{
     URL["https://www.youmath.it/lezioni/algebra-elementare/lezioni-di-algebra-\
@@ -109959,14 +110112,18 @@ e-aritmetica-per-scuole-medie/512-massimo-comune-divisore-mcd.html"], None},
   ButtonNote->
    "https://www.youmath.it/lezioni/algebra-elementare/lezioni-di-algebra-e-\
 aritmetica-per-scuole-medie/512-massimo-comune-divisore-mcd.html"],
- "\n[2] ",
- ButtonBox["MCD Wikipedia",
+  FontSlant->"Italic"],
+ StyleBox["\n[2] ",
+  FontSlant->"Italic"],
+ StyleBox[ButtonBox["MCD Wikipedia",
   BaseStyle->"Hyperlink",
   ButtonData->{
     URL["https://it.wikipedia.org/wiki/Massimo_comun_divisore"], None},
   ButtonNote->"https://it.wikipedia.org/wiki/Massimo_comun_divisore"],
- "\n[3] ",
- ButtonBox["Algoritmo di Euclide YouMath",
+  FontSlant->"Italic"],
+ StyleBox["\n[3] ",
+  FontSlant->"Italic"],
+ StyleBox[ButtonBox["Algoritmo di Euclide YouMath",
   BaseStyle->"Hyperlink",
   ButtonData->{
     URL["https://www.youmath.it/domande-a-risposte/view/6654-algoritmo-\
@@ -109974,19 +110131,21 @@ euclide.html"], None},
   ButtonNote->
    "https://www.youmath.it/domande-a-risposte/view/6654-algoritmo-euclide.\
 html"],
- "\n[4] ",
- ButtonBox["Algoritmo di Euclide Wikipedia",
+  FontSlant->"Italic"],
+ StyleBox["\n[4] ",
+  FontSlant->"Italic"],
+ StyleBox[ButtonBox["Algoritmo di Euclide Wikipedia",
   BaseStyle->"Hyperlink",
   ButtonData->{
     URL["https://it.wikipedia.org/wiki/Algoritmo_di_Euclide"], None},
   ButtonNote->"https://it.wikipedia.org/wiki/Algoritmo_di_Euclide"],
- "\n"
+  FontSlant->"Italic"]
 }], "Text",
  CellChangeTimes->{
   3.956139337684408*^9, 3.956139378229706*^9, {3.9561394165698586`*^9, 
    3.9561394319380474`*^9}, {3.956139639102194*^9, 3.956139655389471*^9}, {
-   3.956139825807066*^9, 
-   3.9561398671130657`*^9}},ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-\
+   3.956139825807066*^9, 3.9561398671130657`*^9}, 
+   3.9563113623107834`*^9},ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-\
 d9a887d0b0a5"]
 }, Open  ]],
 
@@ -109998,26 +110157,42 @@ Cell["Commenti e scelte implementative", "Section",
   3.956134352366466*^9}},ExpressionUUID->"a96c32f3-8e49-497e-b07a-\
 e4685841309a"],
 
-Cell["\<\
-Abbiamo deciso di generare casualmente i valori di \[OpenCurlyQuote]a\
-\[CloseCurlyQuote] e \[OpenCurlyQuote]b\[CloseCurlyQuote], con \
-\[OpenCurlyQuote]a\[CloseCurlyQuote] compreso tra 10 e 99, e \
-\[OpenCurlyQuote]b\[CloseCurlyQuote] compreso tra 1 e \[OpenCurlyQuote]a\
-\[CloseCurlyQuote]. Questa scelta \[EGrave] stata fatta per evitare che l\
+Cell[TextData[{
+ "Abbiamo deciso di generare casualmente i valori di \[OpenCurlyQuote]",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote] e \[OpenCurlyQuote]",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote], con \[OpenCurlyQuote]",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote] compreso tra 10 e 99, e \[OpenCurlyQuote]",
+ StyleBox["b",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote] compreso tra 1 e \[OpenCurlyQuote]",
+ StyleBox["a",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "\[CloseCurlyQuote]. Questa scelta \[EGrave] stata fatta per evitare che l\
 \[CloseCurlyQuote]utente selezioni numeri troppo grandi, il che potrebbe \
 rendere eccessivamente lunga l\[CloseCurlyQuote]esecuzione dell\
-\[CloseCurlyQuote]algoritmo.\
-\>", "Item",
+\[CloseCurlyQuote]algoritmo."
+}], "Item",
  CellChangeTimes->{{3.956134147139564*^9, 3.956134160951611*^9}, 
-   3.956136379034754*^9},ExpressionUUID->"1fbedbbf-a717-426a-8d2b-\
-45dfde4b3a74"]
+   3.956136379034754*^9},
+ TextJustification->1.,ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1437, 770},
-WindowMargins->{{Automatic, 0}, {Automatic, 29}},
+WindowSize->{1908, 1005.75},
+WindowMargins->{{-336.75, Automatic}, {642, Automatic}},
 Magnification:>1.1 Inherited,
-FrontEndVersion->"14.2 for Mac OS X x86 (64-bit) (December 26, 2024)",
+FrontEndVersion->"14.2 for Microsoft Windows (64-bit) (December 26, 2024)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"2f63d8eb-8677-4cc3-8865-a5320972f81f"
 ]
@@ -110033,70 +110208,70 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[422, 15, 151, 3, 106, "Title",ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
-Cell[576, 20, 477, 11, 160, "Subtitle",ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
-Cell[1056, 33, 6187707, 101461, 223, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
+Cell[422, 15, 314, 6, 106, "Title",ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
+Cell[739, 23, 586, 13, 160, "Subtitle",ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
+Cell[1328, 38, 6187749, 101461, 223, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
 Cell[CellGroupData[{
-Cell[6188788, 101498, 161, 3, 72, "Section",ExpressionUUID->"3b996e5d-8186-264c-a595-fb41f0f8bf1b"],
-Cell[6188952, 101503, 2279, 37, 349, "Text",ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
+Cell[6189102, 101503, 161, 3, 72, "Section",ExpressionUUID->"3b996e5d-8186-264c-a595-fb41f0f8bf1b"],
+Cell[6189266, 101508, 2801, 56, 277, "Text",ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6191268, 101545, 174, 3, 72, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
-Cell[6191445, 101550, 787, 18, 181, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
+Cell[6192104, 101569, 290, 9, 72, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
+Cell[6192397, 101580, 1286, 38, 181, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6192269, 101573, 185, 3, 72, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
-Cell[6192457, 101578, 1860, 33, 194, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
+Cell[6193720, 101623, 234, 4, 72, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
+Cell[6193957, 101629, 2051, 40, 194, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6194354, 101616, 184, 3, 72, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
-Cell[6194541, 101621, 836, 16, 133, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
-Cell[6195380, 101639, 57704, 950, 396, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
+Cell[6196045, 101674, 184, 3, 72, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
+Cell[6196232, 101679, 945, 16, 133, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
+Cell[6197180, 101697, 57726, 950, 396, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6253121, 102594, 213, 4, 72, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
-Cell[6253337, 102600, 94433, 1549, 664, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
+Cell[6254943, 102652, 258, 4, 72, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
+Cell[6255204, 102658, 94965, 1565, 664, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
 Cell[CellGroupData[{
-Cell[6347795, 104153, 235, 4, 58, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
-Cell[6348033, 104159, 3135, 50, 349, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
+Cell[6350194, 104227, 235, 4, 58, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
+Cell[6350432, 104233, 3578, 65, 325, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6351205, 104214, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
-Cell[6351424, 104220, 306608, 5032, 1366, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
+Cell[6354047, 104303, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
+Cell[6354266, 104309, 307354, 5071, 1318, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6658069, 109257, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
-Cell[6658286, 109263, 1990, 33, 253, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
+Cell[6661657, 109385, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
+Cell[6661874, 109391, 2165, 35, 229, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6660313, 109301, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
-Cell[6660514, 109306, 1281, 24, 229, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
+Cell[6664076, 109431, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
+Cell[6664277, 109436, 1401, 24, 205, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6661844, 109336, 156, 3, 72, "Section",ExpressionUUID->"f9afc229-16d6-5e48-9d9c-56a5cd6d2f8a"],
-Cell[6662003, 109341, 751, 13, 109, "Text",ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
+Cell[6665727, 109466, 156, 3, 72, "Section",ExpressionUUID->"f9afc229-16d6-5e48-9d9c-56a5cd6d2f8a"],
+Cell[6665886, 109471, 909, 20, 85, "Text",ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
 Cell[CellGroupData[{
-Cell[6662779, 109358, 503, 11, 54, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
-Cell[6663285, 109371, 382, 8, 45, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
+Cell[6666820, 109495, 591, 12, 51, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
+Cell[6667414, 109509, 382, 8, 42, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6663704, 109384, 297, 6, 32, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
-Cell[6664004, 109392, 315, 7, 45, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
+Cell[6667833, 109522, 297, 6, 31, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
+Cell[6668133, 109530, 315, 7, 42, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6664368, 109405, 237, 4, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
-Cell[6664608, 109411, 508, 9, 61, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
-Cell[6665119, 109422, 31351, 519, 323, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
+Cell[6668497, 109543, 237, 4, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
+Cell[6668737, 109549, 754, 23, 37, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
+Cell[6669494, 109574, 31351, 519, 323, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6696507, 109946, 158, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
-Cell[6696668, 109951, 1459, 38, 133, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
+Cell[6700882, 110098, 158, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
+Cell[6701043, 110103, 1740, 45, 109, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6698164, 109994, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
-Cell[6698393, 110000, 689, 12, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
+Cell[6702820, 110153, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
+Cell[6703049, 110159, 1035, 28, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
 }, Open  ]]
 }, Open  ]]
 }

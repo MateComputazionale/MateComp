@@ -1,4 +1,4 @@
-(* Definizione del pacchetto "Dice" *)
+(* Definizione del pacchetto per la visualizzazione del dado *)
 BeginPackage["Dice`"]
 
 (* Dichiarazione dei simboli esportati dal pacchetto *)

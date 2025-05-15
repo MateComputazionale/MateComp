@@ -36,6 +36,7 @@ SOFTWARE.
 (* :Limitations: For educational purposes only.*)
 (* :Target: Ragazzi delle medie *)
 (* :Informazioni aggiuntive: questi metadati sono utilizzati e intesi per la documentazione del pacchetto nella sua interezza, compresi i package ausiliari.
+    Le funzioni esportate sono state commentate e documentate nei rispettivi pacchetti.
   
 *)
 
@@ -106,10 +107,10 @@ ResetGame[] := {1, 0, False};
 
 
 (* Module \[EGrave] un costrutto usato per creare variabili locali e incapsulare il codice. Permette di definire variabili con una visibilit\[AGrave] locale
-    al corpo del costrutto Module, cio\[EGrave] variabili che non interferisco con altre variabili dichiarate fuori dal modulo con lo stesso nome
+    al corpo del costrutto Module, cio\[EGrave] variabili che non interferiscono con altre variabili dichiarate fuori dal modulo con lo stesso nome
     o con gli argomenti della funzione con lo stesso nome. *)
 StartGame[___] := Module[
-  {seed,                  (* Valore seed fornito dall'utente per la generazione pseudocasuale *)
+  {seed,                  (* Valore seed fornito dall'utente per la generazione *)
    boardElements,         (* Elementi grafici del tabellone *)
    obstacles,             (* Lista delle posizioni degli ostacoli *)
    totalCells,            (* Numero totale di celle nel tabellone *)
@@ -133,13 +134,13 @@ StartGame[___] := Module[
         ]
       ],
       Spacer[10] (* Spazio tra gli elementi *)
-    }, Alignment -> Center],
-    WindowTitle -> "Seed del Gioco"
+    }, Alignment -> Center], (* Allineamento centrale *)
+    WindowTitle -> "Seed del Gioco" (* Titolo della finestra di dialogo *)
   ];
 
   
   (* Gestione del risultato della finestra di dialogo *)
-  If[seed === "cancel" || seed === $Canceled,
+  If[seed === "cancel" || seed === $Canceled, (* In questo caso  è stata utilizzata una variabile di sistema che controlla se la finestra di dialogo è stata chiusa *)
     (* L'utente ha annullato l'operazione - non fare nulla *)
     Return[]
   ];
@@ -148,7 +149,16 @@ StartGame[___] := Module[
   (* Imposta il generatore di numeri casuali con il seed fornito *)
   SeedRandom[seed];
 
+  (* Crea il tabellone di gioco con gli ostacoli *)
+  (* La funzione BoardPrimitives restituisce una lista con i seguenti elementi:
+     - boardElements: gli elementi grafici del tabellone
+     - obstacles: la lista delle posizioni degli ostacoli
+     - totalCells: il numero totale di celle nel tabellone
+     - columns: il numero di colonne del tabellone
+     - rows: il numero di righe del tabellone *)
+  (* La funzione BoardPrimitives \[EGrave] definita nel pacchetto Board.m *)
   {boardElements, obstacles, totalCells, columns, rows} = BoardPrimitives[];
+  SeedRandom[seed];
       
   (* Crea il notebook contenente l'interfaccia di gioco *)
   gameNotebook = CreateDocument[
@@ -173,15 +183,15 @@ StartGame[___] := Module[
       },
       
       (* Crea l'interfaccia utente *)
-      Pane[  (* Aggiungo un Pane per garantire il centramento corretto *)
+      Pane[  (* Pane per garantire il centramento corretto *)
         Column[{
           (* Titolo del gioco *)
           TextCell[
-            "Gioco dell'Anatra con calcolo del MCD",
-            "Text",
-            FontSize -> 20,
-            FontWeight -> "Bold",
-            FontColor -> Black,
+            "Gioco dell'Anatra con calcolo del MCD", (* Titolo del gioco *)
+            "Text", 
+            FontSize -> 20, (* Dimensione del font *)
+            FontWeight -> "Bold", (* Grassetto *)
+            FontColor -> Black, (* Colore del font *)
             TextAlignment -> Center  (* Centra il testo del titolo *)
           ],
           (* Layout orizzontale con tabellone a sinistra e componente di Euclide a destra *)
@@ -199,7 +209,7 @@ StartGame[___] := Module[
                 ImageSize -> 400                                  (* Dimensione dell'immagine *)
               ],
               
-              (* Pulsante per tirare il dado - CENTRATO *)
+              (* Pulsante per tirare il dado *)
               (* Utilizzo di un contenitore Row per centrare il pulsante *)
               Row[{
                 (* Utilizzo della funzione RollDice dal pacchetto Buttons *)
@@ -217,30 +227,30 @@ StartGame[___] := Module[
                 If[isGameOver,
                   (* Se il gioco \[EGrave] finito, mostra il messaggio di vittoria e il pulsante per riavviare *)
                   Column[{
-                    Style["Hai vinto!", Bold, 16, TextAlignment -> Center],  (* Stilizzazione del messaggio di vittoria *)
+                    Style["Hai vinto!", Bold, 16, TextAlignment -> Center],  (* Messaggio di vittoria *)
                     Button[
-                      TextCell["Nuova Partita", "Text", FontColor -> White],
+                      TextCell["Nuova Partita", "Text", FontColor -> White], (* Pulsante per la nuova partita *)
                       (* Reset dello stato del gioco *)
                       {playerPosition, diceValue, isGameOver} = ResetGame[];
-                      showEuclide = False;,
-                      Background -> RGBColor[0.1, 0.5, 0.1],  (* Colore verde per indicare un'azione positiva *)
-                      FrameMargins -> 10,
-                      Appearance -> None,
+                      showEuclide = False;, (* Nasconde il componente di Euclide *)
+                      Background -> RGBColor[0.1, 0.5, 0.1],  (* Colore verde *)
+                      FrameMargins -> 10, (* Margini *)
+                      Appearance -> None, (* Aspetto del pulsante *)
                       BaseStyle -> {
-                        FontSize -> 14,
-                        FontColor -> White,
-                        FontWeight -> "Bold",
-                        FontFamily -> "Arial"
+                        FontSize -> 14, (* Dimensione del font *)
+                        FontColor -> White, (* Colore del font *)
+                        FontWeight -> "Bold", (* Grassetto *)
+                        FontFamily -> "Arial" (* Font del testo *)
                       },
-                      ImageSize -> {120, Automatic},
-                      Method -> "Queued",
-                      ContentPadding -> 10
+                      ImageSize -> {120, Automatic}, (* Dimensione dell'immagine *)
+                      Method -> "Queued", (* Metodo di esecuzione *)
+                      ContentPadding -> 10 (* Padding del contenuto *)
                     ]
                   }, Alignment -> Center],  (* Centramento della colonna *)
                   (* Altrimenti, mostra il valore dell'ultimo lancio del dado *)
                   Column[{
                     If[diceValue > 0, 
-                      DrawDice[diceValue]
+                      DrawDice[diceValue] (* Disegna il dado con il valore lanciato *)
                     ]
                   }, Alignment -> Center]  (* Centramento della colonna *)
                 ]
@@ -255,23 +265,24 @@ StartGame[___] := Module[
                   originalSeed, showEuclide, diceButtonEnabled
                 ],
                 
-                Spacer[20],
+                Spacer[20], (* Spazio tra i pulsanti *)
                 
+                (* Pulsante per chiudere il gioco *)
                 Button[
                   TextCell["Chiudi il gioco", "Text", FontColor -> White],
-                  NotebookClose[EvaluationNotebook[] ],
-                  Background -> RGBColor[0.8, 0.2, 0.2],
-                  FrameMargins -> 10,
-                  Appearance -> None,
-                  BaseStyle -> {
-                    FontSize -> 14,
-                    FontColor -> White,
-                    FontWeight -> "Bold",
-                    FontFamily -> "Arial"
+                  NotebookClose[EvaluationNotebook[] ], (* Chiude il notebook corrente *)
+                  Background -> RGBColor[0.8, 0.2, 0.2], (* Colore *)
+                  FrameMargins -> 10, (* Margini *)
+                  Appearance -> None, (* Aspetto del pulsante *)
+                  BaseStyle -> { 
+                    FontSize -> 14, (* Dimensione del font *)
+                    FontColor -> White, (* Colore del font *)
+                    FontWeight -> "Bold", (* Grassetto *)
+                    FontFamily -> "Arial" (* Font del testo *)
                   },
-                  ImageSize -> {120, Automatic},
-                  Method -> "Queued",
-                  ContentPadding -> 10
+                  ImageSize -> {120, Automatic}, (* Dimensione dell'immagine *)
+                  Method -> "Queued", (* Metodo di esecuzione *)
+                  ContentPadding -> 10 (* Padding del contenuto *)
                 ]
               }, Alignment -> Center]  (* Centramento della riga dei pulsanti *)
             }, Alignment -> Center],  (* Centramento della colonna sinistra *)
@@ -285,10 +296,10 @@ StartGame[___] := Module[
                 (* Mostra un messaggio quando il componente di Euclide non \[EGrave] visibile *)
                 Panel[
                   Column[{
-                    Style["Tira il dado per cominciare a giocare!", Bold, 14, TextAlignment -> Center]
+                    Style["Tira il dado per cominciare a giocare!", Bold, 14, TextAlignment -> Center] (* Messaggio *)
                   }, Alignment -> Center],  (* Centramento del contenuto del pannello *)
-                  ImageMargins -> 10,
-                  ImageSize -> {400, 300}
+                  ImageMargins -> 10, (* Margini dell'immagine *)
+                  ImageSize -> {400, 300} (* Dimensione dell'immagine *)
                 ]
               ]
             ]

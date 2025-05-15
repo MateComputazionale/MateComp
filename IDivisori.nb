@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[   6703617,     110104]
-NotebookOptionsPosition[   6699110,     110016]
-NotebookOutlinePosition[   6699537,     110033]
-CellTagsIndexPosition[   6699494,     110030]
+NotebookDataLength[   6703814,     110117]
+NotebookOptionsPosition[   6699306,     110029]
+NotebookOutlinePosition[   6699734,     110046]
+CellTagsIndexPosition[   6699691,     110043]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -104224,16 +104224,28 @@ stata progettata per rendere pi\[UGrave] comprensibile \
 l\[CloseCurlyQuote]algoritmo di Euclide, fornendo un supporto visivo chiaro e \
 intuitivo. Sono presenti due tipi di aiuto, uno per ciascuna delle due fasi \
 del gioco.\n\nNel primo passaggio, in cui bisogna calcolare il quoziente e il \
-resto della divisione tra i numeri \[OpenCurlyQuote]a\[CloseCurlyQuote] e \
-\[OpenCurlyQuote]b\[CloseCurlyQuote], l\[CloseCurlyQuote]aiuto propone una \
-visualizzazione semplificata di come calcolare la divisione e il resto dei \
-numeri del passo corrente dell\[CloseCurlyQuote]algoritmo.\nViene mostrato un \
-singolo gruppo composto da b unit\[AGrave], che rappresenta in che modo si pu\
-\[OGrave] dividere a. Sotto al gruppo viene indicato quante volte esso si pu\
-\[OGrave] ripetere all\[CloseCurlyQuote]interno di a \[LongDash] ad esempio \
-con una scritta come \[OpenCurlyDoubleQuote]\[Times] \
-4\[CloseCurlyDoubleQuote] \[LongDash] segnalando cos\[IGrave] che si possono \
-formare 4 gruppi completi: questo numero rappresenta il quoziente.\nEventuali \
+resto della divisione tra i numeri ",
+ StyleBox["a",
+  FontSlant->"Italic"],
+ " e ",
+ StyleBox["b",
+  FontSlant->"Italic"],
+ ", l\[CloseCurlyQuote]aiuto propone una visualizzazione semplificata di come \
+calcolarli.\nViene mostrato un singolo gruppo composto da ",
+ StyleBox["b",
+  FontSlant->"Italic"],
+ " unit\[AGrave], che rappresenta in che modo si pu\[OGrave] dividere ",
+ StyleBox["a",
+  FontSlant->"Italic"],
+ ". Sotto al gruppo viene indicato quante volte esso si pu\[OGrave] ripetere \
+all\[CloseCurlyQuote]interno di ",
+ StyleBox["a",
+  FontSlant->"Italic"],
+ " \[LongDash] ad esempio con una scritta come \[OpenCurlyDoubleQuote]",
+ StyleBox["\[Times] 2 gruppi",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote] \[LongDash] segnalando cos\[IGrave] che si possono \
+formare 2 gruppi completi: questo numero rappresenta il quoziente.\nEventuali \
 unit\[AGrave] rimanenti che non possono essere raggruppate vengono mostrate \
 separatamente come il resto, aiutando cos\[IGrave] il giocatore a \
 identificare chiaramente i due valori richiesti.\n\nPer rendere l\
@@ -109248,8 +109260,9 @@ consolidando la comprensione del meccanismo di calcolo del MCD."
    3.956043358877637*^9, 3.956043360027061*^9}, {3.9560434511717443`*^9, 
    3.956043551354129*^9}, 3.9561361645448093`*^9, {3.956136326431054*^9, 
    3.956136365954276*^9}, 3.956308510228003*^9, 3.9563085736107283`*^9, {
-   3.956308605788348*^9, 
-   3.9563086656302233`*^9}},ExpressionUUID->"ca70b283-ae96-499d-90af-\
+   3.956308605788348*^9, 3.9563086656302233`*^9}, {3.956310328266667*^9, 
+   3.956310364836483*^9}, {3.956310398679532*^9, 
+   3.9563104124579353`*^9}},ExpressionUUID->"ca70b283-ae96-499d-90af-\
 7712a5e300fb"]
 }, Open  ]],
 
@@ -110014,8 +110027,8 @@ rendere eccessivamente lunga l\[CloseCurlyQuote]esecuzione dell\
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1437, 770},
-WindowMargins->{{Automatic, 0}, {Automatic, 29}},
+WindowSize->{Full, Full},
+WindowMargins->{{Automatic, 0}, {48, Automatic}},
 Magnification:>1.1 Inherited,
 FrontEndVersion->"14.2 for Mac OS X x86 (64-bit) (December 26, 2024)",
 StyleDefinitions->"Default.nb",
@@ -110062,41 +110075,41 @@ Cell[6348033, 104159, 3135, 50, 349, "Text",ExpressionUUID->"b1171b59-a414-45d1-
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[6351205, 104214, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
-Cell[6351424, 104220, 306608, 5032, 1366, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
+Cell[6351424, 104220, 306804, 5045, 1342, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6658069, 109257, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
-Cell[6658286, 109263, 1990, 33, 253, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
+Cell[6658265, 109270, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
+Cell[6658482, 109276, 1990, 33, 253, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6660313, 109301, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
-Cell[6660514, 109306, 1281, 24, 229, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
+Cell[6660509, 109314, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
+Cell[6660710, 109319, 1281, 24, 229, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6661844, 109336, 156, 3, 72, "Section",ExpressionUUID->"f9afc229-16d6-5e48-9d9c-56a5cd6d2f8a"],
-Cell[6662003, 109341, 751, 13, 109, "Text",ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
+Cell[6662040, 109349, 156, 3, 72, "Section",ExpressionUUID->"f9afc229-16d6-5e48-9d9c-56a5cd6d2f8a"],
+Cell[6662199, 109354, 751, 13, 109, "Text",ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
 Cell[CellGroupData[{
-Cell[6662779, 109358, 503, 11, 54, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
-Cell[6663285, 109371, 382, 8, 45, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
+Cell[6662975, 109371, 503, 11, 54, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
+Cell[6663481, 109384, 382, 8, 45, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6663704, 109384, 297, 6, 32, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
-Cell[6664004, 109392, 315, 7, 45, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
+Cell[6663900, 109397, 297, 6, 32, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
+Cell[6664200, 109405, 315, 7, 45, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6664368, 109405, 237, 4, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
-Cell[6664608, 109411, 508, 9, 61, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
-Cell[6665119, 109422, 31351, 519, 323, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
+Cell[6664564, 109418, 237, 4, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
+Cell[6664804, 109424, 508, 9, 61, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
+Cell[6665315, 109435, 31351, 519, 323, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6696507, 109946, 158, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
-Cell[6696668, 109951, 1459, 38, 133, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
+Cell[6696703, 109959, 158, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
+Cell[6696864, 109964, 1459, 38, 133, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6698164, 109994, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
-Cell[6698393, 110000, 689, 12, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
+Cell[6698360, 110007, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
+Cell[6698589, 110013, 689, 12, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
 }, Open  ]]
 }, Open  ]]
 }

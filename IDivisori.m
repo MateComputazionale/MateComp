@@ -158,6 +158,7 @@ StartGame[___] := Module[
      - rows: il numero di righe del tabellone *)
   (* La funzione BoardPrimitives \[EGrave] definita nel pacchetto Board.m *)
   {boardElements, obstacles, totalCells, columns, rows} = BoardPrimitives[];
+  SeedRandom[seed];
       
   (* Crea il notebook contenente l'interfaccia di gioco *)
   gameNotebook = CreateDocument[

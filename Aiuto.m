@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* Inizio della definizione del pacchetto "Aiuto" *)
 BeginPackage["Aiuto`"]
 
@@ -16,7 +18,7 @@ Begin["`Private`"]
   
   Restituisce un array di oggetti Graphics che rappresentano il valore:
   - Dischi blu per le decine (valore=10)
-  - Dischi arancioni per le unità (valore=1)
+  - Dischi arancioni per le unit\[AGrave] (valore=1)
 *)
 CreaAiutoValore[n_Integer, radius_: 0.2] := Module[
  {blu, arancioni},
@@ -24,7 +26,7 @@ CreaAiutoValore[n_Integer, radius_: 0.2] := Module[
  (* Calcola quante decine (dischi blu) servono *)
  blu = Quotient[n, 10];
  
- (* Calcola quante unità (dischi arancioni) servono *)
+ (* Calcola quante unit\[AGrave] (dischi arancioni) servono *)
  arancioni = Mod[n, 10];
  
  (* Unisce le due liste di dischi colorati *)
@@ -35,7 +37,7 @@ CreaAiutoValore[n_Integer, radius_: 0.2] := Module[
      {blu}
    ],
    
-   (* Crea 'arancioni' dischi di colore arancione per rappresentare le unità *)
+   (* Crea 'arancioni' dischi di colore arancione per rappresentare le unit\[AGrave] *)
    Table[
      Graphics[{EdgeForm[Black], FaceForm[Orange], Disk[{0, 0}, radius]}, ImageSize -> 30],
      {arancioni}
@@ -83,16 +85,19 @@ MostraAiuto[a_Integer, b_Integer] := Module[
      }],
      
      (* Spiegazione testuale della divisione *)
-     "Si pu\[OGrave] rappresentare il risultato in modo pi\[UGrave] chiaro con " <> ToString[a]<> " palline suddivise in " <> 
-     ToString[q] <> " gruppi di " <> ToString[b] <> " palline e un resto di " <> ToString[r] <> ".",
-     
+	Row[{
+    "Immagina di divere il numero totale di palline ", Style[a, Bold],
+    "(pari al dividendo) nel maggiore numero di gruppo possibili di ", Style[b, Bold],
+    "palline (divisore). Il numero di gruppi formatosi di ", Style[b, Bold],
+    "palline \[EGrave] il risultato della divisione. Le palline rimanenti dalla divisione in gruppi uguali \[EGrave] il resto"
+    }]
      (* Visualizzazione dei gruppi (il divisore ripetuto q volte) *)
      Column[gruppi],
      
-     (* Visualizzazione del resto, solo se è maggiore di zero *)
+     (* Visualizzazione del resto, solo se \[EGrave] maggiore di zero *)
      If[r > 0,
        Row[{"Resto: ", Row[resto]}],
-       Nothing  (* Non mostra nulla se il resto è zero *)
+       Nothing  (* Non mostra nulla se il resto \[EGrave] zero *)
      ]
    }],
    ImageMargins -> 10  (* Aggiunge margini al pannello per una migliore visualizzazione *)
@@ -104,3 +109,12 @@ End[]
 
 (* Fine della definizione del pacchetto *)
 EndPackage[]
+
+
+
+
+
+
+
+
+

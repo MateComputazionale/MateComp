@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* Pacchetto Suggerimento per visualizzare un passo dell'algoritmo di Euclide *)
 
 BeginPackage["Suggerimento`"]
@@ -24,7 +26,7 @@ CreaNodoGrafico[val_, colore_, label_: ""] :=
     FaceForm[colore],        (* Colore del cerchio *)
     Disk[{0, 0}, 0.1],       (* Cerchio di raggio 0.1 centrato in {0,0} *)
     Text[Style[ToString[val], 10, Black], {0, 0}],  (* Valore al centro *)
-    If[label =!= "",     (* Se è specificata un'etichetta *)
+    If[label =!= "",     (* Se \[EGrave] specificata un'etichetta *)
       Text[Style[label, 8, Black], {0, -0.18}],  (* Etichetta sotto il cerchio *)
       Nothing          (* Altrimenti nessun elemento aggiuntivo *)
     ]
@@ -35,7 +37,7 @@ CreaNodoGrafico[val_, colore_, label_: ""] :=
   - a, b: valori interi correnti nell'algoritmo di Euclide
   Calcola:
     - r = a mod b (resto)
-    - q = Quotient[a, b] (quoziente) [non mostrato esplicitamente ma può servire]
+    - q = Quotient[a, b] (quoziente) [non mostrato esplicitamente ma pu\[OGrave] servire]
   Crea nodi grafici per A, B, r e per i valori del passo successivo.
   Restituisce un Panel con:
     - Titolo "Suggerimento"
@@ -70,7 +72,7 @@ MostraSuggerimento[a_Integer, b_Integer] := Module[
         Style[r, Bold]                          (* Valore del resto in grassetto *)
       }],
       
-      Style["Passo Corrente:", Bold, 12],       (* Sottotitolo passo corrente *)
+      Style["Passo Precedente:", Bold, 12],       (* Sottotitolo passo corrente *)
       Row[{nodoA, Spacer[10], nodoB, Spacer[10], nodoR}],  (* Visualizzazione nodi correnti *)
       
       Style["Prossimo passo:", Bold, 12],       (* Sottotitolo passo seguente *)
@@ -83,3 +85,6 @@ MostraSuggerimento[a_Integer, b_Integer] := Module[
 
 End[]
 EndPackage[]
+
+
+

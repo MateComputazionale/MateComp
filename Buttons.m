@@ -31,7 +31,7 @@ SetAttributes[Restart, HoldAll]
 Restart[position_, dice_, gameOver_, seed_, showEuclide_, diceButtonEnabled_] := Button[
   TextCell["Ricomincia", "Text", FontColor -> White],  (* Testo del bottone *)
   (
-    SeedRandom[seed];         (* Reimposta il seme del generatore di numeri casuali *)
+    SeedRandom[seed];         (* Reimposta il seed del generatore di numeri casuali *)
     position = 1;             (* Riporta il giocatore alla posizione iniziale *)
     dice = 0;                 (* Reimposta il valore del dado *)
     gameOver = False;         (* Imposta che il gioco non è finito *)
@@ -52,7 +52,7 @@ Restart[position_, dice_, gameOver_, seed_, showEuclide_, diceButtonEnabled_] :=
   ContentPadding -> 10                  (* Padding interno *)
 ]
 
-(* Anche qui evitiamo la valutazione prematura *)
+(* Evita la valutazione prematura *)
 SetAttributes[RollDice, HoldAll]
 
 (* Bottone per tirare il dado *)
@@ -65,7 +65,7 @@ RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, player
       num1 = RandomInteger[{10, 99}];            (* Primo numero casuale per Euclide *)
       num2 = RandomInteger[{1, num1 - 1}];       (* Secondo numero, più piccolo *)
 
-      (* Crea il componente Euclideo e lo visualizza *)
+      (* Crea il componente Euclide *)
       euclideComponent = EuclideComponent[num1, num2, diceValue,
         Function[gcdResult,
           Module[{newPosition},
@@ -79,7 +79,7 @@ RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, player
           ]
         ]
       ];
-      showEuclide = True;  (* Mostra il componente Euclideo *)
+      showEuclide = True;  (* Mostra il componente Euclide *)
     ),
     ImageSize -> {150, Automatic},              (* Dimensione del bottone *)
     Enabled -> Dynamic[diceButtonEnabled && !isGameOver],  (* Abilitazione condizionale *)

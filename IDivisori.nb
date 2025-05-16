@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[   6725646,     110557]
-NotebookOptionsPosition[   6721093,     110468]
-NotebookOutlinePosition[   6721563,     110486]
-CellTagsIndexPosition[   6721520,     110483]
+NotebookDataLength[   6726626,     110588]
+NotebookOptionsPosition[   6722085,     110500]
+NotebookOutlinePosition[   6722538,     110517]
+CellTagsIndexPosition[   6722495,     110514]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -101525,11 +101525,10 @@ di rendere ",
 \[CloseCurlyDoubleQuote]",
   FontSlant->"Italic"],
  ", il giocatore pu\[OGrave] esplorare passo dopo passo \
-nell\[CloseCurlyQuote]algoritmo come i numeri si riducano alla soluzione \
-cercata, consolidando al tempo stesso le basi della ",
- "teoria dei numeri",
- ".\n\nPer raggiungere questo scopo, il gioco integra dinamiche classiche - \
-come il lancio del dado e il movimento su caselle - con elementi di ",
+dell\[CloseCurlyQuote]algoritmo come i numeri si riducono alla soluzione \
+cercata, consolidando al tempo stesso le basi della teoria dei numeri.\n\nPer \
+raggiungere questo scopo, il gioco integra dinamiche classiche - come il \
+lancio del dado e il movimento su caselle - con elementi di ",
  StyleBox["problem solving",
   FontSlant->"Italic"],
  " matematico. A ogni tappa sulla griglia, infatti, si presenta una ",
@@ -101561,7 +101560,7 @@ rivolto agli ",
  CellChangeTimes->{{3.9561399934428673`*^9, 3.956139995161869*^9}, {
    3.956140083615999*^9, 3.9561402482287006`*^9}, {3.956141193625265*^9, 
    3.9561412245722504`*^9}, 3.9563087174455423`*^9, {3.9563108690207863`*^9, 
-   3.9563108943371086`*^9}},
+   3.9563108943371086`*^9}, {3.956370673503763*^9, 3.956370679586588*^9}},
  TextJustification->1.,ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
 }, Open  ]],
 
@@ -101628,7 +101627,7 @@ Cell["A cosa serve il Massimo Comune Divisore?", "Section",
 012491981ce5"],
 
 Cell[TextData[{
- "Il massimo comun divisore",
+ "Il massimo comune divisore",
  " [1][2] \[EGrave] uno strumento ",
  StyleBox["fondamentale",
   FontWeight->"Bold"],
@@ -101666,7 +101665,8 @@ semplificata ai minimi termini.\n\n",
    3.9562903775000362`*^9}, {3.956290427946949*^9, 3.956290492212428*^9}, {
    3.956290523533161*^9, 3.95629064706538*^9}, {3.956290888085991*^9, 
    3.956290919781836*^9}, {3.956291505504218*^9, 3.95629160371512*^9}, {
-   3.9562916376376967`*^9, 3.9562916404494*^9}, 3.9563111503809395`*^9},
+   3.9562916376376967`*^9, 3.9562916404494*^9}, 3.9563111503809395`*^9, 
+   3.956370708784855*^9},
  TextJustification->1.,ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
 }, Open  ]],
 
@@ -102668,11 +102668,10 @@ stesso seed, si otterr\[AGrave] sempre lo stesso scenario di gioco, o meglio \
 - la stessa ",
  StyleBox["sequenza",
   FontSlant->"Italic"],
- " di scenari",
- ". Infatti dopo aver vinto una partita l\[CloseCurlyQuote]utente potr\
-\[AGrave] continuare a giocare comandanto sempre dallo stesso seed ma nella \
-sequenza dopo, quindi casualmente.\nIl seed deve essere un numero intero: se \
-viene inserito un numero decimale, il gioco considerer\[AGrave] \
+ " di scenari. Infatti dopo aver vinto una partita l\[CloseCurlyQuote]utente \
+potr\[AGrave] continuare a giocare comandato sempre dallo stesso seed ma \
+nella sequenza dopo, quindi casualmente.\nIl seed deve essere un numero \
+intero: se viene inserito un numero decimale, il gioco considera \
 automaticamente solo la parte intera, ignorando i decimali.\nDopo aver \
 confermato il seed, si apre la schermata principale del gioco, pronta per \
 iniziare la partita.\n\nPer procedere, l\[CloseCurlyQuote]utente deve \
@@ -104220,7 +104219,7 @@ a raggiungere la fine del percorso."
    3.9562928537025843`*^9}, {3.956293008600792*^9, 3.956293009602751*^9}, {
    3.956293233444326*^9, 3.9562932341551523`*^9}, 3.956308550570229*^9, {
    3.956308668736274*^9, 3.956308670534375*^9}, {3.9563114710602207`*^9, 
-   3.9563115180673656`*^9}},
+   3.9563115180673656`*^9}, {3.9563707469887886`*^9, 3.956370760266346*^9}},
  TextJustification->1.,ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
 
 Cell[CellGroupData[{
@@ -109673,10 +109672,10 @@ tabellone. In questo modo, il giocatore completa il percorso e conclude la \
 partita con successo.\n\nA differenza di giochi come il Gioco dell\
 \[CloseCurlyQuote]Oca, \[EGrave] stato scelto di non tornare mai indietro \
 sulle caselle. Questa decisione \[EGrave] stata presa per evitare che la \
-partita si prolungasse eccessivamente o, nel peggiore dei casi, che \
-diventasse potenzialmente infinita, impedendo al giocatore di raggiungere la \
-fine e mantenendo centrale l\[CloseCurlyQuote]apprendimento dell\
-\[CloseCurlyQuote]algoritmo.\n\nUna volta concluso il gioco, \[EGrave] \
+partita si prolunga eccessivamente o, nel peggiore dei casi, che diventasse \
+potenzialmente infinita, impedendo al giocatore di raggiungere la fine e \
+mantenendo centrale l\[CloseCurlyQuote]apprendimento \
+dell\[CloseCurlyQuote]algoritmo.\n\nUna volta concluso il gioco, \[EGrave] \
 possibile iniziare una nuova partita semplicemente cliccando sul pulsante \
 \[OpenCurlyDoubleQuote]",
  StyleBox["Nuova partita",
@@ -109700,7 +109699,8 @@ lo stesso percorso) cliccando sull\[CloseCurlyQuote]apposito pulsante \
    3.9562918392033367`*^9, 3.956291940036048*^9}, {3.956291978477359*^9, 
    3.9562919867225103`*^9}, 3.956292018411632*^9, {3.956292049123732*^9, 
    3.956292049436921*^9}, {3.95629315242715*^9, 3.956293159598877*^9}, {
-   3.9563117455332184`*^9, 3.9563117543825264`*^9}},
+   3.9563117455332184`*^9, 3.9563117543825264`*^9}, {3.956370840264681*^9, 
+   3.9563708407508087`*^9}},
  TextJustification->1.,ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
 }, Open  ]],
 
@@ -110455,20 +110455,51 @@ Cell[TextData[{
  StyleBox["a",
   FontWeight->"Bold",
   FontSlant->"Italic"],
- "\[CloseCurlyQuote]. Questa scelta \[EGrave] stata fatta per evitare che l\
-\[CloseCurlyQuote]utente selezioni numeri troppo grandi, il che potrebbe \
-rendere eccessivamente lunga l\[CloseCurlyQuote]esecuzione dell\
-\[CloseCurlyQuote]algoritmo."
+ "\[CloseCurlyQuote]. \[LineSeparator]Questa ",
+ StyleBox["decisione",
+  FontWeight->"Bold"],
+ " nasce dall\[CloseCurlyQuote]esigenza di mantenere il gioco ",
+ StyleBox["semplice",
+  FontSlant->"Italic"],
+ ", ",
+ StyleBox["rapido",
+  FontSlant->"Italic"],
+ " e",
+ " ",
+ StyleBox["accessibile",
+  FontSlant->"Italic"],
+ " a ",
+ "tutti, evitando che vengano inseriti numeri ",
+ StyleBox["troppo",
+  FontWeight->"Bold"],
+ " ",
+ StyleBox["grandi",
+  FontWeight->"Bold"],
+ " che potrebbero rallentare l\[CloseCurlyQuote]esecuzione dell\
+\[CloseCurlyQuote]algoritmo. Inoltre, l\[CloseCurlyQuote]",
+ StyleBox["automatizzazione",
+  FontSlant->"Italic"],
+ " della scelta dei numeri contribuisce a rendere \
+l\[CloseCurlyQuote]esperienza pi\[UGrave] ",
+ StyleBox["fluida",
+  FontWeight->"Bold"],
+ " e orientata all\[CloseCurlyQuote]",
+ StyleBox["apprendimento",
+  FontWeight->"Bold"],
+ " ",
+ StyleBox["ludico",
+  FontWeight->"Bold"],
+ ", senza richiedere conoscenze pregresse o decisioni tecniche da parte\
+\[NonBreakingSpace]dell\[CloseCurlyQuote]utente."
 }], "Item",
  CellChangeTimes->{{3.956134147139564*^9, 3.956134160951611*^9}, 
-   3.956136379034754*^9},
+   3.956136379034754*^9, {3.956370940810934*^9, 3.956370946269066*^9}},
  TextJustification->1.,ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1152, 579.6},
-WindowMargins->{{
-  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+WindowSize->{574.8, 573.6},
+WindowMargins->{{Automatic, -4.7999999999999545`}, {Automatic, 0}},
 Magnification:>1.1 Inherited,
 FrontEndVersion->"14.2 for Microsoft Windows (64-bit) (December 26, 2024)",
 StyleDefinitions->"Default.nb",
@@ -110488,68 +110519,68 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[422, 15, 314, 6, 106, "Title",ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
 Cell[739, 23, 586, 13, 160, "Subtitle",ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
-Cell[1328, 38, 6187749, 101461, 223, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
+Cell[1328, 38, 6187749, 101461, 464, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
 Cell[CellGroupData[{
 Cell[6189102, 101503, 161, 3, 72, "Section",ExpressionUUID->"3b996e5d-8186-264c-a595-fb41f0f8bf1b"],
-Cell[6189266, 101508, 2801, 56, 397, "Text",ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
+Cell[6189266, 101508, 2839, 55, 734, "Text",ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6192104, 101569, 290, 9, 72, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
-Cell[6192397, 101580, 1286, 38, 205, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
+Cell[6192142, 101568, 290, 9, 72, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
+Cell[6192435, 101579, 1286, 38, 253, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6193720, 101623, 234, 4, 72, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
-Cell[6193957, 101629, 2051, 40, 218, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
+Cell[6193758, 101622, 234, 4, 113, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
+Cell[6193995, 101628, 2078, 41, 362, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6196045, 101674, 184, 3, 72, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
-Cell[6196232, 101679, 945, 16, 133, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
-Cell[6197180, 101697, 57726, 950, 396, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
+Cell[6196110, 101674, 184, 3, 72, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
+Cell[6196297, 101679, 945, 16, 229, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
+Cell[6197245, 101697, 57726, 950, 396, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6254943, 102652, 258, 4, 72, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
-Cell[6255204, 102658, 94965, 1565, 808, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
+Cell[6255008, 102652, 258, 4, 72, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
+Cell[6255269, 102658, 94997, 1564, 1097, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
 Cell[CellGroupData[{
-Cell[6350194, 104227, 235, 4, 58, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
-Cell[6350432, 104233, 3578, 65, 421, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
+Cell[6350291, 104226, 235, 4, 58, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
+Cell[6350529, 104232, 3578, 65, 782, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6354047, 104303, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
-Cell[6354266, 104309, 324311, 5348, 1512, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
+Cell[6354144, 104302, 216, 4, 58, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
+Cell[6354363, 104308, 324311, 5348, 1849, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6678614, 109662, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
-Cell[6678831, 109668, 2165, 35, 301, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
+Cell[6678711, 109661, 214, 4, 58, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
+Cell[6678928, 109667, 2214, 36, 518, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6681033, 109708, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
-Cell[6681234, 109713, 1401, 24, 253, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
+Cell[6681179, 109708, 198, 3, 58, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
+Cell[6681380, 109713, 1401, 24, 421, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6682684, 109743, 156, 3, 72, "Section",ExpressionUUID->"f9afc229-16d6-5e48-9d9c-56a5cd6d2f8a"],
-Cell[6682843, 109748, 909, 20, 109, "Text",ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
+Cell[6682830, 109743, 156, 3, 72, "Section",ExpressionUUID->"f9afc229-16d6-5e48-9d9c-56a5cd6d2f8a"],
+Cell[6682989, 109748, 909, 20, 157, "Text",ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
 Cell[CellGroupData[{
-Cell[6683777, 109772, 591, 12, 51, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
-Cell[6684371, 109786, 382, 8, 41, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
+Cell[6683923, 109772, 591, 12, 72, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
+Cell[6684517, 109786, 382, 8, 41, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6684790, 109799, 297, 6, 31, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
-Cell[6685090, 109807, 315, 7, 41, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
+Cell[6684936, 109799, 297, 6, 31, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
+Cell[6685236, 109807, 315, 7, 41, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6685454, 109820, 237, 4, 72, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
-Cell[6685694, 109826, 754, 23, 61, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
-Cell[6686451, 109851, 31351, 519, 323, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
+Cell[6685600, 109820, 237, 4, 113, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
+Cell[6685840, 109826, 754, 23, 109, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
+Cell[6686597, 109851, 31351, 519, 323, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6717839, 110375, 182, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
-Cell[6718024, 110380, 1740, 45, 109, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
+Cell[6717985, 110375, 182, 3, 72, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328"],
+Cell[6718170, 110380, 1740, 45, 109, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6719801, 110430, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
-Cell[6720030, 110436, 1035, 28, 55, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
+Cell[6719947, 110430, 226, 4, 72, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
+Cell[6720176, 110436, 1881, 60, 208, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"]
 }, Open  ]]
 }, Open  ]]
 }

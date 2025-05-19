@@ -148,35 +148,49 @@ BoardPrimitives[cols_Integer:6, rows_Integer:6] := Module[
   obstacles = Complement[Range[1, total], path];
 
   (* Crea le primitive grafiche per ogni cella *)
-  prims = Table[
-    Module[{coord = LinearCoordinates[cell, cols], x, y},
-      {x, y} = coord;  (* Estrai le coordinate x,y *)
-      {
-        EdgeForm[White],  (* Bordo nero per tutte le celle *)
-        FaceForm[
-          If[MemberQ[obstacles, cell],
-            White,                           (* Colore grigio per gli ostacoli *)
-            ColorData["Rainbow"][cell/total] (* Colore arcobaleno per il percorso *)
-          ]
-        ],
-        (* Disegna il rettangolo della cella *)
-        Rectangle[{x, y}, {x + 1, y + 1}],
-        (* Aggiungi il numero solo sulle celle del percorso *)
-        (* If[MemberQ[path, cell],
-          Text[Style[ToString[cell], 8], {x + 0.5, y + 0.5}],
-          {}
-        ] *)
-        (* Se la cella è la prima, scrivi START in bianco e in grassetto *)
-        If[cell == 1, Text[Style["START", 8, Bold, White], {x + 0.5, y + 0.5}] ],
-        (* Se la cella è l'ultima, scrivi FINE in bianco e in grassetto *)
-        If[cell == total, Text[Style["FINE", 8, Bold, White], {x + 0.5, y + 0.5}] ] 
-      }
-    ],
-    {cell, 1, total}  (* Per ogni cella da 1 a total *)
-  ];
+   prims = Table[
+      CreateCellGraphics[cell, cols, total, path, obstacles],
+      {cell, 1, total}  (* Per ogni cella da 1 a total *)
+    ];
 
   (* Ritorna le primitive grafiche, gli ostacoli, e le informazioni sul tabellone *)
   {prims, obstacles, total, cols, rows}
+];
+
+(* CreateCellGraphics: Crea le primitive grafiche per una cella
+   Input:
+   - cell: numero della cella corrente
+   - cols: numero di colonne del tabellone
+   - total: numero totale di celle
+   - path: lista delle celle del percorso
+    - obstacles: lista delle celle ostacolo
+    Output:
+*)
+CreateCellGraphics[cell_, cols_, total_, path_, obstacles_] := Module[
+  {coord, x, y},
+    coord = LinearCoordinates[cell, cols];
+    {x, y} = coord;  (* Estrai le coordinate x,y *)
+    {
+      EdgeForm[White],  (* Bordo bianco per tutte le celle *)
+      FaceForm[
+        If[MemberQ[obstacles, cell],
+          White,                           (* Colore bianco per gli ostacoli *)
+          ColorData["Rainbow"][cell/total] (* Colore arcobaleno per il percorso *)
+        ]
+      ],
+      (* Disegna il rettangolo della cella *)
+      Rectangle[{x, y}, {x + 1, y + 1}],
+      (* Se la cella è la prima, scrivi START in bianco e in grassetto *)
+      If[cell == 1, 
+        Text[Style["START", 8, Bold, White], {x + 0.5, y + 0.5}],
+        Nothing
+      ],
+      (* Se la cella è l'ultima, scrivi FINE in bianco e in grassetto *)
+      If[cell == total, 
+        Text[Style["FINE", 8, Bold, White], {x + 0.5, y + 0.5}],
+        Nothing
+      ]
+    }
 ];
 
 (* DrawPlayer: Disegna la pedina del giocatore sulla cella corrente

@@ -58,42 +58,82 @@ Restart[position_, dice_, gameOver_, seed_, showEuclide_, diceButtonEnabled_] :=
 SetAttributes[RollDice, HoldAll]
 
 (* Bottone per tirare il dado *)
-RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, playerPosition_, obstaclesList_, totalBoardCells_, isGameOver_, showEuclide_] := 
-  Button[
-    TextCell["Tira il dado", "Text", FontColor -> White],  (* Testo del bottone *)
-    (
-      diceButtonEnabled = False;  (* Disabilita temporaneamente il pulsante *)
-      diceValue = RandomInteger[{1, 6}];         (* Estrae un numero da 1 a 6 *)
-      num1 = RandomInteger[{10, 99}];            (* Primo numero casuale per Euclide *)
-      num2 = RandomInteger[{1, num1 - 1}];       (* Secondo numero, più piccolo *)
+RollDice[diceButtonEnabled_, diceValue_, num1_, num2_, euclideComponent_, 
+  playerPosition_, obstaclesList_, totalBoardCells_, isGameOver_, showEuclide_] := 
+  DynamicModule[{
+    buttonEnabled = Dynamic[diceButtonEnabled],
+    currentDiceValue = Dynamic[diceValue],
+    currentNum1 = Dynamic[num1],
+    currentNum2 = Dynamic[num2],
+    currentComponent = Dynamic[euclideComponent],
+    currentPosition = Dynamic[playerPosition],
+    gameOver = Dynamic[isGameOver],
+    showEuclideFlag = Dynamic[showEuclide]
+  },
+    Button[
+      TextCell["Tira il dado", "Text", FontColor -> White],  (* Testo del bottone *)
+      (
+        (* Modifica i valori attraverso le variabili dinamiche *)
+        diceButtonEnabled = False;  (* Disabilita temporaneamente il pulsante *)
+        diceValue = RandomInteger[{1, 6}];      (* Estrae un numero da 1 a 6 *)
+        num1 = RandomInteger[{10, 99}];         (* Primo numero casuale per Euclide *)
+        num2 = RandomInteger[{1, num1 - 1}];    (* Secondo numero, più piccolo *)
 
-      (* Crea il componente Euclide *)
-      euclideComponent = EuclideComponent[num1, num2, diceValue,
-        Function[gcdResult,
-          Module[{newPosition},
-            newPosition = GetNextPosition[
-              playerPosition, diceValue, obstaclesList, totalBoardCells
-            ];  (* Calcola la nuova posizione del giocatore *)
-            playerPosition = newPosition;  (* Aggiorna la posizione *)
-            If[playerPosition >= totalBoardCells, isGameOver = True];  (* Controlla se il gioco è finito *)
-            showEuclide = False;           (* Nasconde EuclideComponent dopo il movimento *)
-            diceButtonEnabled = True;      (* Riabilita il pulsante *)
+        (* Crea il componente Euclide *)
+        euclideComponent = EuclideComponent[num1, num2, diceValue,
+          Function[gcdResult,
+            (* Usa la funzione di processamento risultato che restituisce i nuovi valori *)
+            With[{result = ProcessGCDResult[
+              playerPosition, diceValue, obstaclesList, totalBoardCells]},
+              (* Aggiorna le variabili con i valori restituiti *)
+              playerPosition = result["newPosition"];
+              isGameOver = result["isGameOver"];
+              showEuclide = False;          (* Nasconde EuclideComponent dopo il movimento *)
+              diceButtonEnabled = True;     (* Riabilita il pulsante *)
+            ]
           ]
-        ]
-      ];
-      showEuclide = True;  (* Mostra il componente Euclide *)
-    ),
-    ImageSize -> {150, 35},              (* Dimensione del bottone *)
-    Enabled -> Dynamic[diceButtonEnabled && !isGameOver],  (* Abilitazione condizionale *)
-    Appearance -> "Frameless",                  (* Aspetto senza cornice *)
-    Background -> RGBColor[0.3, 0.6, 0.3],      (* Colore di sfondo verde *)
-    BaseStyle -> {
-      FontSize -> 14,                           (* Font size *)
-      FontColor -> White,                       (* Colore testo *)
-      FontWeight -> "Bold"                      (* Testo in grassetto *)
-    }
-  ]
+        ];
+        showEuclide = True;  (* Mostra il componente Euclide *)
+      ),
+      ImageSize -> {150, 35},              (* Dimensione del bottone *)
+      Enabled -> Dynamic[diceButtonEnabled && !isGameOver],  (* Abilitazione condizionale *)
+      Appearance -> "Frameless",                  (* Aspetto senza cornice *)
+      Background -> RGBColor[0.3, 0.6, 0.3],      (* Colore di sfondo verde *)
+      BaseStyle -> {
+        FontSize -> 14,                           (* Font size *)
+        FontColor -> White,                       (* Colore testo *)
+        FontWeight -> "Bold"                      (* Testo in grassetto *)
+      }
+    ]
+  ];
 
+(* ProcessGCDResult: Elabora il risultato del calcolo e muove il giocatore
+   Input:
+   - playerPosition: posizione attuale del giocatore
+   - diceValue: valore del dado
+   - obstaclesList: lista degli ostacoli
+   - totalBoardCells: numero totale di celle
+   Output:
+   - Un'associazione con i nuovi valori delle variabili
+*)
+ProcessGCDResult[playerPosition_, diceValue_, obstaclesList_, totalBoardCells_] :=
+  Module[{newPosition, gameOver = False},
+    (* Calcola la nuova posizione del giocatore *)
+    newPosition = GetNextPosition[
+      playerPosition, diceValue, obstaclesList, totalBoardCells
+    ];
+    
+    (* Controlla se il gioco è finito *)
+    If[newPosition >= totalBoardCells, 
+      gameOver = True
+    ];
+    
+    (* Ritorna un'associazione con i nuovi valori *)
+    <|
+      "newPosition" -> newPosition,
+      "isGameOver" -> gameOver
+    |>
+  ];
 (* Fine del contesto privato *)
 End[]
 

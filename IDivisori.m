@@ -158,8 +158,8 @@ StartGame[___] := Module[
      - rows: il numero di righe del tabellone *)
   (* La funzione BoardPrimitives \[EGrave] definita nel pacchetto Board.m *)
   {boardElements, obstacles, totalCells, columns, rows} = BoardPrimitives[];
-  SeedRandom[seed];
-      
+  SeedRandom[seed]; (* è necessario chiamare due volte la SeedRandom[seed] per evitare che quando si prema "Ricomincia" la partita ricominciata NON si la stessa *)
+
   (* Crea il notebook contenente l'interfaccia di gioco *)
   gameNotebook = CreateDocument[
     (* DynamicModule consente di definire variabili locali che mantengono il loro stato,

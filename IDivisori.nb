@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[   6729256,     110645]
-NotebookOptionsPosition[   6724423,     110549]
-NotebookOutlinePosition[   6725048,     110572]
-CellTagsIndexPosition[   6724968,     110567]
+NotebookDataLength[   6732437,     110721]
+NotebookOptionsPosition[   6727612,     110625]
+NotebookOutlinePosition[   6728227,     110648]
+CellTagsIndexPosition[   6728147,     110643]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -37,9 +37,10 @@ curriculum A)",
  TextAlignment->Center,ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
 
 Cell[BoxData[
- RowBox[{
-  GraphicsBox[
-   TagBox[RasterBox[CompressedData["
+ RowBox[{" ", 
+  RowBox[{
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
 1:eJycvHV4Vde6t13cixaKS3EPBHcNTkJciLu7u7u7uxsxAgmQEEgCAQIkOCE4
 QUqhQLvb7n1+329O6D77e891fdd7vj9GlmTJXGM+43nue40x1mxti2P6/b/7
 7jubofxzTMthh7W1lpPsGN6QN7cxMjDX091vbqtnoGe9XnsA75w14GsbyOuF
@@ -40814,19 +40815,19 @@ HS3oG2pZqEGN53AXY2U5281EzJGmzdcy1oGbnw8GjRsLr549ETZqFHZkZ6G0
 WRSfqqSUo7TyDM6eP4cLVdWoOnsdJ49X4WzVFbTSBj9+9gQvXj7Hs1ev0Xz3
 FfLJJOu2H0PcvjNIO3aFnFSF+AOn+bsqELO3FFGpJ7B+RwnWxhZjVUwB5q6k
 vVu+B1tSTyGN+vwobcT/AaKO5Ak=
-     "], {{0, 400.}, {400., 0}}, {0, 255},
-     ColorFunction->RGBColor,
-     ImageResolution->{144, 144}],
-    BoxForm`ImageTag[
-    "Byte", ColorSpace -> "RGB", Interleaving -> True, 
-     MetaInformation -> <|"XMP" -> <||>|>],
-    Selectable->False],
-   DefaultBaseStyle->"ImageGraphics",
-   ImageSize->{187.61827780983697`, Automatic},
-   ImageSizeRaw->{400., 400.},
-   PlotRange->{{0, 400.}, {0, 400.}}], 
-  GraphicsBox[
-   TagBox[RasterBox[CompressedData["
+      "], {{0, 400.}, {400., 0}}, {0, 255},
+      ColorFunction->RGBColor,
+      ImageResolution->{144, 144}],
+     BoxForm`ImageTag[
+     "Byte", ColorSpace -> "RGB", Interleaving -> True, 
+      MetaInformation -> <|"XMP" -> <||>|>],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSize->{187.61827780983697`, Automatic},
+    ImageSizeRaw->{400., 400.},
+    PlotRange->{{0, 400.}, {0, 400.}}], 
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
 1:eJzsveeWI1mSoLeH+4c/+QjkK5CzPV2pQkO51lq7Q4bKzKru6Z05++w0cd39
 QkVGpKjp4WGdr3AcDiR0wD+Y2TX7v+one/m//bf/9t++/u9wYld/v/rypfqH
 83/AGe/x62b12LXzx9+7Vfflr/V/h53/53/n/3H7RtEGrhcqcKPod5o+0fWJ
@@ -54767,17 +54768,17 @@ xeba0bmur9SAX1tfVsMrwFfKerCUy1qc4yueJtkjXxEn+CpDsal79NX6Q/ZV
 +JGvHvnqka+++776f/7X/3d2bCSwHuCkE31VUy6W5Yu2ePFb9JVXWvWe4KuU
 46uph+Gr8e++r/ApltkomU3zHn1lI1wN9ZUJfVU58pWJfVUE4Q2DLxmsXmR1
 eIpFFWChEB5hwdHuYooVv3O+KhQ47dv11f8Ph+cBTw==
-     "], {{0, 600.}, {600., 0}}, {0, 255},
-     ColorFunction->RGBColor,
-     ImageResolution->{96, 96}],
-    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
-    Selectable->False],
-   DefaultBaseStyle->"ImageGraphics",
-   ImageSize->{189.03247070312744`, Automatic},
-   ImageSizeRaw->{600., 600.},
-   PlotRange->{{0, 600.}, {0, 600.}}], 
-  GraphicsBox[
-   TagBox[RasterBox[CompressedData["
+      "], {{0, 600.}, {600., 0}}, {0, 255},
+      ColorFunction->RGBColor,
+      ImageResolution->{96, 96}],
+     BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSize->{189.03247070312744`, Automatic},
+    ImageSizeRaw->{600., 600.},
+    PlotRange->{{0, 600.}, {0, 600.}}], 
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
 1:eJzsvc2OHFm2pdeQJhrqFfQWmmqoiQYt6AG60a2GJlfAbQGC3kaAJrpdtyqr
 srIqf0nGj7sH/8kgmVl6HBl9h20uW2uvbcc8PEjW7QZ2Eh7mx44dO2aR54u1
 f85/92//93/9v/5X/+pf/av/+N9M//zrf/N//g//+I//5v/6n//b6Yf/5R/+
@@ -77691,10 +77692,10 @@ KkLMczmaOQNOxAK1YmI7SY9uyTX3Mzf9nwGutcxeSOJUMzSqbuuFtwQ5sVsh
 EBWtTDcjsJkDcOV1mAOkOkNAzuQ9jswgqol2g5M18CM1Xfr91Qu/62j6XL8U
 /veG7vbz7Y1/AATip8VzmADkSwnp4WjgNioecLGMm437ccGlVhd/dObdE0nP
 gj2t/s6r1I1K6xULkaGB+Mhwirw3Uc5VK/1U4P4/4cKoZA==
-     "], {{0, 977.}, {846., 0}}, {0, 255},
-     ColorFunction->RGBColor,
-     ImageResolution->{72, 72}],
-    BoxForm`ImageTag["Byte", ColorSpace -> ColorProfileData[CompressedData["
+      "], {{0, 977.}, {846., 0}}, {0, 255},
+      ColorFunction->RGBColor,
+      ImageResolution->{72, 72}],
+     BoxForm`ImageTag["Byte", ColorSpace -> ColorProfileData[CompressedData["
 1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBAkBOaF5xZnpeaopnXklqemqRRRIj
 UFACpJaBSQJMAlXl5pUUBbk7KURERikwIIHE5OICBtwAaNS3ayCSgeGyLh51
 uABnSmpxMpD+AMQlRUDLgUamANki6RB2BYidBGH3gNhFIUHOQPYCIFsjHYmd
@@ -77702,14 +77703,14 @@ hMQuLykoAbJPgNQnFxSB2HeAbJvcnNJkhLsZeFLzQoOBdAQQyzAUMwQxuDM4
 keEHvAARnvmLGBgsvjIwME9AiCXNZGDY3gqMjVsIMRWgH/hbGBi2nS9ILEoE
 C7EAMVNaGgPDp+UMDLyRDAzCFxgYuKIx7UDEBQ6/KoD96s6QD4TpDDkMqUAR
 T4Y8hmQGPSDLiMGAwZDBDACxaE0E
-       "], "RGB", "XYZ"], Interleaving -> True],
-    Selectable->False],
-   DefaultBaseStyle->"ImageGraphics",
-   ImageSize->{164.33782958984625`, Automatic},
-   ImageSizeRaw->{846., 977.},
-   PlotRange->{{0, 846.}, {0, 977.}}], 
-  GraphicsBox[
-   TagBox[RasterBox[CompressedData["
+        "], "RGB", "XYZ"], Interleaving -> True],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSize->{164.33782958984625`, Automatic},
+    ImageSizeRaw->{846., 977.},
+    PlotRange->{{0, 846.}, {0, 977.}}], 
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
 1:eJzkvdd3XEeW7tlr7ss8zsuddXu6Wo4O3ntLbyWRFCnKlyhK9N6ABOF9Akhk
 JtJ7D+8NQSdTUqmreu5/NV+cnRmIPA4nAVJV3bPW5llx4sQxmUgif/j2ji/e
 v3T3kyv/x7/8y788/D+x+eS7JwcePPju6bn/Czuf3nl4/eqdyz+cuPPo8tXL
@@ -101460,42 +101461,44 @@ oov4qmXJ/o98tTjJV8ICawVBFMgqKcf6FLGIr05uW3t8y2oSYjFrUZVQqwyK
 KiH46nwHiKsJZEUlQjEQ6nQBTgRRVA3EhE5WWh89srT1htgJ0DqzqwpY1dtW
 C7ICyGEr+/VU8wpHUraDr9pr5iI6qsFU5a1rZgOTODGl5yvaAxJI4Sscz/kr
 AjOgVFt1RbLqKkuENPg/9+IzFw==
-     "], {{0, 800.}, {800., 0}}, {0, 255},
-     ColorFunction->RGBColor],
-    BoxForm`ImageTag[
-    "Byte", ColorSpace -> "RGB", Interleaving -> True, 
-     MetaInformation -> <|
-      "Exif" -> <|
-        "Orientation" -> <|
-          "CameraTopOrientation" -> Top, "Mirrored" -> False|>, "XResolution" -> 
-         72, "YResolution" -> 72, "ResolutionUnit" -> "Inch", "DateTime" -> 
-         DateObject[{2025, 4, 10, 13, 26, 23.}, "Instant", "Gregorian", None],
-          "ExifTag" -> 122, "ExifVersion" -> "2.21", "DateTimeOriginal" -> 
-         DateObject[{2025, 4, 10, 13, 26, 23.}, "Instant", "Gregorian", None],
-          "DateTimeDigitized" -> 
-         DateObject[{2025, 4, 10, 13, 26, 23.}, "Instant", "Gregorian", None],
-          "ComponentsConfiguration" -> "YCbCr", "SubSecTime" -> "000", 
-         "SubSecTimeOriginal" -> "000", "SubSecTimeDigitized" -> "000", 
-         "FlashpixVersion" -> "1.00", "ColorSpace" -> "Uncalibrated", 
-         "PixelXDimension" -> 1535, "PixelYDimension" -> 1536, 
-         "SceneCaptureType" -> "Standard"|>, 
-       "IPTC" -> <|
-        "Application2" -> <|
-          "RecordVersion" -> 2, "DigitizationTime" -> "13:26:23+00:00", 
-           "DigitizationDate" -> DateObject[{2025, 4, 10}, "Day"], 
-           "DateCreated" -> DateObject[{2025, 4, 10}, "Day"], "TimeCreated" -> 
-           TimeObject[{13, 26, 23}, "Instant", 2.]|>, 
-         "Envelope" -> <|"CharacterSet" -> "UTF8"|>|>|>],
-    Selectable->False],
-   DefaultBaseStyle->"ImageGraphics",
-   ImageSize->{190.11201338334507`, Automatic},
-   ImageSizeRaw->{800., 800.},
-   PlotRange->{{0, 800.}, {0, 800.}}]}]], "Input",
+      "], {{0, 800.}, {800., 0}}, {0, 255},
+      ColorFunction->RGBColor],
+     BoxForm`ImageTag[
+     "Byte", ColorSpace -> "RGB", Interleaving -> True, 
+      MetaInformation -> <|
+       "Exif" -> <|
+         "Orientation" -> <|
+           "CameraTopOrientation" -> Top, "Mirrored" -> False|>, 
+          "XResolution" -> 72, "YResolution" -> 72, "ResolutionUnit" -> 
+          "Inch", "DateTime" -> 
+          DateObject[{2025, 4, 10, 13, 26, 23.}, "Instant", "Gregorian", 
+            None], "ExifTag" -> 122, "ExifVersion" -> "2.21", 
+          "DateTimeOriginal" -> 
+          DateObject[{2025, 4, 10, 13, 26, 23.}, "Instant", "Gregorian", 
+            None], "DateTimeDigitized" -> 
+          DateObject[{2025, 4, 10, 13, 26, 23.}, "Instant", "Gregorian", 
+            None], "ComponentsConfiguration" -> "YCbCr", "SubSecTime" -> 
+          "000", "SubSecTimeOriginal" -> "000", "SubSecTimeDigitized" -> 
+          "000", "FlashpixVersion" -> "1.00", "ColorSpace" -> "Uncalibrated", 
+          "PixelXDimension" -> 1535, "PixelYDimension" -> 1536, 
+          "SceneCaptureType" -> "Standard"|>, 
+        "IPTC" -> <|
+         "Application2" -> <|
+           "RecordVersion" -> 2, "DigitizationTime" -> "13:26:23+00:00", 
+            "DigitizationDate" -> DateObject[{2025, 4, 10}, "Day"], 
+            "DateCreated" -> DateObject[{2025, 4, 10}, "Day"], "TimeCreated" -> 
+            TimeObject[{13, 26, 23}, "Instant", 2.]|>, 
+          "Envelope" -> <|"CharacterSet" -> "UTF8"|>|>|>],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSize->{190.11201338334507`, Automatic},
+    ImageSizeRaw->{800., 800.},
+    PlotRange->{{0, 800.}, {0, 800.}}]}]}]], "Input",
  CellChangeTimes->{
   3.953260847330242*^9, 3.953260884277006*^9, 3.953277640417893*^9, {
    3.953277842768019*^9, 3.953277851875173*^9}, {3.9533494834610977`*^9, 
    3.9533495409457893`*^9}, {3.956025201930098*^9, 3.956025253623096*^9}, {
-   3.956130601530267*^9, 3.95613062036674*^9}},
+   3.956130601530267*^9, 3.95613062036674*^9}, 3.956982976563037*^9},
  TextAlignment->Center,
  TextJustification->1.,ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
 
@@ -101522,45 +101525,40 @@ di rendere ",
   FontWeight->"Bold"],
  " in una piccola ",
  StyleBox["\[OpenCurlyDoubleQuote]avventura su scacchiera\
-\[CloseCurlyDoubleQuote]",
+\[CloseCurlyDoubleQuote].",
   FontSlant->"Italic"],
- ", il giocatore pu\[OGrave] esplorare passo dopo passo \
-dell\[CloseCurlyQuote]algoritmo come i numeri si riducono alla soluzione \
-cercata, consolidando al tempo stesso le basi della teoria dei numeri.\n\nPer \
-raggiungere questo scopo, il gioco integra dinamiche classiche - come il \
-lancio del dado e il movimento su caselle - con elementi di ",
+ "\n\nPer raggiungere questo scopo, il gioco integra dinamiche classiche - \
+come il lancio del dado e il movimento su caselle - con elementi di ",
  StyleBox["problem solving",
   FontSlant->"Italic"],
  " matematico. A ogni tappa sulla griglia, infatti, si presenta una ",
  StyleBox["coppia di numeri",
   FontWeight->"Bold"],
  " da \[OpenCurlyDoubleQuote]semplificare\[CloseCurlyDoubleQuote] tramite ",
- StyleBox["ripetute sottrazioni o divisioni successive",
+ StyleBox["ripetute divisioni successive",
   FontVariations->{"Underline"->True}],
  ", guidando l\[CloseCurlyQuote]utente attraverso un ",
  StyleBox["processo logico e intuitivo",
   FontSlant->"Italic"],
- " - eseguendo l\[CloseCurlyQuote]algoritmo di Euclide. La casualit\[AGrave] \
-nella creazione dei problemi stimola la ripetizione e mantiene alta la \
-curiosit\[AGrave], mentre suggerimenti contestuali e \
-un\[CloseCurlyQuote]interfaccia semplice permettono di seguire con facilit\
-\[AGrave] ogni passaggio.\n\nGrazie a un design modulare e parametrico, ogni \
-partita offre nuovi percorsi e sfide: l\[CloseCurlyQuote]utente potr\[AGrave] \
-cimentarsi in pi\[UGrave] sessioni diverse e osservare come variazioni minime \
-nei numeri in gioco portino a sequenze di calcolo differenti. In questo modo, \
-il progetto non \[EGrave] solo un gioco, ma un vero e proprio ambiente di \
-apprendimento, capace di unire rigore matematico e divertimento in un\
-\[CloseCurlyQuote]esperienza immediata e stimolante.\n\nIl notebook \[EGrave] \
-rivolto agli ",
+ " - eseguendo l\[CloseCurlyQuote]algoritmo di Euclide.\n\nGrazie a un design \
+modulare e parametrico, ogni partita offre nuovi percorsi e sfide: l\
+\[CloseCurlyQuote]utente potr\[AGrave] cimentarsi in pi\[UGrave] sessioni \
+diverse e osservare come variazioni minime nei numeri in gioco portino a \
+sequenze di calcolo differenti. In questo modo, il progetto non \[EGrave] \
+solo un gioco, ma un vero e proprio ambiente di apprendimento, capace di \
+unire rigore matematico e divertimento in un\[CloseCurlyQuote]esperienza \
+immediata e stimolante.\n\nIl notebook \[EGrave] rivolto agli ",
  StyleBox["studenti delle scuole medie",
   FontWeight->"Bold"],
  " che vogliono consolidare l\[CloseCurlyQuote]apprendimento dell\
 \[CloseCurlyQuote]algoritmo di Euclide."
 }], "Text",
- CellChangeTimes->{{3.9561399934428673`*^9, 3.956139995161869*^9}, {
-   3.956140083615999*^9, 3.9561402482287006`*^9}, {3.956141193625265*^9, 
+ CellChangeTimes->{{3.956139993442867*^9, 3.956139995161869*^9}, {
+   3.956140083615999*^9, 3.9561402482287*^9}, {3.956141193625265*^9, 
    3.9561412245722504`*^9}, 3.9563087174455423`*^9, {3.9563108690207863`*^9, 
-   3.9563108943371086`*^9}, {3.956370673503763*^9, 3.956370679586588*^9}},
+   3.956310894337108*^9}, {3.956370673503763*^9, 3.956370679586588*^9}, {
+   3.956980642931073*^9, 3.9569806441224413`*^9}, 3.9569807046717253`*^9, {
+   3.956980856603435*^9, 3.956980857643099*^9}},
  TextJustification->1.,ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
 }, Open  ]],
 
@@ -101572,18 +101570,74 @@ Cell[TextData[{
   FontWeight->"Bold"],
  ")"
 }], "Section",
- CellChangeTimes->{{3.9554228132890053`*^9, 3.9554228176171923`*^9}, {
-   3.9563109306949825`*^9, 3.9563109360948696`*^9}, 
-   3.9563710730054455`*^9},ExpressionUUID->"7d5a9716-7c7e-4345-82cf-\
+ CellChangeTimes->{{3.955422813289005*^9, 3.9554228176171927`*^9}, {
+   3.956310930694982*^9, 3.9563109360948687`*^9}, 3.956371073005445*^9, {
+   3.956983082699054*^9, 
+   3.956983083364051*^9}},ExpressionUUID->"7d5a9716-7c7e-4345-82cf-\
 1e76bdd780af"],
 
 Cell[TextData[{
- StyleBox["Il massimo comun divisore ",
+ "La ",
+ StyleBox["divisione tra numeri interi",
   FontWeight->"Bold"],
- StyleBox[ButtonBox["[1]",
+ " o ",
+ StyleBox["divisione con resto",
+  FontWeight->"Bold"],
+ " \[EGrave] intuitivamente l\[CloseCurlyQuote]operazione che si fa quando si \
+suddivide un numero ",
+ StyleBox["a",
+  FontWeight->"Bold"],
+ " di oggetti in gruppi di ",
+ StyleBox["b",
+  FontWeight->"Bold"],
+ " oggetti ciascuno e quindi si conta quanti gruppi sono stati formati e \
+quanti oggetti sono rimasti. Il numero a si chiama dividendo, il numero b \
+\[EGrave] il divisore, il numero di gruppi formati \[EGrave] il quoziente e \
+il numero di oggetti rimanenti il resto.\nPi\[UGrave] precisamente la \
+divisione tra numeri interi o divisione con resto \[EGrave] il processo di \
+dividere un intero ",
+ StyleBox["a",
+  FontWeight->"Bold"],
+ " (chiamato dvidendo) per un altro intero ",
+ StyleBox["b",
+  FontWeight->"Bold"],
+ " diverso da zero (chiamato divisore), in modo da ottenere un intero ",
+ StyleBox["q",
+  FontWeight->"Bold"],
+ " (chiamato quoziente) e  un numero naturale ",
+ StyleBox["r",
+  FontWeight->"Bold"],
+ " (chiamato resto) strettamente maggiore di zero e strettamente minore del \
+valore assoluto di ",
+ StyleBox["b",
+  FontWeight->"Bold"],
+ ".\n\nDati due numeri interi ",
+ StyleBox["d",
+  FontWeight->"Bold"],
+ " e ",
+ StyleBox["a",
+  FontWeight->"Bold"],
+ ", d divide esattamente a se esiste un intero ",
+ StyleBox["q",
+  FontWeight->"Bold"],
+ " tali che  tali che",
+ StyleBox[" a = qd",
+  FontWeight->"Bold"],
+ ", cio\[EGrave] se la divisione intera di ",
+ StyleBox["a",
+  FontWeight->"Bold"],
+ " per ",
+ StyleBox["d",
+  FontWeight->"Bold"],
+ " ha resto nullo.",
+ StyleBox["\n\n",
+  FontWeight->"Bold"],
+ "Il",
+ StyleBox[" massimo comun divisore ",
+  FontWeight->"Bold"],
+ ButtonBox["[1]",
   BaseStyle->"Hyperlink",
   ButtonData->"bibliografia"],
-  FontWeight->"Bold"],
  ButtonBox["[2]",
   BaseStyle->"Hyperlink",
   ButtonData->"bibliografia"],
@@ -101612,16 +101666,35 @@ divide esattamente sia ",
 ",
  StyleBox["MCD(0 , 0) = 0",
   FontSlant->"Italic"],
- ".\n\nEsempi:\n",
- StyleBox["MCD(12, 18) = 6\nMCD(4, 14) = 4\nMCD(5, 0) = 5",
+ ".\n\nEsempi:\nCalcoliamo il massimo comune divisore tra 12 e 18.\nTutti i \
+numeri naturali che dividono esattamentei 12 sono: 1, 2, 3, 4, 6, 12\nTutti i \
+numeri naturali che dividono esattamentei 18 sono: 1, 2, 3, 6, 9, 18\nIl pi\
+\[UGrave] grande numero naturale che divide esattamente 12 e 18 \[EGrave] 6, \
+quindi ",
+ StyleBox["MCD(12, 18) = 6\n\nCalcoliamo il massimo comune divisore tra 4 e \
+14.\nTutti i numeri naturali che dividono esattamentei 4 sono: 1, 2, 3, 4\n\
+Tutti i numeri naturali che dividono esattamentei 14 sono: 1, 2, 7, 14\nIl pi\
+\[UGrave] grande numero naturale che divide esattamente 12 e 18 \[EGrave] 2, \
+quindi MCD(4, 14) = 2\n\nCalcoliamo il massimo comune divisore tra 5 e 0.\n\
+Tutti i numeri naturali che dividono esattamentei 5 sono: 1, 5\nTutti i \
+numeri naturali che dividono esattamentei 0 sono: 1, 2, 3, 4, 5, ..... (Tutti \
+i numeri naturali dividono esattamente 0, pech\[EGrave] per ogni numero \
+naturale n, 0 = 0n)\nIl pi\[UGrave] grande numero naturale che divide \
+esattamente 5 e 0 \[EGrave] 5, quindi  MCD(5, 0) = 5",
   FontSlant->"Italic"]
 }], "Text",
- CellChangeTimes->{{3.9554228840432673`*^9, 3.95542302869846*^9}, 
-   3.9554404817816334`*^9, {3.956139449330063*^9, 3.9561394503491173`*^9}, {
+ CellChangeTimes->{{3.955422884043267*^9, 3.95542302869846*^9}, 
+   3.955440481781633*^9, {3.956139449330063*^9, 3.9561394503491173`*^9}, {
    3.956139662321457*^9, 3.956139662812565*^9}, {3.956290187610052*^9, 
-   3.956290311327128*^9}, 3.9562910307917852`*^9, {3.9562913890662613`*^9, 
+   3.956290311327128*^9}, 3.9562910307917843`*^9, {3.956291389066261*^9, 
    3.956291392009099*^9}, {3.956291441318722*^9, 3.9562914715923653`*^9}, 
-   3.956311965603092*^9, {3.9566572590561047`*^9, 3.9566572813954983`*^9}},
+   3.956311965603092*^9, {3.9566572590561047`*^9, 3.9566572813954983`*^9}, {
+   3.956983088196567*^9, 3.95698309897183*^9}, {3.9569831368658733`*^9, 
+   3.956983166854227*^9}, {3.956983382584475*^9, 3.9569835382535152`*^9}, {
+   3.956983570623362*^9, 3.95698362268769*^9}, {3.95698366505336*^9, 
+   3.956983750865753*^9}, {3.956983828813344*^9, 3.956983881381379*^9}, {
+   3.956983912477612*^9, 3.9569840324793463`*^9}, {3.956984118190298*^9, 
+   3.956984272323381*^9}},
  TextJustification->1.,ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
 }, Open  ]],
 
@@ -101634,8 +101707,7 @@ Cell["A cosa serve il Massimo Comune Divisore?", "Section",
 012491981ce5"],
 
 Cell[TextData[{
- "Il massimo comune divisore",
- " [1][2] \[EGrave] uno strumento ",
+ "Il massimo comune divisore [1][2] \[EGrave] uno strumento ",
  StyleBox["fondamentale",
   FontWeight->"Bold"],
  " in matematica. \nServe, ad esempio, per semplificare una frazione, cio\
@@ -101646,7 +101718,7 @@ Cell[TextData[{
 polinomi, perch\[EAcute] permette di raccogliere fattori comuni nelle somme e \
 nelle sottrazioni. Inoltre, entra in gioco ogni volta che bisogna dividere \
 due o pi\[UGrave] quantit\[AGrave] per lo stesso numero intero, ottenendo un \
-risultato senza resto.\n\nNel seguente esempio,",
+risultato con resto nullo.\n\nNel seguente esempio,",
  StyleBox[" MCD(42,56) = 14",
   FontSlant->"Italic"],
  ". Dividendo il numeratore e il denominatore per 14 otteniamo la frazione \
@@ -101668,12 +101740,12 @@ semplificata ai minimi termini.\n\n",
  CellChangeTimes->{{3.955423167973701*^9, 3.955423237453393*^9}, 
    3.955426711606308*^9, {3.9554267612830353`*^9, 3.955426761881191*^9}, {
    3.9561394826531124`*^9, 3.956139483370805*^9}, {3.956139665884069*^9, 
-   3.956139666523851*^9}, 3.9562903293182974`*^9, {3.956290364092664*^9, 
+   3.956139666523851*^9}, 3.956290329318297*^9, {3.956290364092664*^9, 
    3.9562903775000362`*^9}, {3.956290427946949*^9, 3.956290492212428*^9}, {
    3.956290523533161*^9, 3.95629064706538*^9}, {3.956290888085991*^9, 
    3.956290919781836*^9}, {3.956291505504218*^9, 3.95629160371512*^9}, {
-   3.9562916376376967`*^9, 3.9562916404494*^9}, 3.9563111503809395`*^9, 
-   3.956370708784855*^9},
+   3.956291637637697*^9, 3.9562916404494*^9}, 3.9563111503809395`*^9, 
+   3.956370708784855*^9, {3.956980874227004*^9, 3.9569808796183167`*^9}},
  TextJustification->1.,ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
 }, Open  ]],
 
@@ -101694,17 +101766,19 @@ Cell[TextData[{
  " (o metodo delle divisioni successive),  consente di calcolare il ",
  StyleBox["massimo comun divisore tra due numeri",
   FontSlant->"Italic"],
- ".\nIl suo funzionamento si basa su una serie di divisioni successive, in \
-cui ogni passo riduce il problema fino a trovare la soluzione.\n\n In questo \
-diagramma a blocchi \[EGrave] mostrato passo dopo passo come funziona l\
-\[CloseCurlyQuote]algoritmo di Euclide:\n"
+ ".\nIl suo funzionamento si basa su una serie di divisioni successive tra \
+numeri interi, ad ogni divisione il resto diminuisce fino a diventare nullo.\n\
+\n In questo diagramma a blocchi \[EGrave] mostrato passo dopo passo come \
+funziona l\[CloseCurlyQuote]algoritmo di Euclide:\n"
 }], "Text",
  CellChangeTimes->{{3.955423583603159*^9, 3.955423624141577*^9}, {
-   3.955426786681447*^9, 3.9554268311093893`*^9}, {3.955440550541685*^9, 
+   3.955426786681447*^9, 3.955426831109389*^9}, {3.955440550541685*^9, 
    3.955440560257021*^9}, {3.956139878069933*^9, 3.9561398849072857`*^9}, {
    3.956290982239808*^9, 3.956291019637385*^9}, 3.956291188763793*^9, {
    3.956291221330566*^9, 3.956291310566992*^9}, {3.956657302273573*^9, 
-   3.9566573157207355`*^9}},
+   3.9566573157207346`*^9}, {3.9569809155866737`*^9, 3.9569809451553*^9}, {
+   3.956980975162737*^9, 3.956981001506445*^9}, {3.9569810667010202`*^9, 
+   3.956981089363681*^9}},
  TextJustification->1.,ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
 
 Cell[BoxData[
@@ -102663,7 +102737,7 @@ QKpoZgDaFzIDACQfmQHtEZkBQKD8//cyA6g=
 Cell[CellGroupData[{
 
 Cell["Regole del gioco", "Section",
- CellChangeTimes->{{3.956030156582364*^9, 3.9560301785254707`*^9}, {
+ CellChangeTimes->{{3.956030156582364*^9, 3.956030178525471*^9}, {
   3.956030217795978*^9, 3.956030244104207*^9}, {3.956311197054737*^9, 
   3.956311207599016*^9}},ExpressionUUID->"459f61c3-4c41-46b6-b29d-\
 4dd4fef40c9b"],
@@ -102681,13 +102755,12 @@ stesso seed, si otterr\[AGrave] sempre lo stesso scenario di gioco, o meglio \
  StyleBox["sequenza",
   FontSlant->"Italic"],
  " di scenari. Infatti dopo aver vinto una partita l\[CloseCurlyQuote]utente \
-potr\[AGrave] continuare a giocare comandato sempre dallo stesso seed ma \
-nella sequenza dopo, quindi casualmente.\nIl seed deve essere un numero \
-intero: se viene inserito un numero decimale, il gioco considera \
-automaticamente solo la parte intera, ignorando i decimali.\nDopo aver \
-confermato il seed, si apre la schermata principale del gioco, pronta per \
-iniziare la partita.\n\nPer procedere, l\[CloseCurlyQuote]utente deve \
-cliccare sul pulsante \[OpenCurlyDoubleQuote]",
+potr\[AGrave] continuare a giocare.\nIl seed deve essere un numero intero: se \
+viene inserito un numero decimale, il gioco considera automaticamente solo la \
+parte intera, ignorando i decimali.\nDopo aver confermato il seed, si apre la \
+schermata principale del gioco, pronta per iniziare la partita.\n\nPer \
+procedere, l\[CloseCurlyQuote]utente deve cliccare sul pulsante \
+\[OpenCurlyDoubleQuote]",
  StyleBox["Tira il dado",
   FontSlant->"Italic"],
  "\[CloseCurlyDoubleQuote]. Questo genera un dado in 2D che mostra un numero, \
@@ -102701,7 +102774,7 @@ risoluzione del calcolo del ",
  StyleBox["Massimo Comune Divisore",
   FontWeight->"Bold"],
  " (MCD) tra due numeri. \nIl giocatore dovr\[AGrave] seguire le istruzioni \
-per completare correttamente l\[CloseCurlyQuote]algoritmo.\n\n",
+per eseguire correttamente l\[CloseCurlyQuote]algoritmo.\n\n",
  Cell[BoxData[
   GraphicsBox[
    TagBox[RasterBox[CompressedData["
@@ -104217,21 +104290,23 @@ nuovo il dado e affrontare un nuovo esercizio, continuando cos\[IGrave] fino \
 a raggiungere la fine del percorso."
 }], "Text",
  CellChangeTimes->{{3.956030240631222*^9, 3.956030404727475*^9}, {
-   3.956030522258398*^9, 3.956030595283884*^9}, {3.9560310077784367`*^9, 
+   3.956030522258398*^9, 3.956030595283884*^9}, {3.956031007778437*^9, 
    3.956031014574689*^9}, {3.956038035952909*^9, 3.9560381674713078`*^9}, {
-   3.956038304472177*^9, 3.9560383115888653`*^9}, {3.956038396715328*^9, 
+   3.956038304472177*^9, 3.9560383115888643`*^9}, {3.956038396715328*^9, 
    3.95603841566234*^9}, {3.956038468936849*^9, 3.9560385087986794`*^9}, {
    3.9560392314105883`*^9, 3.9560392782191257`*^9}, {3.956040973528901*^9, 
-   3.9560410214312572`*^9}, {3.956041089019308*^9, 3.956041100576742*^9}, 
+   3.956041021431257*^9}, {3.956041089019308*^9, 3.956041100576742*^9}, 
    3.956135018231018*^9, 3.956135058970348*^9, {3.956135124078699*^9, 
    3.956135176886311*^9}, {3.956292066653425*^9, 3.956292235739112*^9}, {
    3.956292271260106*^9, 3.956292294455*^9}, {3.956292536275736*^9, 
    3.956292542134111*^9}, {3.956292573135209*^9, 3.956292575309374*^9}, {
-   3.9562926381651287`*^9, 3.9562926394921103`*^9}, {3.9562928436307583`*^9, 
+   3.956292638165128*^9, 3.95629263949211*^9}, {3.9562928436307583`*^9, 
    3.9562928537025843`*^9}, {3.956293008600792*^9, 3.956293009602751*^9}, {
    3.956293233444326*^9, 3.9562932341551523`*^9}, 3.956308550570229*^9, {
    3.956308668736274*^9, 3.956308670534375*^9}, {3.9563114710602207`*^9, 
-   3.9563115180673656`*^9}, {3.9563707469887886`*^9, 3.956370760266346*^9}},
+   3.9563115180673656`*^9}, {3.956370746988788*^9, 3.956370760266346*^9}, {
+   3.956981116871045*^9, 3.956981117873518*^9}, {3.956981404810803*^9, 
+   3.956981407187976*^9}},
  TextJustification->1.,ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
 
 Cell[CellGroupData[{
@@ -104247,10 +104322,8 @@ Cell[TextData[{
 il giocatore nella risoluzione dell\[CloseCurlyQuote]algoritmo di Euclide per \
 calcolare il Massimo Comune Divisore (MCD) tra due numeri. Il procedimento \
 \[EGrave] strutturato in due fasi che si ripetono fino alla conclusione del \
-gioco.\n\nLa ",
- "prima fase",
- " consiste nel calcolare il quoziente e il resto della divisione tra due \
-numeri \[OpenCurlyQuote]",
+gioco.\n\nLa prima fase consiste nel calcolare il quoziente e il resto della \
+divisione tra due numeri interi \[OpenCurlyQuote]",
  StyleBox["a",
   FontWeight->"Bold",
   FontSlant->"Italic"],
@@ -104258,10 +104331,9 @@ numeri \[OpenCurlyQuote]",
  StyleBox["b",
   FontWeight->"Bold",
   FontSlant->"Italic"],
- "\[CloseCurlyQuote] scelti casualmente dall\[CloseCurlyQuote]algoritmo. \nIl \
-giocatore deve inserire questi due valori (numeri interi positivi) nei campi \
-previsti e, una volta fatto, pu\[OGrave] cliccare sul pulsante \
-\[OpenCurlyDoubleQuote]",
+ "\[CloseCurlyQuote] .\nIl giocatore deve inserire il quoziente e resto \
+calcolati nei campi previsti e, una volta fatto, pu\[OGrave] cliccare sul \
+pulsante \[OpenCurlyDoubleQuote]",
  StyleBox["Verifica",
   FontSlant->"Italic"],
  "\[CloseCurlyDoubleQuote] per controllare se i risultati sono corretti. Se i \
@@ -104271,16 +104343,15 @@ successiva. In caso contrario, viene mostrato un messaggio di errore, cos\
 \[EGrave] disponibile anche un pulsante \[OpenCurlyDoubleQuote]Pulisci campi\
 \[CloseCurlyDoubleQuote], che consente di svuotare rapidamente i due campi.\n\
 Se il giocatore si trova in difficolt\[AGrave] e non sa come procedere, pu\
-\[OGrave] cliccare su \[OpenCurlyDoubleQuote]Aiuto\[CloseCurlyDoubleQuote]: \
-questo fornir\[AGrave] suggerimenti utili, spiegati pi\[UGrave] nel dettaglio \
-in una sezione apposita.\n\nUna volta superato correttamente il primo \
-passaggio, si passa alla seconda fase. Qui, il giocatore dovr\[AGrave] \
-indicare i nuovi valori di \[OpenCurlyQuote]a\[CloseCurlyQuote] e \
+\[OGrave] cliccare su \[OpenCurlyDoubleQuote]Aiuto\[CloseCurlyDoubleQuote] \
+che  fornir\[AGrave] suggerimenti utili.\n\nUna volta superato correttamente \
+il primo passaggio, si passa alla seconda fase. Qui, il giocatore dovr\
+\[AGrave] indicare i nuovi valori di \[OpenCurlyQuote]a\[CloseCurlyQuote] e \
 \[OpenCurlyQuote]b\[CloseCurlyQuote]: il nuovo \[OpenCurlyQuote]a\
 \[CloseCurlyQuote] sar\[AGrave] semplicemente il vecchio \[OpenCurlyQuote]b\
 \[CloseCurlyQuote], mentre il nuovo \[OpenCurlyQuote]b\[CloseCurlyQuote] sar\
-\[AGrave] il resto appena calcolato. Anche in questa fase si utilizzano gli \
-stessi strumenti: i pulsanti \[OpenCurlyDoubleQuote]",
+\[AGrave] il resto appena calcolato, come . Anche in questa fase  sono a \
+disposizione i bottoni utilizzano gli stessi pulsanti \[OpenCurlyDoubleQuote]",
  StyleBox["Verifica",
   FontSlant->"Italic"],
  "\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]",
@@ -104289,9 +104360,9 @@ stessi strumenti: i pulsanti \[OpenCurlyDoubleQuote]",
  "\[CloseCurlyDoubleQuote] e \[OpenCurlyDoubleQuote]",
  StyleBox["Aiuto",
   FontSlant->"Italic"],
- "\[CloseCurlyDoubleQuote], che funzionano allo stesso modo della fase \
-precedente.\n\nQuesto ciclo si ripete finch\[EAcute] non si arriva a un resto \
-uguale a zero. In quel momento, il numero corrente di \[OpenCurlyQuote]",
+ "\[CloseCurlyDoubleQuote].\n\nQuesto ciclo si ripete finch\[EAcute] non si \
+arriva a un resto uguale a zero. In quel momento, il numero corrente di \
+\[OpenCurlyQuote]",
  StyleBox["b",
   FontWeight->"Bold",
   FontSlant->"Italic"],
@@ -104299,14 +104370,17 @@ uguale a zero. In quel momento, il numero corrente di \[OpenCurlyQuote]",
 iniziali e il gioco si conclude con successo."
 }], "Text",
  CellChangeTimes->{{3.956039286795068*^9, 3.956039291817075*^9}, {
-   3.9560394380537357`*^9, 3.9560394716628933`*^9}, {3.956039576082582*^9, 
+   3.9560394380537353`*^9, 3.9560394716628933`*^9}, {3.956039576082582*^9, 
    3.956039612228953*^9}, {3.956039694241431*^9, 3.956039880659511*^9}, {
    3.95603994039603*^9, 3.956040038897635*^9}, {3.956040200498323*^9, 
-   3.9560403263075237`*^9}, {3.956040410397232*^9, 3.956040447545435*^9}, {
-   3.956040624137806*^9, 3.9560406336522284`*^9}, {3.956043381532102*^9, 
-   3.956043383758155*^9}, {3.9561336913282633`*^9, 3.9561337869104853`*^9}, {
+   3.9560403263075233`*^9}, {3.956040410397232*^9, 3.956040447545435*^9}, {
+   3.956040624137806*^9, 3.9560406336522274`*^9}, {3.956043381532102*^9, 
+   3.956043383758155*^9}, {3.956133691328263*^9, 3.9561337869104857`*^9}, {
    3.956134441593601*^9, 3.95613445449868*^9}, {3.956135201122335*^9, 
-   3.956135252493614*^9}, 3.9563116090041084`*^9},
+   3.956135252493614*^9}, 3.956311609004108*^9, 3.956981579830599*^9, 
+   3.956981626613969*^9, {3.9569816632700253`*^9, 3.956981717886497*^9}, {
+   3.9569817542302237`*^9, 3.956981767494578*^9}, {3.956981801759853*^9, 
+   3.956981889841857*^9}, {3.956981940900795*^9, 3.956981953783489*^9}},
  TextJustification->1.,ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
 }, Open  ]],
 
@@ -109703,16 +109777,15 @@ lo stesso percorso) cliccando sull\[CloseCurlyQuote]apposito pulsante \
   FontSlant->"Italic"],
  "\[CloseCurlyDoubleQuote]."
 }], "Text",
- CellChangeTimes->{{3.9560411310631733`*^9, 3.9560412346435547`*^9}, {
-   3.956041273731476*^9, 3.9560412819822474`*^9}, {3.9560413690275297`*^9, 
-   3.9560414084712763`*^9}, {3.9560414442173862`*^9, 
-   3.9560414988604794`*^9}, {3.956041532709403*^9, 3.956041532912222*^9}, {
-   3.95604379529478*^9, 3.956043837101014*^9}, 3.956136267123394*^9, {
-   3.9562918392033367`*^9, 3.956291940036048*^9}, {3.956291978477359*^9, 
-   3.9562919867225103`*^9}, 3.956292018411632*^9, {3.956292049123732*^9, 
-   3.956292049436921*^9}, {3.95629315242715*^9, 3.956293159598877*^9}, {
-   3.9563117455332184`*^9, 3.9563117543825264`*^9}, {3.956370840264681*^9, 
-   3.9563708407508087`*^9}},
+ CellChangeTimes->{{3.956041131063173*^9, 3.956041234643554*^9}, {
+   3.956041273731476*^9, 3.9560412819822474`*^9}, {3.9560413690275292`*^9, 
+   3.9560414084712763`*^9}, {3.956041444217386*^9, 3.956041498860479*^9}, {
+   3.956041532709403*^9, 3.956041532912222*^9}, {3.95604379529478*^9, 
+   3.956043837101014*^9}, 3.956136267123394*^9, {3.9562918392033367`*^9, 
+   3.956291940036048*^9}, {3.956291978477359*^9, 3.956291986722511*^9}, 
+   3.956292018411632*^9, {3.956292049123732*^9, 3.956292049436921*^9}, {
+   3.95629315242715*^9, 3.956293159598877*^9}, {3.956311745533219*^9, 
+   3.956311754382527*^9}, {3.956370840264681*^9, 3.9563708407508087`*^9}},
  TextJustification->1.,ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
 }, Open  ]],
 
@@ -109745,7 +109818,7 @@ un nuovo seed \[EGrave] necessario chiudere il gioco e cominciare una nuova \
 partita."
 }], "Text",
  CellChangeTimes->{{3.95604387068575*^9, 3.956043937582787*^9}, {
-  3.956044001772378*^9, 3.9560440148496647`*^9}, {3.956293199522719*^9, 
+  3.956044001772378*^9, 3.956044014849664*^9}, {3.956293199522719*^9, 
   3.956293200671237*^9}, {3.956293240012602*^9, 3.956293241157055*^9}},
  TextJustification->1.,ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
 }, Open  ]]
@@ -110433,10 +110506,11 @@ html"],
   FontSlant->"Italic"]
 }], "Text",
  CellChangeTimes->{
-  3.956139337684408*^9, 3.956139378229706*^9, {3.9561394165698586`*^9, 
-   3.9561394319380474`*^9}, {3.956139639102194*^9, 3.956139655389471*^9}, {
-   3.956139825807066*^9, 3.9561398671130657`*^9}, 
-   3.9563113623107834`*^9},ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-\
+  3.956139337684408*^9, 3.956139378229706*^9, {3.956139416569858*^9, 
+   3.956139431938047*^9}, {3.956139639102194*^9, 3.956139655389471*^9}, {
+   3.956139825807066*^9, 3.9561398671130657`*^9}, 3.9563113623107834`*^9, {
+   3.956983283261441*^9, 3.95698328363616*^9}, {3.956983544828102*^9, 
+   3.956983545111615*^9}},ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-\
 d9a887d0b0a5"]
 }, Open  ]],
 
@@ -110506,8 +110580,9 @@ l\[CloseCurlyQuote]esperienza pi\[UGrave] ",
 }], "Item",
  CellChangeTimes->{{3.956134147139564*^9, 3.956134160951611*^9}, 
    3.956136379034754*^9, {3.956370940810934*^9, 3.956370946269066*^9}, {
-   3.956721157185272*^9, 3.956721157187456*^9}},
- TextJustification->1.,ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"],
+   3.956721157185272*^9, 
+   3.956721157187456*^9}},ExpressionUUID->"1fbedbbf-a717-426a-8d2b-\
+45dfde4b3a74"],
 
 Cell[TextData[{
  "L\[CloseCurlyQuote]utilizzo di ",
@@ -110541,16 +110616,17 @@ prova di bachi."
 }], "Item",
  CellChangeTimes->{{3.956134147139564*^9, 3.956134160951611*^9}, 
    3.956136379034754*^9, {3.956370940810934*^9, 3.956370946269066*^9}, {
-   3.956721817676773*^9, 3.9567218964953537`*^9}, {3.9567220159626083`*^9, 
-   3.95672212100605*^9}},
- TextJustification->1.,ExpressionUUID->"73c65e6d-db77-074f-955f-4c8831332a53"]
+   3.956721817676773*^9, 3.956721896495354*^9}, {3.9567220159626083`*^9, 
+   3.95672212100605*^9}, 
+   3.956982955251824*^9},ExpressionUUID->"94973c3e-6f30-40eb-8edb-\
+1da06f26e8ce"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1141.2, 573.6},
+WindowSize->{1437, 769.5},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
 Magnification:>0.8 Inherited,
-FrontEndVersion->"14.2 for Microsoft Windows (64-bit) (December 26, 2024)",
+FrontEndVersion->"14.0 for Linux x86 (64-bit) (December 12, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"2f63d8eb-8677-4cc3-8865-a5320972f81f"
 ]
@@ -110560,84 +110636,84 @@ ExpressionUUID->"2f63d8eb-8677-4cc3-8865-a5320972f81f"
 (*CellTagsOutline
 CellTagsIndex->{
  "bibliografia"->{
-  Cell[6718418, 110388, 210, 4, 52, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328",
+  Cell[6721532, 110461, 210, 4, 54, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328",
    CellTags->"bibliografia"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"bibliografia", 6724812, 110561}
+ {"bibliografia", 6727991, 110637}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[422, 15, 314, 6, 77, "Title",ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
-Cell[739, 23, 586, 13, 116, "Subtitle",ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
-Cell[1328, 38, 6187749, 101461, 162, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
+Cell[422, 15, 314, 6, 78, "Title",ExpressionUUID->"80a98bc3-27af-4cf5-9f33-94631d44e715"],
+Cell[739, 23, 586, 13, 123, "Subtitle",ExpressionUUID->"5914094f-65a1-4c1e-adc4-902749fb0d1d"],
+Cell[1328, 38, 6187886, 101464, 164, "Input",ExpressionUUID->"2063c8fa-2676-4e49-a2c4-afde57dafe91"],
 Cell[CellGroupData[{
-Cell[6189102, 101503, 161, 3, 52, "Section",ExpressionUUID->"3b996e5d-8186-264c-a595-fb41f0f8bf1b"],
-Cell[6189266, 101508, 2839, 55, 236, "Text",ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
+Cell[6189239, 101506, 161, 3, 54, "Section",ExpressionUUID->"3b996e5d-8186-264c-a595-fb41f0f8bf1b"],
+Cell[6189403, 101511, 2488, 50, 193, "Text",ExpressionUUID->"c2530380-c609-f84e-b419-b4530182415f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6192142, 101568, 317, 9, 52, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
-Cell[6192462, 101579, 1512, 45, 131, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
+Cell[6191928, 101566, 361, 10, 54, "Section",ExpressionUUID->"7d5a9716-7c7e-4345-82cf-1e76bdd780af"],
+Cell[6192292, 101578, 4534, 119, 469, "Text",ExpressionUUID->"e7b3011d-dba8-4041-9d15-03768f8a07c7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6194011, 101629, 234, 4, 52, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
-Cell[6194248, 101635, 2078, 41, 158, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
+Cell[6196863, 101702, 234, 4, 54, "Section",ExpressionUUID->"8472b0fd-571c-4d3f-9213-012491981ce5"],
+Cell[6197100, 101708, 2121, 40, 151, "Text",ExpressionUUID->"85bdcf57-5f15-48d6-88a3-d9b07959d1ce"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6196363, 101681, 184, 3, 52, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
-Cell[6196550, 101686, 1074, 21, 97, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
-Cell[6197627, 101709, 57726, 950, 288, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
+Cell[6199258, 101753, 184, 3, 54, "Section",ExpressionUUID->"477b2aa8-b8e7-4c17-8903-f31ffc3a634f"],
+Cell[6199445, 101758, 1234, 23, 101, "Text",ExpressionUUID->"fd3e8e9c-7c92-4ca7-92f9-63b4111e944a"],
+Cell[6200682, 101783, 57726, 950, 288, "Input",ExpressionUUID->"9dde94a3-75f4-4ac1-85b7-57adece4f246"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6255390, 102664, 258, 4, 52, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
-Cell[6255651, 102670, 94997, 1564, 500, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
+Cell[6258445, 102738, 256, 4, 54, "Section",ExpressionUUID->"459f61c3-4c41-46b6-b29d-4dd4fef40c9b"],
+Cell[6258704, 102744, 95004, 1565, 495, "Text",ExpressionUUID->"2f14924e-d300-42cb-adce-0873f76899f1"],
 Cell[CellGroupData[{
-Cell[6350673, 104238, 235, 4, 42, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
-Cell[6350911, 104244, 3578, 65, 236, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
+Cell[6353733, 104313, 235, 4, 43, "Subsection",ExpressionUUID->"2e440582-918f-477b-b42c-94a0e2f16cfe"],
+Cell[6353971, 104319, 3652, 64, 248, "Text",ExpressionUUID->"b1171b59-a414-45d1-be23-d39bdf599fb1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6354526, 104314, 216, 4, 42, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
-Cell[6354745, 104320, 324311, 5348, 1030, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
+Cell[6357660, 104388, 216, 4, 43, "Subsection",ExpressionUUID->"f2606c6a-515a-4760-b6a9-dd4d541b6337"],
+Cell[6357879, 104394, 324311, 5348, 1031, "Text",ExpressionUUID->"ca70b283-ae96-499d-90af-7712a5e300fb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6679093, 109673, 214, 4, 42, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
-Cell[6679310, 109679, 2214, 36, 184, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
+Cell[6682227, 109747, 214, 4, 43, "Subsection",ExpressionUUID->"a0986eae-dd66-4f36-958b-0089b3c9ebd0"],
+Cell[6682444, 109753, 2196, 35, 175, "Text",ExpressionUUID->"8abd0508-3f1e-40db-a321-8eb0676c058a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6681561, 109720, 198, 3, 42, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
-Cell[6681762, 109725, 1401, 24, 166, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
+Cell[6684677, 109793, 198, 3, 43, "Subsection",ExpressionUUID->"c21ac04f-abb0-4d8c-88a9-78fc4bc957f1"],
+Cell[6684878, 109798, 1399, 24, 156, "Text",ExpressionUUID->"86a4be24-0176-4f39-b14d-9f1f89c018e5"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6683212, 109755, 156, 3, 52, "Section",ExpressionUUID->"f9afc229-16d6-5e48-9d9c-56a5cd6d2f8a"],
-Cell[6683371, 109760, 909, 20, 62, "Text",ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
+Cell[6686326, 109828, 156, 3, 54, "Section",ExpressionUUID->"f9afc229-16d6-5e48-9d9c-56a5cd6d2f8a"],
+Cell[6686485, 109833, 909, 20, 64, "Text",ExpressionUUID->"718ae25c-5fef-c245-b460-0ba4561403fe"],
 Cell[CellGroupData[{
-Cell[6684305, 109784, 591, 12, 37, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
-Cell[6684899, 109798, 382, 8, 31, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
+Cell[6687419, 109857, 591, 12, 44, "Input",ExpressionUUID->"4af3ea76-ddec-6649-9f47-fbc95994bfc9"],
+Cell[6688013, 109871, 382, 8, 36, "Output",ExpressionUUID->"605e5ab8-e37d-d540-a870-fa6bad798bda"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6685318, 109811, 297, 6, 22, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
-Cell[6685618, 109819, 315, 7, 31, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
+Cell[6688432, 109884, 297, 6, 26, "Input",ExpressionUUID->"3834e668-3ace-46a2-87b2-f99200ca94ac"],
+Cell[6688732, 109892, 315, 7, 36, "Output",ExpressionUUID->"310f729b-4b1f-0e40-bf7e-047225354ed4"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6685982, 109832, 237, 4, 52, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
-Cell[6686222, 109838, 754, 23, 44, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
-Cell[6686979, 109863, 31402, 520, 235, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
+Cell[6689096, 109905, 237, 4, 54, "Section",ExpressionUUID->"ed0c5d57-ffdd-404e-a9a4-ef36a7431f1e"],
+Cell[6689336, 109911, 754, 23, 28, "Text",ExpressionUUID->"e2420d07-88f8-49fc-b368-1407876e846f"],
+Cell[6690093, 109936, 31402, 520, 235, "Input",ExpressionUUID->"078cd477-9816-4d1f-8cd2-87848832fe02"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6718418, 110388, 210, 4, 52, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328",
+Cell[6721532, 110461, 210, 4, 54, "Section",ExpressionUUID->"54b829ef-7699-8544-98c8-6fafba278328",
  CellTags->"bibliografia"],
-Cell[6718631, 110394, 1740, 45, 79, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
+Cell[6721745, 110467, 1831, 46, 83, "Text",ExpressionUUID->"83ed0de5-dccb-7d47-a9ab-d9a887d0b0a5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6720408, 110444, 226, 4, 52, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
-Cell[6720637, 110450, 1921, 59, 72, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"],
-Cell[6722561, 110511, 1834, 34, 104, "Item",ExpressionUUID->"73c65e6d-db77-074f-955f-4c8831332a53"]
+Cell[6723613, 110518, 226, 4, 54, "Section",ExpressionUUID->"a96c32f3-8e49-497e-b07a-e4685841309a"],
+Cell[6723842, 110524, 1903, 60, 59, "Item",ExpressionUUID->"1fbedbbf-a717-426a-8d2b-45dfde4b3a74"],
+Cell[6725748, 110586, 1836, 35, 76, "Item",ExpressionUUID->"94973c3e-6f30-40eb-8edb-1da06f26e8ce"]
 }, Open  ]]
 }, Open  ]]
 }
